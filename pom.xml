@@ -117,7 +117,8 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <finalName>Lobby-Rel${project.version}</finalName>
+                    <finalName>Lobby-Rel-${project.version}</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
                     <!--<outputDirectory>E:\MCSS\servers\Test\plugins</outputDirectory>-->
                 </configuration>
                 <executions>
