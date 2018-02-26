@@ -1,18 +1,17 @@
 package de.phyrone.lobbyrel.lobbyswitcher;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import javax.annotation.Nonnull;
-
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-
 import de.dytanic.cloudnet.api.CloudAPI;
 import de.dytanic.cloudnet.lib.server.info.ServerInfo;
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.Config;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class LobbySwitcher {
 	public static final String groupsPath = "LobbySwitcher.Groups";
@@ -48,7 +47,8 @@ public class LobbySwitcher {
 				}
 			}
 		}else {
-			Config.set(groupsPath, new ArrayList<String>(Arrays.asList("STARSTWITH;Lobby")));
+			Config.set(groupsPath, new ArrayList<String>(Arrays.asList(
+					"SERVER;PremiumLobby", "STARSTWITH;Lobby", "CLOUDNET;aCloudnetGroup")));
 		}
 	}public static LobbySwitcher getInstance() {
 		if(instance == null)
