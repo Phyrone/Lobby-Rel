@@ -30,7 +30,7 @@
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.4" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.9" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.spigotmc:spigot:1.8.8-R0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.spigotmc:spigot:1.8.8" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: de.slikey:EffectLib:5.5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.objecthunter:exp4j:0.4.5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: de.dytanic.cloudnet:cloudnet-api:2.1.Pv27F1" level="project" />

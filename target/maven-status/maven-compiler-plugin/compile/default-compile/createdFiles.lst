@@ -205,7 +205,6 @@ de\phyrone\lobbyrel\player\PlayerManager.class
 de\phyrone\lobbyrel\lib\Metrics$1$1.class
 de\phyrone\lobbyrel\navigator\NavigatorManager$1.class
 de\phyrone\lobbyrel\storage\MongoDB.class
-de\phyrone\lobbyrel\gui\main\MainMenue.class
 de\phyrone\lobbyrel\player\settings\SettingsManager$2.class
 de\phyrone\lobbyrel\player\PlayerManager$4.class
 de\phyrone\lobbyrel\gui\customitems\AdminCustomItemGUI$2.class

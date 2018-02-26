@@ -10,8 +10,8 @@
             <url>http://repo.phyrone.de/artifactory/maven-repo/</url>
         </repository>
         <repository>
-            <id>mirror2</id>
-            <url>https://maven.phyrone.de/nexus/content/repositories/java/</url>
+            <id>spigot</id>
+            <url>https://maven.phyrone.de/nexus/content/repositories/spigot/</url>
         </repository>
         <repository>
             <id>jitpack.io</id>
@@ -32,7 +32,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
-            <version>1.8.8-R0.1-20180224.203457-1</version>
+            <version>1.8.8</version>
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
