@@ -6,8 +6,8 @@
     <!-- Repo -->
     <repositories>
         <repository>
-            <id>mirror</id>
-            <url>http://repo.phyrone.de/artifactory/maven-repo/</url>
+            <id>Spigot-Plugins</id>
+            <url>https://maven.phyrone.de/nexus/content/repositories/spigot-plugins/</url>
         </repository>
         <repository>
             <id>spigot</id>
@@ -38,7 +38,7 @@
         </dependency>
         <dependency>
             <groupId>de.slikey</groupId>
-            <artifactId>EffectLib</artifactId>
+            <artifactId>effectlib</artifactId>
             <version>5.5</version>
             <type>jar</type>
             <scope>provided</scope>
