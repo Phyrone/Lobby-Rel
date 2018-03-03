@@ -2,8 +2,8 @@ package de.phyrone.lobbyrel.warps;
 
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.WarpConf;
-import de.phyrone.lobbyrel.hotbar.LobbyItem;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
+import de.phyrone.lobbyrel.lib.LobbyItem;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;

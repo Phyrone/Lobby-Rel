@@ -1,8 +1,5 @@
-package de.phyrone.lobbyrel.hotbar;
+package de.phyrone.lobbyrel.lib;
 
-import de.phyrone.lobbyrel.lib.ItemBuilder;
-import de.phyrone.lobbyrel.lib.RandomString;
-import de.phyrone.lobbyrel.lib.Tools;
 import de.phyrone.lobbyrel.player.data.lang.LangManager;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

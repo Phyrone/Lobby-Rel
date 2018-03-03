@@ -2,8 +2,8 @@ package de.phyrone.lobbyrel.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import de.phyrone.lobbyrel.hotbar.LobbyItem;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
+import de.phyrone.lobbyrel.lib.LobbyItem;
 import de.phyrone.lobbyrel.warps.Warp;
 import org.bukkit.Material;
 

@@ -2,10 +2,10 @@ package de.phyrone.lobbyrel.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import de.phyrone.lobbyrel.hotbar.LobbyItem;
 import de.phyrone.lobbyrel.hotbar.customitems.CustomItem;
 import de.phyrone.lobbyrel.hotbar.customitems.CustomItemsManager;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
+import de.phyrone.lobbyrel.lib.LobbyItem;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 

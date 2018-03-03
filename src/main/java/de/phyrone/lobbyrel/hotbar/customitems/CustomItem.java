@@ -1,6 +1,6 @@
 package de.phyrone.lobbyrel.hotbar.customitems;
 
-import de.phyrone.lobbyrel.hotbar.LobbyItem;
+import de.phyrone.lobbyrel.lib.LobbyItem;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 

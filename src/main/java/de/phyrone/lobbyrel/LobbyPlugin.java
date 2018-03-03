@@ -292,4 +292,11 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         player.sendPluginMessage(this, "BungeeCord", out.toByteArray());
     }
 
+    public void sendPlayer(Player player, String server) {
+        ByteArrayDataOutput out = ByteStreams.newDataOutput();
+        out.writeUTF("Connect");
+        out.writeUTF(server);
+        player.sendPluginMessage(this, "BungeeCord", out.toByteArray());
+    }
+
 }

@@ -10,6 +10,7 @@ import de.phyrone.lobbyrel.hotbar.api.HotbarAction;
 import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
 import de.phyrone.lobbyrel.hotbar.api.HotbarItemAction;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
+import de.phyrone.lobbyrel.lib.LobbyItem;
 import de.phyrone.lobbyrel.navigator.NavigatorManager;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
