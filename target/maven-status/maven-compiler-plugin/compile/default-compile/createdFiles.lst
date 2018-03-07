@@ -1,4 +1,5 @@
 de\phyrone\lobbyrel\lib\Metrics$MultiLineChart.class
+de\phyrone\lobbyrel\lib\CrateInventory$1$1.class
 de\phyrone\lobbyrel\listner\LobbyGuard.class
 de\phyrone\lobbyrel\lib\item\SecondItemBuilder.class
 de\phyrone\lobbyrel\hotbar\LoadingHotbar$1.class
@@ -11,6 +12,7 @@ de\phyrone\lobbyrel\storage\CacheOnlyStorage.class
 de\phyrone\lobbyrel\LobbyPlugin.class
 de\phyrone\lobbyrel\lib\sql\Database.class
 de\phyrone\lobbyrel\gui\customitems\AdminCustomItemGUI$2$1.class
+de\phyrone\lobbyrel\lib\Skull.class
 de\phyrone\lobbyrel\lobbyswitcher\LobbySwitcher$SwitchCategory.class
 de\phyrone\lobbyrel\lib\sql\MySQL.class
 de\phyrone\lobbyrel\storage\NoStorage.class
@@ -19,6 +21,7 @@ de\phyrone\lobbyrel\gui\customitems\AdminCustomItemGUI$2$1$1.class
 de\phyrone\lobbyrel\player\jump\PlayerJumpManager$3.class
 de\phyrone\lobbyrel\hotbar\customitems\CustomItemsManager$1.class
 de\phyrone\lobbyrel\lib\Metrics$DrilldownPie.class
+de\phyrone\lobbyrel\lib\Reflections$2.class
 de\phyrone\lobbyrel\LobbyPlugin$2.class
 de\phyrone\lobbyrel\gui\NavigatorGUI$1.class
 de\phyrone\lobbyrel\lib\Metrics$SimpleBarChart.class
@@ -26,6 +29,7 @@ de\phyrone\lobbyrel\listner\OwnEventsListner$2.class
 de\phyrone\lobbyrel\lib\json\TextualComponent$ArbitraryTextTypeComponent.class
 de\phyrone\lobbyrel\hotbar\NavigatorHobar$3.class
 de\phyrone\lobbyrel\lib\json\JsonString.class
+de\phyrone\lobbyrel\lib\ReflectionUtil.class
 de\phyrone\lobbyrel\player\jump\PlayerJumpManager$1$1.class
 de\phyrone\lobbyrel\gui\warp\AdminWarpGUI$2.class
 de\phyrone\lobbyrel\hotbar\customitems\CustomItem.class
@@ -44,6 +48,7 @@ de\phyrone\lobbyrel\lib\Utf8YamlConfiguration.class
 de\phyrone\lobbyrel\warps\WarpManager.class
 de\phyrone\lobbyrel\gui\warp\AdminWarpGUI$1$1.class
 de\phyrone\lobbyrel\gui\customitems\AdminCustomItemGUI.class
+de\phyrone\lobbyrel\lib\ReflectionUtils$RefField$RefExecutor.class
 de\phyrone\lobbyrel\hider\HiderModule$2.class
 de\phyrone\lobbyrel\hotbar\LoadingHotbar.class
 de\phyrone\lobbyrel\gui\customitems\AdminCustomItemGUI$1$1$1.class
@@ -55,6 +60,7 @@ de\phyrone\lobbyrel\hotbar\customitems\CommandType.class
 de\phyrone\lobbyrel\lib\AnvilGUI$1.class
 de\phyrone\lobbyrel\lib\json\TextualComponent$ComplexTextTypeComponent$1.class
 de\phyrone\lobbyrel\lib\AnvilGUI$AnvilClickEvent.class
+de\phyrone\lobbyrel\lib\ReflectionUtils$RefMethod.class
 de\phyrone\lobbyrel\hotbar\LoadingHotbar$2.class
 de\phyrone\lobbyrel\lib\json\MessagePart.class
 de\phyrone\lobbyrel\lib\AnvilGUI$AnvilContainer.class
@@ -66,10 +72,12 @@ de\phyrone\lobbyrel\hider\PlayerHiderManager$1$4$2.class
 de\phyrone\lobbyrel\update\UpdateManager.class
 de\phyrone\lobbyrel\warps\Warp.class
 de\phyrone\lobbyrel\cmd\LobbyCMD.class
+de\phyrone\lobbyrel\lib\Reflections$3.class
 de\phyrone\lobbyrel\player\data\OfflinePlayerData$1.class
 de\phyrone\lobbyrel\cmd\CommandManager$1.class
 de\phyrone\lobbyrel\config\Config.class
 de\phyrone\lobbyrel\hotbar\MainHotbar$5.class
+de\phyrone\lobbyrel\lib\CrateInventory$1.class
 de\phyrone\lobbyrel\lib\AnvilGUI$AnvilSlot.class
 de\phyrone\lobbyrel\lib\ItemBuilder$Unsafe.class
 de\phyrone\lobbyrel\storage\CloudNetDB.class
@@ -83,6 +91,7 @@ de\phyrone\lobbyrel\storage\MySQLStorage.class
 de\phyrone\lobbyrel\listner\JoinEvent$1.class
 de\phyrone\lobbyrel\player\settings\SettingsManager$5.class
 de\phyrone\lobbyrel\update\UpdateManager$2.class
+de\phyrone\lobbyrel\lib\ReflectionUtils$RefConstructor.class
 de\phyrone\lobbyrel\hotbar\customitems\ExternalItemsManager.class
 de\phyrone\lobbyrel\player\scoreboard\ScoreboardManager$1$1.class
 de\phyrone\lobbyrel\lib\AnvilGUI.class
@@ -122,6 +131,7 @@ de\phyrone\lobbyrel\hotbar\MainHotbar$3.class
 de\phyrone\lobbyrel\player\PlayerManager$1.class
 de\phyrone\lobbyrel\events\LobbyReloadEvent.class
 de\phyrone\lobbyrel\listner\OwnEventsListner$1.class
+de\phyrone\lobbyrel\lib\ReflectionUtils$RefMethod$RefExecutor.class
 de\phyrone\lobbyrel\lib\Metrics.class
 de\phyrone\lobbyrel\cmd\help\HelpManager$1.class
 de\phyrone\lobbyrel\hider\PlayerHiderManager$1$2.class
@@ -139,8 +149,11 @@ de\phyrone\lobbyrel\lib\json\FancyMessage.class
 de\phyrone\lobbyrel\listner\OtherEvents.class
 de\phyrone\lobbyrel\lib\chatimg\ImageMessage.class
 de\phyrone\lobbyrel\config\WarpConf.class
+de\phyrone\lobbyrel\lib\ReflectionUtils$1.class
 de\phyrone\lobbyrel\lib\BarUtil.class
 de\phyrone\lobbyrel\hider\PlayerHiderManager$2$1.class
+de\phyrone\lobbyrel\lib\Reflections.class
+de\phyrone\lobbyrel\lib\InventoryClickHandler.class
 de\phyrone\lobbyrel\update\UpdateManager$1.class
 de\phyrone\lobbyrel\hider\PlayerHiderManager$1$3.class
 de\phyrone\lobbyrel\gui\SettingGUI$1.class
@@ -150,17 +163,20 @@ de\phyrone\lobbyrel\config\Config$1.class
 de\phyrone\lobbyrel\listner\OwnEventsListner.class
 de\phyrone\lobbyrel\gui\SettingGUI.class
 de\phyrone\lobbyrel\hotbar\api\Hotbar$1.class
+de\phyrone\lobbyrel\lib\CrateInventory.class
+de\phyrone\lobbyrel\lib\LobbyItem.class
 de\phyrone\lobbyrel\gui\AdminMainGui.class
 de\phyrone\lobbyrel\playertime\TimeManager.class
 de\phyrone\lobbyrel\hotbar\NavigatorHobar.class
 de\phyrone\lobbyrel\gui\warp\AdminWarpGUI$2$1.class
 de\phyrone\lobbyrel\LobbyPlugin$5.class
-de\phyrone\lobbyrel\hotbar\LobbyItem.class
 de\phyrone\lobbyrel\lib\ping\MinecraftPingReply$Description.class
+de\phyrone\lobbyrel\lib\ReflectionUtils$RefField.class
 de\phyrone\lobbyrel\listner\JoinEvent$2.class
 de\phyrone\lobbyrel\lib\json\ArrayWrapper.class
 de\phyrone\lobbyrel\player\data\lang\LangConf.class
 de\phyrone\lobbyrel\hider\PlayerHiderManager.class
+de\phyrone\lobbyrel\lib\ReflectionUtils.class
 de\phyrone\lobbyrel\lib\AsyncMySQL.class
 de\phyrone\lobbyrel\lib\ItemBuilder$Unsafe$ReflectionUtils.class
 de\phyrone\lobbyrel\cmd\CommandManager.class
@@ -187,6 +203,7 @@ de\phyrone\lobbyrel\lib\json\TextualComponent$ArbitraryTextTypeComponent$1.class
 de\phyrone\lobbyrel\player\effect\EffectPlayer.class
 de\phyrone\lobbyrel\hotbar\api\Hotbar$1$1.class
 de\phyrone\lobbyrel\player\effect\EffectPlayer$1.class
+de\phyrone\lobbyrel\lib\ReflectionUtils$RefClass.class
 de\phyrone\lobbyrel\hider\HiderModule$1.class
 de\phyrone\lobbyrel\hotbar\MainHotbar$1.class
 de\phyrone\lobbyrel\player\settings\SettingsManager$4.class
@@ -200,10 +217,12 @@ de\phyrone\lobbyrel\LobbyPlugin$4.class
 de\phyrone\lobbyrel\lib\Values.class
 de\phyrone\lobbyrel\player\settings\time\TimeManager.class
 de\phyrone\lobbyrel\storage\JsonStorage.class
+de\phyrone\lobbyrel\lib\Reflections$FieldAccessor.class
 de\phyrone\lobbyrel\player\jump\PlayerJumpManager$2$1.class
 de\phyrone\lobbyrel\player\PlayerManager.class
 de\phyrone\lobbyrel\lib\Metrics$1$1.class
 de\phyrone\lobbyrel\navigator\NavigatorManager$1.class
+de\phyrone\lobbyrel\lib\Reflections$ConstructorInvoker.class
 de\phyrone\lobbyrel\storage\MongoDB.class
 de\phyrone\lobbyrel\player\settings\SettingsManager$2.class
 de\phyrone\lobbyrel\player\PlayerManager$4.class
@@ -219,7 +238,9 @@ de\phyrone\lobbyrel\navigator\NavigatorAction.class
 de\phyrone\lobbyrel\hider\PlayerHiderManager$1$4$3.class
 de\phyrone\lobbyrel\player\scoreboard\ScoreboardManager$2$2.class
 de\phyrone\lobbyrel\gui\SettingGUI$3.class
+de\phyrone\lobbyrel\lib\Reflections$MethodInvoker.class
 de\phyrone\lobbyrel\listner\JoinEvent.class
+de\phyrone\lobbyrel\lib\Reflections$1.class
 de\phyrone\lobbyrel\listner\HotbarEvents.class
 de\phyrone\lobbyrel\gui\warp\AdminWarpGUI.class
 de\phyrone\lobbyrel\player\jump\PlayerJumpManager$1.class

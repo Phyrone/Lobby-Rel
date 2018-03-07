@@ -191,6 +191,8 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
             e.printStackTrace();
         }
         Bukkit.getConsoleSender().sendMessage("§8[§5Lobby-Rel§8] §aEnabled");
+
+
     }
 
     @Override

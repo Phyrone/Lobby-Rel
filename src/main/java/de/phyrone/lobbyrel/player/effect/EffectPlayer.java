@@ -1,5 +1,11 @@
 package de.phyrone.lobbyrel.player.effect;
 
+import de.phyrone.lobbyrel.LobbyPlugin;
+import de.phyrone.lobbyrel.player.data.OfflinePlayerData;
+import de.slikey.effectlib.EffectManager;
+import de.slikey.effectlib.effect.DnaEffect;
+import de.slikey.effectlib.effect.FlameEffect;
+import de.slikey.effectlib.effect.WarpEffect;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -7,13 +13,6 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-
-import de.phyrone.lobbyrel.LobbyPlugin;
-import de.phyrone.lobbyrel.player.data.OfflinePlayerData;
-import de.slikey.effectlib.EffectManager;
-import de.slikey.effectlib.effect.DnaEffect;
-import de.slikey.effectlib.effect.FlameEffect;
-import de.slikey.effectlib.effect.WarpEffect;
 
 public class EffectPlayer {
 	static EffectManager m = new EffectManager(LobbyPlugin.getInstance());
@@ -49,7 +48,7 @@ public class EffectPlayer {
 					p.playSound(p.getLocation(), Sound.PORTAL_TRAVEL, 0.3F, 1.7F);
 				}
 				if(p.hasPotionEffect(PotionEffectType.BLINDNESS))p.removePotionEffect(PotionEffectType.BLINDNESS);
-				p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 25, 10));
+        p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 25, 10, false, false), true);
 
 	}public void blocked() {
 		if(allowSound()) {

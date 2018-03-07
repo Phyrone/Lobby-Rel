@@ -25,13 +25,13 @@ public class CloudNetDB extends OfflinePlayerStorage {
 
     @Override
     public void save(UUID uuid, InternalOfflinePlayerData data) {
-        db.insert(new Document(uuid.toString()).append("data", data.toJsonString()));
+        db.insertAsync(new Document(uuid.toString()).append("data", data.toJsonString()));
     }
 
     @Override
     public InternalOfflinePlayerData load(UUID uuid) {
         if (db.contains(uuid.toString()))
-            return InternalOfflinePlayerData.fromJson(db.getDocument(uuid.toString()).getString("data"));
+            return InternalOfflinePlayerData.fromJson(db.load(uuid.toString()).getString("data"));
         else
             return new InternalOfflinePlayerData();
     }
