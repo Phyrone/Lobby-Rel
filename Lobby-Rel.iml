@@ -32,7 +32,7 @@
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.9" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.spigotmc:spigot:1.8.8" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: de.slikey:effectlib:5.5" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: de.dytanic.cloudnet:cloudnet-api:2.1.Pv27F1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: de.dytanic.cloudnet:cloudnet-api:2.1.Pv30F0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: fr.minuskube.inv:smart-invs:1.1.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: me.clip:placeholderapi:2.8.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: me.tade:QuickBoard:3.9" level="project" />
