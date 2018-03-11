@@ -17,6 +17,7 @@ import de.phyrone.lobbyrel.player.IdeodPreventer;
 import de.phyrone.lobbyrel.player.PlayerManager;
 import de.phyrone.lobbyrel.player.data.OfflinePlayerData;
 import de.phyrone.lobbyrel.player.data.offline.InternalOfllineDataManager;
+import de.phyrone.lobbyrel.update.LobbyDependency;
 import de.phyrone.lobbyrel.warps.WarpManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
@@ -27,21 +28,15 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.Callable;
 
 public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
     final static File licfile = new File("plugins/Lobby-Rel", "License.json");
-    static LobbyPlugin instance;
-    static double tps = -1D;
+    private static LobbyPlugin instance;
+    private static double tps = -1D;
 
     public double getTPS() {
         return tps;
@@ -49,6 +44,49 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
 
     public LobbyPlugin() {
         instance = this;
+    }
+
+    private static void loadConf() {
+        try {
+            Config.load();
+            WarpManager.loadFromConf();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static LobbyPlugin getInstance() {
+        return instance;
+    }
+
+    public static String getVersion() {
+        return instance.getDescription().getVersion();
+    }
+
+    public static String getPrefix() {
+        return Config.getString("Prefix", "&8[&6Lobby&8-&cRel&8]").replaceAll("&", "§");
+    }
+
+    @Override
+    public void onDisable() {
+        try {
+            WarpManager.saveToConf();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        InternalOfllineDataManager.disable();
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            new OfflinePlayerData(p).saveToConf();
+        }
+        Bukkit.getConsoleSender().sendMessage("[Lobby-Rel] §cZzz...");
+    }
+
+    public void reload() {
+        loadConf();
+        Bukkit.getPluginManager().callEvent(new LobbyReloadEvent(instance));
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            PlayerManager.resetPlayerAndData(p);
+        }
     }
 
     @SuppressWarnings({"resource", "deprecation"})
@@ -73,7 +111,12 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
 
         instance = this;
         Bukkit.getConsoleSender().sendMessage("[Lobby-Rel] §6Loading Library's if needed...");
-        if (!Bukkit.getPluginManager().isPluginEnabled("SmartInvs")) {
+        new LobbyDependency(42835, "SmartInvs").check();
+        new LobbyDependency(0, "EffectLib")
+                .setCustomURL("https://dev.bukkit.org/projects/effectlib/files/lates").check();
+        new LobbyDependency(1997, "ProtocolLib").check();
+
+        /*if (!Bukkit.getPluginManager().isPluginEnabled("SmartInvs")) {
             URL website;
             System.out.println("Downloading SmartInvs...");
             try {
@@ -105,7 +148,7 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
+        }*/
         loadConf();
         PluginManager pm = Bukkit.getPluginManager();
         //BungeeMode
@@ -131,53 +174,35 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         Bukkit.getPluginCommand("spawn").setExecutor(new WarpCMD());
         // Metrics
         Metrics m = new Metrics(instance);
-        m.addCustomChart(new Metrics.SimplePie("storage_type", new Callable<String>() {
-
-            @Override
-            public String call() {
-                return InternalOfllineDataManager.getStorage().toUpperCase();
-            }
-        }));
-        m.addCustomChart(new Metrics.AdvancedPie("players_use_navigator", new Callable<Map<String, Integer>>() {
-
-            @Override
-            public Map<String, Integer> call() {
-                HashMap<String, Integer> ret = new HashMap<String, Integer>();
-                for (Player p : Bukkit.getOnlinePlayers()) {
-                    String r;
-                    switch (PlayerManager.getPlayerData(p).getNavigator()) {
-                        case 0:
-                            r = "GUI";
-                            break;
-                        case 1:
-                            r = "Hotbar";
-                            break;
-                        default:
-                            r = "Other";
-                            break;
-                    }
-                    ret.put(r, ret.getOrDefault(r, 0) + 1);
+        m.addCustomChart(new Metrics.SimplePie("storage_type", () -> InternalOfllineDataManager.getStorage().toUpperCase()));
+        m.addCustomChart(new Metrics.AdvancedPie("players_use_navigator", () -> {
+            HashMap<String, Integer> ret = new HashMap<>();
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                String r;
+                switch (PlayerManager.getPlayerData(p).getNavigator()) {
+                    case 0:
+                        r = "GUI";
+                        break;
+                    case 1:
+                        r = "Hotbar";
+                        break;
+                    default:
+                        r = "Other";
+                        break;
                 }
-                return ret;
+                ret.put(r, ret.getOrDefault(r, 0) + 1);
             }
+            return ret;
         }));
-        m.addCustomChart(new Metrics.SimplePie("tps", new Callable<String>() {
-
-            @Override
-            public String call() {
-                NumberFormat n = NumberFormat.getInstance();
-                n.setMaximumFractionDigits(2); // max. 2 stellen hinter komma
-                return n.format(tps) + "TPS";
-            }
+        m.addCustomChart(new Metrics.SimplePie("tps", () -> {
+            NumberFormat n = NumberFormat.getInstance();
+            n.setMaximumFractionDigits(2); // max. 2 stellen hinter komma
+            return n.format(tps) + "TPS";
         }));
         //TPS
-        Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, new Runnable() {
-
-            @Override
-            public void run() {
-                tps = TpsMeter.getTPS(20 * 10);
-                System.out.println("");
-            }
+        Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, () -> {
+            tps = TpsMeter.getTPS(20 * 10);
+            System.out.println("");
         }, 20 * 60, 20 * 60);
         //Other
         reload();
@@ -193,50 +218,6 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         Bukkit.getConsoleSender().sendMessage("§8[§5Lobby-Rel§8] §aEnabled");
 
 
-    }
-
-    @Override
-    public void onDisable() {
-        try {
-            WarpManager.saveToConf();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        InternalOfllineDataManager.disable();
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            new OfflinePlayerData(p).saveToConf();
-        }
-        Bukkit.getConsoleSender().sendMessage("[Lobby-Rel] §cZzz...");
-    }
-
-    public static LobbyPlugin getInstance() {
-        return instance;
-    }
-
-    public static void loadConf() {
-        try {
-            Config.load();
-            WarpManager.loadFromConf();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static String getPrefix() {
-        return Config.getString("Prefix", "&8[&6Lobby&8-&cRel&8]").replaceAll("&", "§");
-    }
-
-    public void reload() {
-        loadConf();
-        Bukkit.getPluginManager().callEvent(new LobbyReloadEvent(instance));
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            PlayerManager.resetPlayerAndData(p);
-        }
-    }
-
-    @SuppressWarnings("static-access")
-    public static String getVersion() {
-        return instance.getVersion();
     }
 
     @Override
@@ -266,12 +247,16 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         try {
             ByteArrayDataInput in = ByteStreams.newDataInput(message);
             String subchannel = in.readUTF();
-            if (subchannel.equals("GetServers")) {
-                LobbySwitcher.getInstance().updateBungeeServers(in.readUTF().split(", "));
-            } else if (subchannel.equals("PlayerCount")) {
-                LobbySwitcher.getInstance().setServerData(in.readUTF(), LobbySwitcher.getInstance().new ServerConData(in.readInt()));
-            } else if (subchannel.equals("GetServer")) {
-                LobbySwitcher.getInstance().setServerName(in.readUTF());
+            switch (subchannel) {
+                case "GetServers":
+                    LobbySwitcher.getInstance().updateBungeeServers(in.readUTF().split(", "));
+                    break;
+                case "PlayerCount":
+                    LobbySwitcher.getInstance().setServerData(in.readUTF(), LobbySwitcher.getInstance().new ServerConData(in.readInt()));
+                    break;
+                case "GetServer":
+                    LobbySwitcher.getInstance().setServerName(in.readUTF());
+                    break;
             }
         } catch (Exception e) {
             e.printStackTrace();

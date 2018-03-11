@@ -1,5 +1,6 @@
 package de.phyrone.lobbyrel.update;
 
+import com.github.alessiop86.antiantibotcloudflare.exceptions.AntiAntibotException;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import de.phyrone.lobbyrel.LobbyPlugin;
@@ -10,19 +11,16 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 public class UpdateManager {
     private static boolean update = false;
-
+    private static LobbyDependency asDependency = new LobbyDependency(49126, "Lobby-Rel");
     public static void check() {
         check(null);
     }
@@ -112,21 +110,17 @@ public class UpdateManager {
 
     @SuppressWarnings("resource")
     public static boolean update() {
-        File file = new File("plugins/" + LobbyPlugin.getInstance().getDescription().getName() + ".jar");
         try {
-            URL website = new URL("https://api.spiget.org/v2/resources/49126/download");
-            ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-            FileOutputStream fos = new FileOutputStream(file.getPath());
-            fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+            asDependency.download();
             return true;
-        } catch (Exception e) {
+        } catch (AntiAntibotException | IOException e) {
             e.printStackTrace();
-            return false;
         }
+        return false;
     }
 
     private static void updateAsync() {
-        new Thread("UpdateTask") {
+        new Thread("LobbyUpdateTask") {
             @Override
             public void run() {
                 update();
