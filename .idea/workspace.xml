@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="75c0e7c6-91c1-4cb0-97b0-36188e25d3cc" name="Default" comment="Updater and Dependency-Manager and Cleanup">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/LobbyDependency.java" />
+    <list default="true" id="75c0e7c6-91c1-4cb0-97b0-36188e25d3cc" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/protokoll/Reflection.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/protokoll/TinyProtocol.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/FancyMessage.java" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/FancyMessage.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/LobbyDependency.java" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/LobbyDependency.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/UpdateManager.java" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/UpdateManager.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -17,84 +21,89 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="109" column="44" lean-forward="false" selection-start-line="109" selection-start-column="44" selection-end-line="109" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LobbyPlugin.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="76" column="23" lean-forward="false" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
-              <folding>
-                <element signature="e#2380#2381#0" expanded="true" />
-                <element signature="e#2411#2412#0" expanded="true" />
-                <element signature="e#2452#2453#0" expanded="true" />
-                <element signature="e#2513#2514#0" expanded="true" />
-                <element signature="e#9064#9349#0" expanded="true" />
-                <element signature="e#9348#9349#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LobbyDependency.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/LobbyDependency.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="27" column="72" lean-forward="false" selection-start-line="27" selection-start-column="72" selection-end-line="27" selection-end-column="72" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="UpdateManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/UpdateManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="117" column="9" lean-forward="false" selection-start-line="117" selection-start-column="9" selection-end-line="117" selection-end-column="9" />
+            <state relative-caret-position="519">
+              <caret line="145" column="40" lean-forward="false" selection-start-line="145" selection-start-column="40" selection-end-line="145" selection-end-column="40" />
               <folding>
                 <element signature="e#854#855#0" expanded="true" />
                 <element signature="e#881#882#0" expanded="true" />
                 <element signature="e#1776#1777#0" expanded="true" />
                 <element signature="e#1805#1806#0" expanded="true" />
-                <element signature="e#1880#2834#0" expanded="true" />
-                <element signature="e#2563#2756#0" expanded="true" />
-                <element signature="e#2755#2756#0" expanded="true" />
-                <element signature="e#2833#2834#0" expanded="true" />
-                <element signature="e#2952#4243#0" expanded="true" />
-                <element signature="e#4242#4243#0" expanded="true" />
-                <element signature="e#4710#4711#0" expanded="true" />
-                <element signature="e#4750#4751#0" expanded="true" />
+                <element signature="e#4786#4787#0" expanded="true" />
+                <element signature="e#4826#4827#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plugin.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
+      <file leaf-file-name="FancyMessage.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/FancyMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="15" />
+            <state relative-caret-position="-4352">
+              <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+              <folding>
+                <element signature="e#24902#24903#0" expanded="true" />
+                <element signature="e#24946#24947#0" expanded="true" />
+                <element signature="e#26249#26250#0" expanded="true" />
+                <element signature="e#26293#26294#0" expanded="true" />
+                <element signature="e#28033#28034#0" expanded="true" />
+                <element signature="e#28097#28098#0" expanded="true" />
+                <element signature="e#28932#28933#0" expanded="true" />
+                <element signature="e#28978#28979#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LobbyPlugin.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2269">
+              <caret line="117" column="101" lean-forward="false" selection-start-line="117" selection-start-column="101" selection-end-line="117" selection-end-column="101" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ItemsConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/ItemsConfig.java">
+      <file leaf-file-name="PacketPlayOutChat.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/spigotmc/spigot/1.8.8/spigot-1.8.8.jar!/net/minecraft/server/v1_8_R3/PacketPlayOutChat.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-640">
-              <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-              <folding />
+            <state relative-caret-position="289">
+              <caret line="24" column="35" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="35" />
+              <folding>
+                <marker date="1520709787457" expanded="false" signature="0:104" ph="/.../" />
+                <marker date="1520709787457" expanded="false" signature="152:268" ph="..." />
+                <marker date="1520709787457" expanded="true" signature="469:476" ph="{}" />
+                <marker date="1520709787457" expanded="false" signature="545:556" ph=" { " />
+                <marker date="1520709787457" expanded="false" signature="590:596" ph=" }" />
+                <marker date="1520709787457" expanded="true" signature="675:740" ph="{...}" />
+                <marker date="1520709787457" expanded="true" signature="822:922" ph="{...}" />
+                <marker date="1520709787457" expanded="true" signature="1004:1253" ph="{...}" />
+                <marker date="1520709787457" expanded="false" signature="1317:1328" ph=" { " />
+                <marker date="1520709787457" expanded="false" signature="1358:1364" ph=" }" />
+                <marker date="1520709787457" expanded="false" signature="1388:1399" ph=" { " />
+                <marker date="1520709787457" expanded="false" signature="1433:1439" ph=" }" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Reflection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/protokoll/Reflection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="339">
+              <caret line="77" column="26" lean-forward="false" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#12585#12586#0" expanded="true" />
+                <element signature="e#12654#12655#0" expanded="true" />
+                <element signature="e#12944#12945#0" expanded="true" />
+                <element signature="e#13009#13010#0" expanded="true" />
+                <element signature="e#13303#13304#0" expanded="true" />
+                <element signature="e#13368#13369#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -114,6 +123,11 @@
       <find>reload</find>
       <find>set</find>
       <find>getCraftBukkit</find>
+      <find>dispatchCommand</find>
+      <find>send</find>
+      <find>sendJsonMSG</find>
+      <find>sendjson</find>
+      <find>sendJson</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -170,7 +184,6 @@
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/ReflectionUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/sql/skuuls.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/skuuls.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Ref.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Reflections.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/ReflectionUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/CloudNetDB.java" />
@@ -178,13 +191,24 @@
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/UpdateReader.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/MongoDB.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Tools.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/DependencyManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/UpdateManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/LobbyDependency.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Ref.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/protokoll/Reflection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Tyny.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/protokoll/TinyProtocol.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/FancyMessage.java" />
       </list>
     </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -194,8 +218,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1866" />
-    <option name="y" value="-25" />
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
     <option name="width" value="1296" />
     <option name="height" value="1000" />
   </component>
@@ -215,9 +239,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -258,7 +280,27 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lobby-Rel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="json" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lobby-Rel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="protokoll" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
@@ -276,10 +318,47 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lobby-Rel" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.spigotmc:spigot:1.8.8" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.spigotmc:spigot:1.8.8" type="70bed36:NamedLibraryElementNode" />
+              <item name="spigot-1.8.8.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.spigotmc:spigot:1.8.8" type="70bed36:NamedLibraryElementNode" />
+              <item name="spigot-1.8.8.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="net" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: org.spigotmc:spigot:1.8.8" type="70bed36:NamedLibraryElementNode" />
+              <item name="spigot-1.8.8.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="net" type="462c0819:PsiDirectoryNode" />
+              <item name="v1_8_R3" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -291,6 +370,8 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -530,6 +611,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518213583170</updated>
+      <workItem from="1520789824292" duration="1851000" />
+      <workItem from="1520791795664" duration="1348000" />
     </task>
     <task id="LOCAL-00001" summary="First">
       <created>1518216190349</created>
@@ -776,8 +859,18 @@
       <option name="project" value="LOCAL" />
       <updated>1520669810751</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Updater and Dependency-Manager and Cleanup">
+      <created>1520766302508</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1520766302508</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3199000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1296" height="1000" extended-state="6" />
@@ -785,7 +878,6 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32694477" sideWeight="0.4875" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919955" sideWeight="0.509375" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -794,12 +886,14 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32694477" sideWeight="0.4875" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -810,15 +904,15 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919955" sideWeight="0.4875" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32694477" sideWeight="0.4875" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919955" sideWeight="0.509375" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32919955" sideWeight="0.490625" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48928973" sideWeight="0.490625" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35062006" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -830,6 +924,9 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="UpdateCopyrightCheckinHandler">
     <option name="UPDATE_COPYRIGHT" value="true" />
@@ -872,63 +969,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/settings/time/TimeManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/ServerProp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/WarpConf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-847">
-          <caret line="21" column="13" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/JoinEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="34" column="81" lean-forward="false" selection-start-line="34" selection-start-column="81" selection-end-line="34" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/lang/Override.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/spigotmc/spigot/1.8.8/spigot-1.8.8.jar!/org/bukkit/event/EventHandler.class" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/CacheOnlyStorage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="71" lean-forward="false" selection-start-line="18" selection-start-column="71" selection-end-line="18" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/OwnEventsListner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="74" column="27" lean-forward="true" selection-start-line="74" selection-start-column="27" selection-end-line="74" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/MySQLStorage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-340">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/JsonStorage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1000,6 +1040,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
@@ -1009,11 +1054,6 @@
           <second_editor>
             <js_state />
           </second_editor>
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1153,52 +1193,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="31" column="26" lean-forward="false" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="109" column="44" lean-forward="false" selection-start-line="109" selection-start-column="44" selection-end-line="109" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/ItemsConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-640">
-          <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/UpdateManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="117" column="9" lean-forward="false" selection-start-line="117" selection-start-column="9" selection-end-line="117" selection-end-column="9" />
-          <folding>
-            <element signature="e#854#855#0" expanded="true" />
-            <element signature="e#881#882#0" expanded="true" />
-            <element signature="e#1776#1777#0" expanded="true" />
-            <element signature="e#1805#1806#0" expanded="true" />
-            <element signature="e#1880#2834#0" expanded="true" />
-            <element signature="e#2563#2756#0" expanded="true" />
-            <element signature="e#2755#2756#0" expanded="true" />
-            <element signature="e#2833#2834#0" expanded="true" />
-            <element signature="e#2952#4243#0" expanded="true" />
-            <element signature="e#4242#4243#0" expanded="true" />
-            <element signature="e#4710#4711#0" expanded="true" />
-            <element signature="e#4750#4751#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1206,31 +1200,191 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="436">
           <caret line="64" column="6" lean-forward="false" selection-start-line="64" selection-start-column="6" selection-end-line="64" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/ItemsConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-640">
+          <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.project">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/MessagePart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="20" column="12" lean-forward="false" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/LobbyDependency.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="27" column="72" lean-forward="false" selection-start-line="27" selection-start-column="72" selection-end-line="27" selection-end-column="72" />
+        <state relative-caret-position="17">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/spigotmc/spigot/1.8.8/spigot-1.8.8.jar!/net/md_5/bungee/api/chat/BaseComponent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="248" column="11" lean-forward="false" selection-start-line="248" selection-start-column="11" selection-end-line="248" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/spigotmc/spigot/1.8.8/spigot-1.8.8.jar!/org/bukkit/command/CommandSender.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/protokoll/TinyProtocol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2261">
+          <caret line="2" column="38" lean-forward="false" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+          <folding>
+            <element signature="e#2940#2958#0" expanded="false" />
+            <element signature="e#4221#4523#0" expanded="false" />
+            <element signature="e#4522#4523#0" expanded="false" />
+            <element signature="e#4669#5397#0" expanded="false" />
+            <element signature="e#5396#5397#0" expanded="false" />
+            <element signature="e#5491#5710#0" expanded="false" />
+            <element signature="e#5709#5710#0" expanded="false" />
+            <element signature="e#5744#6131#0" expanded="false" />
+            <element signature="e#6130#6131#0" expanded="false" />
+            <element signature="e#7043#7073#0" expanded="false" />
+            <element signature="e#9520#9521#0" expanded="false" />
+            <element signature="e#9549#9550#0" expanded="false" />
+            <element signature="e#10103#10104#0" expanded="false" />
+            <element signature="e#10132#10133#0" expanded="false" />
+            <element signature="e#10463#10464#0" expanded="false" />
+            <element signature="e#10517#10518#0" expanded="false" />
+            <element signature="e#10859#10860#0" expanded="false" />
+            <element signature="e#10915#10916#0" expanded="false" />
+            <element signature="e#11308#11309#0" expanded="false" />
+            <element signature="e#11365#11366#0" expanded="false" />
+            <element signature="e#12213#12214#0" expanded="false" />
+            <element signature="e#12291#12292#0" expanded="false" />
+            <element signature="e#12615#12616#0" expanded="false" />
+            <element signature="e#12688#12689#0" expanded="false" />
+            <element signature="e#12947#12948#0" expanded="false" />
+            <element signature="e#12993#12994#0" expanded="false" />
+            <element signature="e#14600#14601#0" expanded="false" />
+            <element signature="e#14651#14652#0" expanded="false" />
+            <element signature="e#15238#15239#0" expanded="false" />
+            <element signature="e#15308#15309#0" expanded="false" />
+            <element signature="e#15553#15554#0" expanded="false" />
+            <element signature="e#15607#15608#0" expanded="false" />
+            <element signature="e#15838#15839#0" expanded="false" />
+            <element signature="e#15904#15905#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/comphenix/protocol/ProtocolLib/4.3.0/ProtocolLib-4.3.0.jar!/com/comphenix/protocol/wrappers/WrappedChatComponent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="73" column="24" lean-forward="false" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/UpdateManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="145" column="40" lean-forward="false" selection-start-line="145" selection-start-column="40" selection-end-line="145" selection-end-column="40" />
+          <folding>
+            <element signature="e#854#855#0" expanded="true" />
+            <element signature="e#881#882#0" expanded="true" />
+            <element signature="e#1776#1777#0" expanded="true" />
+            <element signature="e#1805#1806#0" expanded="true" />
+            <element signature="e#4786#4787#0" expanded="true" />
+            <element signature="e#4826#4827#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/protokoll/Reflection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="77" column="26" lean-forward="false" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#12585#12586#0" expanded="true" />
+            <element signature="e#12654#12655#0" expanded="true" />
+            <element signature="e#12944#12945#0" expanded="true" />
+            <element signature="e#13009#13010#0" expanded="true" />
+            <element signature="e#13303#13304#0" expanded="true" />
+            <element signature="e#13368#13369#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/spigotmc/spigot/1.8.8/spigot-1.8.8.jar!/net/minecraft/server/v1_8_R3/PacketPlayOutChat.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="24" column="35" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="35" />
+          <folding>
+            <marker date="1520709787457" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1520709787457" expanded="false" signature="152:268" ph="..." />
+            <marker date="1520709787457" expanded="true" signature="469:476" ph="{}" />
+            <marker date="1520709787457" expanded="false" signature="545:556" ph=" { " />
+            <marker date="1520709787457" expanded="false" signature="590:596" ph=" }" />
+            <marker date="1520709787457" expanded="true" signature="675:740" ph="{...}" />
+            <marker date="1520709787457" expanded="true" signature="822:922" ph="{...}" />
+            <marker date="1520709787457" expanded="true" signature="1004:1253" ph="{...}" />
+            <marker date="1520709787457" expanded="false" signature="1317:1328" ph=" { " />
+            <marker date="1520709787457" expanded="false" signature="1358:1364" ph=" }" />
+            <marker date="1520709787457" expanded="false" signature="1388:1399" ph=" { " />
+            <marker date="1520709787457" expanded="false" signature="1433:1439" ph=" }" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="76" column="23" lean-forward="false" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+        <state relative-caret-position="-2269">
+          <caret line="117" column="101" lean-forward="false" selection-start-line="117" selection-start-column="101" selection-end-line="117" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/FancyMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4352">
+          <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
           <folding>
-            <element signature="e#2380#2381#0" expanded="true" />
-            <element signature="e#2411#2412#0" expanded="true" />
-            <element signature="e#2452#2453#0" expanded="true" />
-            <element signature="e#2513#2514#0" expanded="true" />
-            <element signature="e#9064#9349#0" expanded="true" />
-            <element signature="e#9348#9349#0" expanded="true" />
+            <element signature="e#24902#24903#0" expanded="true" />
+            <element signature="e#24946#24947#0" expanded="true" />
+            <element signature="e#26249#26250#0" expanded="true" />
+            <element signature="e#26293#26294#0" expanded="true" />
+            <element signature="e#28033#28034#0" expanded="true" />
+            <element signature="e#28097#28098#0" expanded="true" />
+            <element signature="e#28932#28933#0" expanded="true" />
+            <element signature="e#28978#28979#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,31 +1,38 @@
 package de.phyrone.lobbyrel.update;
 
+
 import com.github.alessiop86.antiantibotcloudflare.AntiAntiBotCloudFlare;
 import com.github.alessiop86.antiantibotcloudflare.ApacheHttpAntiAntibotCloudFlareFactory;
 import com.github.alessiop86.antiantibotcloudflare.exceptions.AntiAntibotException;
 import com.google.gson.GsonBuilder;
-import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.InvalidDescriptionException;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.PluginManager;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 
 public final class LobbyDependency {
     private int id;
     private String pluginname;
-
+    private boolean cloudFlare = true;
+    private File pluginFile;
     private String customURL = null;
     private AntiAntiBotCloudFlare client = new ApacheHttpAntiAntibotCloudFlareFactory().createInstance();
-    private File pluginFile = new File("plugin/", pluginname + ".jar");
 
     public LobbyDependency(int id, String pluginname) {
         this.id = id;
         this.pluginname = pluginname;
+        pluginFile = new File("plugins/", pluginname + ".jar");
+    }
+
+    public LobbyDependency setCloudFlare(boolean cloudFlare) {
+        this.cloudFlare = cloudFlare;
+        return this;
     }
 
     public LobbyDependency setCustomURL(String customURL) {
@@ -45,6 +52,7 @@ public final class LobbyDependency {
                 downloadAndEnable();
             } catch (AntiAntibotException e) {
                 System.err.println("[LobbyRel] Downloading " + pluginname + " failed! (Plugin could not be downloaded)");
+                e.printStackTrace();
             } catch (IOException e) {
                 System.err.println("[LobbyRel] Downloading " + pluginname + " failed! (Plugin could not be saved!");
                 e.printStackTrace();
@@ -61,7 +69,7 @@ public final class LobbyDependency {
         }
     }
 
-    private void downloadAndEnable() throws IOException, AntiAntibotException, InvalidDescriptionException, InvalidPluginException {
+    private void downloadAndEnable() throws IOException, AntiAntibotException, InvalidDescriptionException, InvalidPluginException, InterruptedException {
         download();
         PluginManager pm = Bukkit.getPluginManager();
         pm.loadPlugin(pluginFile);
@@ -76,19 +84,39 @@ public final class LobbyDependency {
 
     public void download() throws AntiAntibotException, IOException {
         System.out.println("[LobbyRel] Downloading " + pluginname + "...");
-        IOUtils.copy(new ByteArrayInputStream(client.getByteArrayFromUrl(getURL())),
-                new FileOutputStream(pluginFile.getAbsolutePath()));
+        InputStream in;
+        if (needBypass()) {
+            in = getWithBypass(getURL());
+        } else {
+            URL url = new URL(getURL());
+            URLConnection hc = url.openConnection();
+            //hc.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
+            in = hc.getInputStream();
+        }
+        ReadableByteChannel rbc = Channels.newChannel(in);
+        FileOutputStream out = new FileOutputStream(pluginFile.getPath());
+        out.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
         System.out.println("[LobbyRel] " + pluginname + " downloaded and saved!");
+    }
+
+    public InputStream getWithBypass(String url) throws AntiAntibotException {
+        return new ByteArrayInputStream(client.getByteArrayFromUrl(url));
+    }
+
+    boolean needBypass() throws AntiAntibotException {
+        if (customURL != null)
+            return cloudFlare;
+        else return getInfo().external;
     }
 
     private String getURL() throws AntiAntibotException {
         if (customURL != null)
             return customURL;
         ResourcesInfo info = getInfo();
-        if (info.external)
+        if (!info.external)
             return "https://api.spiget.org/v2/resources/" + String.valueOf(id) + "/download";
         else
-            return info.file.url;
+            return "https://www.spigotmc.org/" + info.file.url;
     }
 }
 

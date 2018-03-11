@@ -11,6 +11,7 @@ import de.phyrone.lobbyrel.events.LobbyReloadEvent;
 import de.phyrone.lobbyrel.hotbar.customitems.CustomItemsManager;
 import de.phyrone.lobbyrel.lib.Metrics;
 import de.phyrone.lobbyrel.lib.TpsMeter;
+import de.phyrone.lobbyrel.lib.protokoll.TinyProtocol;
 import de.phyrone.lobbyrel.listner.*;
 import de.phyrone.lobbyrel.lobbyswitcher.LobbySwitcher;
 import de.phyrone.lobbyrel.player.IdeodPreventer;
@@ -36,6 +37,7 @@ import java.util.HashMap;
 public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
     final static File licfile = new File("plugins/Lobby-Rel", "License.json");
     private static LobbyPlugin instance;
+
     private static double tps = -1D;
 
     public double getTPS() {
@@ -89,6 +91,77 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         }
     }
 
+    //Portokoll and Packets
+    TinyProtocol protokoll = new TinyProtocol(this) {
+
+    };
+
+    @Override
+    public void saveConfig() {
+        BukkitRunnable run = new BukkitRunnable() {
+
+            @Override
+            public void run() {
+                Config.saveSync();
+                CustomItemsManager.save();
+                WarpManager.saveToConf();
+                System.out.println("Lobby-Rel] Config saved!");
+            }
+        };
+        if (Bukkit.getPluginManager().isPluginEnabled(this)) {
+            run.runTaskAsynchronously(this);
+        } else {
+            run.run();
+        }
+
+
+    }
+
+    //Bungee Mesaging
+    @Override
+    public void onPluginMessageReceived(String channel, Player p, byte[] message) {
+        try {
+            ByteArrayDataInput in = ByteStreams.newDataInput(message);
+            String subchannel = in.readUTF();
+            switch (subchannel) {
+                case "GetServers":
+                    LobbySwitcher.getInstance().updateBungeeServers(in.readUTF().split(", "));
+                    break;
+                case "PlayerCount":
+                    LobbySwitcher.getInstance().setServerData(in.readUTF(), LobbySwitcher.getInstance().new ServerConData(in.readInt()));
+                    break;
+                case "GetServer":
+                    LobbySwitcher.getInstance().setServerName(in.readUTF());
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public void sendBungeeMessage(Collection<String> content) {
+        ByteArrayDataOutput out = ByteStreams.newDataOutput();
+        for (String c : content)
+            out.writeUTF(c);
+        this.getServer().sendPluginMessage(this, "BungeeCord", out.toByteArray());
+    }
+
+    public void sendBungeeMessage(Player player, ArrayList<String> content) {
+        ByteArrayDataOutput out = ByteStreams.newDataOutput();
+        for (String c : content)
+            out.writeUTF(c);
+        player.sendPluginMessage(this, "BungeeCord", out.toByteArray());
+    }
+
+    public void sendPlayer(Player player, String server) {
+        ByteArrayDataOutput out = ByteStreams.newDataOutput();
+        out.writeUTF("Connect");
+        out.writeUTF(server);
+        player.sendPluginMessage(this, "BungeeCord", out.toByteArray());
+    }
+
     @SuppressWarnings({"resource", "deprecation"})
     @Override
     public void onEnable() {
@@ -112,9 +185,8 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         instance = this;
         Bukkit.getConsoleSender().sendMessage("[Lobby-Rel] §6Loading Library's if needed...");
         new LobbyDependency(42835, "SmartInvs").check();
-        new LobbyDependency(0, "EffectLib")
-                .setCustomURL("https://dev.bukkit.org/projects/effectlib/files/lates").check();
-        new LobbyDependency(1997, "ProtocolLib").check();
+        new LobbyDependency(0, "EffectLib").setCloudFlare(false)
+                .setCustomURL("https://media.forgecdn.net/files/2489/826/EffectLib-5.5.jar").check();
 
         /*if (!Bukkit.getPluginManager().isPluginEnabled("SmartInvs")) {
             URL website;
@@ -218,72 +290,6 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         Bukkit.getConsoleSender().sendMessage("§8[§5Lobby-Rel§8] §aEnabled");
 
 
-    }
-
-    @Override
-    public void saveConfig() {
-        BukkitRunnable run = new BukkitRunnable() {
-
-            @Override
-            public void run() {
-                Config.saveSync();
-                CustomItemsManager.save();
-                WarpManager.saveToConf();
-                System.out.println("Lobby-Rel] Config saved!");
-            }
-        };
-        if (Bukkit.getPluginManager().isPluginEnabled(this)) {
-            run.runTaskAsynchronously(this);
-        } else {
-            run.run();
-        }
-
-
-    }
-
-    //Bungee Mesaging
-    @Override
-    public void onPluginMessageReceived(String channel, Player p, byte[] message) {
-        try {
-            ByteArrayDataInput in = ByteStreams.newDataInput(message);
-            String subchannel = in.readUTF();
-            switch (subchannel) {
-                case "GetServers":
-                    LobbySwitcher.getInstance().updateBungeeServers(in.readUTF().split(", "));
-                    break;
-                case "PlayerCount":
-                    LobbySwitcher.getInstance().setServerData(in.readUTF(), LobbySwitcher.getInstance().new ServerConData(in.readInt()));
-                    break;
-                case "GetServer":
-                    LobbySwitcher.getInstance().setServerName(in.readUTF());
-                    break;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-    }
-
-    public void sendBungeeMessage(Collection<String> content) {
-        ByteArrayDataOutput out = ByteStreams.newDataOutput();
-        for (String c : content)
-            out.writeUTF(c);
-        this.getServer().sendPluginMessage(this, "BungeeCord", out.toByteArray());
-    }
-
-    public void sendBungeeMessage(Player player, ArrayList<String> content) {
-        ByteArrayDataOutput out = ByteStreams.newDataOutput();
-        for (String c : content)
-            out.writeUTF(c);
-        player.sendPluginMessage(this, "BungeeCord", out.toByteArray());
-    }
-
-    public void sendPlayer(Player player, String server) {
-        ByteArrayDataOutput out = ByteStreams.newDataOutput();
-        out.writeUTF("Connect");
-        out.writeUTF(server);
-        player.sendPluginMessage(this, "BungeeCord", out.toByteArray());
     }
 
 }

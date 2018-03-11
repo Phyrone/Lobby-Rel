@@ -115,6 +115,8 @@ public class UpdateManager {
             return true;
         } catch (AntiAntibotException | IOException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         return false;
     }
