@@ -71,7 +71,7 @@ public abstract class TextualComponent implements Cloneable {
 	}
 
 	static boolean isTranslatableText(TextualComponent component) {
-		return component instanceof ComplexTextTypeComponent && ((ComplexTextTypeComponent) component).getKey().equals("translate");
+		return component instanceof ComplexTextTypeComponent && component.getKey().equals("translate");
 	}
 
 	/**
@@ -108,7 +108,7 @@ public abstract class TextualComponent implements Cloneable {
 		private String _value;
 
 		@Override
-		public TextualComponent clone() throws CloneNotSupportedException {
+		public TextualComponent clone() {
 			// Since this is a private and final class, we can just reinstantiate this class instead of casting super.clone
 			return new ArbitraryTextTypeComponent(getKey(), getValue());
 		}
@@ -170,7 +170,7 @@ public abstract class TextualComponent implements Cloneable {
 		private Map<String, String> _value;
 
 		@Override
-		public TextualComponent clone() throws CloneNotSupportedException {
+		public TextualComponent clone() {
 			// Since this is a private and final class, we can just reinstantiate this class instead of casting super.clone
 			return new ComplexTextTypeComponent(getKey(), getValue());
 		}
@@ -202,7 +202,7 @@ public abstract class TextualComponent implements Cloneable {
 				if (valEntry.getKey().equals("key")) {
 					key = (String) valEntry.getValue();
 				} else if (valEntry.getKey().startsWith("value.")) {
-					value.put(((String) valEntry.getKey()).substring(6) /* Strips out the value prefix */, valEntry.getValue().toString());
+					value.put(valEntry.getKey().substring(6) /* Strips out the value prefix */, valEntry.getValue().toString());
 				}
 			}
 			return new ComplexTextTypeComponent(key, value);

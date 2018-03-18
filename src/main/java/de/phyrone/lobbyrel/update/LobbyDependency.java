@@ -69,7 +69,7 @@ public final class LobbyDependency {
         }
     }
 
-    private void downloadAndEnable() throws IOException, AntiAntibotException, InvalidDescriptionException, InvalidPluginException, InterruptedException {
+    private void downloadAndEnable() throws IOException, AntiAntibotException, InvalidDescriptionException, InvalidPluginException {
         download();
         PluginManager pm = Bukkit.getPluginManager();
         pm.loadPlugin(pluginFile);

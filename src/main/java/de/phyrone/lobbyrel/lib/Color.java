@@ -14,7 +14,7 @@ public enum Color {
 	private ChatColor chat;
 	private DyeColor dye;
 	
-	private Color(ChatColor chat,DyeColor dye) {
+	Color(ChatColor chat, DyeColor dye) {
 		this.chat = chat;
 		this.dye = dye;
 	}

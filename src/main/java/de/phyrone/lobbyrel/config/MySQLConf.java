@@ -80,9 +80,6 @@ public static void update(String qry){
         }
         return false;
     }private static boolean isConnected(){
-        if(con != null){
-            return true;
-        } 
-        return false;
+        return con != null;
     }
 }

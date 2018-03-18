@@ -33,7 +33,7 @@ public class Utf8YamlConfiguration extends YamlConfiguration {
     }
 
     @Override
-    public void load(File file) throws FileNotFoundException, IOException, InvalidConfigurationException {
+    public void load(File file) throws IOException, InvalidConfigurationException {
         Validate.notNull(file, "File cannot be null");
         this.load(new InputStreamReader(new FileInputStream(file), Charsets.UTF_8));
     }
