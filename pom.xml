@@ -4,6 +4,26 @@
     <groupId>de.phyrone</groupId>
     <artifactId>Lobby-Rel</artifactId>
     <version>0.3.07-ALPHA-SNAPSHOT</version>
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>ad659fe03967-releases</name>
+            <url>http://maven.phyrone.de/artifactory/bukkit-plugins</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>ad659fe03967-snapshots</name>
+            <url>http://maven.phyrone.de/artifactory/bukkit-plugins</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <developers>
+        <developer>
+            <id>Phyrone</id>
+            <name>Samuel L.</name>
+            <email>phyrone@phyrone.de</email>
+            <url>https://www.phyrone.de/</url>
+        </developer>
+    </developers>
     <!-- Repo -->
     <repositories>
         <repository>
@@ -13,6 +33,14 @@
         <repository>
             <id>spigot</id>
             <url>https://maven.phyrone.de/nexus/content/repositories/spigot/</url>
+        </repository>
+        <repository>
+            <id>phy-java-cache</id>
+            <url>http://maven.phyrone.de/artifactory/proxy-cache/</url>
+        </repository>
+        <repository>
+            <id>phy-java</id>
+            <url>http://maven.phyrone.de/artifactory/proxy</url>
         </repository>
         <repository>
             <id>jitpack.io</id>
@@ -36,11 +64,12 @@
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot</artifactId>
-            <version>1.8.8</version>
+            <artifactId>spigot-api-advanced</artifactId>
+            <version>1.12.2</version>
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>de.slikey</groupId>
             <artifactId>effectlib</artifactId>
@@ -72,6 +101,12 @@
             <version>4.3.0</version>
             <scope>provided</scope>
         </dependency>-->
+        <dependency>
+            <groupId>de.phyrone</groupId>
+            <artifactId>ProtocolLib-Portable</artifactId>
+            <version>0.5-Test</version>
+            <scope>compile</scope>
+        </dependency>
         <dependency>
             <groupId>me.tade</groupId>
             <artifactId>QuickBoard</artifactId>
@@ -109,6 +144,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <build>
+
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -165,7 +201,9 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
+
 
 </project>

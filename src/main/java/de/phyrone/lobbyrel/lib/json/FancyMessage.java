@@ -1,11 +1,14 @@
 package de.phyrone.lobbyrel.lib.json;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.events.PacketContainer;
+import com.comphenix.protocol.wrappers.WrappedChatComponent;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonWriter;
-import de.phyrone.lobbyrel.lib.protokoll.Reflection;
+import de.phyrone.lobbyrel.LobbyPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -567,13 +570,7 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
         //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tellraw " + player.getName() + " " + jsonString);
     }
 
-    private void sendJsonMSG(Player player, String json) throws Exception {
-        Class<?> ichatcompclass = Reflection.getClass("{nms}.PacketPlayInChat");
-        Class<?> chatclass = Reflection.getClass("{nms}.PacketPlayOutChat");
-        Object chatpacket = chatclass.newInstance();
 
-
-    }
 
 
     /**
@@ -663,4 +660,11 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
         return messageParts.iterator();
     }
 
+
+    private void sendJsonMSG(Player player, String json) throws Exception {
+        PacketContainer chatPacket = new PacketContainer(PacketType.Play.Server.CHAT);
+        chatPacket.getChatComponents().write(0, WrappedChatComponent.fromJson(json));
+        LobbyPlugin.getProtocolManager().sendServerPacket(player, chatPacket);
+
+    }
 }

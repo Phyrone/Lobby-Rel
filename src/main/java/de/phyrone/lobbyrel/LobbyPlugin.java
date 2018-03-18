@@ -1,5 +1,10 @@
 package de.phyrone.lobbyrel;
 
+import com.comphenix.protocol.ProtocolConfig;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
+import com.comphenix.protocol.ProtocolPlugin;
+import com.comphenix.protocol.injector.PlayerInjectHooks;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
@@ -11,7 +16,6 @@ import de.phyrone.lobbyrel.events.LobbyReloadEvent;
 import de.phyrone.lobbyrel.hotbar.customitems.CustomItemsManager;
 import de.phyrone.lobbyrel.lib.Metrics;
 import de.phyrone.lobbyrel.lib.TpsMeter;
-import de.phyrone.lobbyrel.lib.protokoll.TinyProtocol;
 import de.phyrone.lobbyrel.listner.*;
 import de.phyrone.lobbyrel.lobbyswitcher.LobbySwitcher;
 import de.phyrone.lobbyrel.player.IdeodPreventer;
@@ -24,25 +28,18 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.io.File;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
-public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
-    final static File licfile = new File("plugins/Lobby-Rel", "License.json");
+public class LobbyPlugin extends ProtocolPlugin implements PluginMessageListener {
     private static LobbyPlugin instance;
-
     private static double tps = -1D;
-
-    public double getTPS() {
-        return tps;
-    }
+    static private ProtocolManager protocolManager;
 
     public LobbyPlugin() {
         instance = this;
@@ -69,8 +66,18 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         return Config.getString("Prefix", "&8[&6Lobby&8-&cRel&8]").replaceAll("&", "§");
     }
 
+    static public ProtocolManager getProtocolManager() {
+        return protocolManager;
+    }
+
+
+    public double getTPS() {
+        return tps;
+    }
+
     @Override
     public void onDisable() {
+        super.onDisable();
         try {
             WarpManager.saveToConf();
         } catch (Exception e) {
@@ -90,11 +97,6 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
             PlayerManager.resetPlayerAndData(p);
         }
     }
-
-    //Portokoll and Packets
-    TinyProtocol protokoll = new TinyProtocol(this) {
-
-    };
 
     @Override
     public void saveConfig() {
@@ -165,6 +167,7 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
     @SuppressWarnings({"resource", "deprecation"})
     @Override
     public void onEnable() {
+        super.onEnable();
         if (!System.getProperty("java.version").startsWith("1.8.")) {
             System.err.println("[Lobby-Rel] Please use Java 1.8");
             Bukkit.getPluginManager().disablePlugin(this);
@@ -173,6 +176,7 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         if (!Bukkit.getServer().getClass().getPackage().getName().contains("1_8")) {
             System.err.println("[Lobby-Rel] I recomend to use Spigot 1.8.8 ");
         }
+
         System.out.println("\n" +
                 "  _          _     _             ____      _ \n" +
                 " | |    ___ | |__ | |__  _   _  |  _ \\ ___| |\n" +
@@ -183,10 +187,21 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
                 "Version: " + this.getDescription().getVersion() + " by Phyrone");
 
         instance = this;
+
         Bukkit.getConsoleSender().sendMessage("[Lobby-Rel] §6Loading Library's if needed...");
-        new LobbyDependency(42835, "SmartInvs").check();
-        new LobbyDependency(0, "EffectLib").setCloudFlare(false)
-                .setCustomURL("https://media.forgecdn.net/files/2489/826/EffectLib-5.5.jar").check();
+
+        try {
+            protocolManager = ProtocolLibrary.getProtocolManager();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            new LobbyDependency(42835, "SmartInvs").check();
+            new LobbyDependency(0, "EffectLib").setCloudFlare(false)
+                    .setCustomURL("https://media.forgecdn.net/files/2489/826/EffectLib-5.5.jar").check();
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
 
         /*if (!Bukkit.getPluginManager().isPluginEnabled("SmartInvs")) {
             URL website;
@@ -237,9 +252,9 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new OwnEventsListner(), this);
         pm.registerEvents(new OtherEvents(), this);
         //Commands
-        PluginCommand lbcmd = Bukkit.getPluginCommand("lobby");
-        lbcmd.setExecutor(new LobbyCMD());
-        lbcmd.setTabCompleter(new LobbyCMD());
+        PluginCommand lobbyCMD = Bukkit.getPluginCommand("lobby");
+        lobbyCMD.setExecutor(new LobbyCMD());
+        lobbyCMD.setTabCompleter(new LobbyCMD());
         Bukkit.getPluginCommand("build").setExecutor(new BuildCMD());
         Bukkit.getPluginCommand("setwarp").setExecutor(new WarpCMD());
         Bukkit.getPluginCommand("setspawn").setExecutor(new WarpCMD());
@@ -269,7 +284,7 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         m.addCustomChart(new Metrics.SimplePie("tps", () -> {
             NumberFormat n = NumberFormat.getInstance();
             n.setMaximumFractionDigits(2); // max. 2 stellen hinter komma
-            return n.format(tps) + "TPS";
+            return n.format(getTPS()) + "TPS";
         }));
         //TPS
         Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, () -> {
@@ -287,9 +302,19 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Bukkit.getConsoleSender().sendMessage("§8[§5Lobby-Rel§8] §aEnabled");
+        getLogger().fine("§aEnabled");
+    }
+
+    @Override
+    public void onLoad() {
+        System.out.println("[Lobby-Rel] Loading Plugin");
+        ProtocolConfig cfg = new ProtocolConfig(this);
+        cfg.setInjectionMethod(PlayerInjectHooks.NONE);
+        cfg.setDebug(true);
+        cfg.setBackgroundCompilerEnabled(true);
+        super.setProtocolConfig(cfg);
+        super.onLoad();
 
 
     }
-
 }

@@ -17,10 +17,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class JoinEvent implements Listener {
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = false)
     public void onJoin(PlayerJoinEvent e) {
-
         e.setJoinMessage(null);
         PlayerManager.resetPlayerAndData(e.getPlayer());
-
         Bukkit.getScheduler().runTaskLaterAsynchronously(LobbyPlugin.getInstance(), new Runnable() {
 
             @Override

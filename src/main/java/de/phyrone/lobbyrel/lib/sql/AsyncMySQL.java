@@ -1,14 +1,12 @@
-package de.phyrone.lobbyrel.lib;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+package de.phyrone.lobbyrel.lib.sql;
+
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
+
+import java.sql.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.Plugin;
 public class AsyncMySQL {
    private ExecutorService executor;
    private Plugin plugin;

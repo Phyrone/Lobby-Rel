@@ -1,7 +1,7 @@
 main: de.phyrone.lobbyrel.LobbyPlugin
 name: Lobby-Rel
 version: ${project.version}
-softdepend: [SmartInvs,EffectLib,PlaceholderAPI,QuickBoard]
+softdepend: [SmartInvs,EffectLib,PlaceholderAPI,QuickBoard,ProtocolLib]
 author: Phyrone
 commands:
      lobby:

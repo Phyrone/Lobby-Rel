@@ -8,23 +8,32 @@ import java.io.IOException;
 
 public class Config {
     public static Utf8YamlConfiguration conf = new Utf8YamlConfiguration();
-    static File file = new File("plugins/Lobby-Rel", "config.yml");
+    private static File file = new File("plugins/Lobby-Rel", "config.yml");
+
+    static {
+        conf.options().copyDefaults(true);
+    }
 
     public static void load() {
         try {
+            loadDefault();
             conf.load(file);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    private static void loadDefault() {
+        if (!file.getParentFile().exists())
+            file.getParentFile().mkdirs();
+        //if(!file.exists())
+        //    file.createNewFile();
+
+
+    }
+
     public static void saveAsync() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                saveSync();
-            }
-        }, "SaveConfigTask").start();
+        new Thread(() -> saveSync(), "SaveConfigTask").start();
     }
 
     public synchronized static void saveSync() {
