@@ -65,7 +65,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api-advanced</artifactId>
-            <version>1.12.2</version>
+            <version>1.8.8</version>
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
