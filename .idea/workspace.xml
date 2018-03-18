@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75c0e7c6-91c1-4cb0-97b0-36188e25d3cc" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_spigotmc_spigot_api_advanced_1_8_8.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/MySQLConf.java" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/MySQLConf.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Color.java" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Color.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/HoloAPI.java" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/HoloAPI.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Utf8YamlConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Utf8YamlConfiguration.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/chatimg/AnimatedMessage.java" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/chatimg/AnimatedMessage.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/JsonRepresentedObject.java" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/JsonRepresentedObject.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/TextualComponent.java" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/TextualComponent.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/lang/LangManager.java" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/lang/LangManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/offline/InternalOfflinePlayerData.java" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/offline/InternalOfflinePlayerData.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/LobbyDependency.java" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/LobbyDependency.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,11 +28,9 @@
       <file leaf-file-name="LobbyPlugin.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="52" column="32" lean-forward="true" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="544">
+              <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -143,7 +130,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperStatusClientInStart.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperStatusServerOutPing.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperStatusClientInPing.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerOpenSignEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerOpenSignEditor.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/api/CommandBlockGUI.java" />
@@ -153,6 +139,7 @@
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/Config.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/LobbyItem.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" />
       </list>
     </option>
   </component>
@@ -559,7 +546,7 @@
       <workItem from="1521367992119" duration="13095000" />
       <workItem from="1521390944618" duration="419000" />
       <workItem from="1521391459304" duration="534000" />
-      <workItem from="1521392462601" duration="289000" />
+      <workItem from="1521392462601" duration="628000" />
     </task>
     <task id="LOCAL-00001" summary="First">
       <created>1518216190349</created>
@@ -834,11 +821,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521391208243</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="18.03.18">
+      <created>1521392903012</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1521392903013</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61923000" />
+    <option name="totallyTimeSpent" value="62262000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="49" width="1296" height="1000" extended-state="6" />
@@ -1220,11 +1214,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="52" column="32" lean-forward="true" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="544">
+          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

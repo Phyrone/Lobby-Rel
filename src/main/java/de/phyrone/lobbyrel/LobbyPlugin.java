@@ -39,7 +39,7 @@ import java.util.HashMap;
 public class LobbyPlugin extends ProtocolPlugin implements PluginMessageListener {
     private static LobbyPlugin instance;
     private static double tps = -1D;
-    static private ProtocolManager protocolManager;
+    private static ProtocolManager protocolManager;
 
     public LobbyPlugin() {
         instance = this;
