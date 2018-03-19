@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: de.phyrone:ProtocolLib-Portable:0.5-Test">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/de/phyrone/ProtocolLib-Portable/0.5-Test/ProtocolLib-Portable-0.5-Test.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/de/phyrone/ProtocolLib-Portable/0.5-Test/ProtocolLib-Portable-0.5-Test-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/de/phyrone/ProtocolLib-Portable/0.5-Test/ProtocolLib-Portable-0.5-Test-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
