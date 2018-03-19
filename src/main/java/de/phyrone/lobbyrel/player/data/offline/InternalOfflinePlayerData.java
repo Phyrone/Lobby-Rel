@@ -47,8 +47,8 @@ public class InternalOfflinePlayerData {
 	return this;
 }
 	//Data
-    public int Navigator = Config.getInt("PlayerSettings.Default.Navigator", 0);
-    public int PlayerHider = Config.getInt("PlayerSettings.Default.PlayerHider", 0);
+    public int Navigator = Config.getInt("PlayerSettings.Default.Navigator", 0);;
+	public int PlayerHider = Config.getInt("PlayerSettings.Default.PlayerHider", 0);
     public Boolean Sound = true;
     public Boolean Scoreboard = true; 
     public boolean JumpPad = true;

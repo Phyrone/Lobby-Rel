@@ -1,6 +1,5 @@
 package de.phyrone.lobbyrel.listner;
 
-import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.cmd.CommandManager;
 import de.phyrone.lobbyrel.cmd.help.HelpManager;
 import de.phyrone.lobbyrel.config.Config;
@@ -29,17 +28,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.scheduler.BukkitRunnable;
 
 public class OwnEventsListner implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onReload(LobbyReloadEvent e) {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                LobbyPlugin.getInstance().getDataFolder().mkdirs();
-            }
-        }.runTaskAsynchronously(LobbyPlugin.getInstance());
 		MainHotbar.setup();
 		CommandManager.init();
 		ScoreboardManager.init();

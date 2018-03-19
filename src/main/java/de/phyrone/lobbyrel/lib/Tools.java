@@ -1,23 +1,23 @@
 package de.phyrone.lobbyrel.lib;
 
-import com.comphenix.protocol.PacketType;
-import com.comphenix.protocol.events.PacketContainer;
-import com.comphenix.protocol.wrappers.EnumWrappers;
-import com.comphenix.protocol.wrappers.WrappedChatComponent;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.lib.item.SecondItemBuilder;
 import de.phyrone.lobbyrel.lib.json.FancyMessage;
+import net.minecraft.server.v1_8_R3.*;
+import net.minecraft.server.v1_8_R3.IChatBaseComponent.ChatSerializer;
+import net.minecraft.server.v1_8_R3.PacketPlayOutPlayerInfo.EnumPlayerInfoAction;
+import net.minecraft.server.v1_8_R3.PacketPlayOutTitle.EnumTitleAction;
 import org.apache.commons.lang3.Validate;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.SkullType;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Base64;
@@ -25,45 +25,61 @@ import java.util.UUID;
 
 public class Tools {
 	//Actionbar
-    public static void sendActionbar(Player player, String message) {
-        sendActionbar(player, new FancyMessage(message));
-
-    }
-
-    public static void sendActionbar(Player player, FancyMessage message) {
-        try {
-            PacketContainer packet = new PacketContainer(PacketType.Play.Server.CHAT);
-            packet.getBytes().write(0, (byte) 2);
-            packet.getChatComponents().write(0, WrappedChatComponent.fromJson(message.toJSONString()));
-            LobbyPlugin.getProtocolManager().sendServerPacket(player, packet);
-        } catch (InvocationTargetException e) {
-            String space = "<<<<<<<<<<<<ActionBar>>>>>>>>>>";
-            player.sendMessage(new String[]{space, " ", message.toOldMessageFormat(), " ", space});
-        }
+	public static void sendActionbar(Player p, String message) {
+        IChatBaseComponent icbc = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" +
+                ChatColor.translateAlternateColorCodes('&', message) + "\"}");
+        PacketPlayOutChat bar = new PacketPlayOutChat(icbc, (byte)2);
+            ((CraftPlayer)p).getHandle().playerConnection.sendPacket(bar);
+    }public static void sendActionbar(Player p, FancyMessage message) {
+        IChatBaseComponent icbc = IChatBaseComponent.ChatSerializer.a(
+        		message.toJSONString());
+        PacketPlayOutChat bar = new PacketPlayOutChat(icbc, (byte)2);
+            ((CraftPlayer)p).getHandle().playerConnection.sendPacket(bar);
     }
     //Title
-    public static void sendTitle(Player player, FancyMessage title, int fadeInTime, int showTime, int fadeOutTime)
+    /**
+     * Send a title to player
+     * @param player Player to send the title to
+     * @param text The text displayed in the title
+     * @param fadeInTime The time the title takes to fade in
+     * @param showTime The time the title is displayed
+     * @param fadeOutTime The time the title takes to fade out
+     * @param color The color of the title
+     */
+     public static void sendTitle(Player player, FancyMessage text, int fadeInTime, int showTime, int fadeOutTime)
      {
+    	 IChatBaseComponent chatTitle = ChatSerializer.a(text.toJSONString());
+    	 PacketPlayOutTitle title = new PacketPlayOutTitle(EnumTitleAction.TITLE, chatTitle);
+    	 PacketPlayOutTitle length = new PacketPlayOutTitle(fadeInTime, showTime, fadeOutTime);
 
-         try {
-             PacketContainer titlePacket = new PacketContainer(PacketType.Play.Server.TITLE);
-             titlePacket.getTitleActions().write(0, EnumWrappers.TitleAction.TITLE);
-             titlePacket.getChatComponents().write(0, WrappedChatComponent.fromJson(title.toJSONString()));
-             titlePacket.getIntegers().write(0, fadeInTime);
-             titlePacket.getIntegers().write(1, showTime);
-             titlePacket.getIntegers().write(2, fadeOutTime);
-             LobbyPlugin.getProtocolManager().sendServerPacket(player, titlePacket);
-         } catch (Exception e) {
-             player.sendTitle(title.toOldMessageFormat(), "");
-         }
-         //PacketPlayOutTitle titlePacket = new PacketContainer(PacketType.Play.Server.TITLE);
-         //PacketPlayOutTitle length = new PacketPlayOutTitle(fadeInTime, showTime, fadeOutTime);
-         //((((CraftPlayer) player).getHandle().playerConnection.sendPacket(title);
-         //((((CraftPlayer) player).getHandle().playerConnection.sendPacket(length);
+
+    	 ((CraftPlayer) player).getHandle().playerConnection.sendPacket(title);
+    	 ((CraftPlayer) player).getHandle().playerConnection.sendPacket(length);
      }public static int getTotalID(int site,int slot,int itemsperpage){
     	 return site*itemsperpage+slot;
+     }public static int getSiteSlot(){
+    	 return 0;
      }
+     
+     public static void addFakeTabPlayer(Player player,String name){
+    	 GameProfile profile = new GameProfile(UUID.randomUUID(), name);
+    	 MinecraftServer server = MinecraftServer.getServer();
+    	// Get the Minecraft server object, required to create a player.
+    	// UPDATE:  In newer versions, this method returns null, so instead get the  MinecraftServer
+//    	         with this code instead:
+//    	    ((CraftServer) Bukkit.getServer()).getServer();
 
+    	WorldServer world = server.getWorldServer(0);
+    	// Get the world server for the overworld (0). Also required.
+
+    	PlayerInteractManager manager = new PlayerInteractManager(world);
+    	// Create a new player interact manager for the overworld.  Required.
+
+    	EntityPlayer pp = new EntityPlayer(server, world, profile, manager);
+    	PacketPlayOutPlayerInfo packet = new PacketPlayOutPlayerInfo(EnumPlayerInfoAction.ADD_PLAYER, pp);
+    	((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+
+     }
 	public static Material parseToMaterial(String materialmane) {
     	 Material ret = null;
     	 try {
@@ -75,12 +91,10 @@ public class Tools {
 			}catch (Exception e21) {}
 		}return ret;
      }
-
-    public static ItemStack getSkullFromBASE64(String texture, String name) {
-        return getSkullFromBASE64(new ItemStack(Material.SKULL_ITEM, 1, (short) 3), texture, name);
+     public static ItemStack createSkull(String texture, String name) {
+    	 return createSkull(new ItemStack(Material.SKULL_ITEM, 1, (short)3), texture, name);
      }
-
-    public static ItemStack getSkullFromBASE64(ItemStack head, String texture, String name)
+     public static ItemStack createSkull(ItemStack head,String texture, String name)
      {
          if (texture.isEmpty()) return head;
         head.setDurability((short)SkullType.PLAYER.ordinal());
@@ -117,7 +131,7 @@ public class Tools {
         }
         String base64 = "{\"textures\":{\"SKIN\":{\"url\":\"" + actualUrl.toString() + "\"}}}";
         base64 = Base64.getEncoder().encodeToString(base64.getBytes());
-        return getSkullFromBASE64(head, base64, new RandomString(16).nextString());
+        return createSkull(head, base64, new RandomString(16).nextString());
      }public static ItemStack getSkullFromPlayer(ItemStack item,String owner) {
     	return new SecondItemBuilder(item)
 		 .setDurability((short)SkullType.PLAYER.ordinal()).setSkullOwner(owner).toItemStack();

@@ -79,7 +79,7 @@ public class LangManager
     if (!langs.containsKey(defaultLang)) {
       langs.put(defaultLang, new LangConf(defaultLang));
     }
-    LangConf langconf = langs.getOrDefault(lang, langs.getOrDefault(defaultLang, new LangConf(defaultLang)));
+    LangConf langconf = (LangConf)langs.getOrDefault(lang, (LangConf)langs.getOrDefault(defaultLang, new LangConf(defaultLang)));
     String ret = null;
     if (langconf.conf.contains(messagePath))
     {

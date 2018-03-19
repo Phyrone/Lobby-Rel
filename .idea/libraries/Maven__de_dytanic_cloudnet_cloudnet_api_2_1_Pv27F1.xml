@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: de.dytanic.cloudnet:cloudnet-api:2.1.Pv27F1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/de/dytanic/cloudnet/cloudnet-api/2.1.Pv27F1/cloudnet-api-2.1.Pv27F1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/de/dytanic/cloudnet/cloudnet-api/2.1.Pv27F1/cloudnet-api-2.1.Pv27F1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/de/dytanic/cloudnet/cloudnet-api/2.1.Pv27F1/cloudnet-api-2.1.Pv27F1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
