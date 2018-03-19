@@ -4,18 +4,6 @@
     <groupId>de.phyrone</groupId>
     <artifactId>Lobby-Rel</artifactId>
     <version>0.3.07-ALPHA-SNAPSHOT</version>
-    <distributionManagement>
-        <repository>
-            <id>central</id>
-            <name>ad659fe03967-releases</name>
-            <url>http://maven.phyrone.de/artifactory/bukkit-plugins</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>ad659fe03967-snapshots</name>
-            <url>http://maven.phyrone.de/artifactory/bukkit-plugins</url>
-        </snapshotRepository>
-    </distributionManagement>
     <developers>
         <developer>
             <id>Phyrone</id>
