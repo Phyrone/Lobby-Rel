@@ -14,12 +14,16 @@
             <url>https://maven.phyrone.de/nexus/content/repositories/spigot/</url>
         </repository>
         <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
+            <id>phy-java-cache</id>
+            <url>http://maven.phyrone.de/artifactory/proxy-cache/</url>
         </repository>
         <repository>
-            <id>cloudnet-repo</id>
-            <url>http://dytanic.de/repositories/</url>
+            <id>phy-java</id>
+            <url>http://maven.phyrone.de/artifactory/proxy</url>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
     </repositories>
     <!-- Dependencys -->
@@ -44,9 +48,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>de.dytanic.cloudnet</groupId>
+            <groupId>de.dytanic</groupId>
             <artifactId>cloudnet-api</artifactId>
-            <version>2.1.Pv27F1</version>
+            <version>2.1.Pv30F1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
