@@ -35,10 +35,6 @@
             <url>https://jitpack.io</url>
         </repository>
         <repository>
-            <id>cloudnet-repo</id>
-            <url>http://dytanic.de/repositories/</url>
-        </repository>
-        <repository>
             <id>dmulloy2-repo</id>
             <url>http://repo.dmulloy2.net/content/groups/public/</url>
         </repository>
@@ -57,7 +53,6 @@
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>de.slikey</groupId>
             <artifactId>effectlib</artifactId>
@@ -66,9 +61,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>de.dytanic.cloudnet</groupId>
+            <groupId>de.dytanic</groupId>
             <artifactId>cloudnet-api</artifactId>
-            <version>2.1.Pv30F0</version>
+            <version>2.1.Pv30F1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
