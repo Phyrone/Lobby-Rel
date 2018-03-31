@@ -219,22 +219,6 @@ public class LobbyPlugin extends ProtocolPlugin implements PluginMessageListener
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-        if (!Bukkit.getPluginManager().isPluginEnabled("EffectLib")) {
-            URL website;
-            System.out.println("Downloading EffectLib...");
-            try {
-                website = new URL("https://dev.bukkit.org/projects/effectlib/files/latest");
-                ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-                FileOutputStream fos = new FileOutputStream("plugins/EffectLib.jar");
-                fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-                System.out.println("EffectLib.jar saved!");
-                System.out.println("Enable EffectLib...");
-                Bukkit.getPluginManager().loadPlugin(new File("plugins/", "EffectLib.jar"));
-                Bukkit.getPluginManager().enablePlugin(Bukkit.getPluginManager().getPlugin("EffectLib"));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }*/
         loadConf();
         PluginManager pm = Bukkit.getPluginManager();
