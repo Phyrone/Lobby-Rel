@@ -1,12 +1,12 @@
 package de.phyrone.lobbyrel.hotbar;
 
-import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.config.WarpConf;
 import de.phyrone.lobbyrel.hotbar.api.Hotbar;
 import de.phyrone.lobbyrel.hotbar.api.HotbarAction;
 import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
 import de.phyrone.lobbyrel.hotbar.api.HotbarItemAction;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
+import de.phyrone.lobbyrel.lib.Sounds;
 import de.phyrone.lobbyrel.player.effect.EffectPlayer;
 import de.phyrone.lobbyrel.warps.Teleporter;
 import de.phyrone.lobbyrel.warps.Warp;
@@ -29,13 +29,13 @@ public class NavigatorHobar {
 			
 			@Override
 			public void onOpen(Player player) {
-                new EffectPlayer(player).playSound(Config.getString("Sound.NavigatorOpen", "CLICK"), 2, 1);
+                new EffectPlayer(player).playSound(Sounds.CLICK, 2, 1);
 				
 			}
 			
 			@Override
 			public void onClose(Player player) {
-                new EffectPlayer(player).playSound(Config.getString("Sound.NavigatorOpen", "CLICK"), 1, 0);
+                new EffectPlayer(player).playSound(Sounds.CLICK, 1, 0);
 			}
 		});
 		for(String warpname: WarpManager.getWarps().keySet()) {
