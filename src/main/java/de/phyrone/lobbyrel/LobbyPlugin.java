@@ -71,7 +71,7 @@ public class LobbyPlugin extends ProtocolPlugin implements PluginMessageListener
     }
 
 
-    public double getTPS() {
+    private double getTPS() {
         return tps;
     }
 

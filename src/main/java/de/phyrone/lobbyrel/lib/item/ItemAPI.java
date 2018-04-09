@@ -286,16 +286,17 @@ public class ItemAPI {
     }
 
     /**
-     * FÃ¼gt dem Item eine Beleuchtung hinzu
+     * Fügt dem Item eine Beleuchtung hinzu
      * @param glow
      * @return
      */
     public ItemAPI addGlow(boolean glow) {
     	if(glow) {
-        ItemMeta itemMeta = this.itemStack.getItemMeta();
-        itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        this.itemStack.setItemMeta(itemMeta);
-        itemStack.addUnsafeEnchantment(itemStack.getType() != Material.BOW ? Enchantment.ARROW_INFINITE : Enchantment.LUCK, 10);}
+            ItemMeta itemMeta = this.itemStack.getItemMeta();
+            itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            this.itemStack.setItemMeta(itemMeta);
+            itemStack.addUnsafeEnchantment(itemStack.getType() != Material.BOW ? Enchantment.ARROW_INFINITE : Enchantment.LUCK, 10);
+        }
         return this;
     }
 

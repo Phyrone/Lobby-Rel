@@ -1,11 +1,5 @@
 package de.phyrone.lobbyrel.hotbar;
 
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
-
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.config.WarpConf;
 import de.phyrone.lobbyrel.hotbar.api.Hotbar;
@@ -17,6 +11,10 @@ import de.phyrone.lobbyrel.player.effect.EffectPlayer;
 import de.phyrone.lobbyrel.warps.Teleporter;
 import de.phyrone.lobbyrel.warps.Warp;
 import de.phyrone.lobbyrel.warps.WarpManager;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class NavigatorHobar {
 	Hotbar navHotbar = new Hotbar();
@@ -31,13 +29,13 @@ public class NavigatorHobar {
 			
 			@Override
 			public void onOpen(Player player) {
-				new EffectPlayer(player).playSound(Sound.CLICK, 2, 1);
+                new EffectPlayer(player).playSound(Config.getString("Sound.NavigatorOpen", "CLICK"), 2, 1);
 				
 			}
 			
 			@Override
 			public void onClose(Player player) {
-				new EffectPlayer(player).playSound(Sound.CLICK, 1, 0);
+                new EffectPlayer(player).playSound(Config.getString("Sound.NavigatorOpen", "CLICK"), 1, 0);
 			}
 		});
 		for(String warpname: WarpManager.getWarps().keySet()) {

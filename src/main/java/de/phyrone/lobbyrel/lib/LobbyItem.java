@@ -1,10 +1,10 @@
 package de.phyrone.lobbyrel.lib;
 
+import de.phyrone.lobbyrel.lib.item.ItemAPI;
 import de.phyrone.lobbyrel.player.data.lang.LangManager;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -12,15 +12,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LobbyItem {
-    public Material Material;
+    public String Material;
     public String DisplayName = "";
+    public byte Amount = 1;
+    public byte Data = 0;
     public List<String> Lore = new ArrayList<>();
     public boolean Glow = false;
     public boolean isPlayerHead = false;
     public String Skin = "%player%";
 
     public LobbyItem(ItemStack item) {
-        this.Material = item.getType();
+        this.Material = item.getType().toString();
         if (item.hasItemMeta()) {
             ItemMeta meta = item.getItemMeta();
             if (meta.hasDisplayName())
@@ -32,7 +34,7 @@ public class LobbyItem {
     }
 
     public LobbyItem() {
-        Material = org.bukkit.Material.STONE;
+        Material = org.bukkit.Material.STONE.toString();
     }
 
     public ItemStack getAsItemStack() {
@@ -46,24 +48,21 @@ public class LobbyItem {
             dm.replace("%displayname%", player.getDisplayName());
         }
         String plSkin = player != null ? Skin.replace("%player%", player.getName()) : Skin;
-        ItemStack item = isPlayerHead ? getSkull(plSkin) : new ItemStack(getMaterial());
+        ItemStack item = isPlayerHead ? getSkull(plSkin) : new ItemStack(getMaterialAsMaterial(), 1, Data);
+        item.setAmount(Amount);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(dm);
         meta.setLore(Lore);
-        if (Glow) {
-            item.addUnsafeEnchantment(item.getType() != org.bukkit.Material.BOW ? Enchantment.ARROW_INFINITE : Enchantment.LUCK, 10);
-            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-            item.setItemMeta(meta);
-        } else item.setItemMeta(meta);
-        return item;
+        item.setItemMeta(meta);
+        return new ItemAPI(item).addGlow(Glow).build();
     }
 
     private ItemStack getSkull(String Skin) {
         if (Skin.toLowerCase().startsWith("http://") || Skin.toLowerCase().startsWith("https://")) {
             return Skull.getCustomSkull(Skin);
-        } else if (Skin.toUpperCase().startsWith("MHF:")) {
+        } else if (Skin.toUpperCase().startsWith("ITEM:")) {
             try {
-                return Skull.valueOf(Skin.toUpperCase().substring(4)).getSkull();
+                return Skull.valueOf(Skin.toUpperCase().substring(5)).getSkull();
             } catch (Exception e) {
             }
         } else if (Skin.length() > 16) {
@@ -83,17 +82,29 @@ public class LobbyItem {
             }
             String name = content.substring(5);
             return LangManager.getMessage(player, "Items." + name, "aCustomString");
-        } else return content;
+        } else return ChatColor.translateAlternateColorCodes('&', content);
     }
 
     //GetterSetter
-    public Material getMaterial() {
+    public String getMaterial() {
         return Material;
     }
 
-    public LobbyItem setMaterial(Material material) {
+    public void setMaterial(String material) {
         Material = material;
-        return this;
+    }
+
+    public Material getMaterialAsMaterial() {
+        String matter = getMaterial();
+        try {
+            return org.bukkit.Material.valueOf(matter.toUpperCase());
+        } catch (Exception e) {
+        }
+        try {
+            return org.bukkit.Material.getMaterial(Integer.parseInt(matter));
+        } catch (Exception e) {
+        }
+        return org.bukkit.Material.BARRIER;
     }
 
     public String getDisplayName() {
@@ -148,5 +159,19 @@ public class LobbyItem {
         Skin = headOwner;
         return this;
 
+    }
+
+    public LobbyItem setMaterial(Material material) {
+        Material = material.toString();
+        return this;
+    }
+
+    public byte getData() {
+        return Data;
+    }
+
+    public LobbyItem setData(byte data) {
+        Data = data;
+        return this;
     }
 }

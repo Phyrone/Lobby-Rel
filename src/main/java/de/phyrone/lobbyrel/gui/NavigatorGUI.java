@@ -1,14 +1,5 @@
 package de.phyrone.lobbyrel.gui;
 
-import java.util.HashMap;
-import java.util.function.Consumer;
-
-import org.bukkit.DyeColor;
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.ItemStack;
-
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
 import de.phyrone.lobbyrel.player.data.lang.LangManager;
@@ -20,6 +11,14 @@ import fr.minuskube.inv.SmartInventory;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
 import fr.minuskube.inv.content.Pagination;
+import org.bukkit.DyeColor;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
+
+import java.util.HashMap;
+import java.util.function.Consumer;
 
 public class NavigatorGUI implements InventoryProvider {
 	ItemStack nowarpItem;
@@ -36,7 +35,7 @@ public class NavigatorGUI implements InventoryProvider {
 	@Override
 	public void init(Player player, InventoryContents contents) {
 		nowarpItem = new ItemBuilder(Material.BARRIER).displayname(LangManager.getMessage(player, "GUI.Navigator.NoWarp", "&cWarp not set")).build();
-		contents.fill(ClickableItem.empty(new ItemBuilder(new ItemStack(Material.STAINED_GLASS_PANE,1,DyeColor.GRAY.getData())).displayname(" ").build()));
+        contents.fill(ClickableItem.empty(new ItemBuilder(new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.GRAY.getDyeData())).displayname(" ").build()));
 		contents.fillBorders(ClickableItem.empty(new ItemBuilder(Material.STAINED_GLASS_PANE).displayname(" ").build()));
 	    Pagination pagination = contents.pagination();
 	    HashMap<String, Warp> pwarps = WarpManager.getWarps();

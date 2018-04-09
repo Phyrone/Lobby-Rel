@@ -17,34 +17,20 @@ import java.util.HashMap;
 public class ItemsConfig {
 
     // Hier schreibst du deine Attribute hin
-	public HashMap<String, LobbyItem> Items = new HashMap<String, LobbyItem>();
-	public ArrayList<CustomItem> CustomItems = new ArrayList<CustomItem>(Arrays.asList(
-			new CustomItem(3, new ItemBuilder(Material.CHEST).displayname("&5CustomItem").build()),
-			new CustomItem(5).setItem(new LobbyItem(
-					new ItemBuilder(Material.SKULL_ITEM).displayname("&5PlayerHead").build())
-					.setSkin("%player%").setPlayerHead(true))
-			));
-	public ItemsConfig(){
-		
-	}public LobbyItem getItem(String name,LobbyItem noFound,boolean saveNotFound) {
-		if(saveNotFound && !Items.containsKey(name)) {
-			Items.put(name, noFound);
-			CustomItemsManager.save();
-		}
-		return Items.getOrDefault(name, noFound);
-		
-			
-	}public LobbyItem getItem(String name,LobbyItem noFound) {
-		return getItem(name, noFound, true);
-	}public LobbyItem getItem(String name) {
-		return getItem(name, 
-				new LobbyItem().setMaterial(Material.BARRIER).setDisplayName("Item not Found")
-				.setLore("You can be edited","in \"Items.json\""));
-	}public LobbyItem getItem(String name,ItemStack noFound) {
-		return getItem(name, new LobbyItem(noFound));
-	}
+
     // DON'T TOUCH THE FOLLOWING CODE
     private static ItemsConfig instance;
+    public ArrayList<CustomItem> CustomItems = new ArrayList<CustomItem>(Arrays.asList(
+            new CustomItem(3, new ItemBuilder(Material.CHEST).displayname("&5CustomItem").build()),
+            new CustomItem(5).setItem(new LobbyItem(
+                    new ItemBuilder(Material.SKULL_ITEM).displayname("&5PlayerHead").build())
+                    .setSkin("%player%").setPlayerHead(true))
+    ));
+    public HashMap<String, LobbyItem> Items = new HashMap<String, LobbyItem>();
+
+    public ItemsConfig() {
+
+    }
 
     public static ItemsConfig getInstance() {
         if (instance == null) {
@@ -67,8 +53,43 @@ public class ItemsConfig {
     }
 
     private static ItemsConfig fromDefaults() {
-    	ItemsConfig config = new ItemsConfig();
+        ItemsConfig config = new ItemsConfig();
         return config;
+    }
+
+    private static ItemsConfig fromFile(File configFile) {
+        try {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(
+                    new FileInputStream(configFile)));
+            return gson.fromJson(reader, ItemsConfig.class);
+        } catch (FileNotFoundException e) {
+            return null;
+        }
+    }
+
+    public LobbyItem getItem(String name, LobbyItem noFound, boolean saveNotFound) {
+        if (saveNotFound && !Items.containsKey(name)) {
+            Items.put(name, noFound);
+            CustomItemsManager.save();
+        }
+        return Items.getOrDefault(name, noFound);
+
+
+    }
+
+    public LobbyItem getItem(String name, LobbyItem noFound) {
+        return getItem(name, noFound, true);
+    }
+
+    public LobbyItem getItem(String name) {
+        return getItem(name,
+                new LobbyItem().setMaterial(Material.BARRIER).setDisplayName("Item not Found")
+                        .setLore("You can be edited", "in \"Items.json\""));
+    }
+
+    public LobbyItem getItem(String name, ItemStack noFound) {
+        return getItem(name, new LobbyItem(noFound));
     }
 
     public void toFile(String file) {
@@ -76,27 +97,20 @@ public class ItemsConfig {
     }
 
     public void toFile(File file) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String jsonConfig = gson.toJson(this);
-        FileWriter writer;
-        try {
-            writer = new FileWriter(file);
-            writer.write(jsonConfig);
-            writer.flush();
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static ItemsConfig fromFile(File configFile) {
         try {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(
-new FileInputStream(configFile)));
-            return gson.fromJson(reader, ItemsConfig.class);
-        } catch (FileNotFoundException e) {
-            return null;
+            String jsonConfig = gson.toJson(this);
+            FileWriter writer;
+            try {
+                writer = new FileWriter(file);
+                writer.write(jsonConfig);
+                writer.flush();
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

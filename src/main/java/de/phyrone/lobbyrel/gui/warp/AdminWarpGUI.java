@@ -67,7 +67,7 @@ public class AdminWarpGUI implements InventoryProvider {
 
         }));
         //SetItem
-        con.set(0, 2, ClickableItem.of(new ItemBuilder(warp.getWarpItem().getMaterial()).displayname("&c&lset Item").build(), e -> {
+        con.set(0, 2, ClickableItem.of(new ItemBuilder(warp.getWarpItem().getMaterialAsMaterial()).displayname("&c&lset Item").build(), e -> {
             final Player clicker = (Player) e.getWhoClicked();
 
             new InputGUI(InputGUI.InputType.DEFAULT).setHandler(

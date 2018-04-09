@@ -1,13 +1,5 @@
 package de.phyrone.lobbyrel.gui;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.bukkit.DyeColor;
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-
 import de.phyrone.lobbyrel.lib.ItemBuilder;
 import de.phyrone.lobbyrel.lobbyswitcher.LobbySwitcher;
 import de.phyrone.lobbyrel.lobbyswitcher.LobbySwitcher.ServerConData;
@@ -17,6 +9,12 @@ import fr.minuskube.inv.SmartInventory;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
 import fr.minuskube.inv.content.SlotIterator;
+import org.bukkit.DyeColor;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+
+import java.util.List;
 
 public class LobbySwitcherGUI implements InventoryProvider {
     public static final ClickableItem borderitem = ClickableItem.empty(new ItemBuilder(Material.STAINED_GLASS_PANE).displayname(" ").build());
@@ -49,7 +47,7 @@ public class LobbySwitcherGUI implements InventoryProvider {
             con.pagination().addToIterator(con.newIterator(SlotIterator.Type.HORIZONTAL, 1, 1));
             for (int i = 0; i < 8; i++) {
                 if (!con.get(1, i).isPresent())
-                    con.set(1, i, ClickableItem.empty(new ItemBuilder(new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.BLACK.getData())).displayname(" ").build()));
+                    con.set(1, i, ClickableItem.empty(new ItemBuilder(new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.BLACK.getDyeData())).displayname(" ").build()));
             }
             if (!con.pagination().isFirst())
                 con.set(2, 3, ClickableItem.of(new ItemBuilder(Material.ARROW).displayname("&7Previous").build(),
@@ -77,7 +75,7 @@ public class LobbySwitcherGUI implements InventoryProvider {
                 con.pagination().addToIterator(con.newIterator(SlotIterator.Type.HORIZONTAL, 1, 1));
                 for (int i = 0; i < 8; i++) {
                     if (!con.get(1, i).isPresent())
-                        con.set(1, i, ClickableItem.empty(new ItemBuilder(new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.BLACK.getData())).displayname(" ").build()));
+                        con.set(1, i, ClickableItem.empty(new ItemBuilder(new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.BLACK.getDyeData())).displayname(" ").build()));
                 }
                 if (!con.pagination().isFirst())
                     con.set(2, 3, ClickableItem.of(new ItemBuilder(Material.ARROW).displayname("&7Previous").build(),

@@ -1,6 +1,7 @@
 package de.phyrone.lobbyrel.player.effect;
 
 import de.phyrone.lobbyrel.LobbyPlugin;
+import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.player.data.OfflinePlayerData;
 import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.effect.DnaEffect;
@@ -28,7 +29,7 @@ public class EffectPlayer {
 
     public void teleportEffect() {
         Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () -> {
-            playSound(Sound.ENDERMAN_TELEPORT, 1, 1);
+            playSound(Config.getString("Sound.Warp"), 1, 1);
             DnaEffect e = new DnaEffect(m);
             e.asynchronous = true;
             Location loc = p.getLocation();
@@ -43,14 +44,14 @@ public class EffectPlayer {
 
     public void changeHider() {
         p.closeInventory();
-        playSound(Sound.PORTAL_TRAVEL, 0.3F, 1.7F);
+        playSound(Config.getString("Sound.PlayerHider"), 0.3F, 1.7F);
         p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 25, 10, false, false), true);
 
     }
 
     public void blocked() {
         if (allowSound()) {
-            p.playSound(p.getLocation(), Sound.BURP, 0.3F, 2);
+            playSound(Config.getString("Sound.Blocked", "BURP"), 0.3F, 2);
         }
     }
 
@@ -62,19 +63,26 @@ public class EffectPlayer {
             ef.setLocation(p.getLocation());
             ef.start();
             if (allowSound()) {
-                p.playSound(p.getLocation(), Sound.FIZZ, 0.5F, 1);
+                p.playSound(p.getLocation(), Config.getString("Sound.JumpPad", "FIZZ"), 0.5F, 1);
             }
         });
     }
 
     public void playSound(Location location, Sound sound, float volume, float pitch) {
-        Bukkit.getScheduler().runTask(LobbyPlugin.getInstance(), () -> {
+        Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () -> {
             if (allowSound())
                 p.playSound(location, sound, volume, pitch);
 
         });
     }
 
+    public void playSound(String sound, float volume, float pitch) {
+        try {
+            playSound(p.getLocation(), Sound.valueOf(sound.toUpperCase()), volume, pitch);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
     public void playSound(Sound sound, float volume, float pitch) {
         playSound(p.getLocation(), sound, volume, pitch);
     }
@@ -87,8 +95,11 @@ public class EffectPlayer {
             ef.color = Color.PURPLE;
             ef.setLocation(p.getLocation());
             ef.start();
-            playSound(Sound.ENDERDRAGON_WINGS, 0.5F, 1);
-
+            try {
+                playSound(Config.getString("Sound.DoubleJump", "ENDERDRAGON_WINGS"), 0.5F, 1);
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            }
         });
     }
 

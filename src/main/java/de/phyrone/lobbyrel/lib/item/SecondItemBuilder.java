@@ -1,18 +1,17 @@
 package de.phyrone.lobbyrel.lib.item;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
 import org.bukkit.Color;
-import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Easily create itemstacks, without messing your hands.
@@ -155,7 +154,6 @@ public class SecondItemBuilder {
    }
    /**
     * Remove a lore line.
-    * @param lore The lore to remove.
     */
    public SecondItemBuilder removeLoreLine(String line){
      ItemMeta im = is.getItemMeta();
@@ -204,28 +202,6 @@ public class SecondItemBuilder {
      im.setLore(lore);
      is.setItemMeta(im);
      return this;
-   }
-   /**
-    * Sets the dye color on an item.
-    * <b>* Notice that this doesn't check for item type, sets the literal data of the dyecolor as durability.</b>
-    * @param color The color to put.
-    */
-   @SuppressWarnings("deprecation")
-   public SecondItemBuilder setDyeColor(DyeColor color){
-     this.is.setDurability(color.getData());
-     return this;
-   }
-   /**
-    * Sets the dye color of a wool item. Works only on wool.
-    * @deprecated As of version 1.2 changed to setDyeColor.
-    * @see ItemBuilder@setDyeColor(DyeColor)
-    * @param color The DyeColor to set the wool item to.
-    */
-   @Deprecated
-   public SecondItemBuilder setWoolColor(DyeColor color){
-    if(!is.getType().equals(Material.WOOL))return this;
-    this.is.setDurability(color.getData());
-    return this;
    }
    /**
     * Sets the armor color of a leather armor piece. Works only on leather armor pieces.
