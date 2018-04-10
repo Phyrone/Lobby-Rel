@@ -32,32 +32,31 @@ public class SignInterface implements InputGUI.InputInterface {
             new PacketAdapter(LobbyPlugin.getInstance(), ListenerPriority.NORMAL, PacketType.Play.Client.UPDATE_SIGN) {
                 @Override
                 public void onPacketReceiving(PacketEvent event) {
-                    Player player = event.getPlayer();
-                    if (isListner(event.getPlayer())) {
-                        Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () -> {
-                            if (getHandlers().containsKey(player.getUniqueId())) {
-                                String str = "";
-                                for (WrappedChatComponent component : event.getPacket().getChatComponentArrays().read(0)) {
-                                    String lineRAW = component.getJson();
-                                    String line = lineRAW.substring(1, lineRAW.length() - 1);
-                                    str += (str.equalsIgnoreCase("") ? "" :
-                                            (handlers.get(player.getUniqueId()).multiLine() ? "\n" : " ")) + line;
+                    try {
+                        Player player = event.getPlayer();
+                        if (isListner(event.getPlayer())) {
+                            Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () -> {
+                                if (getHandlers().containsKey(player.getUniqueId())) {
+                                    String str = "";
+                                    for (WrappedChatComponent component : event.getPacket().getChatComponentArrays().read(0)) {
+                                        String lineRAW = component.getJson();
+                                        String line = lineRAW.substring(1, lineRAW.length() - 1);
+                                        str += (str.equalsIgnoreCase("") ? "" :
+                                                (handlers.get(player.getUniqueId()).multiLine() ? "\n" : " ")) + line;
+                                    }
+                                    if (str.equalsIgnoreCase("")) {
+                                        getHandlers().get(player.getUniqueId()).onDeny(player);
+                                    } else {
+                                        getHandlers().get(player.getUniqueId()).onAccept(player, str);
+                                    }
                                 }
-                                if (str.equalsIgnoreCase("")) {
-                                    getHandlers().get(player.getUniqueId()).onDeny(player);
-                                } else {
-                                    getHandlers().get(player.getUniqueId()).onAccept(player, str);
-                                }
-                            }
-                        });
-                        event.setCancelled(true);
-                        setListner(event.getPlayer(), false);
+                            });
+                            event.setCancelled(true);
+                            setListner(event.getPlayer(), false);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                }
-            }, new PacketAdapter(LobbyPlugin.getInstance(), ListenerPriority.NORMAL, PacketType.Play.Client.CLOSE_WINDOW) {
-                @Override
-                public void onPacketReceiving(PacketEvent event) {
-
                 }
             }
     ));

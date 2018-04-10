@@ -4,7 +4,7 @@ import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.config.ItemsConfig;
 import de.phyrone.lobbyrel.gui.LobbySwitcherGUI;
 import de.phyrone.lobbyrel.gui.PlayerHiderBrewGUI;
-import de.phyrone.lobbyrel.gui.SettingGUI;
+import de.phyrone.lobbyrel.gui.SettingsGUI;
 import de.phyrone.lobbyrel.hotbar.api.Hotbar;
 import de.phyrone.lobbyrel.hotbar.api.HotbarAction;
 import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
@@ -80,7 +80,7 @@ public class MainHotbar {
 			
 			@Override
 			public void onClick(PlayerInteractEvent event, Boolean rightClick) {
-				if(rightClick)SettingGUI.open(event.getPlayer(),0);
+                if (rightClick) SettingsGUI.open(event.getPlayer(), 0);
 			}
 		}));
 		if(Config.getBoolean("Items.Swticher.Enabled", true))

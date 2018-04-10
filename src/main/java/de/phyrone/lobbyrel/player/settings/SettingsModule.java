@@ -1,10 +1,10 @@
 package de.phyrone.lobbyrel.player.settings;
 
-import java.util.ArrayList;
+import fr.minuskube.inv.ClickableItem;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import fr.minuskube.inv.ClickableItem;
+import java.util.ArrayList;
 
 public class SettingsModule {
 	ArrayList<ClickableItem> options = new ArrayList<>();
@@ -13,19 +13,16 @@ public class SettingsModule {
 		
 		@Override
 		public ArrayList<ClickableItem> getOptions(Player player) {
-			// TODO Auto-generated method stub
 			return null;
 		}
 		
 		@Override
 		public ItemStack getIcon(Player player) {
-			// TODO Auto-generated method stub
 			return null;
 		}
 		
 		@Override
 		public ItemStack getCurrend(Player player) {
-			// TODO Auto-generated method stub
 			return null;
 		}
 	};

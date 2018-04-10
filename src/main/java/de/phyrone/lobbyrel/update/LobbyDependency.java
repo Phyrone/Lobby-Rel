@@ -6,8 +6,6 @@ import de.phyrone.lobbyrel.LobbyPlugin;
 import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.InvalidDescriptionException;
-import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.PluginManager;
 
 import java.io.*;
@@ -69,12 +67,6 @@ public final class LobbyDependency {
                 downloadAndEnable();
             } catch (IOException e) {
                 System.err.println("[LobbyRel] Downloading " + pluginname + " failed! (Plugin could not be saved!");
-                e.printStackTrace();
-            } catch (InvalidDescriptionException e) {
-                System.out.println("[LobbyRel] Plugin " + pluginname + " cloud not be loaded! (Wrong plugin.yml)");
-                e.printStackTrace();
-            } catch (InvalidPluginException e) {
-                System.out.println("[LobbyRel] Plugin " + pluginname + "could not be loaded! (Wrong class!)");
                 e.printStackTrace();
             } catch (Exception e) {
                 System.out.println("[LobbyRel] Download,Loading or Enabling " + pluginname + "Failed! (Unknown Error!)");
