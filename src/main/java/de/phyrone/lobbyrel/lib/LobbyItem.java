@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LobbyItem {
+    public static final StringReplacer DEFAULT_PLACEHOLDER = (input, player) -> input
+            .replace("%player%", player.getName())
+            .replace("%displayname%", player.getDisplayName())
+            .replace("%uuid%", player.getUniqueId().toString());
     public String Material;
     public String DisplayName = "";
     public byte Amount = 1;
@@ -42,17 +46,25 @@ public class LobbyItem {
     }
 
     public ItemStack getAsItemStack(Player player) {
+        return getAsItemStack(player, DEFAULT_PLACEHOLDER);
+    }
+
+    public ItemStack getAsItemStack(Player player, final StringReplacer replacer) {
         String dm = player != null ? getLangString(DisplayName, player) : DisplayName;
+        List<String> lore = new ArrayList<>();
         if (player != null) {
-            dm.replace("%player%", player.getName());
-            dm.replace("%displayname%", player.getDisplayName());
+            dm = replacer.replace(dm, player);
+            for (String line : Lore)
+                lore.add(replacer.replace(line, player));
+        } else {
+            lore = Lore;
         }
-        String plSkin = player != null ? Skin.replace("%player%", player.getName()) : Skin;
+        String plSkin = player != null ? replacer.replace(Skin, player) : Skin;
         ItemStack item = isPlayerHead ? getSkull(plSkin) : new ItemStack(getMaterialAsMaterial(), 1, Data);
         item.setAmount(Amount);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(dm);
-        meta.setLore(Lore);
+        meta.setLore(lore);
         item.setItemMeta(meta);
         return new ItemAPI(item).addGlow(Glow).build();
     }
@@ -90,6 +102,11 @@ public class LobbyItem {
         return Material;
     }
 
+    public LobbyItem setMaterial(Material material) {
+        Material = material.toString();
+        return this;
+    }
+
     public void setMaterial(String material) {
         Material = material;
     }
@@ -120,15 +137,15 @@ public class LobbyItem {
         return Lore;
     }
 
-    public LobbyItem setLore(List<String> lore) {
-        Lore = lore;
-        return this;
-    }
-
     public LobbyItem setLore(String... lore) {
         Lore.clear();
         for (String line : lore)
             Lore.add(line);
+        return this;
+    }
+
+    public LobbyItem setLore(List<String> lore) {
+        Lore = lore;
         return this;
     }
 
@@ -159,11 +176,6 @@ public class LobbyItem {
         Skin = headOwner;
         return this;
 
-    }
-
-    public LobbyItem setMaterial(Material material) {
-        Material = material.toString();
-        return this;
     }
 
     public byte getData() {
