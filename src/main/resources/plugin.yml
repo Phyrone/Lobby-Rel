@@ -5,7 +5,7 @@ softdepend: [SmartInvs,EffectLib,PlaceholderAPI,QuickBoard,ProtocolLib]
 author: Phyrone
 commands:
      lobby:
-          aliases: [lb,ls,lobbysystem,lobby-rel,lobby-reloaded]
+          aliases: [lb,lobbysystem,lobby-rel,lobby-reloaded]
      build:
      spawn:
      setwarp:

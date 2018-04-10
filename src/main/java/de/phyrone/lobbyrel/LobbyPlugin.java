@@ -1,10 +1,7 @@
 package de.phyrone.lobbyrel;
 
-import com.comphenix.protocol.ProtocolConfig;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
-import com.comphenix.protocol.ProtocolPlugin;
-import com.comphenix.protocol.injector.PlayerInjectHooks;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
@@ -27,7 +24,9 @@ import de.phyrone.lobbyrel.warps.WarpManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -36,9 +35,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
-public class LobbyPlugin extends ProtocolPlugin implements PluginMessageListener {
+public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
     private static LobbyPlugin instance;
     private static double tps = -1D;
+    private static Boolean debug = true;
     private static ProtocolManager protocolManager;
 
     public LobbyPlugin() {
@@ -52,6 +52,10 @@ public class LobbyPlugin extends ProtocolPlugin implements PluginMessageListener
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static Boolean getDebug() {
+        return debug;
     }
 
     public static LobbyPlugin getInstance() {
@@ -77,7 +81,11 @@ public class LobbyPlugin extends ProtocolPlugin implements PluginMessageListener
 
     @Override
     public void onDisable() {
-        super.onDisable();
+        try {
+            super.onDisable();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         try {
             WarpManager.saveToConf();
         } catch (Exception e) {
@@ -164,17 +172,20 @@ public class LobbyPlugin extends ProtocolPlugin implements PluginMessageListener
         player.sendPluginMessage(this, "BungeeCord", out.toByteArray());
     }
 
-    @SuppressWarnings({"resource", "deprecation"})
     @Override
     public void onEnable() {
-        super.onEnable();
+        try {
+            super.onEnable();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if (!System.getProperty("java.version").startsWith("1.8.")) {
             System.err.println("[Lobby-Rel] Please use Java 1.8");
             Bukkit.getPluginManager().disablePlugin(this);
             return;
         }
         if (!Bukkit.getServer().getClass().getPackage().getName().contains("1_8")) {
-            System.err.println("[Lobby-Rel] I recomend to use Spigot 1.8.8 ");
+            System.err.println("[Lobby-Rel] I recommend to use Spigot 1.8.8 ");
         }
 
         System.out.println("\n" +
@@ -190,19 +201,34 @@ public class LobbyPlugin extends ProtocolPlugin implements PluginMessageListener
 
         Bukkit.getConsoleSender().sendMessage("[Lobby-Rel] §6Loading Library's if needed...");
 
-        try {
-            protocolManager = ProtocolLibrary.getProtocolManager();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         try {
             new LobbyDependency(42835, "SmartInvs").check();
-            new LobbyDependency(0, "EffectLib").setCloudFlare(false)
-                    .setCustomURL("https://media.forgecdn.net/files/2489/826/EffectLib-5.5.jar").check();
+            new LobbyDependency(0, "EffectLib").setCustomURL("https://media.forgecdn.net/files/2489/826/EffectLib-5.5.jar").check();
         } catch (Exception e1) {
             e1.printStackTrace();
         }
+        try {
+            Plugin protokollib = Bukkit.getPluginManager().getPlugin("ProtocolLib");
+            if (protokollib != null) {
+                if (!protokollib.isEnabled())
+                    Bukkit.getPluginManager().enablePlugin(protokollib);
+                try {
+                    if (protokollib.isEnabled())
+                        protocolManager = ProtocolLibrary.getProtocolManager();
+                    else throw new Exception();
+                } catch (Exception e) {
+                    System.out.println("Retry Loading " + protokollib.getName() + "...");
+                    protokollib.onLoad();
+                    if (!protokollib.isEnabled())
+                        Bukkit.getPluginManager().enablePlugin(protokollib);
+                    protocolManager = ProtocolLibrary.getProtocolManager();
+                }
+            }
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         /*if (!Bukkit.getPluginManager().isPluginEnabled("SmartInvs")) {
             URL website;
             System.out.println("Downloading SmartInvs...");
@@ -292,12 +318,12 @@ public class LobbyPlugin extends ProtocolPlugin implements PluginMessageListener
     @Override
     public void onLoad() {
         System.out.println("[Lobby-Rel] Loading Plugin");
-        ProtocolConfig cfg = new ProtocolConfig(this);
-        cfg.setInjectionMethod(PlayerInjectHooks.NONE);
-        cfg.setDebug(true);
-        cfg.setBackgroundCompilerEnabled(true);
-        super.setProtocolConfig(cfg);
-        super.onLoad();
+        try {
+            new LobbyDependency(1997, "ProtocolLib").setPluginEnabler(false).setCustomURL("https://github.com/dmulloy2/ProtocolLib/releases/download/4.3.0/ProtocolLib.jar").check();
+            super.onLoad();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }

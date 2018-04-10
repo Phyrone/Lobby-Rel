@@ -4,6 +4,7 @@ import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.player.PlayerManager;
 import de.phyrone.lobbyrel.player.data.PlayerData;
+import de.phyrone.lobbyrel.player.data.lang.LangManager;
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.tade.quickboard.api.QuickBoardAPI;
 import org.bukkit.Bukkit;
@@ -90,7 +91,6 @@ public class ScoreboardManager {
 				qickboardConf = Config.getString("Scoreboard.External.Config", "default.yml");
 				if(qickboardConf.toLowerCase().endsWith(".yml")) {
 					qickboardConf = qickboardConf.substring(0,qickboardConf.length()-4);
-					System.out.println(qickboardConf);
 				}
 				updateTime = Config.getInt("Scoreboard.UpdateTime", 10);
 				if(Config.conf.contains("Scoreboard.Title"))
@@ -141,7 +141,8 @@ public class ScoreboardManager {
 												
 												@Override
 												public void run() {
-													QuickBoardAPI.createBoard(player, qickboardConf);
+                                                    QuickBoardAPI.createBoard(player, qickboardConf.replace("%lang%",
+                                                            LangManager.getMessage(player, "Scoreboard.ConfigPath", "en")));
 												}
 											}.runTask(LobbyPlugin.getInstance());
 											

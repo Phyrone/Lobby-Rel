@@ -1,6 +1,5 @@
 package de.phyrone.lobbyrel.update;
 
-import com.github.alessiop86.antiantibotcloudflare.exceptions.AntiAntibotException;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import de.phyrone.lobbyrel.LobbyPlugin;
@@ -11,16 +10,16 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 public class UpdateManager {
     private static boolean update = false;
-    private static LobbyDependency asDependency = new LobbyDependency(49126, "Lobby-Rel");
+
     public static void check() {
         check(null);
     }
@@ -111,9 +110,16 @@ public class UpdateManager {
     @SuppressWarnings("resource")
     public static boolean update() {
         try {
-            asDependency.download();
-            return true;
-        } catch (AntiAntibotException | IOException e) {
+            OneVersion version = getOneOnlineVersion();
+            if (version.assets.isEmpty())
+                return false;
+            for (OneDownload dw : version.assets)
+                if (dw.name.toLowerCase().endsWith(".jar")) {
+                    new LobbyDependency(0, "Lobby-Rel").setCustomURL(dw.browser_download_url).download();
+
+                    return true;
+                }
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
@@ -129,11 +135,14 @@ public class UpdateManager {
 
     }
 
-
     private static String getOnlineVersion() {
+        return getOneOnlineVersion().name;
+    }
+
+    private static OneVersion getOneOnlineVersion() {
         try {
             StringBuilder in = new StringBuilder();
-            Scanner inStream = new Scanner(new URL("https://api.spiget.org/v2/resources/49126/versions").openStream());
+            Scanner inStream = new Scanner(new URL("https://api.github.com/repos/Phyrone/Lobby-Rel/releases").openStream());
             while (inStream.hasNext()) {
                 in.append(inStream.nextLine()).append(inStream.hasNext() ? "\n\r" : "");
             }
@@ -141,15 +150,33 @@ public class UpdateManager {
             }.getType();
             List<OneVersion> versions = new Gson().fromJson(in.toString(), listType);
             Collections.reverse(versions);
-            return versions.get(0).name;
+            for (OneVersion version : versions) {
+                if (!version.prerelease)
+                    return version;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return LobbyPlugin.getInstance().getDescription().getVersion();
+        return new OneVersion(LobbyPlugin.getVersion());
     }
 
-    public class OneVersion {
+    public static class OneVersion {
         public String name = "Unknown";
+        public boolean prerelease = false;
+        public List<OneDownload> assets = new ArrayList<>();
+
+        public OneVersion() {
+        }
+
+        public OneVersion(String version) {
+            name = version;
+        }
+
+    }
+
+    public static class OneDownload {
+        public String name = "";
+        public String browser_download_url = null;
     }
 
 }
