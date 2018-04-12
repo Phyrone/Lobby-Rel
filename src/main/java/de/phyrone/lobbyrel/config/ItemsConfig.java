@@ -6,6 +6,7 @@ import de.phyrone.lobbyrel.hotbar.customitems.CustomItem;
 import de.phyrone.lobbyrel.hotbar.customitems.CustomItemsManager;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
 import de.phyrone.lobbyrel.lib.LobbyItem;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -99,7 +100,7 @@ public class ItemsConfig {
     public void toFile(File file) {
         try {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            String jsonConfig = gson.toJson(this);
+            String jsonConfig = StringEscapeUtils.unescapeJava(gson.toJson(this));
             FileWriter writer;
             try {
                 writer = new FileWriter(file);

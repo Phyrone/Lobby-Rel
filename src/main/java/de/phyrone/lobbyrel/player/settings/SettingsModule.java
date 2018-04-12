@@ -1,6 +1,8 @@
 package de.phyrone.lobbyrel.player.settings;
 
+import de.phyrone.lobbyrel.lib.ItemBuilder;
 import fr.minuskube.inv.ClickableItem;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 
 public class SettingsModule {
 	ArrayList<ClickableItem> options = new ArrayList<>();
-	ItemStack icon;
+    ItemStack icon = new ItemBuilder(Material.BEDROCK).glow().displayname("&4&lERROR").build();
 	SettingsModuleAction action = new SettingsModuleAction() {
 		
 		@Override
@@ -22,13 +24,16 @@ public class SettingsModule {
 		}
 		
 		@Override
-		public ItemStack getCurrend(Player player) {
+        public ItemStack getCurrent(Player player) {
 			return null;
 		}
 	};
 	public SettingsModule(ItemStack item) {
 		this.icon = item;
-	}
+    }
+
+    public SettingsModule() {
+    }
 	public ArrayList<ClickableItem> getOptions(Player player) {
 		if(player != null) {
 			ArrayList<ClickableItem> x = action.getOptions(player);
@@ -50,9 +55,11 @@ public class SettingsModule {
 			}
 		}
 		return icon;
-	}public ItemStack getCurrend(Player player) {
+    }
+
+    public ItemStack getCurrent(Player player) {
 		if(player != null) {
-			ItemStack x = action.getCurrend(player);
+            ItemStack x = action.getCurrent(player);
 			if(x != null) {
 				return x;
 			}

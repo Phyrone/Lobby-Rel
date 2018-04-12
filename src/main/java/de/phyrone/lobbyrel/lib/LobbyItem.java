@@ -41,6 +41,11 @@ public class LobbyItem {
         Material = org.bukkit.Material.STONE.toString();
     }
 
+    public LobbyItem(Material material) {
+        Material = material.toString();
+    }
+
+
     public ItemStack getAsItemStack() {
         return getAsItemStack(null);
     }
@@ -180,6 +185,11 @@ public class LobbyItem {
 
     public byte getData() {
         return Data;
+    }
+
+    public LobbyItem setData(int data) {
+        Data = (byte) data;
+        return this;
     }
 
     public LobbyItem setData(byte data) {
