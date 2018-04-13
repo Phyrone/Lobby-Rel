@@ -1,8 +1,10 @@
 package de.phyrone.lobbyrel;
 
+import de.phyrone.lobbyrel.config.Config;
 import org.bukkit.Bukkit;
 
 public class SupportPluginsManager {
+    public static String cfgPath = "PluginSupport.";
     public static void check() {
         for (SupportedPlugin supportedPlugin : SupportedPlugin.values()) {
             if (Bukkit.getPluginManager().isPluginEnabled(supportedPlugin.getPluginname()))
@@ -11,7 +13,8 @@ public class SupportPluginsManager {
     }
 
     public enum SupportedPlugin {
-        ULTRACOSMETICS("UltraCosmetics", new Ultracometics());
+        PAF("FriendsAPIForPartyAndFriends", new PartyAndFriends()),
+        ULTRACOSMETICS("UltraCosmetics", new UltraCosmetics());
         String pluginname;
         Runnable onDetect;
 
@@ -30,7 +33,17 @@ public class SupportPluginsManager {
     }
 }
 
-class Ultracometics implements Runnable {
+class PartyAndFriends implements Runnable {
+    @Override
+    public void run() {
+        if (Config.getBoolean(SupportPluginsManager.cfgPath + "PartyAndFriends.Enabled", true)) {
+
+        }
+    }
+}
+
+class UltraCosmetics implements Runnable {
+
     @Override
     public void run() {
 

@@ -24,12 +24,8 @@
             <url>https://maven.phyrone.de/nexus/content/repositories/spigot/</url>
         </repository>
         <repository>
-            <id>phy-java-cache</id>
-            <url>http://maven.phyrone.de/artifactory/proxy-cache/</url>
-        </repository>
-        <repository>
             <id>phy-java</id>
-            <url>http://maven.phyrone.de/artifactory/proxy</url>
+            <url>https://maven.phyrone.de/artifactory/spigot-plugins/</url>
         </repository>
         <repository>
             <id>jitpack.io</id>
@@ -42,6 +38,17 @@
     </repositories>
     <!-- Dependencys -->
     <dependencies>
+        <dependency>
+            <groupId>be.isach</groupId>
+            <artifactId>ultracosmetics</artifactId>
+            <version>2.4.11</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.simonsator</groupId>
+            <artifactId>Party-and-Friends-MySQL-Edition-Spigot-API</artifactId>
+            <version>1.4.1</version>
+        </dependency>
         <dependency>
             <groupId>com.comphenix.protocol</groupId>
             <artifactId>ProtocolLib</artifactId>
