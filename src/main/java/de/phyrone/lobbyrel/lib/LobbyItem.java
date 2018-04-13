@@ -9,6 +9,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class LobbyItem {
@@ -24,6 +25,39 @@ public class LobbyItem {
     public boolean Glow = false;
     public boolean isPlayerHead = false;
     public String Skin = "%player%";
+    public HashMap<String, Object> CustomTags = new HashMap<>();
+
+    public HashMap<String, Object> getCustomTags() {
+        return CustomTags;
+    }
+
+    public LobbyItem setCustomTags(HashMap<String, Object> customTags) {
+        CustomTags = customTags;
+        return this;
+    }
+
+    public LobbyItem setCustom(String key, Object value) {
+        CustomTags.put(key, value);
+        return this;
+    }
+
+    public String getCustomString(String key) {
+        Object ret = CustomTags.getOrDefault(key, null);
+        if (ret instanceof String)
+            return (String) ret;
+        return null;
+    }
+
+    public int getCustomInteger(String key) {
+        Object ret = CustomTags.getOrDefault(key, null);
+        if (ret instanceof Integer)
+            return (int) ret;
+        return 0;
+    }
+
+    public byte getAmount() {
+        return Amount;
+    }
 
     public LobbyItem(ItemStack item) {
         this.Material = item.getType().toString();
@@ -44,7 +78,6 @@ public class LobbyItem {
     public LobbyItem(Material material) {
         Material = material.toString();
     }
-
 
     public ItemStack getAsItemStack() {
         return getAsItemStack(null);
@@ -127,6 +160,16 @@ public class LobbyItem {
         } catch (Exception e) {
         }
         return org.bukkit.Material.BARRIER;
+    }
+
+    public LobbyItem setAmount(int amount) {
+        Amount = (byte) amount;
+        return this;
+    }
+
+    public LobbyItem setAmount(byte amount) {
+        Amount = amount;
+        return this;
     }
 
     public String getDisplayName() {

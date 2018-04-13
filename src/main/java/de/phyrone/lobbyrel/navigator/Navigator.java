@@ -1,11 +1,11 @@
 package de.phyrone.lobbyrel.navigator;
 
-import de.phyrone.lobbyrel.lib.Color;
+import de.phyrone.lobbyrel.lib.LobbyItem;
 
 public class Navigator {
 	NavigatorAction action;
-	Color color = Color.WHITE;
 	String name = "CustomNavigator";
+    LobbyItem item;
 	public String getName() {
 		return name;
 	}
@@ -13,18 +13,23 @@ public class Navigator {
 		this.name = name;
 		return this;
 	}
-	public Color getColor() {
-		return color;
-	}
-	public Navigator setColor(Color color) {
-		this.color = color;
+
+    public Navigator(LobbyItem settings, NavigatorAction action) {
+        this.action = action;
+        item = settings;
+    }
+
+    public LobbyItem getItem() {
+        return item;
+    }
+
+    public Navigator setItem(LobbyItem item) {
+        this.item = item;
 		return this;
 	}
-	public NavigatorAction getAction() {
-		return action;
-	}
-	public Navigator(NavigatorAction action) {
-		this.action = action;
-	}
+
+    public NavigatorAction getAction() {
+        return action;
+    }
 
 }

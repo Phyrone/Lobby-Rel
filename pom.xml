@@ -133,7 +133,7 @@
                     </descriptorRefs>
                     <finalName>Lobby-Rel-${project.version}</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
-                    <!--<outputDirectory>E:\MCSS\servers\Test\plugins</outputDirectory>-->
+                    <outputDirectory>E:\TestServer\plugins</outputDirectory>
                 </configuration>
                 <executions>
                     <execution>

@@ -38,7 +38,7 @@ import java.util.HashMap;
 public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
     private static LobbyPlugin instance;
     private static double tps = -1D;
-    private static Boolean debug = true;
+    private static Boolean debug = false;
     private static ProtocolManager protocolManager;
 
     public LobbyPlugin() {
@@ -299,7 +299,7 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         //TPS
         Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, () -> {
             tps = TpsMeter.getTPS(20 * 10);
-            System.out.println("");
+            System.out.println();
         }, 20 * 60, 20 * 60);
         //Other
         reload();

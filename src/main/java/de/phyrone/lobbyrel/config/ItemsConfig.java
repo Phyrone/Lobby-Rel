@@ -27,7 +27,7 @@ public class ItemsConfig {
                     new ItemBuilder(Material.SKULL_ITEM).displayname("&5PlayerHead").build())
                     .setSkin("%player%").setPlayerHead(true))
     ));
-    public HashMap<String, LobbyItem> Items = new HashMap<String, LobbyItem>();
+    public HashMap<String, LobbyItem> Items = new HashMap<>();
 
     public ItemsConfig() {
 
@@ -69,24 +69,52 @@ public class ItemsConfig {
         }
     }
 
-    public LobbyItem getItem(String name, LobbyItem noFound, boolean saveNotFound) {
-        if (saveNotFound && !Items.containsKey(name)) {
-            Items.put(name, noFound);
-            CustomItemsManager.save();
+    public static void write(File file, String jsonConfig) {
+        FileWriter writer;
+        try {
+            writer = new FileWriter(file);
+            writer.write(jsonConfig);
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return Items.getOrDefault(name, noFound);
+    }
 
+    public static LobbyItem getLobbyItem(String name, ItemStack noFound) {
+        return getInstance().getItem(name, noFound);
+    }
 
+    public static LobbyItem getLobbyItem(String name) {
+        return getInstance().getItem(name);
+    }
+
+    public static LobbyItem getLobbyItem(String name, LobbyItem noFound, boolean saveNotFound) {
+        return getInstance().getItem(name, noFound, saveNotFound);
+    }
+
+    public static LobbyItem getLobbyItem(String name, LobbyItem noFound) {
+        return getInstance().getItem(name, noFound);
     }
 
     public LobbyItem getItem(String name, LobbyItem noFound) {
         return getItem(name, noFound, true);
     }
 
+    public LobbyItem getItem(String name, LobbyItem noFound, boolean saveNotFound) {
+        ItemsConfig instance = getInstance();
+        if (saveNotFound && !instance.Items.containsKey(name)) {
+            getInstance().Items.put(name, noFound);
+            CustomItemsManager.save();
+        }
+        return instance.Items.getOrDefault(name, noFound);
+
+
+    }
     public LobbyItem getItem(String name) {
         return getItem(name,
                 new LobbyItem().setMaterial(Material.BARRIER).setDisplayName("Item not Found")
-                        .setLore("You can be edited", "in \"Items.json\""));
+                        .setLore("", "You can edit it in the \"Items.json\"", ""));
     }
 
     public LobbyItem getItem(String name, ItemStack noFound) {
@@ -102,14 +130,7 @@ public class ItemsConfig {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String jsonConfig = StringEscapeUtils.unescapeJava(gson.toJson(this));
             FileWriter writer;
-            try {
-                writer = new FileWriter(file);
-                writer.write(jsonConfig);
-                writer.flush();
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            write(file, jsonConfig);
         } catch (Exception e) {
             e.printStackTrace();
         }

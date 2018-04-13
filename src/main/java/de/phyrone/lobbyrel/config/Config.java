@@ -17,7 +17,8 @@ public class Config {
     public static void load() {
         try {
             loadDefault();
-            conf.load(file);
+            if (file.exists())
+                conf.load(file);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -26,8 +27,13 @@ public class Config {
     private static void loadDefault() {
         if (!file.getParentFile().exists())
             file.getParentFile().mkdirs();
-        //if(!file.exists())
-        //    file.createNewFile();
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
 
     }

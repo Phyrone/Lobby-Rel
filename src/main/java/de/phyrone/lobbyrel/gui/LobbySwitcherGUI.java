@@ -23,6 +23,7 @@ public class LobbySwitcherGUI implements InventoryProvider {
     public LobbyItem otherServerItem;
     public LobbyItem myServerItem;
     public ClickableItem border;
+
     public LobbySwitcherGUI(Player player) {
         ItemsConfig cfg = ItemsConfig.getInstance();
         noServerItem = cfg.getItem("lobbyswitcher:noServer",

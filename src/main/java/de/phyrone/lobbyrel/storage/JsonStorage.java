@@ -1,21 +1,15 @@
 package de.phyrone.lobbyrel.storage;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.UUID;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.Config;
+import de.phyrone.lobbyrel.config.ItemsConfig;
 import de.phyrone.lobbyrel.player.data.offline.InternalOfflinePlayerData;
 import de.phyrone.lobbyrel.player.data.offline.OfflinePlayerStorage;
+
+import java.io.*;
+import java.util.UUID;
 
 public class JsonStorage extends OfflinePlayerStorage{
 	static String path;
@@ -30,20 +24,12 @@ public class JsonStorage extends OfflinePlayerStorage{
     	if(!file.getParentFile().exists()) {
     		file.getParentFile().mkdirs();
     	}
-        Gson gson = new GsonBuilder().setPrettyPrinting().create(); 
-        String jsonConfig = gson.toJson(data); 
-        FileWriter writer; 
-        try { 
-            writer = new FileWriter(file); 
-            writer.write(jsonConfig); 
-            writer.flush(); 
-            writer.close(); 
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String jsonConfig = gson.toJson(data);
+        FileWriter writer;
+        ItemsConfig.write(file, jsonConfig);
 
-        } catch (IOException e) { 
-            e.printStackTrace(); 
-        }
-		
-	}
+    }
 
 	@Override
 	public InternalOfflinePlayerData load(UUID uuid) {
