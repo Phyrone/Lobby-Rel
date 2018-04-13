@@ -35,6 +35,7 @@ public class SettingsModule {
     }
 
     public SettingsModule() {
+
     }
 
     public SettingsModule(SettingsModuleAction action) {
