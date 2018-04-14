@@ -229,23 +229,6 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        /*if (!Bukkit.getPluginManager().isPluginEnabled("SmartInvs")) {
-            URL website;
-            System.out.println("Downloading SmartInvs...");
-            try {
-
-                website = new URL("https://api.spiget.org/v2/resources/42835/download");
-                ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-                FileOutputStream fos = new FileOutputStream("plugins/SmartInvs.jar");
-                fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-                System.out.println("SmartInvs.jar saved!");
-                System.out.println("Enable SmartInvs...");
-                Bukkit.getPluginManager().loadPlugin(new File("plugins/", "SmartInvs.jar"));
-                Bukkit.getPluginManager().enablePlugin(Bukkit.getPluginManager().getPlugin("SmartInvs"));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }*/
         loadConf();
         PluginManager pm = Bukkit.getPluginManager();
         //BungeeMode
@@ -258,6 +241,7 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         //Events
         pm.registerEvents(new JoinEvent(), this);
         pm.registerEvents(new LobbyGuard(), this);
+        pm.registerEvents(new NineUpListner(), this);
         pm.registerEvents(new HotbarEvents(), this);
         pm.registerEvents(new OwnEventsListner(), this);
         pm.registerEvents(new OtherEvents(), this);

@@ -10,13 +10,13 @@ import de.phyrone.lobbyrel.warps.WorldManager;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
-import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
@@ -28,16 +28,10 @@ import org.bukkit.inventory.PlayerInventory;
 public class LobbyGuard implements Listener {
 	public static Boolean disableBreakCheck = false;
 	public static Boolean disableGameModeCheck = false;
-	public static Boolean disableInteractCheck = false;
-	public static Boolean disableInvClickCheck = false;
+    public static Boolean disableInvClickCheck = false;
 	public static Boolean disableDamageCheck = false;
-	public static Boolean disableHungerCheck = false;
-	public static Boolean disableDropCheck = false;
-	public static Boolean disablePickupCheck = false;
-	@EventHandler
-	public void noMob(EntitySpawnEvent e) {
-		
-	}
+    public static Boolean disableDropCheck = false;
+
 	@EventHandler
 	public void onBreak(BlockBreakEvent e){
 		Player p = e.getPlayer();
@@ -55,20 +49,27 @@ public class LobbyGuard implements Listener {
 		}else{
 			e.setCancelled(true);
 		}
-	}@EventHandler
-	public void noDamage(EntityDamageEvent e){
+    }
+
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
+    public void onDMG(EntityDamageEvent e) {
 		Entity entity = e.getEntity();
 		if(!(entity instanceof Player)){
 			return;
-		}Player p = (Player)entity;
+        }
+
+        Player p = (Player) entity;
 		PlayerData pd = PlayerManager.getPlayerData(p);
-		if(pd.isInLobby()&&!disableDamageCheck){
+        if (pd.isInLobby()) {
+
 			e.setCancelled(true);
 			if(e.getCause() == DamageCause.FIRE_TICK || e.getCause() == DamageCause.FIRE) {
 				p.setFireTicks(0);
 			}
 		}
-	}@EventHandler
+    }
+
+    @EventHandler
 	public void noHunger(FoodLevelChangeEvent e){
 		if(PlayerManager.getPlayerData((Player)e.getEntity()).isInLobby()){
 			if(e.getFoodLevel() != 20){
@@ -92,10 +93,6 @@ public class LobbyGuard implements Listener {
 		if(!PlayerManager.isBuilder(e.getPlayer())){
 			
 		}
-	}@EventHandler
-    public void noSwitch(PlayerSwapHandItemsEvent e) {
-        if (!PlayerManager.getPlayerData(e.getPlayer()).isBuilder())
-            e.setCancelled(true);
     }
 
     @EventHandler
@@ -138,7 +135,7 @@ public class LobbyGuard implements Listener {
 	public void onRespawn(PlayerRespawnEvent e) {
 		Player p = e.getPlayer();
 		if(PlayerManager.getPlayerData(p).isInLobby()) {
-			PlayerManager.resetPlayer(p);
+            PlayerManager.resetPlayerAndData(p);
 			e.setRespawnLocation(WarpManager.getSpawn().getLocation());
 		}
 	}

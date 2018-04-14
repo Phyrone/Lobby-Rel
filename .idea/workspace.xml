@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75c0e7c6-91c1-4cb0-97b0-36188e25d3cc" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/NineUpListner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/SupportPluginsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/SupportPluginsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/LobbyGuard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/LobbyGuard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/OwnEventsListner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/OwnEventsListner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/UpdateManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/UpdateManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,11 +18,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UpdateManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UpdateManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/UpdateManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1768">
               <caret line="138" column="45" selection-start-line="138" selection-start-column="45" selection-end-line="138" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LobbyGuard.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/LobbyGuard.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NineUpListner.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/NineUpListner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="47" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LobbyPlugin.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="235">
+              <caret line="243" column="36" lean-forward="true" selection-start-line="243" selection-start-column="36" selection-end-line="243" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OwnEventsListner.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/OwnEventsListner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="31" column="46" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
+              <folding>
+                <element signature="e#1502#1670#0" expanded="true" />
+                <element signature="e#1669#1670#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -57,7 +109,7 @@
       <find>glow</find>
       <find>getData()</find>
       <find>etData()</find>
-      <find>, UnirestException</find>
+      <find />
       <find>onD</find>
       <find>onLoad</find>
       <find>getCurrend</find>
@@ -65,6 +117,8 @@
       <find>System.out.println(</find>
       <find>5</find>
       <find>).setAction(</find>
+      <find>damage</find>
+      <find>Resp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -83,7 +137,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerOpenSignEditor.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/api/CommandBlockGUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Tools.java" />
         <option value="$PROJECT_DIR$/README.md" />
@@ -108,7 +161,6 @@
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/navigator/Navigator.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/LobbyItem.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/ItemsConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/OwnEventsListner.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/settings/SettingsModule.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/SupportPluginsManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/HotbarAction.java" />
@@ -126,14 +178,16 @@
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/offline/InternalOfllineDataManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/effect/EffectPlayer.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/JoinEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/LobbyGuard.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/FancyMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/api/InputGUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/api/ChatInput.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/SupportPluginsManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/UpdateManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/OwnEventsListner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/LobbyGuard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/NineUpListner.java" />
       </list>
     </option>
   </component>
@@ -215,6 +269,15 @@
               <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
               <item name="gui" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lobby-Rel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
+              <item name="listner" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
@@ -563,14 +626,7 @@
       <workItem from="1523622413773" duration="599000" />
       <workItem from="1523623717929" duration="1088000" />
       <workItem from="1523628824929" duration="25043000" />
-      <workItem from="1523659264345" duration="11217000" />
-    </task>
-    <task id="LOCAL-00007" summary="12.02.18">
-      <created>1518470160786</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1518470160786</updated>
+      <workItem from="1523659264345" duration="12546000" />
     </task>
     <task id="LOCAL-00008" summary="12.02.18">
       <created>1518472239605</created>
@@ -908,11 +964,18 @@
       <option name="project" value="LOCAL" />
       <updated>1523670353167</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="0.3.07-ALPHA">
+      <created>1523670759615</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1523670759615</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151318000" />
+    <option name="totallyTimeSpent" value="152647000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="49" width="1296" height="1000" extended-state="6" />
@@ -1004,7 +1067,8 @@
     <MESSAGE value="14.04.2018" />
     <MESSAGE value="Fixed 1.12 Bug" />
     <MESSAGE value="Input GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Input GUI" />
+    <MESSAGE value="0.3.07-ALPHA" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.3.07-ALPHA" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1021,20 +1085,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/fr/minuskube/inv/smart-invs/1.1.3/smart-invs-1.1.3.jar!/fr/minuskube/inv/SmartInventory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="42" column="24" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/LobbyDependency.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1215">
-          <caret line="152" lean-forward="true" selection-start-line="152" selection-end-line="152" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Color.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/Config.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1101,13 +1151,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/OwnEventsListner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="53" column="38" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="SPLIT">
@@ -1131,17 +1174,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/PlayerData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
-          <folding>
-            <element signature="e#1018#1019#0" expanded="true" />
-            <element signature="e#1045#1046#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1328,20 +1360,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/LobbyGuard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="98" column="31" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="321" column="12" lean-forward="true" selection-start-line="321" selection-start-column="12" selection-end-line="321" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/JoinEvent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -1391,13 +1409,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/api/InputGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/FancyMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
@@ -1423,17 +1434,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/UpdateManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1768">
           <caret line="138" column="45" selection-start-line="138" selection-start-column="45" selection-end-line="138" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/PlayerData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="71" column="19" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
+          <folding>
+            <element signature="e#1018#1019#0" expanded="true" />
+            <element signature="e#1045#1046#0" expanded="true" />
+            <element signature="e#1831#1832#0" expanded="true" />
+            <element signature="e#1873#1874#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/api/InputGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/OwnEventsListner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="31" column="46" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
+          <folding>
+            <element signature="e#1502#1670#0" expanded="true" />
+            <element signature="e#1669#1670#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/PlayerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="103" column="24" selection-start-line="103" selection-start-column="24" selection-end-line="103" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="243" column="36" lean-forward="true" selection-start-line="243" selection-start-column="36" selection-end-line="243" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/NineUpListner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="47" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/LobbyGuard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
