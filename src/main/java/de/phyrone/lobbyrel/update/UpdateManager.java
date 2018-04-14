@@ -12,10 +12,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.lang.reflect.Type;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class UpdateManager {
     private static boolean update = false;
@@ -28,7 +25,8 @@ public class UpdateManager {
         new Thread(() -> {
             try {
                 String oVersion = getOnlineVersion();
-                update = !oVersion.equalsIgnoreCase(LobbyPlugin.getInstance().getDescription().getVersion());
+                int compare = oVersion.compareTo(LobbyPlugin.getInstance().getDescription().getVersion());
+                update = compare > 0;
                 System.out.println("[LobbyRel] Updater -> Current-Online-Version: " + oVersion);
                 if (ifFinish != null)
                     ifFinish.run();
@@ -149,6 +147,7 @@ public class UpdateManager {
             Type listType = new TypeToken<List<OneVersion>>() {
             }.getType();
             List<OneVersion> versions = new Gson().fromJson(in.toString(), listType);
+            Collections.sort(versions, Comparator.comparing(o -> o.created_at));
             Collections.reverse(versions);
             for (OneVersion version : versions) {
                 if (!version.prerelease)
@@ -163,6 +162,7 @@ public class UpdateManager {
     public static class OneVersion {
         public String tag_name = "Unknown";
         public boolean prerelease = false;
+        public String created_at = "-1";
         public List<OneDownload> assets = new ArrayList<>();
 
         public OneVersion() {
@@ -177,6 +177,7 @@ public class UpdateManager {
     public static class OneDownload {
         public String name = "";
         public String browser_download_url = null;
+
     }
 
 }

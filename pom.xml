@@ -135,7 +135,7 @@
                     </descriptorRefs>
                     <finalName>Lobby-Rel-${project.version}</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
-                    <!--<outputDirectory>E:\TestServer\plugins</outputDirectory>-->
+                    <outputDirectory>E:\TestServer\plugins</outputDirectory>
                 </configuration>
                 <executions>
                     <execution>
