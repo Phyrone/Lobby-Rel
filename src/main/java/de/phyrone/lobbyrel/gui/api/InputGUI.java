@@ -25,10 +25,8 @@ public class InputGUI {
     }
 
     private static HashMap<InputType, InputInterface> getGUIList() {
-        SignInterface sign = new SignInterface();
         HashMap<InputType, InputInterface> ret = new HashMap<>();
-        ret.put(InputType.DEFAULT, sign);
-        ret.put(InputType.SIGN, sign);
+        ret.put(InputType.DEFAULT, new ChatInput());
         return ret;
     }
 
