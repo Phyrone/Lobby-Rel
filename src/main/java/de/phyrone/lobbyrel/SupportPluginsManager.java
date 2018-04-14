@@ -37,6 +37,9 @@ class PartyAndFriends implements Runnable {
     @Override
     public void run() {
         if (Config.getBoolean(SupportPluginsManager.cfgPath + "PartyAndFriends.Enabled", true)) {
+            String addCMD = Config.getString("PartyAndFriends.CMD.addFriend", "/friend add %friend%");
+            String menueCMD = Config.getString("PartyAndFriends.CMD.addFriend", "/friendsgui");
+
 
         }
     }

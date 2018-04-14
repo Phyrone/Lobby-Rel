@@ -8,18 +8,31 @@ import org.bukkit.inventory.ItemStack;
 
 public class HotbarItem {
 	ItemStack item = new ItemStack(Material.AIR);
-	HotbarItemAction action = null;
+    HotbarItemAction.Select select = null;
+    HotbarItemAction.Click click = null;
 	public HotbarItem setItem(ItemStack item) {
 		this.item = item;
 		return this;
 	}
-	public HotbarItemAction getAction() {
-		return action;
-	}
-	public HotbarItem setAction(HotbarItemAction action) {
-		this.action = action;
+
+    public HotbarItem setClick(HotbarItemAction.Click click) {
+        this.click = click;
 		return this;
 	}
+
+    public HotbarItem setSelect(HotbarItemAction.Select select) {
+        this.select = select;
+        return this;
+    }
+
+    public HotbarItemAction.Click getClick() {
+        return click;
+    }
+
+    public HotbarItemAction.Select getSelect() {
+        return select;
+    }
+
 	public HotbarItem(ItemStack item) {
 		if(item == null) {
 			this.item = new ItemStack(Material.AIR);
@@ -29,10 +42,10 @@ public class HotbarItem {
 	}
 	public ItemStack getItem(Player player) {
 		ItemStack ret;
-		if(action == null) {
+        if (select == null) {
 			ret = item;
 		}else {
-			ItemStack actiont = action.onSelect(player);
+            ItemStack actiont = select.onSelect(player);
 			if(actiont == null) {
 				ret = item;
 			}else{
@@ -44,7 +57,7 @@ public class HotbarItem {
 		return getItem(null);
 	}public void click(PlayerInteractEvent event) {
 		Boolean lc = event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK;
-		if(action != null)action.onClick(event,lc );
+        if (click != null) click.onClick(event, lc);
 	}
 
 }

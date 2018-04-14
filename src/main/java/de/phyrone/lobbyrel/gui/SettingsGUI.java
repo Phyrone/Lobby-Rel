@@ -44,7 +44,7 @@ public class SettingsGUI implements InventoryProvider {
                         inventoryClickEvent ->
                                 SmartInvsPlugin.manager().getContents((Player) inventoryClickEvent
                                         .getWhoClicked()).get().setProperty("tick", 2)))
-                .size(SettingsManager.getModulesAsList().size() > ipp ? ipp + 1 : ipp, 9)
+                .size(SettingsManager.getModulesAsList().size() > ipp ? ipp + 1 : SettingsManager.getModulesAsList().size(), 9)
                 .build().open(player);
 
     }

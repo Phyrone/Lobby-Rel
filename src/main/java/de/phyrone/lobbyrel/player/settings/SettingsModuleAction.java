@@ -9,7 +9,6 @@ import java.util.List;
 public interface SettingsModuleAction {
 	List<ClickableItem> getOptions(Player player);
 	ItemStack getIcon(Player player);
-
 	ItemStack getCurrent(Player player);
 
 }

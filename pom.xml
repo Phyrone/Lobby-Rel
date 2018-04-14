@@ -45,11 +45,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>de.simonsator</groupId>
-            <artifactId>Party-and-Friends-MySQL-Edition-Spigot-API</artifactId>
-            <version>1.4.1</version>
-        </dependency>
-        <dependency>
             <groupId>com.comphenix.protocol</groupId>
             <artifactId>ProtocolLib</artifactId>
             <version>4.3.0</version>

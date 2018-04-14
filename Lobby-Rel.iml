@@ -23,9 +23,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="library" name="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: be.isach:ultracosmetics:2.4.11" level="project" />
-    <orderEntry type="library" name="Maven: de.simonsator:Party-and-Friends-MySQL-Edition-Spigot-API:1.4.1" level="project" />
-    <orderEntry type="library" name="Maven: be.maximvdw:MVdWPlaceholderAPI:1.0.2-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: org.bukkit:bukkit:1.8-R0.1-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.comphenix.protocol:ProtocolLib:4.3.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.comphenix.protocol:ProtocolLib-API:4.4.0-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: cglib:cglib-nodep:3.2.5" level="project" />

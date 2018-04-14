@@ -6,6 +6,7 @@ import de.phyrone.lobbyrel.navigator.Navigator;
 import de.phyrone.lobbyrel.navigator.NavigatorManager;
 import de.phyrone.lobbyrel.player.PlayerManager;
 import de.phyrone.lobbyrel.player.data.OfflinePlayerData;
+import de.phyrone.lobbyrel.player.scoreboard.ScoreboardManager;
 import fr.minuskube.inv.ClickableItem;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -159,26 +160,39 @@ public class SettingsManager {
                     }
                 })
         );
-        for (int i = 0; i < 200; i++) {
-            int finalI = i + 1;
-            addModule(new SettingsModule(new LobbyItem(Material.NOTE_BLOCK)
-                    .setAmount(finalI).getAsItemStack()).setAction(new SettingsModuleAction() {
+        //Scoreboard
+        if (ScoreboardManager.isEnabled())
+            addModule(new SettingsModule(new SettingsModuleAction() {
                 @Override
                 public List<ClickableItem> getOptions(Player player) {
-                    return null;
+                    return new ArrayList<>(Arrays.asList(
+                            ClickableItem.of(cfg.getItem("settings.scoreboard.option:on",
+                                    new LobbyItem(Material.WOOL).setData(5).setDisplayName("&aScoreboard ON")
+                            ).getAsItemStack(player), e -> new OfflinePlayerData(e.getWhoClicked().getUniqueId()).setScoreboard(true)),
+                            ClickableItem.of(cfg.getItem("settings.scoreboard.option:off",
+                                    new LobbyItem(Material.WOOL).setData(14).setDisplayName("&4Scoreboard OFF")
+                            ).getAsItemStack(player), e -> new OfflinePlayerData(e.getWhoClicked().getUniqueId()).setScoreboard(false))
+                    ));
                 }
 
                 @Override
                 public ItemStack getIcon(Player player) {
-                    return null;
+                    return cfg.getItem("settings.scoreboard.icon",
+                            new LobbyItem(Material.NETHER_STAR).setDisplayName("&5Scoreboard")
+                    ).getAsItemStack(player);
                 }
 
                 @Override
                 public ItemStack getCurrent(Player player) {
-                    return null;
+                    return new OfflinePlayerData(player).getScoreboard() ?
+                            cfg.getItem("settings.scoreboard.current:on",
+                                    new LobbyItem(Material.WOOL).setData(5).setDisplayName("&aScoreboard ON")
+                            ).getAsItemStack(player) :
+                            cfg.getItem("settings.scoreboard.current:off",
+                                    new LobbyItem(Material.WOOL).setData(14).setDisplayName("&4Scoreboard OFF")
+                            ).getAsItemStack(player);
                 }
             }));
-        }
     }
 
 }

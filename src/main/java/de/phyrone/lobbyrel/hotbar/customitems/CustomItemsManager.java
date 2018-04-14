@@ -3,10 +3,6 @@ package de.phyrone.lobbyrel.hotbar.customitems;
 import de.phyrone.lobbyrel.config.ItemsConfig;
 import de.phyrone.lobbyrel.hotbar.MainHotbar;
 import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
-import de.phyrone.lobbyrel.hotbar.api.HotbarItemAction;
-import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -17,18 +13,11 @@ public class CustomItemsManager {
 		ArrayList<CustomItem> items = ItemsConfig.getInstance().CustomItems;
 		for(CustomItem customitem : items) {
 			try {
-				MainHotbar.addItem(customitem.Slot, new HotbarItem(customitem.getItem().getAsItemStack()).setAction(new HotbarItemAction() {
-					
-					@Override
-					public ItemStack onSelect(Player player) {
-						return customitem.getItem().getAsItemStack(player);
-					}
-					
-					@Override
-					public void onClick(PlayerInteractEvent e, Boolean rightClick) {
-						if(rightClick)customitem.RunCommandAs.run(e.getPlayer(), customitem.Command);
-					}
-				}));
+                MainHotbar.addItem(customitem.Slot, new HotbarItem(customitem.getItem().getAsItemStack())
+                        .setClick((e, rightClick) -> {
+                            if (rightClick) customitem.RunCommandAs.run(e.getPlayer(), customitem.Command);
+                        })
+                        .setSelect(player -> customitem.getItem().getAsItemStack(player)));
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
