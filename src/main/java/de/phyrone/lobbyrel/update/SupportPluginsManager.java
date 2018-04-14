@@ -1,6 +1,6 @@
-package de.phyrone.lobbyrel;
+package de.phyrone.lobbyrel.update;
 
-import de.phyrone.lobbyrel.config.Config;
+import de.phyrone.lobbyrel.LobbyPlugin;
 import org.bukkit.Bukkit;
 
 public class SupportPluginsManager {
@@ -13,7 +13,6 @@ public class SupportPluginsManager {
     }
 
     public enum SupportedPlugin {
-        PAF("FriendsAPIForPartyAndFriends", new PartyAndFriends()),
         ULTRACOSMETICS("UltraCosmetics", new UltraCosmetics());
         String pluginname;
         Runnable onDetect;
@@ -33,22 +32,11 @@ public class SupportPluginsManager {
     }
 }
 
-class PartyAndFriends implements Runnable {
-    @Override
-    public void run() {
-        if (Config.getBoolean(SupportPluginsManager.cfgPath + "PartyAndFriends.Enabled", true)) {
-            String addCMD = Config.getString("PartyAndFriends.CMD.addFriend", "/friend add %friend%");
-            String menueCMD = Config.getString("PartyAndFriends.CMD.addFriend", "/friendsgui");
-
-
-        }
-    }
-}
-
 class UltraCosmetics implements Runnable {
 
     @Override
     public void run() {
-
+        System.out.println("[Lobby-Rel] UltraCosmetics Detected!");
+        System.out.println("      -> Support comming Soon :-)");
     }
 }

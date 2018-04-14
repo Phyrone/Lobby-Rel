@@ -136,7 +136,7 @@ public class UpdateManager {
     }
 
     private static String getOnlineVersion() {
-        return getOneOnlineVersion().name;
+        return getOneOnlineVersion().tag_name;
     }
 
     private static OneVersion getOneOnlineVersion() {
@@ -161,7 +161,7 @@ public class UpdateManager {
     }
 
     public static class OneVersion {
-        public String name = "Unknown";
+        public String tag_name = "Unknown";
         public boolean prerelease = false;
         public List<OneDownload> assets = new ArrayList<>();
 
@@ -169,7 +169,7 @@ public class UpdateManager {
         }
 
         public OneVersion(String version) {
-            name = version;
+            tag_name = version;
         }
 
     }
