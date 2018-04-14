@@ -1,13 +1,12 @@
 package de.phyrone.lobbyrel.player.data.offline;
 
-import java.util.HashMap;
-import java.util.UUID;
-
-import org.bukkit.Bukkit;
-
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.events.LobbyLoadStoragesEvent;
 import de.phyrone.lobbyrel.storage.JsonStorage;
+import org.bukkit.Bukkit;
+
+import java.util.HashMap;
+import java.util.UUID;
 
 public class InternalOfllineDataManager {
 	static boolean init = false;
@@ -40,8 +39,8 @@ public class InternalOfllineDataManager {
 		datas.clear();
 		storageTeamplates.getOrDefault(storage,defaultStorage).disable();
 	}
-	//Not Static
-	UUID uuid;
+
+    UUID uuid;
 	public InternalOfllineDataManager(UUID uuid) {
 		this.uuid = uuid;
 	}

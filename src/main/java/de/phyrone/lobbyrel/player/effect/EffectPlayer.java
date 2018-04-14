@@ -28,8 +28,8 @@ public class EffectPlayer {
     }
 
     public void teleportEffect() {
-        Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () -> {
-            playSound(Sounds.ENDERMAN_TELEPORT, 1, 1);
+        playSound(Sounds.ENDERMAN_TELEPORT, 1, 1);
+        if (Config.getBoolean("Animation.Teleport", true)) {
             DnaEffect e = new DnaEffect(m);
             e.asynchronous = true;
             Location loc = p.getLocation();
@@ -39,13 +39,17 @@ public class EffectPlayer {
             e.duration = 1000;
             e.setLocation(loc);
             e.start();
-        });
+        }
     }
 
     public void changeHider() {
         p.closeInventory();
-        playSound(Sounds.PORTAL_TRAVEL, 0.3F, 1.7F);
-        p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 25, 10, false, false), true);
+        if (Config.getBoolean("Animation.PlayerHider", true)) {
+            playSound(Sounds.PORTAL_TRAVEL, 0.3F, 1.7F);
+            p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS,
+                    25, 10, false, false), true);
+        }
+
 
     }
 
@@ -56,16 +60,15 @@ public class EffectPlayer {
     }
 
     public void JumpPad() {
-        Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () -> {
+        if (Config.getBoolean("Animation.JumpPad", true)) {
             FlameEffect ef = new FlameEffect(m);
             ef.asynchronous = true;
             ef.duration = 50;
             ef.setLocation(p.getLocation());
             ef.start();
-            if (allowSound()) {
-                p.playSound(p.getLocation(), Config.getString("Sound.JumpPad", "FIZZ"), 0.5F, 1);
-            }
-        });
+        }
+        if (allowSound())
+            p.playSound(p.getLocation(), Config.getString("Sound.JumpPad", "FIZZ"), 0.5F, 1);
     }
 
     public void playSound(Location location, Sounds sound, float volume, float pitch) {
@@ -81,19 +84,19 @@ public class EffectPlayer {
     }
 
     public void dJump() {
-        Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () -> {
+        if (Config.getBoolean("Animation.DoubleJump", true)) {
             WarpEffect ef = new WarpEffect(m);
             ef.asynchronous = true;
             ef.duration = 50;
             ef.color = Color.PURPLE;
             ef.setLocation(p.getLocation());
             ef.start();
-            try {
-                playSound(Sounds.ENDERDRAGON_WINGS, 0.5F, 1);
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-            }
-        });
+        }
+        try {
+            playSound(Sounds.ENDERDRAGON_WINGS, 0.5F, 1);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
     }
 
 }

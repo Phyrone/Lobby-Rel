@@ -12,44 +12,41 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.scheduler.BukkitRunnable;
 
 public class JoinEvent implements Listener {
-    @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = false)
+    @EventHandler(priority = EventPriority.NORMAL)
     public void onJoin(PlayerJoinEvent e) {
-        e.setJoinMessage(null);
-        PlayerManager.resetPlayerAndData(e.getPlayer());
-        Bukkit.getScheduler().runTaskLaterAsynchronously(LobbyPlugin.getInstance(), new Runnable() {
-
-            @Override
-            public void run() {
-                Teleporter.toSpawn(e.getPlayer());
-            }
-        }, 3);
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                //Felix F. and Kansy | Bjarne 칸시
-                if (e.getPlayer().hasPermission("lobby.admin.ideodcheck.cnlobby") && IdeodPreventer.cloudnet_lobby) {
+        try {
+            e.setJoinMessage(null);
+        } catch (Exception e1) {
+            System.out.println("JoinEvent");
+            e1.printStackTrace();
+        }
+        try {
+            PlayerManager.resetPlayerAndData(e.getPlayer());
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        try {
+            Bukkit.getScheduler().runTaskLaterAsynchronously(LobbyPlugin.getInstance(), () -> Teleporter.toSpawn(e.getPlayer()), 3);
+        } catch (IllegalArgumentException e1) {
+            e1.printStackTrace();
+        }
+        try {
+            Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () -> {
+                if (e.getPlayer().hasPermission("lobby.admin.ideodcheck.cnlobby") && IdeodPreventer.cloudnet_lobby)
                     LangManager.sendMessage(e.getPlayer(), "Message.Ideod.Cloudnet-Lobby",
                             "&4&lYou must set Cloudnet to Groupmode: &6Lobby");
-
-                }
-            }
-        }.runTaskAsynchronously(LobbyPlugin.getInstance());
-
+            });
+        } catch (IllegalArgumentException e1) {
+            e1.printStackTrace();
+        }
     }
 
     @EventHandler
     public void onDisconect(PlayerQuitEvent e) {
         e.setQuitMessage(null);
-        Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), new Runnable() {
-
-            @Override
-            public void run() {
-                new InternalOfllineDataManager(e.getPlayer().getUniqueId()).saveAndClear();
-            }
-        });
+        Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () -> new InternalOfllineDataManager(e.getPlayer().getUniqueId()).saveAndClear());
 
     }
 

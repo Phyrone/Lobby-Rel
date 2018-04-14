@@ -1,5 +1,12 @@
 package de.phyrone.lobbyrel.listner;
 
+import de.phyrone.lobbyrel.LobbyPlugin;
+import de.phyrone.lobbyrel.player.PlayerManager;
+import de.phyrone.lobbyrel.player.data.PlayerData;
+import de.phyrone.lobbyrel.player.data.lang.LangManager;
+import de.phyrone.lobbyrel.warps.Teleporter;
+import de.phyrone.lobbyrel.warps.WarpManager;
+import de.phyrone.lobbyrel.warps.WorldManager;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,23 +20,9 @@ import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.event.player.PlayerAchievementAwardedEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.player.PlayerExpChangeEvent;
-import org.bukkit.event.player.PlayerGameModeChangeEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerPickupItemEvent;
-import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.inventory.PlayerInventory;
-
-import de.phyrone.lobbyrel.LobbyPlugin;
-import de.phyrone.lobbyrel.player.PlayerManager;
-import de.phyrone.lobbyrel.player.data.PlayerData;
-import de.phyrone.lobbyrel.player.data.lang.LangManager;
-import de.phyrone.lobbyrel.warps.Teleporter;
-import de.phyrone.lobbyrel.warps.WarpManager;
-import de.phyrone.lobbyrel.warps.WorldManager;
 
 
 public class LobbyGuard implements Listener {
@@ -100,14 +93,20 @@ public class LobbyGuard implements Listener {
 			
 		}
 	}@EventHandler
-	public void noMoveItems(InventoryClickEvent e){
-		try {
-		if(((e.getClickedInventory() instanceof PlayerInventory)|| (e.getClickedInventory().getType() == InventoryType.CRAFTING)|| (e.getClickedInventory().getType() == InventoryType.PLAYER))&&!disableInvClickCheck){
-			if(PlayerManager.getPlayerData((Player)e.getWhoClicked()).isInLobby()){
-				e.setCancelled(true);
-			}
-		}}catch (Exception e2) {}
-	}@EventHandler
+    public void noSwitch(PlayerSwapHandItemsEvent e) {
+        if (!PlayerManager.getPlayerData(e.getPlayer()).isBuilder())
+            e.setCancelled(true);
+    }
+
+    @EventHandler
+    public void noMoveItems(InventoryClickEvent e){
+        try {
+            if(((e.getClickedInventory() instanceof PlayerInventory)|| (e.getClickedInventory().getType() == InventoryType.CRAFTING)|| (e.getClickedInventory().getType() == InventoryType.PLAYER))&&!disableInvClickCheck){
+                if(PlayerManager.getPlayerData((Player)e.getWhoClicked()).isInLobby()){
+                    e.setCancelled(true);
+                }
+            }}catch (Exception e2) {}
+    }@EventHandler
 	public void noWeather(WeatherChangeEvent e){
 		if(WorldManager.isLobby(e.getWorld()) && e.toWeatherState()){
 			e.setCancelled(true);

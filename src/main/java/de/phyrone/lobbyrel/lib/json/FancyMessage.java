@@ -15,6 +15,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.entity.Player;
+import org.bukkit.help.HelpTopic;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -34,7 +35,7 @@ import static de.phyrone.lobbyrel.lib.json.TextualComponent.rawText;
  * </p>
  */
 public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<MessagePart>, ConfigurationSerializable {
-
+    private static final boolean TELLRAW = checkTellRawCMD();
     private static JsonParser _stringParser = new JsonParser();
 
     static {
@@ -55,7 +56,7 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
     }
 
     public FancyMessage(final TextualComponent firstPartText) {
-        messageParts = new ArrayList<MessagePart>();
+        messageParts = new ArrayList<>();
         messageParts.add(new MessagePart(firstPartText));
         jsonString = null;
         dirty = false;
@@ -66,6 +67,15 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
      */
     public FancyMessage() {
         this((TextualComponent) null);
+    }
+
+    public static boolean checkTellRawCMD() {
+        for (HelpTopic cmd : Bukkit.getHelpMap().getHelpTopics()) {
+            if (cmd.getName().equalsIgnoreCase("/tellraw")) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -562,15 +572,17 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
         }
         Player player = (Player) sender;
         try {
-            sendJsonMSG(player, jsonString);
+            if (TELLRAW)
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tellraw " + player.getName() + " " + jsonString);
+            else
+                sendJsonMSG(player, jsonString);
         } catch (Exception e) {
             player.sendMessage(toOldMessageFormat());
             System.out.println("Json massage could not be send! - " + e.getMessage());
+            e.printStackTrace();
         }
         //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tellraw " + player.getName() + " " + jsonString);
     }
-
-
 
 
     /**
