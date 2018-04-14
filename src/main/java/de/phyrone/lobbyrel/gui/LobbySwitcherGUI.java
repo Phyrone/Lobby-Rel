@@ -120,10 +120,9 @@ public class LobbySwitcherGUI implements InventoryProvider {
                     item = myServerItem.getAsItemStack(player, placeholder);
                 else
                     item = otherServerItem.getAsItemStack(player, placeholder);
-                item.setAmount(data.getOnline());
-                items[i] = ClickableItem.of(item, (e) -> {
-                    LobbySwitcher.getInstance().send(((Player) e.getWhoClicked()), server);
-                });
+                item.setAmount(i + 1);
+                items[i] = ClickableItem.of(item, (e) ->
+                        LobbySwitcher.getInstance().send(((Player) e.getWhoClicked()), server));
                 i++;
             }
             con.pagination().setItems(items);

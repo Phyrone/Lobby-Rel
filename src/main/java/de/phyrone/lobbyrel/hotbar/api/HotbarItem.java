@@ -7,7 +7,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class HotbarItem {
-	ItemStack item = new ItemStack(Material.AIR);
+    ItemStack item;
     HotbarItemAction.Select select = null;
     HotbarItemAction.Click click = null;
 	public HotbarItem setItem(ItemStack item) {
@@ -56,7 +56,8 @@ public class HotbarItem {
 	public ItemStack getItem() {
 		return getItem(null);
 	}public void click(PlayerInteractEvent event) {
-		Boolean lc = event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK;
+
+        Boolean lc = event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK;
         if (click != null) click.onClick(event, lc);
 	}
 

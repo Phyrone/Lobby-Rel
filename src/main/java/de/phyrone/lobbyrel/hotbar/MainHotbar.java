@@ -14,13 +14,12 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 public class MainHotbar {
-    static Hotbar hotbar = new Hotbar();
+    public static Hotbar hotbar = new Hotbar();
 
     public static void setup() {
         hotbar = new Hotbar();
         HotbarItem nav = new HotbarItem(new ItemBuilder(Material.COMPASS).displayname("&l&6Navigator").build());
-        nav.setSelect(player -> ItemsConfig.getInstance().getItem("Navigator"
-                , new ItemBuilder(Material.COMPASS).displayname("&l&6Navigator").build()).getAsItemStack(player));
+        nav.setSelect(player -> ItemsConfig.getInstance().getItem("Navigator", new ItemBuilder(Material.COMPASS).displayname("&l&6Navigator").build()).getAsItemStack(player));
         nav.setClick((event, rightClick) -> {
             if (rightClick) NavigatorManager.openNavigator(event.getPlayer());
         });

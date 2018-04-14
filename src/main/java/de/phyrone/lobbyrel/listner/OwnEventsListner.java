@@ -12,6 +12,7 @@ import de.phyrone.lobbyrel.hotbar.MainHotbar;
 import de.phyrone.lobbyrel.hotbar.customitems.CustomItemsManager;
 import de.phyrone.lobbyrel.lobbyswitcher.LobbySwitcher;
 import de.phyrone.lobbyrel.navigator.NavigatorManager;
+import de.phyrone.lobbyrel.player.PlayerManager;
 import de.phyrone.lobbyrel.player.data.lang.LangManager;
 import de.phyrone.lobbyrel.player.data.offline.InternalOfllineDataManager;
 import de.phyrone.lobbyrel.player.jump.PlayerJumpManager;
@@ -42,6 +43,7 @@ public class OwnEventsListner implements Listener {
 		CustomItemsManager.loadConfig();
 		CustomItemsManager.init();
 		TimeManager.init();
+        PlayerManager.resetHandlers();
 		PlayerHiderManager.init();
 		PlayerJumpManager.setup();
 		LangManager.init();

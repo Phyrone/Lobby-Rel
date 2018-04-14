@@ -2,6 +2,8 @@ package de.phyrone.lobbyrel.player.data;
 
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.player.data.offline.InternalOfllineDataManager;
+import de.phyrone.lobbyrel.player.scoreboard.ScoreboardManager;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -10,13 +12,16 @@ import java.util.UUID;
 
 public class OfflinePlayerData {
     InternalOfllineDataManager manager;
+    UUID uuid;
 
     public OfflinePlayerData(UUID uuid) {
         manager = new InternalOfllineDataManager(uuid);
+        this.uuid = uuid;
     }
 
     public OfflinePlayerData(Player player) {
         manager = new InternalOfllineDataManager(player.getUniqueId());
+        this.uuid = player.getUniqueId();
     }
 
     public void load() {
@@ -72,6 +77,7 @@ public class OfflinePlayerData {
     public OfflinePlayerData setScoreboard(boolean enabled) {
         manager.set(manager.get().setScoreboard(enabled));
         quickSave();
+        ScoreboardManager.update(Bukkit.getPlayer(uuid));
         return this;
     }
 
@@ -79,8 +85,21 @@ public class OfflinePlayerData {
         return manager.get().getCustomData();
     }
 
-    public Object getCustomdata(String key, Object def) {
+    public Object getCustomObject(String key, Object def) {
         return manager.get().getCustomData().getOrDefault(key, def);
+    }
+
+    public <T> T getCustomdata(String key, T def) {
+        if (!manager.get().getCustomData().containsKey(key)) {
+            addCustomData(key, def);
+            return def;
+        }
+        Object data = manager.get().getCustomData().get(key);
+        try {
+            return (T) data;
+        } catch (Exception e) {
+            return def;
+        }
     }
 
     public Object getCustomdata() {

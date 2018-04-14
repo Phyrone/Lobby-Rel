@@ -31,17 +31,6 @@ public class Hotbar {
     };
 
     public static ItemStack setMeta(ItemStack item) {
-        if (item != null && item.getType() != Material.AIR) {
-            try {
-                //NBTItem nbt = new NBTItem(item);
-                //nbt.setBoolean("LobbyItem", true);
-                //item = nbt.getItem();
-            } catch (Exception e) {
-                System.err.println("Error: setNBT " + item.getItemMeta().getDisplayName());
-                e.printStackTrace();
-
-            }
-        }
         return item;
 
     }
@@ -96,26 +85,39 @@ public class Hotbar {
 
     }
 
+    public Hotbar updateItem(Player player) {
+        return updateItem(player.getInventory().getHeldItemSlot(), player);
+    }
+
     public final Hotbar updateItem(int slot, Player p) {
-        if (!this.equals(PlayerManager.getPlayerData(p).getCurrendHotbar())) {
-            return this;
-        }
-        new BukkitRunnable() {
-
-            @Override
-            public void run() {
-                PlayerInventory inv = p.getInventory();
-                HotbarItem item = getItem(slot, getSite(p));
-                ItemStack ini = setMeta(inv.getItem(slot));
-                if (ini == null) {
-                    inv.setItem(slot, item.getItem(p));
-                } else if (ini.equals(item.getItem())) {
-
-                } else {
-                    inv.setItem(slot, item.getItem(p));
-                }
+        try {
+            if (!this.equals(PlayerManager.getPlayerData(p).getCurrendHotbar())) {
+                return this;
             }
-        }.runTaskAsynchronously(LobbyPlugin.getInstance());
+            new BukkitRunnable() {
+
+                @Override
+                public void run() {
+                    try {
+                        PlayerInventory inv = p.getInventory();
+                        HotbarItem item = getItem(slot, getSite(p));
+                        ItemStack ini = setMeta(inv.getItem(slot));
+                        if (ini == null) {
+                            inv.setItem(slot, item.getItem(p));
+                        } else if (ini.equals(item.getItem())) {
+
+                        } else {
+                            inv.setItem(slot, item.getItem(p));
+                        }
+                    } catch (Exception e) {
+                        p.getInventory().clear(slot);
+                        e.printStackTrace();
+                    }
+                }
+            }.runTaskAsynchronously(LobbyPlugin.getInstance());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return this;
     }
 

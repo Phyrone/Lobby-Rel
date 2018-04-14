@@ -93,9 +93,11 @@ public class LobbyItem {
         if (player != null) {
             dm = replacer.replace(dm, player);
             for (String line : Lore)
-                lore.add(replacer.replace(line, player));
+                lore.add(ChatColor.translateAlternateColorCodes('&',
+                        replacer.replace(line, player)));
         } else {
-            lore = Lore;
+            for (String line : Lore)
+                lore.add(ChatColor.translateAlternateColorCodes('&', line));
         }
         String plSkin = player != null ? replacer.replace(Skin, player) : Skin;
         ItemStack item = isPlayerHead ? getSkull(plSkin) : new ItemStack(getMaterialAsMaterial(), 1, Data);
