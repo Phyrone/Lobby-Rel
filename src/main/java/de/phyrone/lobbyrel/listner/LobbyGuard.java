@@ -3,10 +3,9 @@ package de.phyrone.lobbyrel.listner;
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.player.PlayerManager;
 import de.phyrone.lobbyrel.player.data.PlayerData;
-import de.phyrone.lobbyrel.player.data.lang.LangManager;
+import de.phyrone.lobbyrel.player.lang.LangManager;
 import de.phyrone.lobbyrel.warps.Teleporter;
 import de.phyrone.lobbyrel.warps.WarpManager;
-import de.phyrone.lobbyrel.warps.WorldManager;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -36,15 +35,16 @@ public class LobbyGuard implements Listener {
 	public void onBreak(BlockBreakEvent e){
 		Player p = e.getPlayer();
 		PlayerData playerdata = PlayerManager.getPlayerData(p);
-		if(playerdata.isInLobby()&&!disableBreakCheck){
-			p.sendMessage(LobbyPlugin.getPrefix()+LangManager.getMessage(p,"Guard.NoBreak", " &4Du darfst hier nicht abbauen!"));
-			e.setCancelled(true);
+		if (playerdata.isBuilder() || disableBreakCheck) {
+			return;
 		}
+		p.sendMessage(LobbyPlugin.getPrefix() + LangManager.getMessage(p, "Guard.NoBreak", " &4Du darfst hier nicht abbauen!"));
+		e.setCancelled(true);
 	} @EventHandler
 	public void onGm(PlayerGameModeChangeEvent e){
 		Player p = e.getPlayer();
 		PlayerData pd = PlayerManager.getPlayerData(p);
-		if(!pd.isInLobby()||pd.getAllowGamemodeChange()||disableGameModeCheck){
+		if (!pd.isBuilder() || pd.allowGamemodeChange() || disableGameModeCheck) {
 			
 		}else{
 			e.setCancelled(true);
@@ -60,8 +60,7 @@ public class LobbyGuard implements Listener {
 
         Player p = (Player) entity;
 		PlayerData pd = PlayerManager.getPlayerData(p);
-        if (pd.isInLobby()) {
-
+		if (!pd.isBuilder()) {
 			e.setCancelled(true);
 			if(e.getCause() == DamageCause.FIRE_TICK || e.getCause() == DamageCause.FIRE) {
 				p.setFireTicks(0);
@@ -71,7 +70,7 @@ public class LobbyGuard implements Listener {
 
     @EventHandler
 	public void noHunger(FoodLevelChangeEvent e){
-		if(PlayerManager.getPlayerData((Player)e.getEntity()).isInLobby()){
+		if (!PlayerManager.getPlayerData((Player) e.getEntity()).isBuilder()) {
 			if(e.getFoodLevel() != 20){
 				e.setFoodLevel(20);
 			}else{
@@ -80,17 +79,17 @@ public class LobbyGuard implements Listener {
 		}
 	}@EventHandler
 	public void noDrop(PlayerDropItemEvent e){
-		if(PlayerManager.getPlayerData(e.getPlayer()).isInLobby()&&!disableDropCheck){
+		if (!PlayerManager.getPlayerData(e.getPlayer()).isBuilder() && !disableDropCheck) {
 			e.setCancelled(true);
 		}
 	}@EventHandler
 	public void noPickup(PlayerPickupItemEvent e){
-		if(PlayerManager.getPlayerData(e.getPlayer()).isInLobby()){
+		if (!PlayerManager.getPlayerData(e.getPlayer()).isBuilder()) {
 			e.setCancelled(true);
 		}
 	}@EventHandler
 	public void noXP(PlayerExpChangeEvent e){
-		if(!PlayerManager.isBuilder(e.getPlayer())){
+		if (!PlayerManager.getPlayerData(e.getPlayer()).isBuilder()) {
 			
 		}
     }
@@ -99,31 +98,31 @@ public class LobbyGuard implements Listener {
     public void noMoveItems(InventoryClickEvent e){
         try {
             if(((e.getClickedInventory() instanceof PlayerInventory)|| (e.getClickedInventory().getType() == InventoryType.CRAFTING)|| (e.getClickedInventory().getType() == InventoryType.PLAYER))&&!disableInvClickCheck){
-                if(PlayerManager.getPlayerData((Player)e.getWhoClicked()).isInLobby()){
+				if (!PlayerManager.getPlayerData((Player) e.getWhoClicked()).isBuilder()) {
                     e.setCancelled(true);
                 }
             }}catch (Exception e2) {}
     }@EventHandler
 	public void noWeather(WeatherChangeEvent e){
-		if(WorldManager.isLobby(e.getWorld()) && e.toWeatherState()){
+		if (e.toWeatherState()) {
 			e.setCancelled(true);
 		}
 	}@EventHandler
 	public void noXp(PlayerExpChangeEvent e) {
-		if(PlayerManager.getPlayerData(e.getPlayer()).isInLobby()) {
+		if (!PlayerManager.getPlayerData(e.getPlayer()).isBuilder()) {
 			e.setAmount(0);
 		}
 	}@EventHandler
 	public void onVoid(PlayerMoveEvent e) {
 		if(e.getTo().getBlockY() < 0) {
-		if(PlayerManager.getPlayerData(e.getPlayer()).isInLobby()) {
+			if (!PlayerManager.getPlayerData(e.getPlayer()).isBuilder()) {
 				Teleporter.toSpawn(e.getPlayer());
 			}
 		}
 	}
 	@EventHandler
 	public void noAch(PlayerAchievementAwardedEvent e) {
-		if(PlayerManager.getPlayerData(e.getPlayer()).isInLobby()) {
+		if (!PlayerManager.getPlayerData(e.getPlayer()).isBuilder()) {
 			e.setCancelled(true);
 		}
 	}@EventHandler
@@ -134,7 +133,7 @@ public class LobbyGuard implements Listener {
 	}@EventHandler
 	public void onRespawn(PlayerRespawnEvent e) {
 		Player p = e.getPlayer();
-		if(PlayerManager.getPlayerData(p).isInLobby()) {
+		if (!PlayerManager.getPlayerData(p).isBuilder()) {
             PlayerManager.resetPlayerAndData(p);
 			e.setRespawnLocation(WarpManager.getSpawn().getLocation());
 		}

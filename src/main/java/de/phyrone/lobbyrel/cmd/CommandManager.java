@@ -1,14 +1,16 @@
 package de.phyrone.lobbyrel.cmd;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import org.bukkit.entity.Player;
-
+import com.google.gson.GsonBuilder;
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.gui.AdminMainGui;
 import de.phyrone.lobbyrel.lib.json.FancyMessage;
-import de.phyrone.lobbyrel.player.data.lang.LangManager;
+import de.phyrone.lobbyrel.player.PlayerManager;
+import de.phyrone.lobbyrel.player.lang.LangManager;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CommandManager {
 	static public ArrayList<CommandAction> Commands = new ArrayList<>();
@@ -39,7 +41,15 @@ public class CommandManager {
 					return true;
 				}else if(args[0].equalsIgnoreCase("debug")) {
 					if(player.hasPermission("lobby.debug")) {
-						
+                        if (args.length == 3 && args[1].equalsIgnoreCase("playerdata") && Bukkit.getPlayer(args[2]) != null) {
+                            Player target = Bukkit.getPlayer(args[2]);
+                            player.sendMessage("Playerdata:");
+                            player.sendMessage(
+                                    new GsonBuilder().setPrettyPrinting().create().toJson(PlayerManager.getInternalPlayerData(target.getUniqueId())));
+                            player.sendMessage("Offlinedata:");
+                            player.sendMessage(
+                                    new GsonBuilder().setPrettyPrinting().create().toJson(PlayerManager.getInternalOfflinePlayerData(target.getUniqueId())));
+                        }
 					}
 				}
 				return false;

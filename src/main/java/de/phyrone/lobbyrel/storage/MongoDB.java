@@ -1,17 +1,17 @@
 package de.phyrone.lobbyrel.storage;
 
 import com.mongodb.MongoClient;
-import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import de.phyrone.lobbyrel.config.Config;
-import de.phyrone.lobbyrel.player.data.offline.InternalOfflinePlayerData;
-import de.phyrone.lobbyrel.player.data.offline.OfflinePlayerStorage;
+import de.phyrone.lobbyrel.player.data.internal.InternalOfflinePlayerData;
 import org.bson.Document;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 public class MongoDB extends OfflinePlayerStorage {
@@ -21,18 +21,23 @@ public class MongoDB extends OfflinePlayerStorage {
 
     @Override
     public void init() {
-        String host = Config.getString("Storage.MongoDB.Host", "localhost");
-        int port = Config.getInt("Storage.MongoDB.Port", 27017);
+        List<String> hosts = Config.getStringList("Storage.MongoDB.Hosts",
+                new ArrayList<>(Arrays.asList("localhost:27017")));
         String dbName = Config.getString("Storage.MongoDB.Database", "lobbyrel");
         String tableName = Config.getString("Storage.MongoDB.Table", "lobbyrel");
-        if (Config.getBoolean("Storage.MongoDB.Auth.Enabled", false)) {
-
-            char[] passwd;
-            MongoCredential credital = MongoCredential.createCredential(Config.getString("Storage.MongoDB.Auth.Username")
-                    , dbName, Config.getString("Storage.MongoDB.Password", "myPasswd").toCharArray());
-
-            client = new MongoClient(new ServerAddress(host, port), Arrays.asList(credital));
-        } else client = new MongoClient(new ServerAddress(host, port));
+        List<ServerAddress> dbServers = new ArrayList<>();
+        for (String host : hosts) {
+            try {
+                if (host.contains(":")) {
+                    String[] cont = host.split(":");
+                    dbServers.add(new ServerAddress(cont[0], Integer.valueOf(cont[1])));
+                } else
+                    dbServers.add(new ServerAddress(host));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+        client = new MongoClient(dbServers);
 
         db = client.getDatabase(dbName);
         table = db.getCollection(tableName);

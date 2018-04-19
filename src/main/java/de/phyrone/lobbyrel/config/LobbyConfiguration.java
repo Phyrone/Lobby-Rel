@@ -1,5 +1,6 @@
 package de.phyrone.lobbyrel.config;
 
+import de.phyrone.lobbyrel.lib.RandomString;
 import de.phyrone.lobbyrel.lib.Utf8YamlConfiguration;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -7,15 +8,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class Config {
-    public static Utf8YamlConfiguration conf = new Utf8YamlConfiguration();
-    private static File file = new File("plugins/Lobby-Rel", "config.yml");
+public class LobbyConfiguration {
+    public Utf8YamlConfiguration conf = new Utf8YamlConfiguration();
+    private File file;
 
-    static {
-        conf.options().copyDefaults(true);
+    public LobbyConfiguration(File file) {
+        if (file.isDirectory())
+            file = new File(file.getPath(), new RandomString(16).nextString() + ".yml");
+        this.file = file;
     }
 
-    public static void load() {
+    public void load() {
         try {
             loadDefault();
             if (file.exists())
@@ -25,7 +28,7 @@ public class Config {
         }
     }
 
-    public static List<String> getStringList(String path, List<String> byDefault) {
+    public List<String> getStringList(String path, List<String> byDefault) {
         if (conf.contains(path))
             return conf.getStringList(path);
         else {
@@ -35,7 +38,8 @@ public class Config {
         }
 
     }
-    private static void loadDefault() {
+
+    private void loadDefault() {
         if (!file.getParentFile().exists())
             file.getParentFile().mkdirs();
         if (!file.exists()) {
@@ -49,11 +53,11 @@ public class Config {
 
     }
 
-    public static void saveAsync() {
+    public void saveAsync() {
         new Thread(() -> saveSync(), "SaveConfigTask").start();
     }
 
-    public synchronized static void saveSync() {
+    public synchronized void saveSync() {
         try {
             conf.save(file);
         } catch (IOException e) {
@@ -62,27 +66,27 @@ public class Config {
         }
     }
 
-    public static int getInt(String path) {
+    public int getInt(String path) {
         return conf.getInt(path);
     }
 
-    public static String getString(String path) {
+    public String getString(String path) {
         return conf.getString(path);
     }
 
-    public static Boolean getBoolean(String path) {
+    public Boolean getBoolean(String path) {
         return conf.getBoolean(path);
     }
 
-    public static Object get(String path) {
+    public Object get(String path) {
         return conf.get(path);
     }
 
-    public static void set(String path, Object value) {
+    public void set(String path, Object value) {
         conf.set(path, value);
     }
 
-    public static Object get(String path, Object byDyfault) {
+    public Object get(String path, Object byDyfault) {
         if (!conf.contains(path)) {
             conf.set(path, byDyfault);
             saveAsync();
@@ -91,7 +95,7 @@ public class Config {
         return conf.get(path);
     }
 
-    public static int getInt(String path, int byDyfault) {
+    public int getInt(String path, int byDyfault) {
         if (conf.contains(path)) {
             return conf.getInt(path, byDyfault);
         } else {
@@ -101,7 +105,7 @@ public class Config {
         }
     }
 
-    public static boolean getBoolean(String path, boolean byDyfault) {
+    public boolean getBoolean(String path, boolean byDyfault) {
         if (conf.contains(path)) {
             return conf.getBoolean(path, byDyfault);
         } else {
@@ -111,7 +115,7 @@ public class Config {
         }
     }
 
-    public static String getString(String path, String byDyfault) {
+    public String getString(String path, String byDyfault) {
         if (conf.contains(path)) {
             return conf.getString(path, byDyfault);
         } else {
@@ -121,12 +125,12 @@ public class Config {
         }
     }
 
-    public static FileConfiguration getConf() {
+    public FileConfiguration getConf() {
         return conf;
     }
 
-    public static void setConf(Utf8YamlConfiguration conf) {
-        Config.conf = conf;
+    public void setConf(Utf8YamlConfiguration conf) {
+        this.conf = conf;
     }
 
 }

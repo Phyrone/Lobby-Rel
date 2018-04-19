@@ -1,6 +1,6 @@
 package de.phyrone.lobbyrel.hotbar.customitems;
 
-import de.phyrone.lobbyrel.player.data.lang.LangManager;
+import de.phyrone.lobbyrel.player.lang.LangManager;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

@@ -63,7 +63,7 @@ public class Hotbar {
                         }
                     }
                 }.runTaskAsynchronously(LobbyPlugin.getInstance());
-                pd.setCurrendHotbar(hb).save();
+                pd.setCurrendHotbar(hb);
                 sites.put(p.getUniqueId(), site);
                 if (getMaxSite() == 0) {
                     p.setLevel(0);

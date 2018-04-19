@@ -1,15 +1,14 @@
 package de.phyrone.lobbyrel.cmd;
 
+import de.phyrone.lobbyrel.LobbyPlugin;
+import de.phyrone.lobbyrel.config.Config;
+import de.phyrone.lobbyrel.player.lang.LangManager;
+import de.phyrone.lobbyrel.warps.Teleporter;
+import de.phyrone.lobbyrel.warps.WarpManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import de.phyrone.lobbyrel.LobbyPlugin;
-import de.phyrone.lobbyrel.config.Config;
-import de.phyrone.lobbyrel.player.data.lang.LangManager;
-import de.phyrone.lobbyrel.warps.Teleporter;
-import de.phyrone.lobbyrel.warps.WarpManager;
 
 public class WarpCMD implements CommandExecutor {
 

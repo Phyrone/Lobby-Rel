@@ -5,8 +5,7 @@ import com.google.gson.GsonBuilder;
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.config.ItemsConfig;
-import de.phyrone.lobbyrel.player.data.offline.InternalOfflinePlayerData;
-import de.phyrone.lobbyrel.player.data.offline.OfflinePlayerStorage;
+import de.phyrone.lobbyrel.player.data.internal.InternalOfflinePlayerData;
 
 import java.io.*;
 import java.util.UUID;

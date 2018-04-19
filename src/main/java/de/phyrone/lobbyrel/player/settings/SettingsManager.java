@@ -5,7 +5,6 @@ import de.phyrone.lobbyrel.lib.LobbyItem;
 import de.phyrone.lobbyrel.navigator.Navigator;
 import de.phyrone.lobbyrel.navigator.NavigatorManager;
 import de.phyrone.lobbyrel.player.PlayerManager;
-import de.phyrone.lobbyrel.player.data.OfflinePlayerData;
 import de.phyrone.lobbyrel.player.scoreboard.ScoreboardManager;
 import fr.minuskube.inv.ClickableItem;
 import org.bukkit.Material;
@@ -59,7 +58,7 @@ public class SettingsManager {
 
                     @Override
                     public ItemStack getCurrent(Player player) {
-                        return NavigatorManager.getNavigator(new OfflinePlayerData(player).getNavigator()).getItem()
+                        return NavigatorManager.getNavigator(PlayerManager.getPlayerData(player).getNavigator()).getItem()
                                 .getAsItemStack(player);
                     }
                 }),
@@ -70,10 +69,10 @@ public class SettingsManager {
                         return new ArrayList<>(Arrays.asList(
                                 ClickableItem.of(cfg.getItem("settings.sound.option:on",
                                         new LobbyItem(Material.WOOL).setData(5).setDisplayName("&4Sound ON")
-                                ).getAsItemStack(player), e -> new OfflinePlayerData(e.getWhoClicked().getUniqueId()).setSound(true)),
+                                ).getAsItemStack(player), e -> PlayerManager.getPlayerData(e.getWhoClicked().getUniqueId()).setSound(true)),
                                 ClickableItem.of(cfg.getItem("settings.sound.option:off",
                                         new LobbyItem(Material.WOOL).setData(14).setDisplayName("&4Sound OFF")
-                                ).getAsItemStack(player), e -> new OfflinePlayerData(e.getWhoClicked().getUniqueId()).setSound(false))
+                                ).getAsItemStack(player), e -> PlayerManager.getPlayerData(e.getWhoClicked().getUniqueId()).setSound(false))
                         ));
                     }
 
@@ -86,7 +85,7 @@ public class SettingsManager {
 
                     @Override
                     public ItemStack getCurrent(Player player) {
-                        return new OfflinePlayerData(player).getSound() ?
+                        return PlayerManager.getPlayerData(player).getSound() ?
                                 cfg.getItem("settings.sound.current:on",
                                         new LobbyItem(Material.WOOL).setData(5).setDisplayName("&aSound On")
                                 ).getAsItemStack(player) :
@@ -102,10 +101,10 @@ public class SettingsManager {
                         return new ArrayList<>(Arrays.asList(
                                 ClickableItem.of(cfg.getItem("settings.jumppad.option:on",
                                         new LobbyItem(Material.WOOL).setData(5).setDisplayName("&4JumpPad ON")
-                                ).getAsItemStack(player), e -> new OfflinePlayerData(e.getWhoClicked().getUniqueId()).setJumpPad(true)),
+                                ).getAsItemStack(player), e -> PlayerManager.getPlayerData(e.getWhoClicked().getUniqueId()).setJumpPad(true)),
                                 ClickableItem.of(cfg.getItem("settings.jumppad.option:off",
                                         new LobbyItem(Material.WOOL).setData(14).setDisplayName("&4JumpPad OFF")
-                                ).getAsItemStack(player), e -> new OfflinePlayerData(e.getWhoClicked().getUniqueId()).setJumpPad(false))
+                                ).getAsItemStack(player), e -> PlayerManager.getPlayerData(e.getWhoClicked().getUniqueId()).setJumpPad(false))
                         ));
                     }
 
@@ -118,7 +117,7 @@ public class SettingsManager {
 
                     @Override
                     public ItemStack getCurrent(Player player) {
-                        return new OfflinePlayerData(player).getJumpPads() ?
+                        return PlayerManager.getPlayerData(player).getJumpPad() ?
                                 cfg.getItem("settings.jumppad.current:on",
                                         new LobbyItem(Material.WOOL).setData(5).setDisplayName("&aJumppad On")
                                 ).getAsItemStack(player) :
@@ -134,10 +133,10 @@ public class SettingsManager {
                         return new ArrayList<>(Arrays.asList(
                                 ClickableItem.of(cfg.getItem("settings.doublejump.option:on",
                                         new LobbyItem(Material.WOOL).setData(5).setDisplayName("&aDoubleJump ON")
-                                ).getAsItemStack(player), e -> new OfflinePlayerData(e.getWhoClicked().getUniqueId()).setDoubleJump(true)),
+                                ).getAsItemStack(player), e -> PlayerManager.getPlayerData(e.getWhoClicked().getUniqueId()).setDoubleJump(true)),
                                 ClickableItem.of(cfg.getItem("settings.doublejump.option:off",
                                         new LobbyItem(Material.WOOL).setData(14).setDisplayName("&4DoubleJump OFF")
-                                ).getAsItemStack(player), e -> new OfflinePlayerData(e.getWhoClicked().getUniqueId()).setDoubleJump(false))
+                                ).getAsItemStack(player), e -> PlayerManager.getPlayerData(e.getWhoClicked().getUniqueId()).setDoubleJump(false))
                         ));
                     }
 
@@ -150,7 +149,7 @@ public class SettingsManager {
 
                     @Override
                     public ItemStack getCurrent(Player player) {
-                        return new OfflinePlayerData(player).getDoubleJump() ?
+                        return PlayerManager.getPlayerData(player).getDoubleJump() ?
                                 cfg.getItem("settings.doublejump.current:on",
                                         new LobbyItem(Material.WOOL).setData(5).setDisplayName("&aDoubleJump ON")
                                 ).getAsItemStack(player) :
@@ -168,10 +167,10 @@ public class SettingsManager {
                     return new ArrayList<>(Arrays.asList(
                             ClickableItem.of(cfg.getItem("settings.scoreboard.option:on",
                                     new LobbyItem(Material.WOOL).setData(5).setDisplayName("&aScoreboard ON")
-                            ).getAsItemStack(player), e -> new OfflinePlayerData(e.getWhoClicked().getUniqueId()).setScoreboard(true)),
+                            ).getAsItemStack(player), e -> PlayerManager.getPlayerData(e.getWhoClicked().getUniqueId()).setScoreboard(true)),
                             ClickableItem.of(cfg.getItem("settings.scoreboard.option:off",
                                     new LobbyItem(Material.WOOL).setData(14).setDisplayName("&4Scoreboard OFF")
-                            ).getAsItemStack(player), e -> new OfflinePlayerData(e.getWhoClicked().getUniqueId()).setScoreboard(false))
+                            ).getAsItemStack(player), e -> PlayerManager.getPlayerData(e.getWhoClicked().getUniqueId()).setScoreboard(false))
                     ));
                 }
 
@@ -184,7 +183,7 @@ public class SettingsManager {
 
                 @Override
                 public ItemStack getCurrent(Player player) {
-                    return new OfflinePlayerData(player).getScoreboard() ?
+                    return PlayerManager.getPlayerData(player).isScoreboard() ?
                             cfg.getItem("settings.scoreboard.current:on",
                                     new LobbyItem(Material.WOOL).setData(5).setDisplayName("&aScoreboard ON")
                             ).getAsItemStack(player) :

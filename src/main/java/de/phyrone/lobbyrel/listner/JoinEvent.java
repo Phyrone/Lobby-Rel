@@ -1,10 +1,9 @@
 package de.phyrone.lobbyrel.listner;
 
+import de.phyrone.lobbyrel.IdeodPreventer;
 import de.phyrone.lobbyrel.LobbyPlugin;
-import de.phyrone.lobbyrel.player.IdeodPreventer;
 import de.phyrone.lobbyrel.player.PlayerManager;
-import de.phyrone.lobbyrel.player.data.lang.LangManager;
-import de.phyrone.lobbyrel.player.data.offline.InternalOfllineDataManager;
+import de.phyrone.lobbyrel.player.lang.LangManager;
 import de.phyrone.lobbyrel.warps.Teleporter;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -36,7 +35,7 @@ public class JoinEvent implements Listener {
             Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () -> {
                 if (e.getPlayer().hasPermission("lobby.admin.ideodcheck.cnlobby") && IdeodPreventer.cloudnet_lobby)
                     LangManager.sendMessage(e.getPlayer(), "Message.Ideod.Cloudnet-Lobby",
-                            "&4&lYou must set Cloudnet to Groupmode: &6Lobby");
+                            "&4&lYou should set Cloudnet to Groupmode: &6Lobby");
             });
         } catch (IllegalArgumentException e1) {
             e1.printStackTrace();
@@ -46,7 +45,8 @@ public class JoinEvent implements Listener {
     @EventHandler
     public void onDisconect(PlayerQuitEvent e) {
         e.setQuitMessage(null);
-        Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () -> new InternalOfllineDataManager(e.getPlayer().getUniqueId()).saveAndClear());
+        Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () ->
+                PlayerManager.saveAndClear(e.getPlayer().getUniqueId()));
 
     }
 

@@ -1,7 +1,7 @@
 package de.phyrone.lobbyrel.lib;
 
 import de.phyrone.lobbyrel.lib.item.ItemAPI;
-import de.phyrone.lobbyrel.player.data.lang.LangManager;
+import de.phyrone.lobbyrel.player.lang.LangManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

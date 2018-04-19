@@ -3,7 +3,7 @@ package de.phyrone.lobbyrel.gui;
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.ItemsConfig;
 import de.phyrone.lobbyrel.lib.LobbyItem;
-import de.phyrone.lobbyrel.player.data.lang.LangManager;
+import de.phyrone.lobbyrel.player.lang.LangManager;
 import de.phyrone.lobbyrel.player.settings.SettingsManager;
 import de.phyrone.lobbyrel.player.settings.SettingsModule;
 import fr.minuskube.inv.ClickableItem;

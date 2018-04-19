@@ -4,8 +4,7 @@ import de.dytanic.cloudnet.api.CloudAPI;
 import de.dytanic.cloudnet.lib.database.Database;
 import de.dytanic.cloudnet.lib.utility.document.Document;
 import de.phyrone.lobbyrel.config.Config;
-import de.phyrone.lobbyrel.player.data.offline.InternalOfflinePlayerData;
-import de.phyrone.lobbyrel.player.data.offline.OfflinePlayerStorage;
+import de.phyrone.lobbyrel.player.data.internal.InternalOfflinePlayerData;
 
 import java.util.UUID;
 

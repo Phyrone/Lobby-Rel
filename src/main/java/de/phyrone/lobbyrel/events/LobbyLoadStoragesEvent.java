@@ -1,12 +1,11 @@
 package de.phyrone.lobbyrel.events;
 
-import java.util.HashMap;
-
+import de.phyrone.lobbyrel.storage.OfflinePlayerStorage;
+import de.phyrone.lobbyrel.storage.StorageManager;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import de.phyrone.lobbyrel.player.data.offline.InternalOfllineDataManager;
-import de.phyrone.lobbyrel.player.data.offline.OfflinePlayerStorage;
+import java.util.HashMap;
 
 public class LobbyLoadStoragesEvent extends Event{
 	private static HandlerList HandlerList = new HandlerList();
@@ -20,11 +19,11 @@ public class LobbyLoadStoragesEvent extends Event{
 	public LobbyLoadStoragesEvent(String storage){
     	this.storage = storage;
     }public void addStorage(String name,OfflinePlayerStorage storage) {
-		InternalOfllineDataManager.addSorage(name, storage);
+        StorageManager.addSorage(name, storage);
     }public void removeStorage(String name) {
-    	InternalOfllineDataManager.removeSorage(name);
+        StorageManager.removeSorage(name);
     }public HashMap<String, OfflinePlayerStorage> getAlreadyLoadedStorages() {
-    	return InternalOfllineDataManager.storageTeamplates;
+        return StorageManager.storageTeamplates;
     }
 	public String getStorage() {
 		return storage;

@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.phyrone</groupId>
     <artifactId>Lobby-Rel</artifactId>
-    <version>0.3.07-ALPHA</version>
+    <version>0.3.08-ALPHA</version>
     <developers>
         <developer>
             <id>Phyrone</id>
@@ -141,7 +141,7 @@
                     </descriptorRefs>
                     <finalName>Lobby-Rel-${project.version}</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
-                    <!--<outputDirectory>E:\TestServer\plugins</outputDirectory>-->
+                    <outputDirectory>E:\TestServer\plugins</outputDirectory>
                 </configuration>
                 <executions>
                     <execution>

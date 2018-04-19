@@ -1,17 +1,15 @@
 package de.phyrone.lobbyrel.player.jump;
 
-import java.util.ArrayList;
-
+import de.phyrone.lobbyrel.LobbyPlugin;
+import de.phyrone.lobbyrel.player.PlayerManager;
+import de.phyrone.lobbyrel.player.effect.EffectPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
 
-import de.phyrone.lobbyrel.LobbyPlugin;
-import de.phyrone.lobbyrel.player.PlayerManager;
-import de.phyrone.lobbyrel.player.data.OfflinePlayerData;
-import de.phyrone.lobbyrel.player.effect.EffectPlayer;
+import java.util.ArrayList;
 
 public class PlayerJumpManager {
 	static ArrayList<Player> jumpedplayers = new ArrayList<>();
@@ -21,23 +19,15 @@ public class PlayerJumpManager {
 		jumpedplayers.clear();
 		BukkitScheduler sch = Bukkit.getScheduler();
 		if(sch.isCurrentlyRunning(task))sch.cancelTask(task);
-		task = sch.scheduleAsyncRepeatingTask(LobbyPlugin.getInstance(), new Runnable() {
-			
-			@Override
-			public void run() {
-				for(Player p:jumpedplayers) {
-					Bukkit.getScheduler().runTask(LobbyPlugin.getInstance(), new Runnable() {
-						
-						@Override
-						public void run() {
-							if(p.isOnGround()) {
-								jumpedplayers.remove(p);
-								p.setAllowFlight(new OfflinePlayerData(p).getDoubleJump());
-							}
-						}
-					});
+        task = sch.scheduleAsyncRepeatingTask(LobbyPlugin.getInstance(), () -> {
+            for (Player p : jumpedplayers) {
+                Bukkit.getScheduler().runTask(LobbyPlugin.getInstance(), () -> {
+                    if (p.isOnGround()) {
+                        jumpedplayers.remove(p);
+                        p.setAllowFlight(PlayerManager.getPlayerData(p).getDoubleJump());
+                    }
+                });
 
-				}
 			}
 		}, 5, 5);
 		

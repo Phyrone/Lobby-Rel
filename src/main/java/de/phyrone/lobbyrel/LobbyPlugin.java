@@ -15,10 +15,8 @@ import de.phyrone.lobbyrel.lib.Metrics;
 import de.phyrone.lobbyrel.lib.TpsMeter;
 import de.phyrone.lobbyrel.listner.*;
 import de.phyrone.lobbyrel.lobbyswitcher.LobbySwitcher;
-import de.phyrone.lobbyrel.player.IdeodPreventer;
 import de.phyrone.lobbyrel.player.PlayerManager;
-import de.phyrone.lobbyrel.player.data.OfflinePlayerData;
-import de.phyrone.lobbyrel.player.data.offline.InternalOfllineDataManager;
+import de.phyrone.lobbyrel.storage.StorageManager;
 import de.phyrone.lobbyrel.update.LobbyDependency;
 import de.phyrone.lobbyrel.warps.WarpManager;
 import org.bukkit.Bukkit;
@@ -34,6 +32,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
     private static LobbyPlugin instance;
@@ -91,9 +90,8 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        InternalOfllineDataManager.disable();
         for (Player p : Bukkit.getOnlinePlayers()) {
-            new OfflinePlayerData(p).saveToConf();
+            PlayerManager.getPlayerData(p).quickSave();
         }
         Bukkit.getConsoleSender().sendMessage("[Lobby-Rel] §cZzz...");
     }
@@ -172,6 +170,12 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         player.sendPluginMessage(this, "BungeeCord", out.toByteArray());
     }
 
+    static Logger logger;
+
+    public static Logger getLobbyLogger() {
+        return logger;
+    }
+
     @Override
     public void onEnable() {
         try {
@@ -179,6 +183,7 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        logger = getLogger();
         if (!System.getProperty("java.version").startsWith("1.8.")) {
             System.err.println("[Lobby-Rel] Please use Java 1.8");
             Bukkit.getPluginManager().disablePlugin(this);
@@ -255,7 +260,7 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         Bukkit.getPluginCommand("spawn").setExecutor(new WarpCMD());
         // Metrics
         Metrics m = new Metrics(instance);
-        m.addCustomChart(new Metrics.SimplePie("storage_type", () -> InternalOfllineDataManager.getStorage().toUpperCase()));
+        m.addCustomChart(new Metrics.SimplePie("storage_type", () -> StorageManager.getStorage()));
         m.addCustomChart(new Metrics.AdvancedPie("players_use_navigator", () -> {
             HashMap<String, Integer> ret = new HashMap<>();
             for (Player p : Bukkit.getOnlinePlayers()) {

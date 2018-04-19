@@ -7,7 +7,7 @@ import de.phyrone.lobbyrel.hotbar.NavigatorHobar;
 import de.phyrone.lobbyrel.lib.LobbyItem;
 import de.phyrone.lobbyrel.player.PlayerManager;
 import de.phyrone.lobbyrel.player.data.PlayerData;
-import de.phyrone.lobbyrel.player.data.lang.LangManager;
+import de.phyrone.lobbyrel.player.lang.LangManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

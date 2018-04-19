@@ -1,4 +1,4 @@
-package de.phyrone.lobbyrel.player;
+package de.phyrone.lobbyrel;
 
 import de.dytanic.cloudnet.api.CloudAPI;
 import de.dytanic.cloudnet.lib.server.ServerGroup;

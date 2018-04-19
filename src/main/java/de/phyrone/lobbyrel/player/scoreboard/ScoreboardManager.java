@@ -4,7 +4,7 @@ import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.player.PlayerManager;
 import de.phyrone.lobbyrel.player.data.PlayerData;
-import de.phyrone.lobbyrel.player.data.lang.LangManager;
+import de.phyrone.lobbyrel.player.lang.LangManager;
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.tade.quickboard.api.QuickBoardAPI;
 import org.bukkit.Bukkit;
@@ -134,7 +134,7 @@ public class ScoreboardManager {
 			@Override
 			public void run() {
 				PlayerData pd = PlayerManager.getPlayerData(player);
-				if(enabled && pd.getOfflineData().getScoreboard()) {
+                if (enabled && pd.isScoreboard()) {
 									try {
 										if(external) {
 											new BukkitRunnable() {

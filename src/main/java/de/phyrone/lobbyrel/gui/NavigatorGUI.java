@@ -2,7 +2,7 @@ package de.phyrone.lobbyrel.gui;
 
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
-import de.phyrone.lobbyrel.player.data.lang.LangManager;
+import de.phyrone.lobbyrel.player.lang.LangManager;
 import de.phyrone.lobbyrel.warps.Teleporter;
 import de.phyrone.lobbyrel.warps.Warp;
 import de.phyrone.lobbyrel.warps.WarpManager;

@@ -3,7 +3,8 @@ package de.phyrone.lobbyrel.player.effect;
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.lib.Sounds;
-import de.phyrone.lobbyrel.player.data.OfflinePlayerData;
+import de.phyrone.lobbyrel.player.PlayerManager;
+import de.phyrone.lobbyrel.player.data.PlayerData;
 import de.slikey.effectlib.EffectManager;
 import de.slikey.effectlib.effect.DnaEffect;
 import de.slikey.effectlib.effect.FlameEffect;
@@ -18,13 +19,15 @@ import org.bukkit.potion.PotionEffectType;
 public class EffectPlayer {
     static EffectManager m = new EffectManager(LobbyPlugin.getInstance());
     Player p;
+    PlayerData data;
 
     public EffectPlayer(Player player) {
         this.p = player;
+        data = PlayerManager.getPlayerData(player);
     }
 
     private Boolean allowSound() {
-        return new OfflinePlayerData(p).getSound();
+        return data.getSound();
     }
 
     public void teleportEffect() {

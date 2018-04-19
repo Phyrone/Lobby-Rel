@@ -15,7 +15,7 @@ public class OtherEvents implements Listener {
     public void onJumppad(PlayerInteractEvent e) {
         if (e.getAction() == Action.PHYSICAL) {
             Player p = e.getPlayer();
-            if (!PlayerManager.getPlayerData(p).isBuilder() && PlayerManager.getPlayerData(p).getOfflineData().getJumpPads()) {
+            if (!PlayerManager.getPlayerData(p).isBuilder() && PlayerManager.getPlayerData(p).getJumpPad()) {
                 if (e.getClickedBlock().getType() == Material.GOLD_PLATE
                         || e.getClickedBlock().getType() == Material.IRON_PLATE) {
                     PlayerJumpManager.jumpPadJump(p);

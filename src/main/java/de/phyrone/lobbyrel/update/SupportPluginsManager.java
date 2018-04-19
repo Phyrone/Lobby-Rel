@@ -18,7 +18,8 @@ public class SupportPluginsManager {
 
     public static void check() {
         for (SupportedPlugin supportedPlugin : SupportedPlugin.values()) {
-            if (Bukkit.getPluginManager().isPluginEnabled(supportedPlugin.getPluginname()))
+            if (Config.getBoolean("PluginSuport." + supportedPlugin.pluginname + ".Enabled", true)
+                    && Bukkit.getPluginManager().isPluginEnabled(supportedPlugin.getPluginname()))
                 Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), supportedPlugin.getOnDetect());
         }
     }
@@ -59,7 +60,7 @@ class BetterNickSupport implements Runnable {
 
     @Override
     public void run() {
-        if (Config.getBoolean("NickSystem.Enabled", true)) {
+        if (true) {
             ItemsConfig cfg = ItemsConfig.getInstance();
             api = BetterNick.getApi();
             slot = Config.getInt("NickSystem.Item.Slot", 10);
@@ -96,8 +97,6 @@ class BetterNickSupport implements Runnable {
                             Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(),
                                     () -> MainHotbar.hotbar.updateItem(event.getPlayer())
                             );
-                            /*event.getPlayer().getInventory().setItem(event.getPlayer().getInventory().getHeldItemSlot(), api.hasPlayerAutoNick(
-                                                                      event.getPlayer()) ? nickOffItem.getAsItemStack(event.getPlayer()) : nickOnItem.getAsItemStack(event.getPlayer())*/
 
 
                         }

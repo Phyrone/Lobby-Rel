@@ -1,7 +1,6 @@
 package de.phyrone.lobbyrel.storage;
 
-import de.phyrone.lobbyrel.player.data.offline.InternalOfflinePlayerData;
-import de.phyrone.lobbyrel.player.data.offline.OfflinePlayerStorage;
+import de.phyrone.lobbyrel.player.data.internal.InternalOfflinePlayerData;
 
 import java.util.HashMap;
 import java.util.UUID;

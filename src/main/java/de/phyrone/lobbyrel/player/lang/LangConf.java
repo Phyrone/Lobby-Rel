@@ -1,11 +1,12 @@
-package de.phyrone.lobbyrel.player.data.lang;
+package de.phyrone.lobbyrel.player.lang;
+
+import de.phyrone.lobbyrel.lib.Utf8YamlConfiguration;
+import org.bukkit.configuration.InvalidConfigurationException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import org.bukkit.configuration.InvalidConfigurationException;
-import de.phyrone.lobbyrel.lib.Utf8YamlConfiguration;
 
 public class LangConf
 {

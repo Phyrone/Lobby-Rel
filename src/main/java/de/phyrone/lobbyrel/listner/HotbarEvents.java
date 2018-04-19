@@ -1,6 +1,9 @@
 package de.phyrone.lobbyrel.listner;
 
-import org.bukkit.Material;
+import de.phyrone.lobbyrel.hotbar.MainHotbar;
+import de.phyrone.lobbyrel.hotbar.api.Hotbar;
+import de.phyrone.lobbyrel.player.PlayerManager;
+import de.phyrone.lobbyrel.player.data.PlayerData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -8,11 +11,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.inventory.PlayerInventory;
-
-import de.phyrone.lobbyrel.hotbar.MainHotbar;
-import de.phyrone.lobbyrel.hotbar.api.Hotbar;
-import de.phyrone.lobbyrel.player.PlayerManager;
-import de.phyrone.lobbyrel.player.data.PlayerData;
 
 public class HotbarEvents implements Listener {
 	@EventHandler

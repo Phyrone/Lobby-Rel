@@ -1,14 +1,13 @@
 package de.phyrone.lobbyrel.storage;
 
+import de.phyrone.lobbyrel.config.Config;
+import de.phyrone.lobbyrel.lib.sql.MySQL;
+import de.phyrone.lobbyrel.player.data.internal.InternalOfflinePlayerData;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.UUID;
-
-import de.phyrone.lobbyrel.config.Config;
-import de.phyrone.lobbyrel.lib.sql.MySQL;
-import de.phyrone.lobbyrel.player.data.offline.InternalOfflinePlayerData;
-import de.phyrone.lobbyrel.player.data.offline.OfflinePlayerStorage;
 
 public class MySQLStorage extends OfflinePlayerStorage{
 	static MySQL sql = null;
@@ -33,7 +32,7 @@ public class MySQLStorage extends OfflinePlayerStorage{
 		}
 		table = Config.getString("Storage.MySQL.Table","LobbyPlayerData");
 		try {
-			sql.getConnection().createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS "+table+" (UUID varchar(100) , DATA MEDIUMTEXT)");
+            sql.getConnection().createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS " + table + " (UUID UUID , DATA JSON)");
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

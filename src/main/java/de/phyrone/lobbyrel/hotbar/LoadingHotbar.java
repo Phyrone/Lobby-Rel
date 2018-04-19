@@ -6,7 +6,7 @@ import de.phyrone.lobbyrel.config.ItemsConfig;
 import de.phyrone.lobbyrel.hotbar.api.Hotbar;
 import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
 import de.phyrone.lobbyrel.lib.LobbyItem;
-import de.phyrone.lobbyrel.player.data.lang.LangManager;
+import de.phyrone.lobbyrel.player.lang.LangManager;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

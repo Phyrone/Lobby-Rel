@@ -1,19 +1,18 @@
 package de.phyrone.lobbyrel.cmd;
 
-import java.util.List;
-
+import de.phyrone.lobbyrel.LobbyPlugin;
+import de.phyrone.lobbyrel.cmd.help.HelpManager;
+import de.phyrone.lobbyrel.lib.Tools;
+import de.phyrone.lobbyrel.lib.json.FancyMessage;
+import de.phyrone.lobbyrel.player.lang.LangManager;
+import de.phyrone.lobbyrel.update.UpdateManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-import de.phyrone.lobbyrel.LobbyPlugin;
-import de.phyrone.lobbyrel.cmd.help.HelpManager;
-import de.phyrone.lobbyrel.lib.Tools;
-import de.phyrone.lobbyrel.lib.json.FancyMessage;
-import de.phyrone.lobbyrel.player.data.lang.LangManager;
-import de.phyrone.lobbyrel.update.UpdateManager;
+import java.util.List;
 
 public class LobbyCMD implements CommandExecutor, TabCompleter {
 

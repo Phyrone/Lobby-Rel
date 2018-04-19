@@ -13,9 +13,8 @@ import de.phyrone.lobbyrel.hotbar.customitems.CustomItemsManager;
 import de.phyrone.lobbyrel.lobbyswitcher.LobbySwitcher;
 import de.phyrone.lobbyrel.navigator.NavigatorManager;
 import de.phyrone.lobbyrel.player.PlayerManager;
-import de.phyrone.lobbyrel.player.data.lang.LangManager;
-import de.phyrone.lobbyrel.player.data.offline.InternalOfllineDataManager;
 import de.phyrone.lobbyrel.player.jump.PlayerJumpManager;
+import de.phyrone.lobbyrel.player.lang.LangManager;
 import de.phyrone.lobbyrel.player.scoreboard.ScoreboardManager;
 import de.phyrone.lobbyrel.player.settings.SettingsManager;
 import de.phyrone.lobbyrel.playertime.TimeManager;
@@ -50,9 +49,9 @@ public class OwnEventsListner implements Listener {
 		LoadingHotbar.init();
 		UpdateManager.init();
 		HelpManager.init();
-		InternalOfllineDataManager.init();
+        StorageManager.init();
         NavigatorManager.init();
-		InternalOfllineDataManager.addSorage("json", InternalOfllineDataManager.defaultStorage);
+        StorageManager.addSorage("json", StorageManager.defaultStorage);
         SupportPluginsManager.check();
 		if(Config.getBoolean("Items.Swticher.Enabled",true)) {
 			new LobbySwitcher().updateServers();

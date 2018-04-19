@@ -6,7 +6,7 @@ import de.phyrone.lobbyrel.lib.LobbyItem;
 import de.phyrone.lobbyrel.lib.StringReplacer;
 import de.phyrone.lobbyrel.lobbyswitcher.LobbySwitcher;
 import de.phyrone.lobbyrel.lobbyswitcher.LobbySwitcher.ServerConData;
-import de.phyrone.lobbyrel.player.data.lang.LangManager;
+import de.phyrone.lobbyrel.player.lang.LangManager;
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.SmartInventory;
 import fr.minuskube.inv.content.InventoryContents;
