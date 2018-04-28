@@ -15,6 +15,7 @@ import de.phyrone.lobbyrel.lib.protokoll.TinyProtocol;
 import de.phyrone.lobbyrel.listner.*;
 import de.phyrone.lobbyrel.lobbyswitcher.LobbySwitcher;
 import de.phyrone.lobbyrel.player.PlayerManager;
+import de.phyrone.lobbyrel.scheduler.StayActionManager;
 import de.phyrone.lobbyrel.scheduler.StayTitleManager;
 import de.phyrone.lobbyrel.storage.StorageManager;
 import de.phyrone.lobbyrel.update.LobbyDependency;
@@ -232,7 +233,9 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new HotbarEvents(), this);
         pm.registerEvents(new OwnEventsListner(), this);
         pm.registerEvents(new OtherEvents(), this);
+        /* Scheduler */
         pm.registerEvents(new StayTitleManager(), this);
+        pm.registerEvents(new StayActionManager(), this);
         /* Commands */
         PluginCommand lobbyCMD = Bukkit.getPluginCommand("lobby");
         lobbyCMD.setExecutor(new LobbyCMD());

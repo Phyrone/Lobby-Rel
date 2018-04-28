@@ -2,137 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75c0e7c6-91c1-4cb0-97b0-36188e25d3cc" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/PacketManipulator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/protokoll/Reflection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/protokoll/TinyProtocol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/tablist/PlayerList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/tablist/ReflectionUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/LobbyEconomy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/scheduler/StayTitleManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/scheduler/StayActionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lobby-Rel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Lobby-Rel.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/AbstractPacket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/BlockChangeArray.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/ChunkPacketProcessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/PacketWrapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperHandshakeClientSetProtocol.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperLoginClientEncryptionBegin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperLoginClientStart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperLoginServerDisconnect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperLoginServerEncryptionBegin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperLoginServerSuccess.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientAbilities.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientArmAnimation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientBlockPlace.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientChat.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientClientCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientCloseWindow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientCustomPayload.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientEnchantItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientEntityAction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientFlying.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientHeldItemSlot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientKeepAlive.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientLook.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientPosition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientPositionLook.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientSetCreativeSlot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientSettings.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientSteerVehicle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientTabComplete.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientTransaction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientUpdateSign.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientUseEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayClientWindowClick.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerAbilities.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerAnimation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerAttachEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerBed.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerBlockAction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerBlockBreakAnimation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerBlockChange.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerChat.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerCloseWindow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerCollect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerCraftProgressBar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerCustomPayload.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerEntityDestroy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerEntityEffect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerEntityEquipment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerEntityHeadRotation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerEntityLook.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerEntityMetadata.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerEntityMoveLook.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerEntityStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerEntityTeleport.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerEntityVelocity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerExperience.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerExplosion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerGameStateChange.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerHeldItemSlot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerKeepAlive.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerKickDisconnect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerLogin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerMapChunk.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerMapChunkBulk.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerMultiBlockChange.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerNamedEntitySpawn.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerNamedSoundEffect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerOpenSignEditor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerOpenSignEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerOpenWindow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerPlayerInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerPosition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerRelEntityMove.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerRemoveEntityEffect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerRespawn.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerScoreboardDisplayObjective.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerScoreboardObjective.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerScoreboardScore.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerScoreboardTeam.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerSetSlot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerSpawnEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerSpawnEntityExperienceOrb.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerSpawnEntityLiving.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerSpawnEntityPainting.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerSpawnEntityWeather.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerSpawnPosition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerTabComplete.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerTileEntityData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerTransaction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerUpdateAttributes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerUpdateHealth.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerUpdateSign.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerUpdateTime.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerWindowItems.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperPlayServerWorldEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperStatusClientInPing.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperStatusClientInStart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperStatusServerOutPing.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bobacadodl/ClickEdit/packetwrapper/WrapperStatusServerOutServerInfo.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cmd/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cmd/CommandManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/NavigatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/NavigatorGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/ReflectionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/ReflectionUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/SignGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Tools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/FancyMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/FancyMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/OwnEventsListner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/OwnEventsListner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/PlayerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/PlayerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/internal/InternalOfflinePlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/internal/InternalOfflinePlayerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/scoreboard/ScoreboardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/scoreboard/ScoreboardManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/CacheOnlyStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/CacheOnlyStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/JsonStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/JsonStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/MySQLStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/MySQLStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/NoStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/NoStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/OfflinePlayerStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/OfflinePlayerStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/StorageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/StorageManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/SupportPluginsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/SupportPluginsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/scheduler/StayTitleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/scheduler/StayTitleManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -158,13 +32,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StayTitleManager.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/scheduler/StayTitleManager.java">
+      <file leaf-file-name="StayActionManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/scheduler/StayActionManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="1" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+            <state relative-caret-position="277">
+              <caret line="160" column="67" selection-start-line="160" selection-start-column="67" selection-end-line="160" selection-end-column="67" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1445#1446#0" expanded="true" />
+                <element signature="e#1522#1523#0" expanded="true" />
+                <element signature="e#1604#1605#0" expanded="true" />
+                <element signature="e#1679#1680#0" expanded="true" />
+                <element signature="e#1752#1753#0" expanded="true" />
+                <element signature="e#1826#1827#0" expanded="true" />
+                <element signature="e#2112#2113#0" expanded="true" />
+                <element signature="e#2188#2189#0" expanded="true" />
+                <element signature="e#2264#2265#0" expanded="true" />
+                <element signature="e#2346#2347#0" expanded="true" />
+                <element signature="e#2417#2418#0" expanded="true" />
+                <element signature="e#2470#2471#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -173,8 +58,31 @@
       <file leaf-file-name="LobbyPlugin.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="234" column="40" lean-forward="true" selection-start-line="234" selection-start-column="40" selection-end-line="234" selection-end-column="40" />
+            <state relative-caret-position="606">
+              <caret line="237" column="49" selection-start-line="237" selection-start-column="49" selection-end-line="237" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StayTitleManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/scheduler/StayTitleManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="246">
+              <caret line="170" column="28" selection-start-line="170" selection-start-column="28" selection-end-line="170" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1586#1587#0" expanded="true" />
+                <element signature="e#1660#1661#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/PlayerManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="203" column="34" selection-start-line="203" selection-start-column="34" selection-end-line="203" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -191,7 +99,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>static</find>
       <find>Config</find>
       <find>save</find>
       <find>getStringL</find>
@@ -221,6 +128,7 @@
       <find>setCu</find>
       <find>IChatBaseComponent</find>
       <find>title</find>
+      <find>Title</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -239,7 +147,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/effect/EffectPlayer.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/lang/LangManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/IdeodPreventer.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/JoinEvent.java" />
@@ -283,11 +190,12 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/SupportPluginsManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/PlayerData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/PlayerManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/FancyMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/PacketManipulator.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Tools.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cmd/CommandManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/PlayerManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/scheduler/StayActionManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/scheduler/StayTitleManager.java" />
       </list>
@@ -359,7 +267,36 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
+              <item name="player" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lobby-Rel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
               <item name="scheduler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lobby-Rel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
+              <item name="scheduler" type="462c0819:PsiDirectoryNode" />
+              <item name="StayActionManager.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
+            <path>
+              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lobby-Rel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
+              <item name="scheduler" type="462c0819:PsiDirectoryNode" />
+              <item name="StayTitleManager.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
             <path>
               <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
@@ -399,6 +336,9 @@
     <property name="settings.editor.selected.configurable" value="copyright.profiles" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\java\IntelliJ18\Lobby-Rel\src\main\java\de\phyrone\lobbyrel\scheduler" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\java\IntelliJ18\Lobby-Rel\Lobby-Rel\src\main\java\com\bobacadodl\ClickEdit\packetwrapper" />
       <recent name="E:\java\IntelliJ18\Lobby-Rel\Lobby-Rel\src\main\java" />
@@ -741,14 +681,7 @@
       <workItem from="1524830451400" duration="6000" />
       <workItem from="1524831376770" duration="22000" />
       <workItem from="1524899538922" duration="12942000" />
-      <workItem from="1524941679237" duration="3010000" />
-    </task>
-    <task id="LOCAL-00013" summary="14.02.18">
-      <created>1518650243894</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1518650243894</updated>
+      <workItem from="1524941679237" duration="10595000" />
     </task>
     <task id="LOCAL-00014" summary="15.02.18">
       <created>1518657886252</created>
@@ -1086,11 +1019,18 @@
       <option name="project" value="LOCAL" />
       <updated>1524162518898</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Many changes so i don't know">
+      <created>1524945091029</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1524945091030</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="244490000" />
+    <option name="totallyTimeSpent" value="252075000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="49" width="1296" height="1000" extended-state="6" />
@@ -1103,11 +1043,12 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.34915254" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.490625" visible="true" weight="0.34463277" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.490625" visible="true" weight="0.34463277" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32881355" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -1119,7 +1060,6 @@
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32881355" />
       <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.4875" weight="0.32542372" />
     </layout>
     <layout-to-restore>
@@ -1159,7 +1099,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="14.02.18" />
     <MESSAGE value="15.02.18" />
     <MESSAGE value="17.02.18" />
     <MESSAGE value="24.02.18" />
@@ -1184,7 +1123,8 @@
     <MESSAGE value="14.04" />
     <MESSAGE value="Betternick Support" />
     <MESSAGE value="Better PLayerdataHandling and Minor Changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Better PLayerdataHandling and Minor Changes" />
+    <MESSAGE value="Many changes so i don't know" />
+    <option name="LAST_COMMIT_MESSAGE" value="Many changes so i don't know" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1194,34 +1134,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/events/LobbyLoadStoragesEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="27" column="29" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/sql/MySQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-19">
-          <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/internal/InternalPlayerData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cmd/help/HelpManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-434">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/LobbyGuard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="97">
@@ -1411,6 +1323,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-233">
           <caret line="37" column="42" lean-forward="true" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1439,17 +1354,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="273" column="9" selection-start-line="273" selection-start-column="9" selection-end-line="273" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/PlayerManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3813">
-          <caret line="348" column="34" selection-start-line="348" selection-start-column="34" selection-end-line="348" selection-end-column="34" />
-          <folding>
-            <element signature="e#12057#12058#0" expanded="true" />
-            <element signature="e#12118#12119#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1498,19 +1402,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="81" column="30" selection-start-line="80" selection-start-column="53" selection-end-line="81" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/spigotmc/spigot-api-advanced/1.12.2/spigot-api-advanced-1.12.2.jar!/org/bukkit/scheduler/BukkitScheduler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/spigotmc/spigot-api-advanced/1.12.2/spigot-api-advanced-1.12.2.jar!/org/bukkit/ChatColor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="190" column="25" selection-start-line="190" selection-start-column="25" selection-end-line="190" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/PlayerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="203" column="34" selection-start-line="203" selection-start-column="34" selection-end-line="203" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="234" column="40" lean-forward="true" selection-start-line="234" selection-start-column="40" selection-end-line="234" selection-end-column="40" />
+        <state relative-caret-position="606">
+          <caret line="237" column="49" selection-start-line="237" selection-start-column="49" selection-end-line="237" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/scheduler/StayActionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="160" column="67" selection-start-line="160" selection-start-column="67" selection-end-line="160" selection-end-column="67" />
+          <folding>
+            <element signature="e#1445#1446#0" expanded="true" />
+            <element signature="e#1522#1523#0" expanded="true" />
+            <element signature="e#1604#1605#0" expanded="true" />
+            <element signature="e#1679#1680#0" expanded="true" />
+            <element signature="e#1752#1753#0" expanded="true" />
+            <element signature="e#1826#1827#0" expanded="true" />
+            <element signature="e#2112#2113#0" expanded="true" />
+            <element signature="e#2188#2189#0" expanded="true" />
+            <element signature="e#2264#2265#0" expanded="true" />
+            <element signature="e#2346#2347#0" expanded="true" />
+            <element signature="e#2417#2418#0" expanded="true" />
+            <element signature="e#2470#2471#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/scheduler/StayTitleManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="1" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+        <state relative-caret-position="246">
+          <caret line="170" column="28" selection-start-line="170" selection-start-column="28" selection-end-line="170" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1586#1587#0" expanded="true" />
+            <element signature="e#1660#1661#0" expanded="true" />
           </folding>
         </state>
       </provider>

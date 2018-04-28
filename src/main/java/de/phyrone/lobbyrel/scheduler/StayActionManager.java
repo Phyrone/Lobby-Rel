@@ -3,7 +3,6 @@ package de.phyrone.lobbyrel.scheduler;
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.events.LobbyReloadEvent;
 import de.phyrone.lobbyrel.lib.Tools;
-import de.phyrone.lobbyrel.lib.json.FancyMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -17,38 +16,38 @@ import org.bukkit.scheduler.BukkitTask;
 
 import java.util.HashMap;
 
-public class StayTitleManager implements Listener {
-    static StayTitleManager instance;
+public class StayActionManager implements Listener {
+    static StayActionManager instance;
 
-    private HashMap<Player, IHandledTitle> titles = new HashMap<>();
-    private HashMap<Player, StaticTitleApi> apis = new HashMap<>();
+    private HashMap<Player, IHandledAction> Actions = new HashMap<>();
+    private HashMap<Player, StaticActionApi> apis = new HashMap<>();
 
-    public StayTitleManager() {
+    public StayActionManager() {
         instance = this;
 
     }
 
-    public static StayTitleManager getInstance() {
+    public static StayActionManager getInstance() {
         return instance;
     }
 
-    private IHandledTitle getIhandled(Player player) {
-        if (!titles.containsKey(player))
-            titles.put(player, new IHandledTitle(player));
-        return titles.get(player);
+    private IHandledAction getIhandled(Player player) {
+        if (!Actions.containsKey(player))
+            Actions.put(player, new IHandledAction(player));
+        return Actions.get(player);
     }
 
-    public StaticTitleApi getTitle(Player player) {
+    public StaticActionApi getAction(Player player) {
         if (!apis.containsKey(player))
-            apis.put(player, new StaticTitleApi() {
+            apis.put(player, new StaticActionApi() {
                 @Override
-                public void setTitle(TextHandler handler) {
+                public void setAction(TextHandler handler) {
                     getIhandled(player).handler = handler;
                 }
 
                 @Override
-                public void setTitle(String title) {
-                    getIhandled(player).setText(title);
+                public void setAction(String action) {
+                    getIhandled(player).setText(action);
                 }
 
                 @Override
@@ -103,24 +102,24 @@ public class StayTitleManager implements Listener {
 
     private void remove(Player player) {
         if (apis.containsKey(player)) apis.remove(player);
-        if (titles.containsKey(player)) {
-            getTitle(player).setEnabled(false);
-            titles.remove(player);
+        if (Actions.containsKey(player)) {
+            getAction(player).setEnabled(false);
+            Actions.remove(player);
         }
     }
 
     private void add(Player player) {
-        titles.put(player, new IHandledTitle(player));
+        Actions.put(player, new IHandledAction(player));
     }
 
     public interface TextHandler {
         String onText(Player player);
     }
 
-    public interface StaticTitleApi {
-        void setTitle(TextHandler handler);
+    public interface StaticActionApi {
+        void setAction(TextHandler handler);
 
-        void setTitle(String title);
+        void setAction(String Action);
 
         boolean getEnabled();
 
@@ -135,32 +134,29 @@ public class StayTitleManager implements Listener {
 
 }
 
-class IHandledTitle {
+class IHandledAction {
     static BukkitScheduler s = Bukkit.getScheduler();
     Player player;
-    StayTitleManager.TextHandler handler = null;
+    StayActionManager.TextHandler handler = null;
     String text = "&k-------";
     boolean enabled = false;
     BukkitTask task = null;
-    Runnable runnable = () -> updateTitle();
+    Runnable runnable = () -> updateAction();
 
-    public IHandledTitle(Player player) {
+    public IHandledAction(Player player) {
         this.player = player;
     }
 
-    private void updateTitle() {
+    private void updateAction() {
         if (LobbyPlugin.getDebug())
-            System.out.println("Send Title");
+            System.out.println("Send Action-Bar");
         String ctext = getText(player);
         if (ctext == null) {
             enabled = false;
             updateSched();
         }
         ctext = ChatColor.translateAlternateColorCodes('&', ctext);
-        String[] lines = ctext.contains("\n") ? ctext.split("\n", 2) : new String[]{ctext};
-        Tools.sendTitle(player, new FancyMessage(!lines[0].equals("") ? lines[0] : " "), 0, 40, 0);
-        if (lines.length > 1)
-            Tools.sendTitle(player, new FancyMessage(!lines[1].equals("") ? lines[1] : " "), true, 0, 40, 0);
+        Tools.sendActionbar(player, ctext);
     }
 
     public void updateSched() {
@@ -168,7 +164,6 @@ class IHandledTitle {
         else if (!enabled && isRunning()) {
             task.cancel();
             task = null;
-            player.resetTitle();
         }
 
     }
@@ -187,10 +182,10 @@ class IHandledTitle {
         this.text = text;
         handler = null;
         if (enabled)
-            updateTitle();
+            updateAction();
     }
 
-    public StayTitleManager.TextHandler getHandler() {
+    public StayActionManager.TextHandler getHandler() {
         return handler;
     }
 
