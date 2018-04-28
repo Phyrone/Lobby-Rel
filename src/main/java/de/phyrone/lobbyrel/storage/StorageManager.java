@@ -1,5 +1,6 @@
 package de.phyrone.lobbyrel.storage;
 
+import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.events.LobbyLoadStoragesEvent;
 import de.phyrone.lobbyrel.player.data.internal.InternalOfflinePlayerData;
@@ -9,14 +10,14 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class StorageManager {
-    public static String getStorage() {
-        return storage.toUpperCase();
-    }
-
     public final static JsonStorage defaultStorage = new JsonStorage();
     public static HashMap<String, OfflinePlayerStorage> storageTeamplates = new HashMap<String, OfflinePlayerStorage>();
     static boolean init = false;
     static String storage = "json";
+
+    public static String getStorage() {
+        return storage.toUpperCase();
+    }
 
     public static void clearStorages() {
         storageTeamplates.clear();
@@ -47,7 +48,15 @@ public class StorageManager {
     }
 
     public static InternalOfflinePlayerData loadPlayerData(UUID uuid) {
-        InternalOfflinePlayerData dt = storageTeamplates.getOrDefault(storage, defaultStorage).load(uuid);
+
+        InternalOfflinePlayerData dt = null;
+        try {
+            System.out.println("Load OFFLINEDATA - " + uuid.toString());
+            dt = storageTeamplates.getOrDefault(storage, defaultStorage).load(uuid);
+        } catch (Exception e) {
+            if (LobbyPlugin.getDebug())
+                e.printStackTrace();
+        }
         if (dt == null) {
             dt = new InternalOfflinePlayerData();
         }
@@ -55,7 +64,13 @@ public class StorageManager {
     }
 
     public static void save(UUID uuid, InternalOfflinePlayerData data) {
-        storageTeamplates.getOrDefault(storage, defaultStorage).save(uuid, data);
+        try {
+            System.out.println("Save OFFLINEDATA - " + uuid.toString());
+            storageTeamplates.getOrDefault(storage, defaultStorage).save(uuid, data);
+        } catch (Exception e) {
+            if (LobbyPlugin.getDebug())
+                e.printStackTrace();
+        }
     }
 
 }

@@ -27,8 +27,7 @@ public class NavigatorGUI implements InventoryProvider {
 	}
 	public static void open(Player p,int page) {
 		SmartInventory.builder().title(LangManager.getMessage(p, "GUI.Navigator.Title", "&6&lNavigator")).id("navigator-"+p.getUniqueId().toString())
-		.size(5, 9).provider(new NavigatorGUI()).build()
-		.open(p, page);
+                .size(5, 9).provider(new NavigatorGUI()).build().open(p, page);
 	}
 
 	@SuppressWarnings("deprecation")

@@ -1,6 +1,7 @@
 package de.phyrone.lobbyrel.lib.json;
 
 import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.wrappers.WrappedChatComponent;
 import com.google.gson.JsonArray;
@@ -8,7 +9,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonWriter;
-import de.phyrone.lobbyrel.LobbyPlugin;
+import de.phyrone.lobbyrel.SupportPluginsManager;
+import de.phyrone.lobbyrel.lib.Tools;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -24,6 +26,33 @@ import java.util.logging.Level;
 
 import static de.phyrone.lobbyrel.lib.json.TextualComponent.rawText;
 
+enum SendJsonType {
+    TELLRAW((player, message) -> {
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tellraw " + player.getName() + " " + message.toJSONString());
+    }), PROTOCOL((player, message) -> {
+        PacketContainer packet = new PacketContainer(PacketType.Play.Server.CHAT);
+        packet.getChatComponents().write(0, WrappedChatComponent.fromJson(message.toJSONString()));
+        ProtocolLibrary.getProtocolManager().sendServerPacket(player, packet);
+    }), COMPATIBILITY((player, message) -> {
+        player.sendMessage(message.toOldMessageFormat());
+    }), TINY_PROTOCOL((player, message) -> {
+        Tools.sendJsonChat(player, message);
+    });
+    SendHandler handler;
+
+    SendJsonType(SendHandler handler) {
+        this.handler = handler;
+    }
+
+    public SendHandler getHandler() {
+        return handler;
+    }
+}
+
+interface SendHandler {
+    void send(Player player, FancyMessage message) throws Exception;
+}
+
 /**
  * Represents a formattable message. Such messages can use elements such as colors, formatting codes, hover and click data, and other features provided by the vanilla Minecraft <a href="http://minecraft.gamepedia.com/Tellraw#Raw_JSON_Text">JSON message formatter</a>.
  * This class allows plugins to emulate the functionality of the vanilla Minecraft <a href="http://minecraft.gamepedia.com/Commands#tellraw">tellraw command</a>.
@@ -36,6 +65,7 @@ import static de.phyrone.lobbyrel.lib.json.TextualComponent.rawText;
  */
 public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<MessagePart>, ConfigurationSerializable {
     private static final boolean TELLRAW = checkTellRawCMD();
+    private static final SendJsonType sendJsonType = getType();
     private static JsonParser _stringParser = new JsonParser();
 
     static {
@@ -67,6 +97,14 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
      */
     public FancyMessage() {
         this((TextualComponent) null);
+    }
+
+    private static SendJsonType getType() {
+        if (checkTellRawCMD()) {
+            return SendJsonType.TELLRAW;
+        } else if (SupportPluginsManager.SupportedPlugin.PROTOCOL_LIB.isEnabled()) return SendJsonType.PROTOCOL;
+        else return SendJsonType.TINY_PROTOCOL;
+
     }
 
     public static boolean checkTellRawCMD() {
@@ -562,26 +600,17 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
      * @param player The player who will receive the message.
      */
     public void send(Player player) {
-        send(player, toJSONString());
+        send((CommandSender) player);
     }
 
-    private void send(CommandSender sender, String jsonString) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(toOldMessageFormat());
-            return;
-        }
-        Player player = (Player) sender;
-        try {
-            if (TELLRAW)
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tellraw " + player.getName() + " " + jsonString);
-            else
-                sendJsonMSG(player, jsonString);
-        } catch (Exception e) {
-            player.sendMessage(toOldMessageFormat());
-            System.out.println("Json massage could not be send! - " + e.getMessage());
-            e.printStackTrace();
-        }
-        //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tellraw " + player.getName() + " " + jsonString);
+    /**
+     * Sends this message to several players. The player will receive the fully-fledged formatted display of this message.
+     *
+     * @param players The players who will receive the message.
+     */
+    public void send(Player... players) {
+        for (Player player : players)
+            send((CommandSender) player);
     }
 
 
@@ -594,7 +623,22 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
      * @see #toOldMessageFormat()
      */
     public void send(CommandSender sender) {
-        send(sender, toJSONString());
+        if (!(sender instanceof Player)) {
+            sender.sendMessage(toOldMessageFormat());
+            return;
+        }
+        Player player = (Player) sender;
+        try {
+            sendJsonType.getHandler().send(player, this);
+        } catch (Exception e) {
+
+            try {
+                SendJsonType.COMPATIBILITY.getHandler().send(player, this);
+            } catch (Exception e1) {
+            }
+            System.out.println("Json massage could not be send! - " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -604,9 +648,8 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
      * @see #send(CommandSender)
      */
     public void send(final Iterable<? extends CommandSender> senders) {
-        String string = toJSONString();
         for (final CommandSender sender : senders) {
-            send(sender, string);
+            send(sender);
         }
     }
 
@@ -673,10 +716,4 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
     }
 
 
-    private void sendJsonMSG(Player player, String json) throws Exception {
-        PacketContainer chatPacket = new PacketContainer(PacketType.Play.Server.CHAT);
-        chatPacket.getChatComponents().write(0, WrappedChatComponent.fromJson(json));
-        LobbyPlugin.getProtocolManager().sendServerPacket(player, chatPacket);
-
-    }
 }

@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.phyrone</groupId>
     <artifactId>Lobby-Rel</artifactId>
-    <version>0.3.08-ALPHA</version>
+    <version>0.3.08-ALPHA-DEV</version>
     <developers>
         <developer>
             <id>Phyrone</id>
@@ -39,6 +39,11 @@
     <!-- Dependencys -->
     <dependencies>
         <dependency>
+            <groupId>org.msgpack</groupId>
+            <artifactId>msgpack</artifactId>
+            <version>0.6.12</version>
+        </dependency>
+        <dependency>
             <groupId>be.isach</groupId>
             <artifactId>ultracosmetics</artifactId>
             <version>2.4.11</version>
@@ -50,13 +55,7 @@
             <version>4.3.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api-advanced</artifactId>
-            <version>1.12.2</version>
-            <type>jar</type>
-            <scope>provided</scope>
-        </dependency>
+
         <dependency>
             <groupId>de.slikey</groupId>
             <artifactId>effectlib</artifactId>
@@ -104,6 +103,13 @@
             <groupId>de.domedd</groupId>
             <artifactId>betternick</artifactId>
             <version>6.7-20180414.204656-1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api-advanced</artifactId>
+            <version>1.12.2</version>
+            <type>jar</type>
             <scope>provided</scope>
         </dependency>
     </dependencies>

@@ -1,7 +1,5 @@
 package de.phyrone.lobbyrel;
 
-import com.comphenix.protocol.ProtocolLibrary;
-import com.comphenix.protocol.ProtocolManager;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
@@ -13,16 +11,17 @@ import de.phyrone.lobbyrel.events.LobbyReloadEvent;
 import de.phyrone.lobbyrel.hotbar.customitems.CustomItemsManager;
 import de.phyrone.lobbyrel.lib.Metrics;
 import de.phyrone.lobbyrel.lib.TpsMeter;
+import de.phyrone.lobbyrel.lib.protokoll.TinyProtocol;
 import de.phyrone.lobbyrel.listner.*;
 import de.phyrone.lobbyrel.lobbyswitcher.LobbySwitcher;
 import de.phyrone.lobbyrel.player.PlayerManager;
+import de.phyrone.lobbyrel.scheduler.StayTitleManager;
 import de.phyrone.lobbyrel.storage.StorageManager;
 import de.phyrone.lobbyrel.update.LobbyDependency;
 import de.phyrone.lobbyrel.warps.WarpManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
@@ -35,10 +34,13 @@ import java.util.HashMap;
 import java.util.logging.Logger;
 
 public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
+    static Logger logger;
+
     private static LobbyPlugin instance;
     private static double tps = -1D;
-    private static Boolean debug = false;
-    private static ProtocolManager protocolManager;
+    private static Boolean debug = true;
+    boolean mc18 = Bukkit.getServer().getClass().getPackage().getName().contains("1_8");
+    PacketManipulator packetManipulator;
 
     public LobbyPlugin() {
         instance = this;
@@ -53,10 +55,17 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         }
     }
 
+    public static TinyProtocol getProtocol() {
+        return getInstance().getPacketManipulator().getProtocol();
+    }
+
     public static Boolean getDebug() {
         return debug;
     }
 
+    /**
+     * @return bukkit Plugin
+     */
     public static LobbyPlugin getInstance() {
         return instance;
     }
@@ -69,10 +78,12 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         return Config.getString("Prefix", "&8[&6Lobby&8-&cRel&8]").replaceAll("&", "§");
     }
 
-    static public ProtocolManager getProtocolManager() {
-        return protocolManager;
+    /**
+     * @return the Lobby logger from Bukkit
+     */
+    public static Logger getLobbyLogger() {
+        return logger;
     }
-
 
     private double getTPS() {
         return tps;
@@ -82,11 +93,6 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
     public void onDisable() {
         try {
             super.onDisable();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            WarpManager.saveToConf();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -104,6 +110,9 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         }
     }
 
+    /**
+     * Saves the Main, Warps and ItemsConfig
+     */
     @Override
     public void saveConfig() {
         BukkitRunnable run = new BukkitRunnable() {
@@ -170,12 +179,6 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         player.sendPluginMessage(this, "BungeeCord", out.toByteArray());
     }
 
-    static Logger logger;
-
-    public static Logger getLobbyLogger() {
-        return logger;
-    }
-
     @Override
     public void onEnable() {
         try {
@@ -189,21 +192,21 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
             Bukkit.getPluginManager().disablePlugin(this);
             return;
         }
-        if (!Bukkit.getServer().getClass().getPackage().getName().contains("1_8")) {
-            System.err.println("[Lobby-Rel] I recommend to use Spigot 1.8.8 ");
-        }
-
-        System.out.println("\n" +
+        Bukkit.getConsoleSender().sendMessage("§c\n" +
                 "  _          _     _             ____      _ \n" +
                 " | |    ___ | |__ | |__  _   _  |  _ \\ ___| |\n" +
                 " | |   / _ \\| '_ \\| '_ \\| | | | | |_) / _ \\ |\n" +
                 " | |__| (_) | |_) | |_) | |_| | |  _ <  __/ |\n" +
                 " |_____\\___/|_.__/|_.__/ \\__, | |_| \\_\\___|_|\n" +
                 "                         |___/               \n" +
-                "Version: " + this.getDescription().getVersion() + " by Phyrone");
+                "   §1Version: §5" + this.getDescription().getVersion() + (debug ? " §8[§4Debug Mode§8]" : "") + "\n" +
+                "   §1Author: §5Phyrone" + "\n" +
+                "   §1Minecraft: §5" + Bukkit.getBukkitVersion() + " " + (!mc18 && debug ? "§41.9 or Newer Detected!" : "") + "\n" +
+                "   §1Bukkit: §5" + Bukkit.getVersion() + "\n");
+
 
         instance = this;
-
+        initProtokoll();
         Bukkit.getConsoleSender().sendMessage("[Lobby-Rel] §6Loading Library's if needed...");
 
 
@@ -213,44 +216,24 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         } catch (Exception e1) {
             e1.printStackTrace();
         }
-        try {
-            Plugin protokollib = Bukkit.getPluginManager().getPlugin("ProtocolLib");
-            if (protokollib != null) {
-                if (!protokollib.isEnabled())
-                    Bukkit.getPluginManager().enablePlugin(protokollib);
-                try {
-                    if (protokollib.isEnabled())
-                        protocolManager = ProtocolLibrary.getProtocolManager();
-                    else throw new Exception();
-                } catch (Exception e) {
-                    System.out.println("Retry Loading " + protokollib.getName() + "...");
-                    protokollib.onLoad();
-                    if (!protokollib.isEnabled())
-                        Bukkit.getPluginManager().enablePlugin(protokollib);
-                    protocolManager = ProtocolLibrary.getProtocolManager();
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         loadConf();
         PluginManager pm = Bukkit.getPluginManager();
-        //BungeeMode
+        /* BungeeMode */
         try {
             this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
             this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //Events
+        /* Events */
         pm.registerEvents(new JoinEvent(), this);
         pm.registerEvents(new LobbyGuard(), this);
-        pm.registerEvents(new NineUpListner(), this);
+        if (!mc18) pm.registerEvents(new NineUpListner(), this);
         pm.registerEvents(new HotbarEvents(), this);
         pm.registerEvents(new OwnEventsListner(), this);
         pm.registerEvents(new OtherEvents(), this);
-        //Commands
+        pm.registerEvents(new StayTitleManager(), this);
+        /* Commands */
         PluginCommand lobbyCMD = Bukkit.getPluginCommand("lobby");
         lobbyCMD.setExecutor(new LobbyCMD());
         lobbyCMD.setTabCompleter(new LobbyCMD());
@@ -258,7 +241,7 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         Bukkit.getPluginCommand("setwarp").setExecutor(new WarpCMD());
         Bukkit.getPluginCommand("setspawn").setExecutor(new WarpCMD());
         Bukkit.getPluginCommand("spawn").setExecutor(new WarpCMD());
-        // Metrics
+        /* Metrics */
         Metrics m = new Metrics(instance);
         m.addCustomChart(new Metrics.SimplePie("storage_type", () -> StorageManager.getStorage()));
         m.addCustomChart(new Metrics.AdvancedPie("players_use_navigator", () -> {
@@ -285,7 +268,7 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
             n.setMaximumFractionDigits(2); // max. 2 stellen hinter komma
             return n.format(getTPS()) + "TPS";
         }));
-        //TPS
+        /* TPS */
         Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, () -> {
             tps = TpsMeter.getTPS(20 * 10);
             System.out.println();
@@ -307,13 +290,22 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
     @Override
     public void onLoad() {
         System.out.println("[Lobby-Rel] Loading Plugin");
+        debug = getDescription().getVersion().endsWith("-DEV");
         try {
-            new LobbyDependency(1997, "ProtocolLib").setPluginEnabler(false).setCustomURL("https://github.com/dmulloy2/ProtocolLib/releases/download/4.3.0/ProtocolLib.jar").check();
             super.onLoad();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
+    }
+
+    public void initProtokoll() {
+        packetManipulator = new PacketManipulator(this);
+
+    }
+
+    public PacketManipulator getPacketManipulator() {
+        return packetManipulator;
     }
 }

@@ -10,19 +10,21 @@ import de.phyrone.lobbyrel.player.data.internal.InternalOfflinePlayerData;
 import java.io.*;
 import java.util.UUID;
 
-public class JsonStorage extends OfflinePlayerStorage{
-	static String path;
-	@Override
-	public void init() {
-		path = Config.getString("Storage.FilePath",  
-				LobbyPlugin.getInstance().getDataFolder().getPath()+File.separator+"players");
-	}
-	@Override
-	public void save(UUID uuid, InternalOfflinePlayerData data) {
-    	File file = new File(Config.getString("Configs.Playerdata",path),uuid.toString()+".json");
-    	if(!file.getParentFile().exists()) {
-    		file.getParentFile().mkdirs();
-    	}
+public class JsonStorage extends OfflinePlayerStorage {
+    static String path;
+
+    @Override
+    public void init() {
+        path = Config.getString("Storage.FilePath",
+                LobbyPlugin.getInstance().getDataFolder().getPath() + File.separator + "players");
+    }
+
+    @Override
+    public void save(UUID uuid, InternalOfflinePlayerData data) {
+        File file = new File(path, uuid.toString() + ".json");
+        if (!file.getParentFile().exists()) {
+            file.getParentFile().mkdirs();
+        }
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String jsonConfig = gson.toJson(data);
         FileWriter writer;
@@ -30,17 +32,14 @@ public class JsonStorage extends OfflinePlayerStorage{
 
     }
 
-	@Override
-	public InternalOfflinePlayerData load(UUID uuid) {
-		File file = new File(Config.getString("Configs.Playerdata",path),uuid.toString()+".json");
-        try { 
-            Gson gson = new GsonBuilder().setPrettyPrinting().create(); 
-            BufferedReader reader = new BufferedReader(new InputStreamReader( 
-            		new FileInputStream(file))); 
-            return gson.fromJson(reader, InternalOfflinePlayerData.class); 
-        } catch (FileNotFoundException e) { 
-            return null; 
-        }
-	}
+    @Override
+    public InternalOfflinePlayerData load(UUID uuid) throws FileNotFoundException {
+        File file = new File(path, uuid.toString() + ".json");
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(
+                new FileInputStream(file)));
+        return gson.fromJson(reader, InternalOfflinePlayerData.class);
+    }
 
 }

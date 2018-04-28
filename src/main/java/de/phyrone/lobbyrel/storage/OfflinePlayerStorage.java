@@ -9,6 +9,8 @@ public abstract class OfflinePlayerStorage {
 	}
 	public void disable() {
 	}
-	abstract public void save(UUID uuid,InternalOfflinePlayerData data);
-	abstract public InternalOfflinePlayerData load(UUID uuid);
+
+    abstract public void save(UUID uuid, InternalOfflinePlayerData data) throws Exception;
+
+    abstract public InternalOfflinePlayerData load(UUID uuid) throws Exception;
 }

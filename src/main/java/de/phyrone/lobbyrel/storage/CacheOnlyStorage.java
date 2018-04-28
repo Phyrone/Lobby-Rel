@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class CacheOnlyStorage extends OfflinePlayerStorage {
-    private HashMap<UUID, InternalOfflinePlayerData> cache = new HashMap<>();
+    private static HashMap<UUID, InternalOfflinePlayerData> cache = new HashMap<>();
 
     @Override
     public void save(UUID uuid, InternalOfflinePlayerData data) {
@@ -19,7 +19,7 @@ public class CacheOnlyStorage extends OfflinePlayerStorage {
     }
 
     @Override
-    public void disable() {
-
+    public void init() {
+        cache.clear();
     }
 }

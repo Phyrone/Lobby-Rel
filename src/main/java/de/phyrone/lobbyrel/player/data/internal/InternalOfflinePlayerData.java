@@ -3,6 +3,7 @@ package de.phyrone.lobbyrel.player.data.internal;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import de.phyrone.lobbyrel.config.Config;
+import org.msgpack.MessagePack;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -10,6 +11,9 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class InternalOfflinePlayerData {
+    private static final Gson GSON = new GsonBuilder().create();
+    private static final Gson PRETTYGSON = new GsonBuilder().setPrettyPrinting().create();
+    private static final MessagePack MESSAGE_PACK = new MessagePack();
     //Data
     public int Navigator = Config.getInt("PlayerSettings.Default.Navigator", 0);
     public int PlayerHider = Config.getInt("PlayerSettings.Default.PlayerHider", 0);
@@ -34,21 +38,19 @@ public class InternalOfflinePlayerData {
     }
 
     public String toJsonString() {
-        Gson gson = new GsonBuilder().create();
-        return gson.toJson(this);
+        return GSON.toJson(this);
     }
 
     public String toPrettyJsonString() {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(this);
+        return PRETTYGSON.toJson(this);
     }
+
 
     public InternalOfflinePlayerData toFile(File file) throws IOException {
         if (!file.getParentFile().exists()) {
             file.getParentFile().mkdirs();
         }
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String jsonConfig = gson.toJson(this);
+        String jsonConfig = PRETTYGSON.toJson(this);
         FileWriter writer;
         writer = new FileWriter(file);
         writer.write(jsonConfig);
@@ -57,6 +59,4 @@ public class InternalOfflinePlayerData {
 
         return this;
     }
-
-
 }

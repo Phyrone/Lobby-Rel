@@ -45,87 +45,83 @@ public class ScoreboardManager {
             }
         }.runTaskLater((Plugin)Main.getInstance(), 2L);
     }*/
-		new Thread(new Runnable() {
-			
-			@SuppressWarnings("resource")
-			@Override
-			public void run() {
-				if(enabled) {
-					if(!Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-						//6245
-						URL website;
-						System.out.println("Downloading PlaceholderAPI...");
-						try {
-							///https://api.spiget.org/v2/resources/42835/versions/173186/download
-							//https://api.spiget.org/v2/resources/42835/download
-							website = new URL("https://api.spiget.org/v2/resources/6245/download");
-							ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-							FileOutputStream fos = new FileOutputStream("plugins/PlaceholderAPI.jar");
-							fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-							System.out.println("PlaceholderAPI.jar saved!");
+        new Thread(() -> {
+            if (enabled) {
+                if (!Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+                    //6245
+                    URL website;
+                    System.out.println("Downloading PlaceholderAPI...");
+                    try {
+                        ///https://api.spiget.org/v2/resources/42835/versions/173186/download
+                        //https://api.spiget.org/v2/resources/42835/download
+                        website = new URL("https://api.spiget.org/v2/resources/6245/download");
+                        ReadableByteChannel rbc = Channels.newChannel(website.openStream());
+                        FileOutputStream fos = new FileOutputStream("plugins/PlaceholderAPI.jar");
+                        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+                        System.out.println("PlaceholderAPI.jar saved!");
 
-							Bukkit.getPluginManager().loadPlugin(new File("plugins/", "PlaceholderAPI.jar"));
-							} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-					if(!Bukkit.getPluginManager().isPluginEnabled("QuickBoard")) {
-						//15057
-						URL website;
-						System.out.println("Downloading QuickBoard...");
-						try {
-							///https://api.spiget.org/v2/resources/42835/versions/173186/download
-							//https://api.spiget.org/v2/resources/42835/download
-							website = new URL("https://api.spiget.org/v2/resources/15057/download");
-							ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-							FileOutputStream fos = new FileOutputStream("plugins/QuickBoard.jar");
-							fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-							System.out.println("QuickBoard.jar saved!");
-							System.out.println("Loading QuickBoard...");
-							Bukkit.getPluginManager().loadPlugin(new File("plugins/", "QuickBoard.jar"));
-							} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				external = Config.getBoolean("Scoreboard.External.useQickBardConfig", false);
-				qickboardConf = Config.getString("Scoreboard.External.Config", "default.yml");
-				if(qickboardConf.toLowerCase().endsWith(".yml")) {
-					qickboardConf = qickboardConf.substring(0,qickboardConf.length()-4);
-				}
-				updateTime = Config.getInt("Scoreboard.UpdateTime", 10);
-				if(Config.conf.contains("Scoreboard.Title"))
-				title = Config.conf.getStringList("Scoreboard.Title");
-				else {
-					title = new ArrayList<>(Arrays.asList("&6Lobby-Rel"));
-					Config.conf.set("Scoreboard.Title", title);
-					Config.saveAsync();
-				}
-				if(Config.conf.contains("Scoreboard.Lines"))
-				lines = Config.conf.getStringList("Scoreboard.Lines");
-				else {
-					lines = new ArrayList<>(Arrays.asList("Line1","Line2","Line3"));
-					Config.conf.set("Scoreboard.Lines", lines);
-					Config.saveAsync();
-				}
-				try {
-					System.out.println("Enable PlaceholderAPI...");
+                        Bukkit.getPluginManager().loadPlugin(new File("plugins/", "PlaceholderAPI.jar"));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (!Bukkit.getPluginManager().isPluginEnabled("QuickBoard")) {
+                    //15057
+                    URL website;
+                    System.out.println("Downloading QuickBoard...");
+                    try {
+                        ///https://api.spiget.org/v2/resources/42835/versions/173186/download
+                        //https://api.spiget.org/v2/resources/42835/download
+                        website = new URL("https://api.spiget.org/v2/resources/15057/download");
+                        ReadableByteChannel rbc = Channels.newChannel(website.openStream());
+                        FileOutputStream fos = new FileOutputStream("plugins/QuickBoard.jar");
+                        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+                        System.out.println("QuickBoard.jar saved!");
+                        System.out.println("Loading QuickBoard...");
+                        Bukkit.getPluginManager().loadPlugin(new File("plugins/", "QuickBoard.jar"));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                external = Config.getBoolean("Scoreboard.External.useQickBardConfig", false);
+                qickboardConf = Config.getString("Scoreboard.External.Config", "default.yml");
+                if (qickboardConf.toLowerCase().endsWith(".yml")) {
+                    qickboardConf = qickboardConf.substring(0, qickboardConf.length() - 4);
+                }
+                updateTime = Config.getInt("Scoreboard.UpdateTime", 10);
+                if (Config.conf.contains("Scoreboard.Title"))
+                    title = Config.conf.getStringList("Scoreboard.Title");
+                else {
+                    title = new ArrayList<>(Arrays.asList("&6Lobby-Rel"));
+                    Config.conf.set("Scoreboard.Title", title);
+                    Config.saveAsync();
+                }
+                if (Config.conf.contains("Scoreboard.Lines"))
+                    lines = Config.conf.getStringList("Scoreboard.Lines");
+                else {
+                    lines = new ArrayList<>(Arrays.asList("Line1", "Line2", "Line3"));
+                    Config.conf.set("Scoreboard.Lines", lines);
+                    Config.saveAsync();
+                }
+                try {
+                    System.out.println("Enable PlaceholderAPI...");
 
-					Bukkit.getPluginManager().enablePlugin(Bukkit.getPluginManager().getPlugin("PlaceholderAPI"));
-					Bukkit.getScheduler().runTaskLaterAsynchronously(LobbyPlugin.getInstance(), new Runnable() {
-						
-						@Override
-						public void run() {
-							System.out.println("Enable QuickBoard...");
-							Bukkit.getPluginManager().enablePlugin(Bukkit.getPluginManager().getPlugin("QuickBoard"));
-						}
-					}, 20);
-				
-				} catch (Exception e) {
-					e.printStackTrace();
-					}
-				
-			}}
-		}, "InitScoreboardThread").start();
+                    Bukkit.getPluginManager().enablePlugin(Bukkit.getPluginManager().getPlugin("PlaceholderAPI"));
+                    Bukkit.getScheduler().runTaskLaterAsynchronously(LobbyPlugin.getInstance(), new Runnable() {
+
+                        @Override
+                        public void run() {
+                            System.out.println("Enable QuickBoard...");
+                            Bukkit.getPluginManager().enablePlugin(Bukkit.getPluginManager().getPlugin("QuickBoard"));
+                        }
+                    }, 20);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, "InitScoreboardThread").start();
 	}
 	
 	public static void update(Player player) {

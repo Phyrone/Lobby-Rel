@@ -36,10 +36,18 @@ public class PlayerManager {
         handlers.clear();
     }
 
+    /**
+     * @param player Player
+     * @return the lobbymeta of the Player(like builder settings and more)
+     */
     public static PlayerData getPlayerData(Player player) {
         return getPlayerData(player.getUniqueId());
     }
 
+    /**
+     * @param uuid UUID of the Player
+     * @return the lobbymeta of the Player(like builder settings and more)
+     */
     public static PlayerData getPlayerData(UUID uuid) {
         try {
             if (!dataCache.containsKey(uuid))
@@ -60,13 +68,21 @@ public class PlayerManager {
         return internalDatas.getOrDefault(uuid, new InternalPlayerData());
     }
 
+    /**
+     * NOT Recomend to use!!!
+     *
+     * @param uuid
+     * @return
+     */
     public static InternalOfflinePlayerData getInternalOfflinePlayerData(UUID uuid) {
         if (!internalOfflineDatasCache.containsKey(uuid))
-            loadDataToCache(uuid);
-        return internalOfflineDatasCache.getOrDefault(uuid, new InternalOfflinePlayerData());
+            internalOfflineDatasCache.put(uuid, StorageManager.loadPlayerData(uuid));
+        return internalOfflineDatasCache.get(uuid);
     }
 
-
+    /**
+     * @param handler here you can set a Reset-Handler as an alternative to the Reset-Event
+     */
     public static void addHandler(ResetHandler handler) {
         handlers.add(handler);
     }
@@ -176,9 +192,6 @@ public class PlayerManager {
             StorageManager.save(uuid, internalOfflineDatasCache.get(uuid));
     }
 
-    public static void loadDataToCache(UUID uuid) {
-        internalOfflineDatasCache.put(uuid, StorageManager.loadPlayerData(uuid));
-    }
 
     public static void deleteDataFromCache(UUID uuid) {
         internalOfflineDatasCache.remove(uuid);
@@ -190,6 +203,10 @@ public class PlayerManager {
         deleteDataFromCache(uuid);
     }
 
+    /**
+     * @param uuid of the Player
+     * @return new Player Data API
+     */
     private static PlayerData newPlayerData(UUID uuid) {
         return new PlayerData() {
             @Override
@@ -223,6 +240,13 @@ public class PlayerManager {
             public void setDoubleJump(boolean doubleJump) {
                 getInternalOfflinePlayerData(uuid).DoubleJump = doubleJump;
                 quickSave();
+                Bukkit.getScheduler().runTaskLater(LobbyPlugin.getInstance(), () -> {
+                    if (Bukkit.getPlayer(uuid) != null) {
+                        Player player = Bukkit.getPlayer(uuid);
+                        player.setAllowFlight(doubleJump);
+                        player.setFlying(false);
+                    }
+                }, 3);
             }
 
             @Override
@@ -234,6 +258,9 @@ public class PlayerManager {
             public void setScoreboard(boolean scoreBoard) {
                 getInternalOfflinePlayerData(uuid).Scoreboard = scoreBoard;
                 quickSave();
+                if (Bukkit.getPlayer(uuid) != null)
+                    Bukkit.getScheduler().runTaskLaterAsynchronously(LobbyPlugin.getInstance(), () ->
+                            ScoreboardManager.update(Bukkit.getPlayer(uuid)), 5);
             }
 
             @Override
@@ -270,7 +297,8 @@ public class PlayerManager {
 
             @Override
             public void quickSave() {
-                StorageManager.save(uuid, getInternalOfflinePlayerData(uuid));
+                Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () ->
+                        StorageManager.save(uuid, getInternalOfflinePlayerData(uuid)));
             }
 
             @Override
@@ -291,7 +319,6 @@ public class PlayerManager {
             @Override
             public void setCurrendHotbar(Hotbar hotbar) {
                 getInternalPlayerData(uuid).currendHotbar = hotbar;
-                quickSave();
             }
 
 
@@ -316,9 +343,17 @@ public class PlayerManager {
                 getInternalPlayerData(uuid).visible = visible;
                 quickSave();
             }
+
+            @Override
+            public Player getBukkitPlayer() {
+                return Bukkit.getPlayer(uuid);
+            }
         };
     }
 
+    /**
+     *
+     */
     public interface ResetHandler {
         void onReset(Player player);
     }

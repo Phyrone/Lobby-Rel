@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * @since 1.8
  */
 public class ReflectionUtil {
-    private static final Logger log = Logger.getLogger(ReflectionUtil.class.getName());
+    private static final Logger log = Logger.getLogger(de.phyrone.lobbyrel.lib.tablist.ReflectionUtil.class.getName());
 
     /**
      * Returns the current version of the Bukkit implementation
