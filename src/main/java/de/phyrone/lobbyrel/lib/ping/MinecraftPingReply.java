@@ -84,7 +84,7 @@ public class MinecraftPingReply {
     public class Players {
         private int max;
         private int online;
-        private List<Player> sample;
+        private List<PingPlayer> sample;
 
         /**
          * @return Maximum player count
@@ -103,12 +103,12 @@ public class MinecraftPingReply {
         /**
          * @return List of some players (if any) specified by server
          */
-        public List<Player> getSample() {
+        public List<PingPlayer> getSample() {
             return this.sample;
         }
     }
 
-    public class Player {
+    public class PingPlayer {
         private String name;
         private String id;
 
