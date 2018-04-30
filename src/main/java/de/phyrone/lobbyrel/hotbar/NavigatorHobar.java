@@ -19,16 +19,16 @@ public class NavigatorHobar {
 		int i = 0;
         navHotbar.setOpenListner(player12 -> new EffectPlayer(player12).playSound(Sounds.CLICK, 2, 1));
         navHotbar.setCloseListner(player1 -> new EffectPlayer(player1).playSound(Sounds.CLICK, 1, 0));
-		for(String warpname: WarpManager.getWarps().keySet()) {
+        for (WarpManager.WarpPack warpset : WarpManager.getWarps()) {
 			try {
-				Warp warp = WarpManager.getWarps().get(warpname);
-				final String w2 = warpname;
+                final String w2 = warpset.getName();
+                final Warp warp = warpset.getWarp();
                 navHotbar.setItem(i, new HotbarItem(warp.getItemStack(player)).setClick((event, rightClick) -> {
                     Teleporter.teleport(player, w2);
                     MainHotbar.open(event.getPlayer());
 				}));
 			}catch (Exception e) {
-				System.out.println("Error: Irtems: "+warpname);
+                System.out.println("Error: Irtems: " + warpset.getName());
 				e.printStackTrace();
 			}i++;
 		}

@@ -297,8 +297,10 @@ public class PlayerManager {
 
             @Override
             public void quickSave() {
-                Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () ->
-                        StorageManager.save(uuid, getInternalOfflinePlayerData(uuid)));
+                Runnable run = () -> StorageManager.save(uuid, getInternalOfflinePlayerData(uuid));
+                if (Bukkit.getPluginManager().isPluginEnabled(LobbyPlugin.getInstance()))
+                    Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), run);
+                else run.run();
             }
 
             @Override

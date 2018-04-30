@@ -114,7 +114,7 @@ public class ItemsConfig {
     public LobbyItem getItem(String name) {
         return getItem(name,
                 new LobbyItem().setMaterial(Material.BARRIER).setDisplayName("Item not Found")
-                        .setLore("", "You can edit it in the \"Items.json\"", ""));
+                        .setLore("", "You can edit me in the \"Items.json\"", ""));
     }
 
     public LobbyItem getItem(String name, ItemStack noFound) {

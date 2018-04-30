@@ -23,7 +23,7 @@ public class AdminWarpGUI implements InventoryProvider {
 
     public static void open(Player player, String warpname) {
         warpname = warpname.toUpperCase();
-        Warp warp = WarpManager.getWarps().getOrDefault(warpname, null);
+        Warp warp = WarpManager.getWarpsUnsorted().getOrDefault(warpname, null);
         if (warp == null) {
             player.sendMessage(LobbyPlugin.getPrefix() + " §4Error: Warp dosn't exist!");
             return;

@@ -1,12 +1,13 @@
 package de.phyrone.lobbyrel.hotbar.customitems;
 
+import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.player.lang.LangManager;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public enum CommandType {
-    PLAYER("Player"), OP("Op"), CONSOLE("Console"), PLAYER2("Player2"), OP2("OP2"), Message("Message"), LANGDATA("LangData"), NONE("none");
+    PLAYER("Player"), OP("Op"), CONSOLE("Console"), PLAYER2("Player2"), OP2("OP2"), Message("Message"), LANGDATA("LangMessage"), Send_SERVER("Server"), NONE("none");
     String value;
 
     CommandType(String value) {
@@ -61,6 +62,9 @@ public enum CommandType {
                 break;
             case Message:
                 p.sendMessage(cmd);
+                break;
+            case Send_SERVER:
+                LobbyPlugin.getInstance().sendPlayer(p, cmd);
                 break;
             case CONSOLE:
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd);

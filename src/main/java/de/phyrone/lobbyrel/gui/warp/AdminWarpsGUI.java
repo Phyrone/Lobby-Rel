@@ -1,9 +1,5 @@
 package de.phyrone.lobbyrel.gui.warp;
 
-import java.util.HashMap;
-
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import de.phyrone.lobbyrel.gui.AdminMainGui;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
 import de.phyrone.lobbyrel.warps.Warp;
@@ -14,6 +10,10 @@ import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
 import fr.minuskube.inv.content.Pagination;
 import fr.minuskube.inv.content.SlotIterator;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+
+import java.util.HashMap;
 
 public class AdminWarpsGUI implements InventoryProvider {
 	public static final SmartInventory inv = SmartInventory.builder().size(3, 9).provider(new AdminWarpsGUI()).build();
@@ -25,7 +25,7 @@ public class AdminWarpsGUI implements InventoryProvider {
 	public void init(Player p, InventoryContents con) {
 		con.fillBorders(ClickableItem.empty(new ItemBuilder(Material.STAINED_GLASS_PANE).displayname(" ").build()));
 		Pagination pagi = con.pagination();
-		HashMap<String, Warp> warplist = WarpManager.getWarps();
+        HashMap<String, Warp> warplist = WarpManager.getWarpsUnsorted();
 		ClickableItem[] warps = new ClickableItem[warplist.keySet().size()];
 		int i = 0;
 		for(String w:warplist.keySet()) {

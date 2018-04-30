@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class PlayerHiderManager {
 	static HashMap<Integer, HiderModule> modules = new HashMap<>();
 	public static void init() {
-		modules.put(2, new HiderModule().setAction("lobby.team"));
+        modules.put(2, new HiderModule().setAction("lobby.hider.vip"));
 	}
 
     public static void setPlayerHider(Player player, int hider) {
@@ -68,43 +68,39 @@ public class PlayerHiderManager {
 
                     }
                 } else {
-                    Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), new Runnable() {
+                    Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () -> {
+                        if (PlayerManager.getPlayerData(p).isVisible()) {
+                            if (modules.containsKey(hider)) {
+                                boolean visible = modules.get(hider).getAction().onCheck(player, p);
+                                new BukkitRunnable() {
 
-                        @Override
-                        public void run() {
-                            if (PlayerManager.getPlayerData(p).isVisible()) {
-                                if (modules.containsKey(hider)) {
-                                    boolean visible = modules.get(hider).getAction().onCheck(player, p);
-                                    new BukkitRunnable() {
-
-                                        @Override
-                                        public void run() {
-                                            if (visible) {
-                                                player.showPlayer(p);
-                                            } else {
-                                                player.hidePlayer(p);
-                                            }
-                                        }
-                                    }.runTask(LobbyPlugin.getInstance());
-                                } else {
-                                    new BukkitRunnable() {
-
-                                        @Override
-                                        public void run() {
+                                    @Override
+                                    public void run() {
+                                        if (visible) {
                                             player.showPlayer(p);
+                                        } else {
+                                            player.hidePlayer(p);
                                         }
-                                    }.runTask(LobbyPlugin.getInstance());
-                                    pd.setPlayerHider(1);
-                                }
+                                    }
+                                }.runTask(LobbyPlugin.getInstance());
                             } else {
                                 new BukkitRunnable() {
 
                                     @Override
                                     public void run() {
-                                        player.hidePlayer(p);
+                                        player.showPlayer(p);
                                     }
                                 }.runTask(LobbyPlugin.getInstance());
+                                pd.setPlayerHider(1);
                             }
+                        } else {
+                            new BukkitRunnable() {
+
+                                @Override
+                                public void run() {
+                                    player.hidePlayer(p);
+                                }
+                            }.runTask(LobbyPlugin.getInstance());
                         }
                     });
 
