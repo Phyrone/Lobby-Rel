@@ -39,19 +39,28 @@ public class StorageManager {
         LobbyLoadStoragesEvent event = new LobbyLoadStoragesEvent(Config.getString("Storage.Type", "json").toLowerCase());
         Bukkit.getPluginManager().callEvent(event);
         storage = event.getStorage();
-        storageTeamplates.getOrDefault(storage, defaultStorage).init();
+        try {
+            storageTeamplates.getOrDefault(storage, defaultStorage).init();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void disable() {
         init = false;
-        storageTeamplates.getOrDefault(storage, defaultStorage).disable();
+        try {
+            storageTeamplates.getOrDefault(storage, defaultStorage).disable();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static InternalOfflinePlayerData loadPlayerData(UUID uuid) {
 
         InternalOfflinePlayerData dt = null;
         try {
-            System.out.println("Load OFFLINEDATA - " + uuid.toString());
+            if (LobbyPlugin.getDebug())
+                System.out.println("Load OFFLINEDATA - " + uuid.toString());
             dt = storageTeamplates.getOrDefault(storage, defaultStorage).load(uuid);
         } catch (Exception e) {
             if (LobbyPlugin.getDebug())
@@ -65,7 +74,8 @@ public class StorageManager {
 
     public static void save(UUID uuid, InternalOfflinePlayerData data) {
         try {
-            System.out.println("Save OFFLINEDATA - " + uuid.toString());
+            if (LobbyPlugin.getDebug())
+                System.out.println("Save OFFLINEDATA - " + uuid.toString());
             storageTeamplates.getOrDefault(storage, defaultStorage).save(uuid, data);
         } catch (Exception e) {
             if (LobbyPlugin.getDebug())

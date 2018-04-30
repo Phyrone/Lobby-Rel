@@ -18,55 +18,51 @@ public class LobbyCMD implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (sender instanceof Player) {
-            Player p = (Player) sender;
             if (args.length == 0) {
-                useHelpMessage(p, label);
+                useHelpMessage(sender, label);
             } else {
+                boolean isPlayer = sender instanceof Player;
                 if (args[0].equalsIgnoreCase("reload") || args[0].equalsIgnoreCase("rl")) {
-                    if (p.hasPermission("lobby.reload")) {
+                    if (sender.hasPermission("lobby.reload")) {
                         LobbyPlugin.getInstance().reload();
-                        LangManager.sendMessage(p, "CMD.Reloaded.Chat", "&cReloaded!");
-                        Tools.sendTitle(p, new FancyMessage(LangManager.getMessage(p, "CMD.Reloaded.Title", "&5Reloaded")), 20, 20, 20);
+                        LangManager.sendMessage(sender, "CMD.Reloaded.Chat", "&cReloaded!");
+                        if (isPlayer)
+                            Tools.sendTitle((Player) sender, new FancyMessage(LangManager.getMessage(sender, "CMD.Reloaded.Title", "&5Reloaded")), 20, 20, 20);
                     }
                     return true;
                 } else if (args[0].equalsIgnoreCase("update")) {
                     UpdateManager.updateCMD(sender);
 
                 } else if (args[0].equalsIgnoreCase("save")) {
-                    if (p.hasPermission("lobby.reload")) {
+                    if (sender.hasPermission("lobby.reload")) {
                         LobbyPlugin.getInstance().saveConfig();
-                        new FancyMessage(LobbyPlugin.getPrefix()).then(" ").then("§csaving Config...").send(p);
+                        new FancyMessage(LobbyPlugin.getPrefix()).then(" ").then("§csaving Config...").send(sender);
                     }
                 } else if (args[0].equalsIgnoreCase("help")) {
                     if (args.length == 1) {
-                        new HelpManager(p).showHelp(label, 1);
+                        new HelpManager(sender).showHelp(label, 1);
                     } else if (args.length == 2) {
                         try {
-                            new HelpManager(p).showHelp(label, Integer.parseInt(args[1]));
+                            new HelpManager(sender).showHelp(label, Integer.parseInt(args[1]));
                         } catch (Exception e) {
-                            useHelpMessage(p, label);
+                            useHelpMessage(sender, label);
                         }
-                    } else useHelpMessage(p, label);
+                    } else useHelpMessage(sender, label);
                 } else {
-                    if (!CommandManager.runCommand(p, args)) {
-                        useHelpMessage(p, label);
+                    if (!CommandManager.runCommand(sender, args)) {
+                        useHelpMessage(sender, label);
 
                     }
                     return true;
                 }
             }
-        } else {
-            sender.sendMessage("[Lobby-Rel] PlayerOnly");
-        }
+
         return true;
     }
 
-    private void useHelpMessage(CommandSender s, String label) {
-        Player p = null;
-        if (s instanceof Player) p = (Player) s;
-        new FancyMessage(LobbyPlugin.getPrefix()).then(LangManager.getMessage(p, "CMD.UnknownCMD.Message", " &cuse &7/%lobbycmd% help")
-                .replace("%lobbycmd%", label)).command("/" + label + " help").tooltip(LangManager.getMessage(p, "UnknownCMD.Tooltip", "&aRun Command")).send(p);
+    private void useHelpMessage(CommandSender sender, String label) {
+        new FancyMessage(LobbyPlugin.getPrefix()).then(LangManager.getMessage(sender, "CMD.UnknownCMD.Message", " &cuse &7/%lobbycmd% help")
+                .replace("%lobbycmd%", label)).command("/" + label + " help").tooltip(LangManager.getMessage(sender, "UnknownCMD.Tooltip", "&aRun Command")).send(sender);
     }
 
     @Override

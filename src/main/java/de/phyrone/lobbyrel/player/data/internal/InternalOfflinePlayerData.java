@@ -3,7 +3,6 @@ package de.phyrone.lobbyrel.player.data.internal;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import de.phyrone.lobbyrel.config.Config;
-import org.msgpack.MessagePack;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -13,7 +12,6 @@ import java.util.UUID;
 public class InternalOfflinePlayerData {
     private static final Gson GSON = new GsonBuilder().create();
     private static final Gson PRETTYGSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final MessagePack MESSAGE_PACK = new MessagePack();
     //Data
     public int Navigator = Config.getInt("PlayerSettings.Default.Navigator", 0);
     public int PlayerHider = Config.getInt("PlayerSettings.Default.PlayerHider", 0);

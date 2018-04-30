@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.phyrone</groupId>
     <artifactId>Lobby-Rel</artifactId>
-    <version>0.3.08-ALPHA-DEV</version>
+    <version>0.3.08-ALPHA</version>
     <developers>
         <developer>
             <id>Phyrone</id>
@@ -11,7 +11,6 @@
             <email>phyrone@phyrone.de</email>
             <url>https://www.phyrone.de/</url>
         </developer>
-
     </developers>
     <!-- Repo -->
     <repositories>
@@ -38,11 +37,6 @@
     </repositories>
     <!-- Dependencys -->
     <dependencies>
-        <dependency>
-            <groupId>org.msgpack</groupId>
-            <artifactId>msgpack</artifactId>
-            <version>0.6.12</version>
-        </dependency>
         <dependency>
             <groupId>be.isach</groupId>
             <artifactId>ultracosmetics</artifactId>
@@ -120,12 +114,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <build>
-
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
-
                 <includes>
                     <include>plugin.yml</include>
                 </includes>
@@ -147,7 +139,7 @@
                     </descriptorRefs>
                     <finalName>Lobby-Rel-${project.version}</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
-                    <outputDirectory>E:\TestServer\plugins</outputDirectory>
+                    <!--<outputDirectory>E:\TestServer\plugins</outputDirectory>-->
                 </configuration>
                 <executions>
                     <execution>

@@ -120,7 +120,7 @@ class BetterNickSupport implements Runnable {
                                 }
                             }
                         } catch (Exception e) {
-                            System.err.println("Error Get Nickitem");
+                            System.err.println("Error Get Nick-Item");
                             e.printStackTrace();
                             return null;
                         }

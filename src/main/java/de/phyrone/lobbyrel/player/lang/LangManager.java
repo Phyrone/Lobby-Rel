@@ -3,140 +3,129 @@ package de.phyrone.lobbyrel.player.lang;
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.lib.json.FancyMessage;
+import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.UUID;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
-public class LangManager
-{
-  static Boolean init = Boolean.valueOf(false);
-  static String defaultLang = null;
-  static File langFolder = null;
-  static HashMap<String, LangConf> langs = new HashMap<String, LangConf>();
-  
-  public static void init()
-  {
-	langs.clear();
-    String filename = Config.getString("Language.Folder", new StringBuilder("plugins/").append(LobbyPlugin.getInstance().getName()).append("/Lang/").toString()) + "IGNORE_THIS";
-    langFolder = new File(filename);
-    if (!langFolder.isDirectory()) {
-      langFolder = langFolder.getParentFile();
+public class LangManager {
+    static Boolean init = Boolean.valueOf(false);
+    static String defaultLang = null;
+    static File langFolder = null;
+    static HashMap<String, LangConf> langs = new HashMap<String, LangConf>();
+
+    public static void init() {
+        langs.clear();
+        String filename = Config.getString("Language.Folder", new StringBuilder("plugins/").append(LobbyPlugin.getInstance().getName()).append("/Lang/").toString()) + "IGNORE_THIS";
+        langFolder = new File(filename);
+        if (!langFolder.isDirectory()) {
+            langFolder = langFolder.getParentFile();
+        }
+        langFolder.mkdirs();
+        defaultLang = Config.getString("Language.Default", "en_US");
+        if (LangConf.getLangs().size() == 0) {
+            File df = new File(langFolder.getPath(), defaultLang + ".yml");
+            try {
+                df.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            for (String l : LangConf.getLangs()) {
+                System.out.println("Reading Language " + l + "...");
+                LangConf cfg = new LangConf(l);
+                cfg.load();
+                langs.put(l, cfg);
+            }
+        }
+        init = Boolean.valueOf(true);
     }
-    langFolder.mkdirs();
-    defaultLang = Config.getString("Language.Default", "en_US");
-    if (LangConf.getLangs().size() == 0)
-    {
-      File df = new File(langFolder.getPath(), defaultLang + ".yml");
-      try
-      {
-        df.createNewFile();
-      }
-      catch (IOException e)
-      {
-        e.printStackTrace();
-      }
+
+    public static void sendMessage(CommandSender sender, String messagePath, String defaultMessage) {
+        Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () -> {
+            String m = getMessage(sender, messagePath, defaultMessage);
+            new FancyMessage(LobbyPlugin.getPrefix()).then(" ").then(m).send(sender);
+        });
     }
-    else
-    {
-      for (String l : LangConf.getLangs())
-      {
-        System.out.println("Reading Language " + l + "...");
-        LangConf cfg = new LangConf(l);
-        cfg.load();
-        langs.put(l, cfg);
-      }
+
+    public static String getMessage(CommandSender sender, String messagePath, String defaultMessage) {
+        if (!init.booleanValue()) {
+            init();
+        }
+        String lang;
+        if (sender instanceof Player)
+            lang = getLangOrDefault((Player) sender);
+        else lang = defaultLang;
+        LangConf langconf = langs.getOrDefault(lang, langs.getOrDefault(defaultLang, new LangConf(defaultLang)));
+        String ret;
+        if (langconf.conf.contains(messagePath)) {
+            ret = langconf.conf.getString(messagePath);
+        } else {
+            ret = defaultMessage;
+            langconf.conf.set(messagePath, defaultMessage);
+            langconf.save();
+            langs.put(langconf.lang, langconf);
+        }
+        return ret.replace("&", "§");
     }
-    init = Boolean.valueOf(true);
-  }
-  public static void sendMessage(Player player, String messagePath, String defaultMessage) {
-	  new BukkitRunnable() {
-		
-		@Override
-		public void run() {
-			String m = getMessage(player, messagePath, defaultMessage);
-			new BukkitRunnable() {
-				
-				@Override
-				public void run() {
-					new FancyMessage(LobbyPlugin.getPrefix()).then(" ").then(m).send(player);
-				}
-			}.runTask(LobbyPlugin.getInstance());
-		}
-	}.runTaskAsynchronously(LobbyPlugin.getInstance());
-  }
-  public static String getMessage(Player player, String messagePath, String defaultMessage)
-  {
-    if (!init.booleanValue()) {
-      init();
+
+    public static Future<String> getMessageAsync(CommandSender sender, String messagePath, String defaultMessage) {
+        FutureTask<String> future = new FutureTask<>(() -> getMessage(sender, messagePath, defaultMessage));
+        new Thread(future, "GetMessageTask-" + UUID.randomUUID()).start();
+        return future;
     }
-    String lang = getLangOrDefault(player);
-    if (!langs.containsKey(defaultLang)) {
-      langs.put(defaultLang, new LangConf(defaultLang));
+
+    private static String getLangOrDefault(Player p) {
+        if (p == null) {
+            return defaultLang;
+        }
+        if (!(p instanceof Player)) {
+            return defaultLang;
+        }
+        try {
+            return p.spigot().getLocale();
+        } catch (Exception e) {
+            return getLanguage(p);
+        }
+
     }
-    LangConf langconf = langs.getOrDefault(lang, langs.getOrDefault(defaultLang, new LangConf(defaultLang)));
-    String ret = null;
-    if (langconf.conf.contains(messagePath))
-    {
-      ret = langconf.conf.getString(messagePath);
+
+    public static String getLanguage(Player p) {
+        try {
+            Object obj = getMethod("getHandle", p.getClass()).invoke(p, null);
+            Field f = obj.getClass().getDeclaredField("locale");
+            f.setAccessible(true);
+            return (String) f.get(obj);
+        } catch (Exception e) {
+        }
+        return defaultLang;
     }
-    else
-    {
-      ret = defaultMessage;
-      langconf.conf.set(messagePath, defaultMessage);
-      langconf.save();
-      langs.put(langconf.lang, langconf);
+
+    private static Method getMethod(String n, Class<?> c) {
+        Method[] arrayOfMethod;
+        int j = (arrayOfMethod = c.getDeclaredMethods()).length;
+        for (int i = 0; i < j; i++) {
+            Method m = arrayOfMethod[i];
+            if (m.getName().equals(n)) {
+                return m;
+            }
+        }
+        return null;
     }
-    return ret.replace("&", "§");
-  }
-  
-  private static String getLangOrDefault(Player p)
-  {
-    if (p == null) {
-      return defaultLang;
+
+    public static String noPerm(CommandSender sender) {
+        return LangManager.getMessage(sender, "NoPermission", "&cThe computer say no!");
     }
-    if (!(p instanceof Player)) {
-      return defaultLang;
+
+    public static void sendNoPerms(CommandSender sender) {
+        sendMessage(sender, "NoPermission", "&cThe computer say no!");
     }
-    try {
-		return p.spigot().getLocale();
-	} catch (Exception e) {
-		return getLanguage(p);
-	}
-    
-  }
-  
-  public static String getLanguage(Player p)
-  {
-    try
-    {
-      Object obj = getMethod("getHandle", p.getClass()).invoke(p, null);
-      Field f = obj.getClass().getDeclaredField("locale");
-      f.setAccessible(true);
-      return (String)f.get(obj);
-    }
-    catch (Exception e) {}
-    return defaultLang;
-  }
-  
-  private static Method getMethod(String n, Class<?> c)
-  {
-    Method[] arrayOfMethod;
-    int j = (arrayOfMethod = c.getDeclaredMethods()).length;
-    for (int i = 0; i < j; i++)
-    {
-      Method m = arrayOfMethod[i];
-      if (m.getName().equals(n)) {
-        return m;
-      }
-    }
-    return null;
-  }
-  public static String noPerm(Player p) {
-	  return LangManager.getMessage(p,"NoPermission","&cThe computer say no!");
-  }
 }

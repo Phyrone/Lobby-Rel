@@ -9,6 +9,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonWriter;
+import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.SupportPluginsManager;
 import de.phyrone.lobbyrel.lib.Tools;
 import org.bukkit.Bukkit;
@@ -28,7 +29,9 @@ import static de.phyrone.lobbyrel.lib.json.TextualComponent.rawText;
 
 enum SendJsonType {
     TELLRAW((player, message) -> {
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tellraw " + player.getName() + " " + message.toJSONString());
+        Bukkit.getScheduler().runTask(LobbyPlugin.getInstance(),
+                () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tellraw " + player.getName() + " " + message.toJSONString()));
+
     }), PROTOCOL((player, message) -> {
         PacketContainer packet = new PacketContainer(PacketType.Play.Server.CHAT);
         packet.getChatComponents().write(0, WrappedChatComponent.fromJson(message.toJSONString()));

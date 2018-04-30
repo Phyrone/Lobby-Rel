@@ -1,11 +1,12 @@
 package de.phyrone.lobbyrel.cmd;
 
+import org.bukkit.command.CommandSender;
+
 import java.util.ArrayList;
 
-import org.bukkit.entity.Player;
-
 public interface CommandAction {
-	boolean onCommand(Player player,String[] args);
-	ArrayList<String> onTab(Player player,String[] args);
+	boolean onCommand(CommandSender sender, String[] args);
+
+	ArrayList<String> onTab(CommandSender sender, String[] args);
 
 }

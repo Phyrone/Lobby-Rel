@@ -1,13 +1,13 @@
 package de.phyrone.lobbyrel.cmd;
 
 import com.google.gson.GsonBuilder;
-import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.gui.AdminMainGui;
 import de.phyrone.lobbyrel.lib.Tools;
 import de.phyrone.lobbyrel.lib.json.FancyMessage;
 import de.phyrone.lobbyrel.player.PlayerManager;
 import de.phyrone.lobbyrel.player.lang.LangManager;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -16,9 +16,9 @@ import java.util.Arrays;
 public class CommandManager {
     static public ArrayList<CommandAction> Commands = new ArrayList<>();
 
-    public static Boolean runCommand(Player p, String[] args) {
+    public static Boolean runCommand(CommandSender sender, String[] args) {
         for (CommandAction cmd : Commands) {
-            if (cmd.onCommand(p, args)) return true;
+            if (cmd.onCommand(sender, args)) return true;
         }
         return false;
 
@@ -30,7 +30,7 @@ public class CommandManager {
         Commands.add(new CommandAction() {
 
             @Override
-            public ArrayList<String> onTab(Player player, String[] args) {
+            public ArrayList<String> onTab(CommandSender player, String[] args) {
                 if (args.length == 1) {
                     return new ArrayList<>(Arrays.asList("admingui", "help", "reload", "update", "save", "debug"));
                 }
@@ -38,21 +38,23 @@ public class CommandManager {
             }
 
             @Override
-            public boolean onCommand(Player player, String[] args) {
+            public boolean onCommand(CommandSender sender, String[] args) {
                 if (args[0].equalsIgnoreCase("admingui")) {
-                    if (player.hasPermission("lobby.admin")) AdminMainGui.open(player);
+                    if (sender.hasPermission("lobby.admin"))
+                        if (sender instanceof Player) AdminMainGui.open((Player) sender);
+                        else LangManager.sendMessage(sender, "playerOnly", "OnlyPlayer");
                     else
-                        new FancyMessage(LobbyPlugin.getPrefix()).then(LangManager.getMessage(player, "NoPermision", "&cder Computer sagt Nein!")).tooltip("§5lobby.admin");
+                        LangManager.sendNoPerms(sender);
                     return true;
                 } else if (args[0].equalsIgnoreCase("debug")) {
-                    if (player.hasPermission("lobby.debug")) {
+                    if (sender.hasPermission("lobby.debug")) {
                         if (args.length == 3 && args[1].equalsIgnoreCase("playerdata") && Bukkit.getPlayer(args[2]) != null) {
                             Player target = Bukkit.getPlayer(args[2]);
-                            player.sendMessage("Playerdata:");
-                            player.sendMessage(
+                            sender.sendMessage("Playerdata:");
+                            sender.sendMessage(
                                     new GsonBuilder().setPrettyPrinting().create().toJson(PlayerManager.getInternalPlayerData(target.getUniqueId())));
-                            player.sendMessage("Offlinedata:");
-                            player.sendMessage(
+                            sender.sendMessage("Offlinedata:");
+                            sender.sendMessage(
                                     new GsonBuilder().setPrettyPrinting().create().toJson(PlayerManager.getInternalOfflinePlayerData(target.getUniqueId())));
                             return true;
                         } else if (args.length > 3 && args[1].equalsIgnoreCase("sendaction")) {
