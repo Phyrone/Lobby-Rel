@@ -8,6 +8,7 @@ import de.phyrone.lobbyrel.cmd.LobbyCMD;
 import de.phyrone.lobbyrel.cmd.WarpCMD;
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.events.LobbyReloadEvent;
+import de.phyrone.lobbyrel.hotbar.api2.HotbarManager;
 import de.phyrone.lobbyrel.hotbar.customitems.CustomItemsManager;
 import de.phyrone.lobbyrel.lib.Metrics;
 import de.phyrone.lobbyrel.lib.TpsMeter;
@@ -226,16 +227,19 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        /* Events */
+        /* Player Join */
         pm.registerEvents(new JoinEvent(), this);
+        /* Like no Damage or NoBeak */
         pm.registerEvents(new LobbyGuard(), this);
         if (!mc18) pm.registerEvents(new NineUpListner(), this);
-        pm.registerEvents(new HotbarEvents(), this);
+        /* Like Reload or Load Storage's */
         pm.registerEvents(new OwnEventsListner(), this);
         pm.registerEvents(new OtherEvents(), this);
         /* Scheduler */
         pm.registerEvents(new StayTitleManager(), this);
         pm.registerEvents(new StayActionManager(), this);
+        /* Hotbar */
+        pm.registerEvents(new HotbarManager(), this);
         /* Commands */
         PluginCommand lobbyCMD = Bukkit.getPluginCommand("lobby");
         lobbyCMD.setExecutor(new LobbyCMD());

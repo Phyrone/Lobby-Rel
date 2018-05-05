@@ -8,6 +8,7 @@ import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.config.ItemsConfig;
 import de.phyrone.lobbyrel.hotbar.MainHotbar;
 import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
+import de.phyrone.lobbyrel.hotbar.api2.HotbarManager;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
 import de.phyrone.lobbyrel.lib.LobbyItem;
 import de.phyrone.lobbyrel.player.PlayerManager;
@@ -65,6 +66,7 @@ class VaultSupport implements Runnable {
 
     }
 }
+
 class UltraCosmeticsSupport implements Runnable {
 
     @Override
@@ -107,7 +109,7 @@ class BetterNickSupport implements Runnable {
                     new LobbyItem(Material.NAME_TAG).setGlow(true).setDisplayName("&aAutoNick ON")
             );
             MainHotbar.addItem(slot, new HotbarItem(new ItemBuilder(Material.BEDROCK).displayname("&4&lERROR").build())
-                    .setSelect(player -> {
+                    .setItemUpdater(player -> {
                         try {
                             System.out.println(api.hasPlayerAutoNick(player));
                             if (!player.hasPermission("lobby.nick.item"))
@@ -124,14 +126,11 @@ class BetterNickSupport implements Runnable {
                             e.printStackTrace();
                             return null;
                         }
-                    }).setClick((event, rightClick) -> {
-                        if (rightClick && event.getPlayer().hasPermission("lobby.nick.item")) {
-                            api.setPlayerAutoNick(event.getPlayer(), !api.hasPlayerAutoNick(event.getPlayer()));
+                    }).setClick((player, rightClick) -> {
+                        if (rightClick && player.hasPermission("lobby.nick.item")) {
+                            api.setPlayerAutoNick(player, !api.hasPlayerAutoNick(player));
                             Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(),
-                                    () -> MainHotbar.hotbar.updateItem(event.getPlayer())
-                            );
-
-
+                                    () -> HotbarManager.getHotbar(player).update());
                         }
 
                     }));

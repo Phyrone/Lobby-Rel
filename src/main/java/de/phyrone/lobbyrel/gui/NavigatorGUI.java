@@ -24,7 +24,7 @@ public class NavigatorGUI implements InventoryProvider {
     static final int IPP = 6;
     ItemStack nowarpItem;
     ItemPositsion[] posiotions;
-    int lastpage = -1;
+    int lastpage;
 
     public NavigatorGUI() {
         posiotions = ItemPositsion.getPositions();

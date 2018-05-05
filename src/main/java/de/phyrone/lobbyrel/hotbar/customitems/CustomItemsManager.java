@@ -17,7 +17,7 @@ public class CustomItemsManager {
                         .setClick((e, rightClick) -> {
                             if (rightClick) customitem.RunCommandAs.run(e.getPlayer(), customitem.Command);
                         })
-                        .setSelect(player -> customitem.getItem().getAsItemStack(player)));
+                        .setItemUpdater(player -> customitem.getItem().getAsItemStack(player)));
 			}catch (Exception e) {
 				e.printStackTrace();
 			}

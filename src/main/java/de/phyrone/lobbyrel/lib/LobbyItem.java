@@ -27,6 +27,26 @@ public class LobbyItem {
     public String Skin = "%player%";
     public HashMap<String, Object> CustomTags = new HashMap<>();
 
+    public LobbyItem(ItemStack item) {
+        this.Material = item.getType().toString();
+        if (item.hasItemMeta()) {
+            ItemMeta meta = item.getItemMeta();
+            if (meta.hasDisplayName())
+                this.DisplayName = meta.getDisplayName().replace("§", "&");
+            if (meta.hasLore())
+                this.Lore = meta.getLore();
+        }
+
+    }
+
+    public LobbyItem() {
+        Material = org.bukkit.Material.STONE.toString();
+    }
+
+    public LobbyItem(Material material) {
+        Material = material.toString();
+    }
+
     public HashMap<String, Object> getCustomTags() {
         return CustomTags;
     }
@@ -59,24 +79,9 @@ public class LobbyItem {
         return Amount;
     }
 
-    public LobbyItem(ItemStack item) {
-        this.Material = item.getType().toString();
-        if (item.hasItemMeta()) {
-            ItemMeta meta = item.getItemMeta();
-            if (meta.hasDisplayName())
-                this.DisplayName = meta.getDisplayName().replace("§", "&");
-            if (meta.hasLore())
-                this.Lore = meta.getLore();
-        }
-
-    }
-
-    public LobbyItem() {
-        Material = org.bukkit.Material.STONE.toString();
-    }
-
-    public LobbyItem(Material material) {
-        Material = material.toString();
+    public LobbyItem setAmount(byte amount) {
+        Amount = amount;
+        return this;
     }
 
     public ItemStack getAsItemStack() {
@@ -88,25 +93,30 @@ public class LobbyItem {
     }
 
     public ItemStack getAsItemStack(Player player, final StringReplacer replacer) {
-        String dm = player != null ? getLangString(DisplayName, player) : DisplayName;
-        List<String> lore = new ArrayList<>();
-        if (player != null) {
-            dm = replacer.replace(dm, player);
-            for (String line : Lore)
-                lore.add(ChatColor.translateAlternateColorCodes('&',
-                        replacer.replace(line, player)));
-        } else {
-            for (String line : Lore)
-                lore.add(ChatColor.translateAlternateColorCodes('&', line));
+        try {
+            String dm = player != null ? getLangString(DisplayName, player) : DisplayName;
+            List<String> lore = new ArrayList<>();
+            if (player != null) {
+                dm = replacer.replace(dm, player);
+                for (String line : Lore)
+                    lore.add(ChatColor.translateAlternateColorCodes('&',
+                            replacer.replace(line, player)));
+            } else {
+                for (String line : Lore)
+                    lore.add(ChatColor.translateAlternateColorCodes('&', line));
+            }
+            String plSkin = player != null ? replacer.replace(Skin, player) : Skin;
+            ItemStack item = isPlayerHead ? getSkull(plSkin) : new ItemStack(getMaterialAsMaterial(), 1, Data);
+            item.setAmount(Amount);
+            ItemMeta meta = item.getItemMeta();
+            meta.setDisplayName(dm);
+            meta.setLore(lore);
+            item.setItemMeta(meta);
+            return new ItemAPI(item).addGlow(Glow).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ItemStack(org.bukkit.Material.AIR);
         }
-        String plSkin = player != null ? replacer.replace(Skin, player) : Skin;
-        ItemStack item = isPlayerHead ? getSkull(plSkin) : new ItemStack(getMaterialAsMaterial(), 1, Data);
-        item.setAmount(Amount);
-        ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(dm);
-        meta.setLore(lore);
-        item.setItemMeta(meta);
-        return new ItemAPI(item).addGlow(Glow).build();
     }
 
     private ItemStack getSkull(String Skin) {
@@ -142,13 +152,13 @@ public class LobbyItem {
         return Material;
     }
 
+    public void setMaterial(String material) {
+        Material = material;
+    }
+
     public LobbyItem setMaterial(Material material) {
         Material = material.toString();
         return this;
-    }
-
-    public void setMaterial(String material) {
-        Material = material;
     }
 
     public Material getMaterialAsMaterial() {
@@ -169,11 +179,6 @@ public class LobbyItem {
         return this;
     }
 
-    public LobbyItem setAmount(byte amount) {
-        Amount = amount;
-        return this;
-    }
-
     public String getDisplayName() {
         return DisplayName;
     }
@@ -187,15 +192,15 @@ public class LobbyItem {
         return Lore;
     }
 
+    public LobbyItem setLore(List<String> lore) {
+        Lore = lore;
+        return this;
+    }
+
     public LobbyItem setLore(String... lore) {
         Lore.clear();
         for (String line : lore)
             Lore.add(line);
-        return this;
-    }
-
-    public LobbyItem setLore(List<String> lore) {
-        Lore = lore;
         return this;
     }
 
@@ -232,13 +237,17 @@ public class LobbyItem {
         return Data;
     }
 
+    public LobbyItem setData(byte data) {
+        Data = data;
+        return this;
+    }
+
     public LobbyItem setData(int data) {
         Data = (byte) data;
         return this;
     }
 
-    public LobbyItem setData(byte data) {
-        Data = data;
-        return this;
+    public enum DefaultItems {
+
     }
 }

@@ -5,7 +5,9 @@ import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.events.LobbyResetPlayerEvent;
 import de.phyrone.lobbyrel.hider.PlayerHiderManager;
 import de.phyrone.lobbyrel.hotbar.LoadingHotbar;
-import de.phyrone.lobbyrel.hotbar.api.Hotbar;
+import de.phyrone.lobbyrel.hotbar.api2.HotbarManager;
+import de.phyrone.lobbyrel.hotbar.api2.HotbarWrapper;
+import de.phyrone.lobbyrel.hotbar.api2.PlayerHotbar;
 import de.phyrone.lobbyrel.hotbar.customitems.ExternalItemsManager;
 import de.phyrone.lobbyrel.player.data.PlayerData;
 import de.phyrone.lobbyrel.player.data.internal.InternalOfflinePlayerData;
@@ -252,6 +254,7 @@ public class PlayerManager {
             @Override
             public boolean isScoreboard() {
                 return getInternalOfflinePlayerData(uuid).Scoreboard;
+
             }
 
             @Override
@@ -314,13 +317,13 @@ public class PlayerManager {
             }
 
             @Override
-            public Hotbar getCurrendHotbar() {
-                return getInternalPlayerData(uuid).currendHotbar;
+            public PlayerHotbar getCurrendHotbar() {
+                return HotbarManager.getHotbar(getBukkitPlayer());
             }
 
             @Override
-            public void setCurrendHotbar(Hotbar hotbar) {
-                getInternalPlayerData(uuid).currendHotbar = hotbar;
+            public void openHotbar(HotbarWrapper hotbar) {
+                HotbarManager.setHotbar(getBukkitPlayer(), hotbar);
             }
 
 

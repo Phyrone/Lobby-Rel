@@ -1,69 +1,55 @@
 package de.phyrone.lobbyrel.events;
 
+import de.phyrone.lobbyrel.hotbar.api2.PlayerHotbar;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import de.phyrone.lobbyrel.hotbar.api.Hotbar;
+public class HotbarSwitchEvent extends Event implements Cancellable {
 
-public class HotbarSwitchEvent extends Event {
-	
-	private HandlerList HandlerList = new HandlerList();
-	
-	private Player player;
-	
-	private Hotbar hotbarFrom;
-	
-	private Hotbar hotbarTo;
-	
-	private boolean canceld;
-	
-	@Override
-	public HandlerList getHandlers() {
-		return HandlerList;
-	}
-	
-	public HotbarSwitchEvent(Player player, Hotbar hotbarFrom, Hotbar hotbarTo) {
-		this.player = player;
-		this.hotbarFrom = hotbarFrom;
-		this.hotbarTo = hotbarTo;
-		this.canceld = false;
-	}
+    private HandlerList HandlerList = new HandlerList();
 
-	public HandlerList getHandlerList() {
-		return HandlerList;
-	}
+    private Player player;
 
-	public void setHandlerList(HandlerList handlerList) {
-		HandlerList = handlerList;
-	}
+    private PlayerHotbar hotbar;
 
-	public Hotbar getHotbarFrom() {
-		return hotbarFrom;
-	}
+    private boolean canceld;
 
-	public void setHotbarFrom(Hotbar hotbarFrom) {
-		this.hotbarFrom = hotbarFrom;
-	}
+    public HotbarSwitchEvent(Player player, PlayerHotbar newHotbar) {
+        this.player = player;
+        this.hotbar = newHotbar;
+        this.canceld = false;
+    }
 
-	public Hotbar getHotbarTo() {
-		return hotbarTo;
-	}
+    @Override
+    public HandlerList getHandlers() {
+        return HandlerList;
+    }
 
-	public void setHotbarTo(Hotbar hotbarTo) {
-		this.hotbarTo = hotbarTo;
-	}
+    public HandlerList getHandlerList() {
+        return HandlerList;
+    }
 
-	public boolean isCanceld() {
-		return canceld;
-	}
+    public void setHandlerList(HandlerList handlerList) {
+        HandlerList = handlerList;
+    }
 
-	public void setCanceld(boolean canceld) {
-		this.canceld = canceld;
-	}
+    public PlayerHotbar getHotbar() {
+        return hotbar;
+    }
 
-	public Player getPlayer() {
-		return player;
-	}
-	
+    public Player getPlayer() {
+        return player;
+    }
+
+    @Override
+    public boolean isCancelled() {
+        return canceld;
+    }
+
+    @Override
+    public void setCancelled(boolean canceld) {
+        this.canceld = canceld;
+    }
 }

@@ -3,17 +3,18 @@ package de.phyrone.lobbyrel.hotbar;
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.config.ItemsConfig;
-import de.phyrone.lobbyrel.hotbar.api.Hotbar;
 import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
+import de.phyrone.lobbyrel.hotbar.api2.util.PreparedHotbar;
 import de.phyrone.lobbyrel.lib.LobbyItem;
-import de.phyrone.lobbyrel.player.lang.LangManager;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.HashMap;
+
 public class LoadingHotbar {
-    static Hotbar hb;
+    static PreparedHotbar hb;
     static boolean enabled;
     static int time;
     static boolean fullHotbar;
@@ -28,31 +29,23 @@ public class LoadingHotbar {
     public static void init() {
         enabled = Config.getBoolean("LoadingHotbar.Enabled", true);
         time = Config.getInt("LoadingHotbar.LoadingTime", 5);
-        fullHotbar = Config.getBoolean("LoadingHotbar.FullHotbar", true);
         item = ItemsConfig.getInstance().getItem("LoadingItem", new LobbyItem().setMaterial(Material.STAINED_GLASS_PANE)
                 .setData((byte) 14).setDisplayName("&4&lLoading"), true);
-        hb = new Hotbar();
-        for (int i = 0; 9 > i; i++) {
-            final int slot = i;
-            hb.setStaticItem(i, new HotbarItem(new ItemStack(Material.AIR)).setSelect(player -> {
-                String message = LangManager.getMessage(player, "Hotbar.Loading.ItemName", "&c&lLoading");
-                if (fullHotbar) {
-                    return item.getAsItemStack(player);
-                } else {
-                    ItemStack mainItem = MainHotbar.getHotbar().getItem(slot, 0).getItem(player);
-                    if (!(mainItem.getType() == Material.AIR)) {
-                        return item.getAsItemStack(player);
-                    } else return null;
-                }
-            }));
-        }
+        hb = new PreparedHotbar(nu -> {
+            HashMap<Integer, HotbarItem> items = new HashMap<>();
+            for (int i = 0; 9 > i; i++) {
+                items.put(i, new HotbarItem(new ItemStack(Material.BARRIER)).setItemUpdater(player ->
+                        item.getAsItemStack(player)));
+            }
+            return items;
+        });
 
     }
 
     public void open() {
         try {
             if (enabled) {
-                hb.open(p, 0);
+                hb.open(p);
                 new BukkitRunnable() {
 
                     @Override

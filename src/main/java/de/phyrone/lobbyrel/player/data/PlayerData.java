@@ -1,6 +1,7 @@
 package de.phyrone.lobbyrel.player.data;
 
-import de.phyrone.lobbyrel.hotbar.api.Hotbar;
+import de.phyrone.lobbyrel.hotbar.api2.HotbarWrapper;
+import de.phyrone.lobbyrel.hotbar.api2.PlayerHotbar;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -11,9 +12,9 @@ public interface PlayerData {
 
     void setBuilder(boolean builder);
 
-    Hotbar getCurrendHotbar();
+    PlayerHotbar getCurrendHotbar();
 
-    void setCurrendHotbar(Hotbar hotbar);
+    void openHotbar(HotbarWrapper hotbar);
 
     void setAllowGamemodeChange(boolean b);
 
