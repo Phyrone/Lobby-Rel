@@ -1,7 +1,6 @@
-package de.phyrone.lobbyrel.hotbar.api2.util;
+package de.phyrone.lobbyrel.hotbar.api.util;
 
-import de.phyrone.lobbyrel.hotbar.api2.HotbarManager;
-import de.phyrone.lobbyrel.hotbar.api2.HotbarWrapper;
+import de.phyrone.lobbyrel.hotbar.api.HotbarManager;
 import org.bukkit.entity.Player;
 
 public abstract class EmptyHotbar implements HotbarWrapper {

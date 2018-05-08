@@ -8,7 +8,7 @@ import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.config.ItemsConfig;
 import de.phyrone.lobbyrel.hotbar.MainHotbar;
 import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
-import de.phyrone.lobbyrel.hotbar.api2.HotbarManager;
+import de.phyrone.lobbyrel.hotbar.api.HotbarManager;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
 import de.phyrone.lobbyrel.lib.LobbyItem;
 import de.phyrone.lobbyrel.player.PlayerManager;

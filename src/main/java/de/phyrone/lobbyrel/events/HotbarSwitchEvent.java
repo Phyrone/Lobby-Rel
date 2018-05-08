@@ -1,6 +1,6 @@
 package de.phyrone.lobbyrel.events;
 
-import de.phyrone.lobbyrel.hotbar.api2.PlayerHotbar;
+import de.phyrone.lobbyrel.hotbar.api.PlayerHotbar;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;

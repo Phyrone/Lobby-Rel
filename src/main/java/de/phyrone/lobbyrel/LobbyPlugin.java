@@ -8,7 +8,7 @@ import de.phyrone.lobbyrel.cmd.LobbyCMD;
 import de.phyrone.lobbyrel.cmd.WarpCMD;
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.events.LobbyReloadEvent;
-import de.phyrone.lobbyrel.hotbar.api2.HotbarManager;
+import de.phyrone.lobbyrel.hotbar.api.HotbarManager;
 import de.phyrone.lobbyrel.hotbar.customitems.CustomItemsManager;
 import de.phyrone.lobbyrel.lib.Metrics;
 import de.phyrone.lobbyrel.lib.TpsMeter;
@@ -37,7 +37,6 @@ import java.util.logging.Logger;
 
 public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
     static Logger logger;
-
     private static LobbyPlugin instance;
     private static double tps = -1D;
     private static Boolean debug = true;

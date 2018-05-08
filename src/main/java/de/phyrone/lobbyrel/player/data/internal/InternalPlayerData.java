@@ -1,6 +1,6 @@
 package de.phyrone.lobbyrel.player.data.internal;
 
-import de.phyrone.lobbyrel.hotbar.api2.PlayerHotbar;
+import de.phyrone.lobbyrel.hotbar.api.PlayerHotbar;
 
 import java.util.HashMap;
 

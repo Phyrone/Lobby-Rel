@@ -2,7 +2,7 @@ package de.phyrone.lobbyrel.cmd;
 
 import com.google.gson.GsonBuilder;
 import de.phyrone.lobbyrel.gui.AdminMainGui;
-import de.phyrone.lobbyrel.hotbar.api2.HotbarManager;
+import de.phyrone.lobbyrel.hotbar.api.HotbarManager;
 import de.phyrone.lobbyrel.lib.Tools;
 import de.phyrone.lobbyrel.lib.json.FancyMessage;
 import de.phyrone.lobbyrel.player.PlayerManager;
@@ -49,7 +49,9 @@ public class CommandManager {
                     return true;
                 } else if (args[0].equalsIgnoreCase("debug")) {
                     if (sender.hasPermission("lobby.debug")) {
-                        if (args.length == 3 && args[1].equalsIgnoreCase("playerdata") && Bukkit.getPlayer(args[2]) != null) {
+                        if (args.length == 1) {
+                            sender.sendMessage("");
+                        } else if (args.length == 3 && args[1].equalsIgnoreCase("playerdata") && Bukkit.getPlayer(args[2]) != null) {
                             Player target = Bukkit.getPlayer(args[2]);
                             sender.sendMessage("Playerdata:");
                             sender.sendMessage(

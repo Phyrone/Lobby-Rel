@@ -44,12 +44,10 @@ public class LobbyGuard implements Listener {
 	public void onGm(PlayerGameModeChangeEvent e){
 		Player p = e.getPlayer();
 		PlayerData pd = PlayerManager.getPlayerData(p);
-		if (!pd.isBuilder() || pd.allowGamemodeChange() || disableGameModeCheck) {
-			
-		}else{
+		if (!pd.isBuilder() && !pd.allowGamemodeChange() && !disableGameModeCheck) {
 			e.setCancelled(true);
 		}
-    }
+	}
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     public void onDMG(EntityDamageEvent e) {

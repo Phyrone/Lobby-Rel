@@ -1,7 +1,7 @@
 package de.phyrone.lobbyrel.player.data;
 
-import de.phyrone.lobbyrel.hotbar.api2.HotbarWrapper;
-import de.phyrone.lobbyrel.hotbar.api2.PlayerHotbar;
+import de.phyrone.lobbyrel.hotbar.api.PlayerHotbar;
+import de.phyrone.lobbyrel.hotbar.api.util.HotbarWrapper;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -26,7 +26,7 @@ public interface PlayerData {
 
     Player getBukkitPlayer();
 
-    //Offline
+    /* Offline */
     int getPlayerHider();
 
     void setPlayerHider(int hider);

@@ -1,6 +1,5 @@
-package de.phyrone.lobbyrel.hotbar.api2;
+package de.phyrone.lobbyrel.hotbar.api;
 
-import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

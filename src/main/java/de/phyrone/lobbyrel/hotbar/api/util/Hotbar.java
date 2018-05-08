@@ -1,13 +1,12 @@
-package de.phyrone.lobbyrel.hotbar.api;
+package de.phyrone.lobbyrel.hotbar.api.util;
 
-import de.phyrone.lobbyrel.hotbar.api2.HotbarManager;
-import de.phyrone.lobbyrel.hotbar.api2.PlayerHotbar;
-import de.phyrone.lobbyrel.hotbar.api2.util.StaticItemsHotbarWrapper;
+import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
+import de.phyrone.lobbyrel.hotbar.api.HotbarManager;
+import de.phyrone.lobbyrel.hotbar.api.PlayerHotbar;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
-
 public class Hotbar extends StaticItemsHotbarWrapper {
     final HashMap<Integer, HotbarItem> items = new HashMap<>();
 

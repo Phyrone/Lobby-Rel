@@ -1,14 +1,15 @@
-package de.phyrone.lobbyrel.hotbar.api2;
+package de.phyrone.lobbyrel.hotbar.api;
 
 import com.google.gson.GsonBuilder;
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.hotbar.MainHotbar;
-import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
+import de.phyrone.lobbyrel.hotbar.api.util.HotbarWrapper;
 import de.phyrone.lobbyrel.lib.Tools;
 import de.phyrone.lobbyrel.player.PlayerManager;
 import de.phyrone.lobbyrel.player.data.PlayerData;
 import de.phyrone.lobbyrel.scheduler.StayActionManager;
 import org.apache.commons.lang.Validate;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -34,30 +35,32 @@ public class HotbarManager implements Listener {
     }
 
     public static void setHotbar(Player player, HotbarWrapper hotbarWrapper) {
-        try {
-            if (player == null)
-                return;
-            if (hotbarWrapper == null) {
-                if (!disabledPlayers.contains(player.getUniqueId()))
-                    disabledPlayers.add(player.getUniqueId());
-                if (hotbars.containsKey(player.getUniqueId()))
-                    hotbars.remove(player.getUniqueId());
-                return;
-            } else if (disabledPlayers.contains(player.getUniqueId()))
-                disabledPlayers.remove(player.getUniqueId());
-            HashMap<Integer, HotbarItem> items = hotbarWrapper.getItems(player);
-            if (LobbyPlugin.getDebug()) {
-                System.out.println("SetHotbar: ");
-                System.out.println(new GsonBuilder().setPrettyPrinting().create().toJson(items));
+        new Thread(() -> {
+            try {
+                if (player == null)
+                    return;
+                if (hotbarWrapper == null) {
+                    if (!disabledPlayers.contains(player.getUniqueId()))
+                        disabledPlayers.add(player.getUniqueId());
+                    if (hotbars.containsKey(player.getUniqueId()))
+                        hotbars.remove(player.getUniqueId());
+                    return;
+                } else if (disabledPlayers.contains(player.getUniqueId()))
+                    disabledPlayers.remove(player.getUniqueId());
+                HashMap<Integer, HotbarItem> items = hotbarWrapper.getItems(player);
+                if (LobbyPlugin.getDebug()) {
+                    System.out.println("SetHotbar: ");
+                    System.out.println(new GsonBuilder().setPrettyPrinting().create().toJson(items));
+                }
+                hotbars.put(player.getUniqueId(), new I_Hotbar());
+                hotbars.get(player.getUniqueId()).items = items;
+                update(player);
+                apis.put(player.getUniqueId(), newAPI(player));
+            } catch (Exception e) {
+                System.err.println("[Lobby-Re] Error: OpenHotbar");
+                e.printStackTrace();
             }
-            hotbars.put(player.getUniqueId(), new I_Hotbar());
-            hotbars.get(player.getUniqueId()).items = items;
-            update(player);
-            apis.put(player.getUniqueId(), newAPI(player));
-        } catch (Exception e) {
-            System.err.println("[Lobby-Re] Error: OpenHotbar");
-            e.printStackTrace();
-        }
+        }, "SetHotbarTask[" + String.valueOf(hotbarWrapper.hashCode()) + "]-" + player.getUniqueId().toString()).start();
     }
 
     public static void updatePageDisplay(Player player) {
@@ -68,8 +71,9 @@ public class HotbarManager implements Listener {
                     break;
                 case ACTION:
                     StayActionManager.getInstance().getAction(player).setEnabled(false);
-                    break;
                 case ACTION_SHORT:
+                    Tools.sendActionbar(player, " ");
+                    break;
                 case NONE:
                     break;
             }
@@ -221,27 +225,29 @@ public class HotbarManager implements Listener {
             update(player);
     }
 
-    private static void setPageAndUpdate(PlayerHotbar.PageDirection direction, Player player) {
-        I_Hotbar hb = getI_Hotbar(player);
-        if (hb.getMaxSlot() < 9)
-            setPageAndUpdate(0, player);
-        else
-            switch (direction) {
-                case FORWARD:
-                    if (hb.isLast()) setPageAndUpdate(0, player);
-                    else setPageAndUpdate(hb.currendpage + 1, player);
-                    break;
-                case BACKWARD:
-                    if (hb.isFirst()) setPageAndUpdate(hb.getLastPage(), player);
-                    else setPageAndUpdate(hb.currendpage - 1, player);
-                    break;
-                case LAST:
-                    setPageAndUpdate(hb.getLastPage(), player);
-                    break;
-                case FIRST:
-                    setPageAndUpdate(0, player);
-                    break;
-            }
+    private static void setPageAndUpdate(final PlayerHotbar.PageDirection direction, final Player player) {
+        new Thread(() -> {
+            I_Hotbar hb = getI_Hotbar(player);
+            if (hb.getMaxSlot() < 9)
+                setPageAndUpdate(0, player);
+            else
+                switch (direction) {
+                    case FORWARD:
+                        if (hb.isLast()) setPageAndUpdate(0, player);
+                        else setPageAndUpdate(hb.currendpage + 1, player);
+                        break;
+                    case BACKWARD:
+                        if (hb.isFirst()) setPageAndUpdate(hb.getLastPage(), player);
+                        else setPageAndUpdate(hb.currendpage - 1, player);
+                        break;
+                    case LAST:
+                        setPageAndUpdate(hb.getLastPage(), player);
+                        break;
+                    case FIRST:
+                        setPageAndUpdate(0, player);
+                        break;
+                }
+        }, "ChangePageTask-" + player.getUniqueId().toString()).start();
     }
 
     private static ItemStack hbiToItemStack(HotbarItem hotbarItem, Player player) {
@@ -256,7 +262,7 @@ public class HotbarManager implements Listener {
         I_Hotbar hotbar = getI_Hotbar(player);
         HotbarItem item = hotbar.getItemIgnorePage(dispatch.getSlot());
         if (item != null)
-            item.interact(player, dispatch);
+            Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () -> item.interact(player, dispatch));
     }
 
     private static int slotToPage(int slot) {

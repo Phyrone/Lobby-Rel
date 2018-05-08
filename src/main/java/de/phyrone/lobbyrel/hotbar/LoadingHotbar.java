@@ -4,7 +4,7 @@ import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.config.ItemsConfig;
 import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
-import de.phyrone.lobbyrel.hotbar.api2.util.PreparedHotbar;
+import de.phyrone.lobbyrel.hotbar.api.util.PreparedHotbar;
 import de.phyrone.lobbyrel.lib.LobbyItem;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -17,7 +17,6 @@ public class LoadingHotbar {
     static PreparedHotbar hb;
     static boolean enabled;
     static int time;
-    static boolean fullHotbar;
     static LobbyItem item;
     Player p;
 

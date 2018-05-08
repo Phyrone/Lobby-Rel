@@ -5,9 +5,9 @@ import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.events.LobbyResetPlayerEvent;
 import de.phyrone.lobbyrel.hider.PlayerHiderManager;
 import de.phyrone.lobbyrel.hotbar.LoadingHotbar;
-import de.phyrone.lobbyrel.hotbar.api2.HotbarManager;
-import de.phyrone.lobbyrel.hotbar.api2.HotbarWrapper;
-import de.phyrone.lobbyrel.hotbar.api2.PlayerHotbar;
+import de.phyrone.lobbyrel.hotbar.api.HotbarManager;
+import de.phyrone.lobbyrel.hotbar.api.PlayerHotbar;
+import de.phyrone.lobbyrel.hotbar.api.util.HotbarWrapper;
 import de.phyrone.lobbyrel.hotbar.customitems.ExternalItemsManager;
 import de.phyrone.lobbyrel.player.data.PlayerData;
 import de.phyrone.lobbyrel.player.data.internal.InternalOfflinePlayerData;
@@ -169,14 +169,8 @@ public class PlayerManager {
     }
 
     public static void resetPlayerAndData(Player player) {
-        new BukkitRunnable() {
-
-            @Override
-            public void run() {
-                resetPlayerData(player);
-                resetPlayer(player);
-            }
-        }.runTaskAsynchronously(LobbyPlugin.getInstance());
+        resetPlayerData(player);
+        new Thread(() -> resetPlayer(player), "ResetPlayerThread-" + player.getUniqueId()).start();
     }
 
     public static void resetPlayerData(Player player) {
@@ -330,7 +324,6 @@ public class PlayerManager {
             @Override
             public void setAllowGamemodeChange(boolean allowGamemodeChange) {
                 getInternalPlayerData(uuid).allowGamemodeChange = allowGamemodeChange;
-                quickSave();
             }
 
             @Override

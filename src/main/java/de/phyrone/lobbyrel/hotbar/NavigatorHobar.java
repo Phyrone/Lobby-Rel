@@ -2,9 +2,9 @@ package de.phyrone.lobbyrel.hotbar;
 
 import de.phyrone.lobbyrel.config.WarpConf;
 import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
-import de.phyrone.lobbyrel.hotbar.api2.HotbarManager;
-import de.phyrone.lobbyrel.hotbar.api2.PlayerHotbar;
-import de.phyrone.lobbyrel.hotbar.api2.util.StaticItemsHotbarWrapper;
+import de.phyrone.lobbyrel.hotbar.api.HotbarManager;
+import de.phyrone.lobbyrel.hotbar.api.PlayerHotbar;
+import de.phyrone.lobbyrel.hotbar.api.util.StaticItemsHotbarWrapper;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
 import de.phyrone.lobbyrel.lib.Sounds;
 import de.phyrone.lobbyrel.player.effect.EffectPlayer;
