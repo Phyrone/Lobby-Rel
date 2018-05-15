@@ -28,8 +28,7 @@ public class LobbyGuard implements Listener {
 	public static Boolean disableBreakCheck = false;
 	public static Boolean disableGameModeCheck = false;
     public static Boolean disableInvClickCheck = false;
-	public static Boolean disableDamageCheck = false;
-    public static Boolean disableDropCheck = false;
+	public static Boolean disableDropCheck = false;
 
 	@EventHandler
 	public void onBreak(BlockBreakEvent e){
@@ -38,7 +37,7 @@ public class LobbyGuard implements Listener {
 		if (playerdata.isBuilder() || disableBreakCheck) {
 			return;
 		}
-		p.sendMessage(LobbyPlugin.getPrefix() + LangManager.getMessage(p, "Guard.NoBreak", " &4Du darfst hier nicht abbauen!"));
+		LangManager.sendMessage(p, "Guard.NoBreak", LobbyPlugin.getPrefix() + " &4Du darfst hier nicht abbauen!");
 		e.setCancelled(true);
 	} @EventHandler
 	public void onGm(PlayerGameModeChangeEvent e){

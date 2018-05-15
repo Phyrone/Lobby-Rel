@@ -2,29 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75c0e7c6-91c1-4cb0-97b0-36188e25d3cc" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/HotbarActions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/SupportPluginsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/SupportPluginsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cmd/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cmd/CommandManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/events/HotbarSwitchEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/events/HotbarSwitchEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/LoadingHotbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/LoadingHotbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/MainHotbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/MainHotbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/NavigatorHobar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/NavigatorHobar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/Hotbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/Hotbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/HotbarItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/HotbarItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/HotbarItemAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/HotbarItemAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api2/HotbarManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/HotbarManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api2/HotbarWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/HotbarWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api2/PlayerHotbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/PlayerHotbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api2/util/EmptyHotbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/EmptyHotbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api2/util/PreparedHotbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/PreparedHotbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api2/util/StaticItemsHotbarWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/StaticItemsHotbarWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/PacketManipulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/PacketManipulator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/LobbyGuard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/LobbyGuard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/PlayerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/PlayerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/internal/InternalPlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/internal/InternalPlayerData.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,17 +33,35 @@
       <file leaf-file-name="JoinEvent.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/JoinEvent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-247">
+            <state relative-caret-position="68">
               <caret line="14" column="42" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="42" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LobbyGuard.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LobbyGuard.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/LobbyGuard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="46" column="41" lean-forward="true" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
+            <state relative-caret-position="306">
+              <caret line="39" column="110" selection-start-line="39" selection-start-column="110" selection-end-line="39" selection-end-column="110" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NavigatorGUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/NavigatorGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="55" column="43" lean-forward="true" selection-start-line="55" selection-start-column="43" selection-end-line="55" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PacketManipulator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/PacketManipulator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -128,7 +126,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/scheduler/StayTitleManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/ping/MinecraftPingReply.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/LobbyEconomy.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hider/HiderModule.java" />
@@ -176,9 +173,10 @@
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/SupportPluginsManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/EmptyHotbar.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/LobbyGuard.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/PlayerManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/PlayerData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/LobbyGuard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/PacketManipulator.java" />
       </list>
     </option>
   </component>
@@ -196,7 +194,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2016" />
+    <option name="x" value="2420" />
     <option name="y" value="49" />
     <option name="width" value="830" />
     <option name="height" value="547" />
@@ -208,7 +206,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,6 +238,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lobby-Rel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
@@ -297,6 +303,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -672,14 +679,9 @@
       <workItem from="1525587507357" duration="1492000" />
       <workItem from="1525631260232" duration="1640000" />
       <workItem from="1525814966614" duration="1226000" />
-      <workItem from="1525816234586" duration="2304000" />
-    </task>
-    <task id="LOCAL-00019" summary="24.02.18">
-      <created>1519507262798</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1519507262798</updated>
+      <workItem from="1525816234586" duration="2321000" />
+      <workItem from="1526242591561" duration="20000" />
+      <workItem from="1526380343384" duration="1621000" />
     </task>
     <task id="LOCAL-00020" summary="26.02.18">
       <created>1519656417137</created>
@@ -1017,11 +1019,18 @@
       <option name="project" value="LOCAL" />
       <updated>1525532311876</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Hotbar Performance (a bit more ASYNC)">
+      <created>1525820118417</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1525820118417</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="323662000" />
+    <option name="totallyTimeSpent" value="325320000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="49" width="1296" height="1000" extended-state="6" />
@@ -1034,12 +1043,11 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.34915254" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.490625" visible="true" weight="0.34463277" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.490625" visible="true" weight="0.34463277" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.375" />
       <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32881355" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -1052,17 +1060,18 @@
       <window_info anchor="bottom" id="Inspection Results" order="9" weight="0.3299435" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32881355" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.490625" weight="0.48928973" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2375" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.35062006" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -1071,7 +1080,7 @@
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.509375" side_tool="true" weight="0.32919955" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.35062006" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.4875" weight="0.32694477" />
       <window_info anchor="right" id="Maven Projects" order="5" />
@@ -1125,13 +1134,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/util/concurrent/Future.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="95" column="17" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cmd/LobbyCMD.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1088">
@@ -1225,13 +1227,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api2/DefaultHotbarMethods.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/HotbarEvents.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/NavigatorGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="30" column="68" selection-start-line="30" selection-start-column="68" selection-end-line="30" selection-end-column="146" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/events/HotbarSwitchEvent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -1293,10 +1288,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="610" column="13" selection-start-line="610" selection-start-column="13" selection-end-line="610" selection-end-column="13" />
-          <folding>
-            <element signature="e#24329#24330#0" expanded="true" />
-            <element signature="e#24394#24395#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1367,9 +1358,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="24" selection-start-column="24" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1377,9 +1365,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1436,11 +1421,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#289#290#0" expanded="true" />
-            <element signature="e#342#343#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1448,15 +1428,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="242" column="30" selection-start-line="242" selection-start-column="30" selection-end-line="242" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/JoinEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-247">
+        <state relative-caret-position="68">
           <caret line="14" column="42" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="42" />
         </state>
       </provider>
@@ -1465,9 +1442,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="325" column="86" selection-start-line="325" selection-start-column="86" selection-end-line="325" selection-end-column="86" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1480,8 +1454,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/LobbyGuard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="46" column="41" lean-forward="true" selection-start-line="46" selection-start-column="41" selection-end-line="46" selection-end-column="41" />
+        <state relative-caret-position="306">
+          <caret line="39" column="110" selection-start-line="39" selection-start-column="110" selection-end-line="39" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/NavigatorGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="55" column="43" lean-forward="true" selection-start-line="55" selection-start-column="43" selection-end-line="55" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/PacketManipulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
         </state>
       </provider>
     </entry>

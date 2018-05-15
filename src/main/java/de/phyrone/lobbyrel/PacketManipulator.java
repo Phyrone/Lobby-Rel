@@ -1,5 +1,6 @@
 package de.phyrone.lobbyrel;
 
+import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.lib.protokoll.TinyProtocol;
 import de.phyrone.lobbyrel.player.PlayerManager;
 import io.netty.channel.Channel;
@@ -38,7 +39,8 @@ public class PacketManipulator {
             if (LobbyPlugin.getDebug()) {
                 System.out.println("SoundPacket -> " + player.getName());
             }
-            if (!PlayerManager.getPlayerData(player).getSound())
+            if (!PlayerManager.getPlayerData(player).getSound() &&
+                    Config.getBoolean("Settings.Sound.CancelPackets", true))
                 return null;
             else return packet;
         });
