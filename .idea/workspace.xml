@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75c0e7c6-91c1-4cb0-97b0-36188e25d3cc" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cosmetics/Cosmeticsmanager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cosmetics/gatgets/GatgetsManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cosmetics/gatgets/Gatget.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/PacketManipulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/PacketManipulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/MainHotbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/MainHotbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/HotbarManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/HotbarManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/EmptyHotbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/EmptyHotbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/Hotbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/Hotbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/HotbarWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/HotbarWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/PreparedHotbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/PreparedHotbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/StaticItemsHotbarWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/StaticItemsHotbarWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/LobbyItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/LobbyItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/PlayerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/PlayerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/warps/Warp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/warps/Warp.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,15 +29,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Cosmeticsmanager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cosmetics/Cosmeticsmanager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GatgetsManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cosmetics/gatgets/GatgetsManager.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -60,51 +38,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StaticItemsHotbarWrapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/StaticItemsHotbarWrapper.java">
+      <file leaf-file-name="Gatget.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cosmetics/gatgets/Gatget.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
+            <state relative-caret-position="340">
+              <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
               <folding>
-                <element signature="e#2361#2362#0" expanded="true" />
-                <element signature="e#2395#2396#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#654#655#0" expanded="true" />
+                <element signature="e#689#690#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Hotbar.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/Hotbar.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Warp.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/warps/Warp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LobbyItem.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/LobbyItem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="126" column="25" selection-start-line="126" selection-start-column="25" selection-end-line="126" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Skull.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Skull.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -169,8 +112,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hider/HiderModule.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/ItemsConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hider/PlayerHiderManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/customitems/CommandType.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/warp/AdminWarpGUI.java" />
@@ -218,8 +159,10 @@
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cosmetics/gatgets/Gatgetmanager.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/LobbyItem.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/Hotbar.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/StaticItemsHotbarWrapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/warps/Warp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/StaticItemsHotbarWrapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cosmetics/gatgets/Getget.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cosmetics/gatgets/Gatget.java" />
       </list>
     </option>
   </component>
@@ -298,37 +241,8 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
-              <item name="hotbar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Lobby-Rel" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
-              <item name="hotbar" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Lobby-Rel" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
-              <item name="hotbar" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Lobby-Rel" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
-              <item name="warps" type="462c0819:PsiDirectoryNode" />
+              <item name="cosmetics" type="462c0819:PsiDirectoryNode" />
+              <item name="gatgets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
@@ -724,14 +638,7 @@
       <workItem from="1525814966614" duration="1226000" />
       <workItem from="1525816234586" duration="2321000" />
       <workItem from="1526242591561" duration="20000" />
-      <workItem from="1526380343384" duration="6842000" />
-    </task>
-    <task id="LOCAL-00021" summary="26.02.18">
-      <created>1519666654668</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1519666654668</updated>
+      <workItem from="1526380343384" duration="7888000" />
     </task>
     <task id="LOCAL-00022" summary="26.02.18">
       <created>1519666832369</created>
@@ -1069,11 +976,18 @@
       <option name="project" value="LOCAL" />
       <updated>1526382145224</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Bug Fixes and Beginn Gatgets">
+      <created>1526396842377</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1526396842377</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="330541000" />
+    <option name="totallyTimeSpent" value="331587000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="49" width="1296" height="1000" extended-state="6" />
@@ -1086,10 +1000,10 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.34915254" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.490625" visible="true" weight="0.34463277" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.490625" visible="true" weight="0.34463277" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.34375" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34375" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1142,7 +1056,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Updater and Dependency-Manager" />
     <MESSAGE value="Updater and Dependency-Manager and Cleanup" />
     <MESSAGE value="11.03.18 Not FINISH!" />
     <MESSAGE value="18.03.18" />
@@ -1167,7 +1080,8 @@
     <MESSAGE value="Hotbar Recode" />
     <MESSAGE value="Hotbar Performance (a bit more ASYNC)" />
     <MESSAGE value="Bug Fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug Fixes" />
+    <MESSAGE value="Bug Fixes and Beginn Gatgets" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug Fixes and Beginn Gatgets" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1177,13 +1091,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="811">
-          <caret line="108" column="24" lean-forward="true" selection-start-line="108" selection-start-column="24" selection-end-line="108" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/StorageManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="263">
@@ -1470,6 +1377,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/StaticItemsHotbarWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="36" column="19" lean-forward="true" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
+          <folding>
+            <element signature="e#2361#2362#0" expanded="true" />
+            <element signature="e#2395#2396#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cosmetics/Cosmeticsmanager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/Hotbar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/warps/Warp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/LobbyItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
@@ -1484,13 +1423,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cosmetics/Cosmeticsmanager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cosmetics/gatgets/GatgetsManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1498,28 +1430,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/Hotbar.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/cosmetics/gatgets/Gatget.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/util/StaticItemsHotbarWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
+        <state relative-caret-position="340">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
           <folding>
-            <element signature="e#2361#2362#0" expanded="true" />
-            <element signature="e#2395#2396#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#654#655#0" expanded="true" />
+            <element signature="e#689#690#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/warps/Warp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
         </state>
       </provider>
     </entry>
