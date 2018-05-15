@@ -17,12 +17,17 @@ import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 
 public class LangManager {
-    static Boolean init = Boolean.valueOf(false);
+    static boolean init = false;
     static String defaultLang = null;
     static File langFolder = null;
     static HashMap<String, LangConf> langs = new HashMap<String, LangConf>();
 
     public static void init() {
+        try {
+
+        } catch (Exception e) {
+        }
+        ;
         langs.clear();
         String filename = Config.getString("Language.Folder", new StringBuilder("plugins/").append(LobbyPlugin.getInstance().getName()).append("/Lang/").toString()) + "IGNORE_THIS";
         langFolder = new File(filename);
@@ -32,6 +37,7 @@ public class LangManager {
         langFolder.mkdirs();
         defaultLang = Config.getString("Language.Default", "en_US");
         if (LangConf.getLangs().size() == 0) {
+            getDefaultFiles();
             File df = new File(langFolder.getPath(), defaultLang + ".yml");
             try {
                 df.createNewFile();
@@ -46,7 +52,15 @@ public class LangManager {
                 langs.put(l, cfg);
             }
         }
-        init = Boolean.valueOf(true);
+        init = true;
+    }
+
+    private static void getDefaultFiles() {
+        String path = langFolder.getPath();
+        /* EN */
+        LobbyPlugin.copyResource("en_lang.yml", new File(path, "en_US"));
+        //DE
+        LobbyPlugin.copyResource("de_lang.yml", new File(path, "de_DE"));
     }
 
     public static void sendMessage(CommandSender sender, String messagePath, String defaultMessage) {
@@ -57,13 +71,10 @@ public class LangManager {
     }
 
     public static String getMessage(CommandSender sender, String messagePath, String defaultMessage) {
-        if (!init.booleanValue()) {
+        if (init) {
             init();
         }
-        String lang;
-        if (sender instanceof Player)
-            lang = getLangOrDefault((Player) sender);
-        else lang = defaultLang;
+        String lang = getLangOrDefault(sender);
         LangConf langconf = langs.getOrDefault(lang, langs.getOrDefault(defaultLang, new LangConf(defaultLang)));
         String ret;
         if (langconf.conf.contains(messagePath)) {
@@ -83,17 +94,19 @@ public class LangManager {
         return future;
     }
 
-    private static String getLangOrDefault(Player p) {
-        if (p == null) {
+    private static String getLangOrDefault(CommandSender sender) {
+        if (sender == null) {
             return defaultLang;
         }
-        if (!(p instanceof Player)) {
+        if (sender instanceof Player) {
+            Player p = (Player) sender;
+            try {
+                return p.spigot().getLocale();
+            } catch (Exception e) {
+                return getLanguage(p);
+            }
+        } else {
             return defaultLang;
-        }
-        try {
-            return p.spigot().getLocale();
-        } catch (Exception e) {
-            return getLanguage(p);
         }
 
     }

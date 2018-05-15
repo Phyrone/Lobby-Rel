@@ -6,6 +6,7 @@ import de.phyrone.lobbyrel.player.data.PlayerData;
 import de.phyrone.lobbyrel.player.lang.LangManager;
 import de.phyrone.lobbyrel.warps.Teleporter;
 import de.phyrone.lobbyrel.warps.WarpManager;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -17,6 +18,7 @@ import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.*;
@@ -128,12 +130,21 @@ public class LobbyGuard implements Listener {
 			e.setCancelled(true);
 		}
 	}@EventHandler
-	public void onRespawn(PlayerRespawnEvent e) {
-		Player p = e.getPlayer();
-		if (!PlayerManager.getPlayerData(p).isBuilder()) {
-            PlayerManager.resetPlayerAndData(p);
-			e.setRespawnLocation(WarpManager.getSpawn().getLocation());
-		}
-	}
+    public void onRespawn(PlayerRespawnEvent e) {
+        Player p = e.getPlayer();
+        if (!PlayerManager.getPlayerData(p).isBuilder()) {
+            PlayerManager.resetPlayer(p);
+            e.setRespawnLocation(WarpManager.getSpawn().getLocation());
+        }
+    }
+
+    @EventHandler
+    public void onDeath(PlayerDeathEvent e) {
+        if (!PlayerManager.getPlayerData(e.getEntity()).isBuilder()) {
+            Bukkit.getScheduler().runTaskLater(LobbyPlugin.getInstance(), () -> e.getEntity().spigot().respawn(), 5);
+            e.setKeepInventory(true);
+            e.setDeathMessage(null);
+        }
+    }
 
 }

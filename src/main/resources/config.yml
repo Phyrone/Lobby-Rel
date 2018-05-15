@@ -1,4 +1,4 @@
-# Lobby-Rel Config
+Prefix: '&8[&6Lobby&8-&cRel&8]'
 Items:
   Navigator:
     Enabled: true
@@ -54,8 +54,34 @@ PlayerSettings:
     PlayerHider: 1
 Animation:
   Teleport: true
-  PlayerHider: true
   DoubleJump: true
-Warps:
-  SetOneBlockUp: true
-Prefix: '&8[&6Lobby&8-&cRel&8]'
+Gui:
+  Navigator:
+    Size: 5
+    Position:
+      Item-0:
+        X: 4
+        Y: 0
+        enabled: true
+      Item-1:
+        X: 2
+        Y: 1
+        enabled: true
+      Item-2:
+        X: 2
+        Y: 3
+        enabled: true
+      Item-3:
+        X: 4
+        Y: 4
+        enabled: true
+      Item-4:
+        X: 6
+        Y: 3
+        enabled: true
+      Item-5:
+        X: 6
+        Y: 1
+        enabled: true
+
+
