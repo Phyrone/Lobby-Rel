@@ -1,6 +1,7 @@
 package de.phyrone.lobbyrel.hotbar.api.util;
 
 import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
+import de.phyrone.lobbyrel.hotbar.api.HotbarWrapper;
 import org.apache.commons.lang.Validate;
 import org.bukkit.entity.Player;
 

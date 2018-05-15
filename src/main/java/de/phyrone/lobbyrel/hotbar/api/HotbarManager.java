@@ -3,7 +3,6 @@ package de.phyrone.lobbyrel.hotbar.api;
 import com.google.gson.GsonBuilder;
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.hotbar.MainHotbar;
-import de.phyrone.lobbyrel.hotbar.api.util.HotbarWrapper;
 import de.phyrone.lobbyrel.lib.Tools;
 import de.phyrone.lobbyrel.player.PlayerManager;
 import de.phyrone.lobbyrel.player.data.PlayerData;

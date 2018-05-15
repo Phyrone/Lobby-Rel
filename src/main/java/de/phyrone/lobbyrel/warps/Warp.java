@@ -1,5 +1,6 @@
 package de.phyrone.lobbyrel.warps;
 
+import de.phyrone.lobbyrel.config.ItemsConfig;
 import de.phyrone.lobbyrel.lib.LobbyItem;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -15,7 +16,10 @@ public class Warp {
     public float Pitch = 0;
     public float Yaw = 0;
     public String World = "world";
-    public LobbyItem WarpItem = new LobbyItem(new ItemStack(Material.STONE));
+    public LobbyItem WarpItem = ItemsConfig.getLobbyItem(
+            "Warps.DefaultItem",
+            new LobbyItem(Material.BARRIER).setPlayerHead(true).setSkin("ITEM:QUESTION")
+    );
 
     public Warp(Location loc) {
         X = loc.getX();
@@ -32,7 +36,6 @@ public class Warp {
     }
 
     public Warp() {
-
     }
 
     public int getSort_ID() {

@@ -1,6 +1,5 @@
-package de.phyrone.lobbyrel.hotbar.api.util;
+package de.phyrone.lobbyrel.hotbar.api;
 
-import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
 import org.bukkit.entity.Player;
 
 import javax.annotation.Nonnull;

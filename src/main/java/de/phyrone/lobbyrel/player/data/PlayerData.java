@@ -1,7 +1,7 @@
 package de.phyrone.lobbyrel.player.data;
 
+import de.phyrone.lobbyrel.hotbar.api.HotbarWrapper;
 import de.phyrone.lobbyrel.hotbar.api.PlayerHotbar;
-import de.phyrone.lobbyrel.hotbar.api.util.HotbarWrapper;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;

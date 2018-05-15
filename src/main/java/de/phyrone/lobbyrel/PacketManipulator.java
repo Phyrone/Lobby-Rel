@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.HashMap;
 
 public class PacketManipulator {
-    TinyProtocol protocol = null;
+    TinyProtocol protocol;
     HashMap<String, PacketPlayerManipulator> handlers = new HashMap<>();
 
     public PacketManipulator(Plugin plugin) {

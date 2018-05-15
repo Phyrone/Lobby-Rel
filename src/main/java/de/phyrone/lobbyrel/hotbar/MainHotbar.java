@@ -7,7 +7,7 @@ import de.phyrone.lobbyrel.gui.PlayerHiderBrewGUI;
 import de.phyrone.lobbyrel.gui.SettingsGUI;
 import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
 import de.phyrone.lobbyrel.hotbar.api.HotbarManager;
-import de.phyrone.lobbyrel.hotbar.api.util.HotbarWrapper;
+import de.phyrone.lobbyrel.hotbar.api.HotbarWrapper;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
 import de.phyrone.lobbyrel.lib.LobbyItem;
 import de.phyrone.lobbyrel.navigator.NavigatorManager;

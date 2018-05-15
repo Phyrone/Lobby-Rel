@@ -41,9 +41,6 @@ public class Hotbar extends StaticItemsHotbarWrapper {
         return items;
     }
 
-    public HashMap<Integer, HotbarItem> getStaticitems() {
-        return staticItems;
-    }
 
     @Override
     public HashMap<Integer, HotbarItem> getDynamicItems(Player player) {

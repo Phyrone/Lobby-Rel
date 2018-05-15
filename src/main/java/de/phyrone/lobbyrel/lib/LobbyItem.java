@@ -119,18 +119,18 @@ public class LobbyItem {
         }
     }
 
-    private ItemStack getSkull(String Skin) {
-        if (Skin.toLowerCase().startsWith("http://") || Skin.toLowerCase().startsWith("https://")) {
-            return Skull.getCustomSkull(Skin);
-        } else if (Skin.toUpperCase().startsWith("ITEM:")) {
+    private ItemStack getSkull(String skin) {
+        if (skin.toLowerCase().startsWith("http://") || skin.toLowerCase().startsWith("https://")) {
+            return Skull.getCustomSkull(skin);
+        } else if (skin.toUpperCase().startsWith("ITEM:")) {
             try {
-                return Skull.valueOf(Skin.toUpperCase().substring(5)).getSkull();
+                return Skull.valueOf(skin.toUpperCase().substring(5)).getSkull();
             } catch (Exception e) {
             }
-        } else if (Skin.length() > 16) {
-            return Tools.getSkullFromBASE64(Skin, new RandomString(16).nextString());
+        } else if (skin.length() > 16) {
+            return Tools.getSkullFromBASE64(skin, new RandomString(16).nextString());
         } else {
-            return Skull.getPlayerSkull(Skin);
+            return Skull.getPlayerSkull(skin);
         }
 
         return Skull.QUESTION.getSkull();
