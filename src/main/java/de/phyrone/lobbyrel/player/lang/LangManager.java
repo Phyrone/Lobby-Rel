@@ -59,7 +59,7 @@ public class LangManager {
         String path = langFolder.getPath();
         /* EN */
         LobbyPlugin.copyResource("en_lang.yml", new File(path, "en_US"));
-        //DE
+        /* DE */
         LobbyPlugin.copyResource("de_lang.yml", new File(path, "de_DE"));
     }
 

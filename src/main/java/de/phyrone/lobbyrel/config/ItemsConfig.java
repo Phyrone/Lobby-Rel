@@ -2,6 +2,7 @@ package de.phyrone.lobbyrel.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.hotbar.customitems.CustomItem;
 import de.phyrone.lobbyrel.hotbar.customitems.CustomItemsManager;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
@@ -41,6 +42,8 @@ public class ItemsConfig {
     }
 
     public static void load(File file) {
+        if (!file.exists())
+            LobbyPlugin.copyResource("items.json", file);
         instance = fromFile(file);
 
         // no config file found

@@ -1,0 +1,394 @@
+{
+  "CustomItems": [
+    {
+      "Item": {
+        "Material": "CHEST",
+        "DisplayName": "&5CustomItem",
+        "Amount": 1,
+        "Data": 0,
+        "Lore": [],
+        "Glow": false,
+        "isPlayerHead": false,
+        "Skin": "%player%",
+        "CustomTags": {}
+      },
+      "Command": "",
+      "RunCommandAs": "PLAYER",
+      "Slot": 3
+    },
+    {
+      "Item": {
+        "Material": "SKULL_ITEM",
+        "DisplayName": "&5PlayerHead",
+        "Amount": 1,
+        "Data": 0,
+        "Lore": [],
+        "Glow": false,
+        "isPlayerHead": true,
+        "Skin": "%player%",
+        "CustomTags": {}
+      },
+      "Command": "",
+      "RunCommandAs": "PLAYER",
+      "Slot": 5
+    }
+  ],
+  "Items": {
+    "LobbySwitcher": {
+      "Material": "WATCH",
+      "DisplayName": "&6Lobbys",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.sound.current:on": {
+      "Material": "WOOL",
+      "DisplayName": "&aSound On",
+      "Amount": 1,
+      "Data": 5,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "PlayerHider.Option.VIP": {
+      "Material": "INK_SACK",
+      "DisplayName": "&6VIP Visible",
+      "Amount": 1,
+      "Data": 14,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.fillItem": {
+      "Material": "STAINED_GLASS_PANE",
+      "DisplayName": " ",
+      "Amount": 1,
+      "Data": 15,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "PlayerHider.Option.ALL": {
+      "Material": "INK_SACK",
+      "DisplayName": "&aAll Visible",
+      "Amount": 1,
+      "Data": 10,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.doublejump.option:on": {
+      "Material": "WOOL",
+      "DisplayName": "&aDoubleJump ON",
+      "Amount": 1,
+      "Data": 5,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.navigator.option.gui": {
+      "Material": "WOOL",
+      "DisplayName": "&bGUI",
+      "Amount": 1,
+      "Data": 3,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.sound.icon": {
+      "Material": "JUKEBOX",
+      "DisplayName": "&bSound",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "lobbyswitcher:otherServer": {
+      "Material": "EMERALD",
+      "DisplayName": "%server%",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [
+        "Online: &4%online%"
+      ],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.navigator.option.hotbar": {
+      "Material": "WOOL",
+      "DisplayName": "&bHotbar",
+      "Amount": 1,
+      "Data": 10,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "PlayerHider.Option.NONE": {
+      "Material": "INK_SACK",
+      "DisplayName": "&cNobody Visible",
+      "Amount": 1,
+      "Data": 1,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.jumppad.icon": {
+      "Material": "IRON_PLATE",
+      "DisplayName": "&bJumpPad",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.doublejump.current:on": {
+      "Material": "WOOL",
+      "DisplayName": "&aDoubleJump ON",
+      "Amount": 1,
+      "Data": 5,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.jumppad.current:on": {
+      "Material": "WOOL",
+      "DisplayName": "&aJumppad On",
+      "Amount": 1,
+      "Data": 5,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.jumppad.option:on": {
+      "Material": "WOOL",
+      "DisplayName": "&4JumpPad ON",
+      "Amount": 1,
+      "Data": 5,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "LoadingItem": {
+      "Material": "STAINED_GLASS_PANE",
+      "DisplayName": "&4&lLoading",
+      "Amount": 1,
+      "Data": 14,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.navigator.icon": {
+      "Material": "COMPASS",
+      "DisplayName": "&bNavigator",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "Settings": {
+      "Material": "SKULL_ITEM",
+      "DisplayName": "&6Settings",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": true,
+      "Skin": "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzMzZGNmYjRkYTEwMTc3MjY0OTY4YjQ0OWU3MjRhZGViZWUzYmMzM2I3MmJhZTg1ODQyYjRhYWI5YmQ5YzRkYiJ9fX0=",
+      "CustomTags": {}
+    },
+    "lobbyswitcher:background": {
+      "Material": "STAINED_GLASS_PANE",
+      "DisplayName": " ",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "Navigator": {
+      "Material": "COMPASS",
+      "DisplayName": "&l&6Navigator",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.sound.option:on": {
+      "Material": "WOOL",
+      "DisplayName": "&4Sound ON",
+      "Amount": 1,
+      "Data": 5,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "GUI.Navigator.NoWarp": {
+      "Material": "BARRIER",
+      "DisplayName": "&cWarp not set",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.doublejump.icon": {
+      "Material": "IRON_BOOTS",
+      "DisplayName": "&bDoubleJump",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [],
+      "Glow": true,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "lobbyswitcher:currendServer": {
+      "Material": "DIAMOND",
+      "DisplayName": "%server%",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [
+        "Online: &4%online%"
+      ],
+      "Glow": true,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "Warps.DefaultItem": {
+      "Material": "BARRIER",
+      "DisplayName": "",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": true,
+      "Skin": "ITEM:QUESTION",
+      "CustomTags": {}
+    },
+    "settings.jumppad.option:off": {
+      "Material": "WOOL",
+      "DisplayName": "&4JumpPad OFF",
+      "Amount": 1,
+      "Data": 14,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.doublejump.option:off": {
+      "Material": "WOOL",
+      "DisplayName": "&4DoubleJump OFF",
+      "Amount": 1,
+      "Data": 14,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "PlayerHider.Current.VIP": {
+      "Material": "SKULL",
+      "DisplayName": "&6VIP",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": true,
+      "Skin": "http://textures.minecraft.net/texture/2c4886ef362b2c823a6aa65241c5c7de71c94d8ec5822c51e96976641f53ea35",
+      "CustomTags": {}
+    },
+    "PlayerHider": {
+      "Material": "BLAZE_ROD",
+      "DisplayName": "&6PlayerHider",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "lobbyswitcher:noServer": {
+      "Material": "STAINED_GLASS_PANE",
+      "DisplayName": " ",
+      "Amount": 1,
+      "Data": 15,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.sound.option:off": {
+      "Material": "WOOL",
+      "DisplayName": "&4Sound OFF",
+      "Amount": 1,
+      "Data": 14,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "PlayerHider.Current.ALL": {
+      "Material": "SKULL",
+      "DisplayName": "&aALL",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": true,
+      "Skin": "http://textures.minecraft.net/texture/22d145c93e5eac48a661c6f27fdaff5922cf433dd627bf23eec378b9956197",
+      "CustomTags": {}
+    }
+  }
+}
