@@ -14,7 +14,7 @@ public class InternalOfflinePlayerData {
     private static final Gson PRETTYGSON = new GsonBuilder().setPrettyPrinting().create();
     //Data
     public int Navigator = Config.getInt("PlayerSettings.Default.Navigator", 0);
-    public int PlayerHider = Config.getInt("PlayerSettings.Default.PlayerHider", 0);
+    public int PlayerHider = Config.getInt("PlayerSettings.Default.PlayerHider", 1);
     public int Money = 0;
     public Boolean Sound = true;
     public Boolean Scoreboard = true;

@@ -74,7 +74,7 @@ public class PlayerManager {
      * NOT Recomend to use!!!
      *
      * @param uuid
-     * @return
+     * @return the direct playerdata (difficult to change)
      */
     public static InternalOfflinePlayerData getInternalOfflinePlayerData(UUID uuid) {
         if (!internalOfflineDatasCache.containsKey(uuid))

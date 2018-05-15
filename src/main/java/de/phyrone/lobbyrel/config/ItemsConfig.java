@@ -102,12 +102,11 @@ public class ItemsConfig {
     }
 
     public LobbyItem getItem(String name, LobbyItem noFound, boolean saveNotFound) {
-        ItemsConfig instance = getInstance();
-        if (saveNotFound && !instance.Items.containsKey(name)) {
+        if (saveNotFound && !Items.containsKey(name)) {
             getInstance().Items.put(name, noFound);
             CustomItemsManager.save();
         }
-        return instance.Items.getOrDefault(name, noFound);
+        return Items.getOrDefault(name, noFound);
 
 
     }

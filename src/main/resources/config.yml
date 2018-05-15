@@ -1,0 +1,61 @@
+# Lobby-Rel Config
+Items:
+  Navigator:
+    Enabled: true
+    Slot: 0
+  PlayerHider:
+    Enabled: true
+    Slot: 1
+  Settings:
+    Enabled: true
+    Slot: 8
+  Switcher:
+    Enabled: true
+    Slot: 7
+  Swticher:
+    Enabled: true
+Scoreboard:
+  Enabled: false
+Language:
+  Folder: plugins/Lobby-Rel/Lang/
+  Default: en_US
+LoadingHotbar:
+  Enabled: true
+  LoadingTime: 5
+Updater:
+  Enabled: true
+  UpdateOnStart: false
+  InformAdmin: true
+Storage:
+  Type: json
+  FilePath: plugins\Lobby-Rel\players
+PluginSuport:
+  UltraCosmetics:
+    Enabled: true
+  BetterNick:
+    Enabled: true
+  ProtocolLib:
+    Enabled: true
+  Vault:
+    Enabled: true
+LobbySwitcher:
+  UpdateTime: 100
+  Groups:
+  - SERVER;PremiumLobby
+  - STARSTWITH;Lobby
+  - CLOUDNET;aCloudnetGroup
+CheckForIdeods:
+  CloudNet-Lobby: true
+maxLife: 6
+maxFood: 20
+PlayerSettings:
+  Default:
+    Navigator: 0
+    PlayerHider: 1
+Animation:
+  Teleport: true
+  PlayerHider: true
+  DoubleJump: true
+Warps:
+  SetOneBlockUp: true
+Prefix: '&8[&6Lobby&8-&cRel&8]'

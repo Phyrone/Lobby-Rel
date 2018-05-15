@@ -2,27 +2,15 @@ package de.phyrone.lobbyrel.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import de.phyrone.lobbyrel.lib.ItemBuilder;
-import de.phyrone.lobbyrel.lib.LobbyItem;
-import de.phyrone.lobbyrel.warps.Warp;
-import org.bukkit.Material;
 
 import java.io.*;
-import java.util.HashMap;
+import java.util.ArrayList;
 
-public class WarpConf {
-    private static WarpConf instance;
-    public HashMap<String, Warp> Warps;
-    public Warp Spawn;
+public class RanksConf {
+    private static RanksConf instance;
+    ArrayList<PlayerRank> ranks = new ArrayList<>();
 
-    //Variablen
-    public WarpConf() {
-        Warps = new HashMap<>();
-        Spawn = new Warp(ServerProp.getSpawnLocation()).setWarpItem(new LobbyItem(
-                new ItemBuilder(Material.MAGMA_CREAM).displayname("&6Spawn").build()));
-    }
-
-    public static WarpConf getInstance() {
+    public static RanksConf getInstance() {
         if (instance == null) {
             instance = fromDefaults();
         }
@@ -40,17 +28,17 @@ public class WarpConf {
         load(new File(file));
     }
 
-    private static WarpConf fromDefaults() {
-        WarpConf config = new WarpConf();
+    private static RanksConf fromDefaults() {
+        RanksConf config = new RanksConf();
         return config;
     }
 
-    private static WarpConf fromFile(File configFile) {
+    private static RanksConf fromFile(File configFile) {
         try {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(configFile)));
 
-            return gson.fromJson(reader, WarpConf.class);
+            return gson.fromJson(reader, RanksConf.class);
         } catch (FileNotFoundException e) {
         }
         return null;
@@ -76,6 +64,11 @@ public class WarpConf {
     public String toString() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(this);
+    }
+
+    public class PlayerRank {
+        String permission;
+
     }
 
 }

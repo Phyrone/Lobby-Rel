@@ -1,5 +1,6 @@
 package de.phyrone.lobbyrel.config;
 
+import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.lib.Utf8YamlConfiguration;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -35,13 +36,16 @@ public class Config {
         }
 
     }
+
     private static void loadDefault() {
         if (!file.getParentFile().exists())
             file.getParentFile().mkdirs();
         if (!file.exists()) {
             try {
-                file.createNewFile();
-            } catch (IOException e) {
+                System.out.println("[Lobby-Rel] Config.yml not found loading default...");
+                conf.load(LobbyPlugin.getResouceFile("config.yml"));
+                conf.save(file);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -50,14 +54,13 @@ public class Config {
     }
 
     public static void saveAsync() {
-        new Thread(() -> saveSync(), "SaveConfigTask").start();
+        new Thread(Config::saveSync, "SaveConfigTask").start();
     }
 
     public synchronized static void saveSync() {
         try {
             conf.save(file);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

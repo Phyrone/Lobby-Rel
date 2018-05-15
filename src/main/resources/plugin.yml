@@ -3,6 +3,7 @@ name: Lobby-Rel
 version: ${project.version}
 softdepend: [SmartInvs,EffectLib,PlaceholderAPI,QuickBoard,ProtocolLib,BetterNick,UltraCosmetics]
 author: Phyrone
+debug: true
 commands:
      lobby:
           aliases: [lb,lobbysystem,lobby-rel,lobby-reloaded]

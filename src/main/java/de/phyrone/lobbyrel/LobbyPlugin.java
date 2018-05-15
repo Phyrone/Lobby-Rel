@@ -21,14 +21,17 @@ import de.phyrone.lobbyrel.scheduler.StayTitleManager;
 import de.phyrone.lobbyrel.storage.StorageManager;
 import de.phyrone.lobbyrel.update.LobbyDependency;
 import de.phyrone.lobbyrel.warps.WarpManager;
+import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.io.*;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -45,6 +48,26 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
 
     public LobbyPlugin() {
         instance = this;
+    }
+
+    public static InputStreamReader getResouceFile(String name) {
+        try {
+            return new InputStreamReader(instance.getResource(name), "UTF8");
+        } catch (UnsupportedEncodingException e) {
+            return new InputStreamReader(instance.getResource(name));
+        }
+    }
+
+    public static void copyResource(String in, File out) {
+        try {
+            if (debug)
+                System.out.println("[Lobby-Rel] copy \"" + in + "\" to " + out.getPath());
+            IOUtils.copy(getResouceFile(in),
+                    new OutputStreamWriter(new FileOutputStream(out)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private static void loadConf() {
@@ -296,7 +319,13 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
     @Override
     public void onLoad() {
         System.out.println("[Lobby-Rel] Loading Plugin");
-        debug = getDescription().getVersion().endsWith("-DEV");
+        try {
+            debug = getDescription().getVersion().endsWith("-DEV") ||
+                    YamlConfiguration.loadConfiguration(
+                            new InputStreamReader(getResource("plugin.yml"))).getBoolean("debug", false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         try {
             super.onLoad();
         } catch (Exception e) {
