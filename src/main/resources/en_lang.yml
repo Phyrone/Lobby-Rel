@@ -1,10 +1,10 @@
 CMD:
   Warp:
-    Set: ' &cwarp was set'
-    SpawnSet: ' &cspawn was set'
+    Set: ' &7Warp successfully set.'
+    SpawnSet: ' &7The Spawnpoint was set.'
   Build:
-    Enabled: '&a&lBuilemode Enabled'
-    Disabled: '&a&lBuilemode Disabled'
+    Enabled: '&a&lYou can build now.'
+    Disabled: '&c&lYou can't build anymore.'
   Reloaded:
     Title: '&5Reloaded'
     Chat: '&cReloaded!'
@@ -12,7 +12,7 @@ GUI:
   Settings:
     Title: '&8Settings'
   LobbySwitcher:
-    Title: '&8Lobbys'
+    Title: '&8Lobbies'
   Navigator:
     Title: '&6&lNavigator'
     Spawn: '&6Spawn'
@@ -21,4 +21,4 @@ GUI:
     Previous: '&6Previous'
 Message:
   Update:
-    Alredy-Uptodate: '&c Already Uptodate!'
+    Alredy-Uptodate: '&aThis plugin is already uptodate!'
