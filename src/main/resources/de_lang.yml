@@ -1,7 +1,7 @@
 CMD:
   Warp:
-    Set: ' &7Der Warppunkt wurde gesetzt.'
-    SpawnSet: ' &7Der Spawn wurde gesetzt.'
+    Set: '&7Der Warppunkt wurde gesetzt.'
+    SpawnSet: '&7Der Spawn wurde gesetzt.'
   Build:
     Enabled: '&a&lDu hast den Baumodus betreten.'
     Disabled: '&c&lDu hast den Baumodus verlassen.'
