@@ -1,25 +1,24 @@
-#hab gerade keine lust zu übersetzen
 CMD:
   Warp:
-    Set: ' &cwarp was set'
-    SpawnSet: ' &cspawn was set'
+    Set: ' &7Der Warppunkt wurde gesetzt.'
+    SpawnSet: ' &7Der Spawn wurde gesetzt.'
   Build:
-    Enabled: '&a&lBuilemode Enabled'
-    Disabled: '&a&lBuilemode Disabled'
+    Enabled: '&a&lDu hast den Baumodus betreten.'
+    Disabled: '&c&lDu hast den Baumodus verlassen.'
   Reloaded:
-    Title: '&5Reloaded'
-    Chat: '&cReloaded!'
+    Title: '&5Neu geladen'
+    Chat: '&aDas Plugin wurde neu geladen!'
 GUI:
   Settings:
-    Title: '&8Settings'
+    Title: '&8Einstellungen'
   LobbySwitcher:
-    Title: '&8Lobbys'
+    Title: '&8Lobbies'
   Navigator:
     Title: '&6&lNavigator'
     Spawn: '&6Spawn'
-    Next: '&6Next'
-    Page: '&7Page'
-    Previous: '&6Previous'
+    Next: '&6Vor'
+    Page: '&7Seite'
+    Previous: '&6Zurück'
 Message:
   Update:
-    Alredy-Uptodate: '&c Already Uptodate!'
+    Alredy-Uptodate: '&aDas Plugin ist bereits auf dem neusten Stand!'
