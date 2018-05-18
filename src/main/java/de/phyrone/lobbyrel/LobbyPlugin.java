@@ -63,8 +63,10 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         try {
             if (debug)
                 System.out.println("[Lobby-Rel] copy \"" + in + "\" to " + out.getPath());
-            IOUtils.copy(getResouceFile(in),
-                    new OutputStreamWriter(new FileOutputStream(out)));
+            OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(out));
+            IOUtils.copy(getResouceFile(in), writer);
+            writer.flush();
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -329,6 +331,7 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        new Thread(Config::loadDefault).start();
         try {
             super.onLoad();
         } catch (Exception e) {

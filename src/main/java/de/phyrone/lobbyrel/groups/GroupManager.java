@@ -27,7 +27,7 @@ public class GroupManager implements Listener {
             for (Player player : Bukkit.getOnlinePlayers())
                 PlayerList.getPlayerList(player).resetTablist();
         tabEnabled = Config.getBoolean("GroupManager.TabList", true);
-        chatEnabled = Config.getBoolean("GroupManager.TabList", true);
+        chatEnabled = Config.getBoolean("GroupManager.Chat", true);
 
     }
 

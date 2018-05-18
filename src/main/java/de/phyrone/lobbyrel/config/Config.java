@@ -37,14 +37,14 @@ public class Config {
 
     }
 
-    private static void loadDefault() {
+    public static void loadDefault() {
         if (!file.getParentFile().exists())
             file.getParentFile().mkdirs();
         if (!file.exists()) {
             try {
                 System.out.println("[Lobby-Rel] Config.yml not found loading default...");
+                LobbyPlugin.copyResource("config.yml", file);
                 conf.load(LobbyPlugin.getResouceFile("config.yml"));
-                conf.save(file);
             } catch (Exception e) {
                 e.printStackTrace();
             }

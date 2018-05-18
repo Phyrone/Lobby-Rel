@@ -1,24 +1,24 @@
 CMD:
   Warp:
-    Set: ' &7Warp successfully set.'
-    SpawnSet: ' &7The Spawnpoint was set.'
+    Set: " &7Warp successfully set."
+    SpawnSet: " &7The Spawnpoint was set."
   Build:
-    Enabled: '&a&lYou can build now.'
-    Disabled: '&c&lYou can't build anymore.'
+    Enabled: "&a&lYou can build now."
+    Disabled: "&c&lYou can't build anymore."
   Reloaded:
-    Title: '&5Reloaded'
-    Chat: '&cReloaded!'
+    Title: "&5Reloaded"
+    Chat: "&cReloaded!"
 GUI:
   Settings:
-    Title: '&8Settings'
+    Title: "&8Settings"
   LobbySwitcher:
-    Title: '&8Lobbies'
+    Title: "&8Lobbies"
   Navigator:
-    Title: '&6&lNavigator'
-    Spawn: '&6Spawn'
-    Next: '&6Next'
-    Page: '&7Page'
-    Previous: '&6Previous'
+    Title: "&6&lNavigator"
+    Spawn: "&6Spawn"
+    Next: "&6Next"
+    Page: "&7Page"
+    Previous: "&6Previous"
 Message:
   Update:
-    Alredy-Uptodate: '&aThis plugin is already uptodate!'
+    Alredy-Uptodate: "&aThis plugin is already uptodate!"
