@@ -9,11 +9,12 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.HashMap;
 
-public class PacketManipulator {
-    TinyProtocol protocol;
-    HashMap<String, PacketPlayerManipulator> handlers = new HashMap<>();
-    boolean soundPacket = Config.getBoolean("Settings.Sound.CancelPackets", true);
-    public PacketManipulator(Plugin plugin) {
+class PacketManipulator {
+    private TinyProtocol protocol;
+    private HashMap<String, PacketPlayerManipulator> handlers = new HashMap<>();
+    private boolean soundPacket = Config.getBoolean("Settings.Sound.CancelPackets", true);
+
+    PacketManipulator(Plugin plugin) {
         if (protocol != null)
             protocol.close();
         protocol = new TinyProtocol(plugin) {
@@ -30,7 +31,7 @@ public class PacketManipulator {
         defaultHadlers();
     }
 
-    public TinyProtocol getProtocol() {
+    TinyProtocol getProtocol() {
         return protocol;
     }
 

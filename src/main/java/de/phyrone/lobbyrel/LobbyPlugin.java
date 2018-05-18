@@ -331,7 +331,7 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        new Thread(Config::loadDefault).start();
+        new Thread(Config::load).start();
         try {
             super.onLoad();
         } catch (Exception e) {

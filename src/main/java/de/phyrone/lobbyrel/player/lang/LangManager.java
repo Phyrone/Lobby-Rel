@@ -20,16 +20,11 @@ public class LangManager {
     static boolean init = false;
     static String defaultLang = null;
     static File langFolder = null;
-    static HashMap<String, LangConf> langs = new HashMap<String, LangConf>();
+    static HashMap<String, LangConf> langs = new HashMap<>();
 
     public static void init() {
-        try {
-
-        } catch (Exception e) {
-        }
-        ;
         langs.clear();
-        String filename = Config.getString("Language.Folder", new StringBuilder("plugins/").append(LobbyPlugin.getInstance().getName()).append("/Lang/").toString()) + "IGNORE_THIS";
+        String filename = Config.getString("Language.Folder", "plugins/" + LobbyPlugin.getInstance().getName() + "/Lang/") + "IGNORE_THIS";
         langFolder = new File(filename);
         if (!langFolder.isDirectory()) {
             langFolder = langFolder.getParentFile();
@@ -71,7 +66,7 @@ public class LangManager {
     }
 
     public static String getMessage(CommandSender sender, String messagePath, String defaultMessage) {
-        if (init) {
+        if (!init) {
             init();
         }
         String lang = getLangOrDefault(sender);

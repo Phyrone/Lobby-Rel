@@ -1,8 +1,6 @@
 package de.phyrone.lobbyrel.cmd;
 
-import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.Config;
-import de.phyrone.lobbyrel.lib.json.FancyMessage;
 import de.phyrone.lobbyrel.player.PlayerManager;
 import de.phyrone.lobbyrel.player.data.PlayerData;
 import de.phyrone.lobbyrel.player.lang.LangManager;
@@ -27,7 +25,7 @@ public class BuildCMD implements CommandExecutor {
                         pd.setBuilder(false);
                         pd.setAllowGamemodeChange(false);
                         PlayerManager.resetPlayer(p);
-                        new FancyMessage(LobbyPlugin.getPrefix()).then(" ").then(LangManager.getMessage(p, "CMD.Build.Disabled", "&a&lBuilemode Disabled")).send(p);
+                        LangManager.sendMessage(p, "CMD.Build.Disabled", "&c&lYou can't build anymore.");
                     } else {
                         pd.setAllowGamemodeChange(true);
                         p.setGameMode(GameMode.CREATIVE);
@@ -36,7 +34,7 @@ public class BuildCMD implements CommandExecutor {
                         p.getInventory().clear();
                         p.setMaxHealth(20);
                         p.setHealth(20);
-                        new FancyMessage(LobbyPlugin.getPrefix()).then(" ").then(LangManager.getMessage(p, "CMD.Build.Enabled", "&a&lBuilemode Enabled")).send(p);
+                        LangManager.sendMessage(p, "CMD.Build.Enabled", "&a&lYou can build now.");
                     }
 
                 }

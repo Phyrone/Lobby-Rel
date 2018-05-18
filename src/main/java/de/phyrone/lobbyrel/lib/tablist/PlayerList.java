@@ -4,6 +4,7 @@ import com.google.common.base.Strings;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.collect.Maps;
+import de.phyrone.lobbyrel.LobbyPlugin;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -557,38 +558,36 @@ public class PlayerList {
                     new Class[]{String.class}, getNameFromID(id) + name);
             Object data = ReflectionUtil.instantiate(PACKET_PLAYER_INFO_DATA_CONSTRUCTOR, packet, gameProfile, 1,
                     WORLD_GAME_MODE_NOT_SET, array[0]);
-            SkinCallBack call = new SkinCallBack() {
-                @Override
-                public void callBack(Skin skin, boolean successful, Exception exception) {
-                    Object profile = GAMEPROFILECLASS.cast(ReflectionUtil.invokeMethod(data, "a", new Class[0]));
-                    if (successful) {
-                        try {
-                            Object map = ReflectionUtil.invokeMethod(profile, "getProperties", new Class[0]);
-                            if (skin.getBase64() != null && skin.getSignedBase64() != null) {
-                                ReflectionUtil.invokeMethod(map, "removeAll", new Class[]{String.class}, "textures");
-                                Object prop = ReflectionUtil.instantiate(PROPERTY_CONSTRUCTOR, "textures",
-                                        skin.getBase64(), skin.getSignedBase64());
-                                Method m = null;
-                                for (Method mm : PROPERTY_MAP.getMethods())
-                                    if (mm.getName().equals("put"))
-                                        m = mm;
-                                try {
-                                    if (m != null)
-                                        m.invoke(map, "textures", prop);
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
+            SkinCallBack call = (skin, successful, exception) -> {
+                Object profile = GAMEPROFILECLASS.cast(ReflectionUtil.invokeMethod(data, "a", new Class[0]));
+                if (successful) {
+                    try {
+                        Object map = ReflectionUtil.invokeMethod(profile, "getProperties", new Class[0]);
+                        if (skin.getBase64() != null && skin.getSignedBase64() != null) {
+                            ReflectionUtil.invokeMethod(map, "removeAll", new Class[]{String.class}, "textures");
+                            Object prop = ReflectionUtil.instantiate(PROPERTY_CONSTRUCTOR, "textures",
+                                    skin.getBase64(), skin.getSignedBase64());
+                            Method m = null;
+                            for (Method mm : PROPERTY_MAP.getMethods())
+                                if (mm.getName().equals("put"))
+                                    m = mm;
+                            try {
+                                if (m != null)
+                                    m.invoke(map, "textures", prop);
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
-                        } catch (Error e) {
                         }
+                    } catch (Error e) {
                     }
-                    String getname = (String) ReflectionUtil.invokeMethod(profile, "getName", null);
-                    System.out.println(getname + ":x");
-                    tabs[getIDFromName(getname)] = getname;
-                    players.add(data);
-                    datas.add(data);
-                    sendNEWTabPackets(getPlayer(), packet, players, PACKET_PLAYER_INFO_ACTION_ADD_PLAYER);
                 }
+                String getname = (String) ReflectionUtil.invokeMethod(profile, "getName", null);
+                if (LobbyPlugin.getDebug())
+                    System.out.println(getname + ":x");
+                tabs[getIDFromName(getname)] = getname;
+                players.add(data);
+                datas.add(data);
+                sendNEWTabPackets(getPlayer(), packet, players, PACKET_PLAYER_INFO_ACTION_ADD_PLAYER);
             };
             if (updateProfToAddCustomSkin) {
                 Skin.getSkin(name, call);

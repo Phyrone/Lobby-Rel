@@ -2,6 +2,7 @@ package de.phyrone.lobbyrel.player.scoreboard;
 
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.Config;
+import de.phyrone.lobbyrel.groups.GroupManager;
 import de.phyrone.lobbyrel.player.PlayerManager;
 import de.phyrone.lobbyrel.player.data.PlayerData;
 import de.phyrone.lobbyrel.player.lang.LangManager;
@@ -22,21 +23,24 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ScoreboardManager {
-	static Listener listner = null;
-	static boolean enabled = false;
-	static boolean external = false;
-	static List<String> lines;
-	static List<String> title;
-	static String qickboardConf;
-	static int updateTime = 10;
-	public static boolean isEnabled() {
-		return enabled;
-	}
-	public static void setEnabled(boolean enabled) {
-		ScoreboardManager.enabled = enabled;
-	}
-	public static void init() {
-		enabled = Config.getBoolean("Scoreboard.Enabled", false);
+    static Listener listner = null;
+    static boolean enabled = false;
+    static boolean external = false;
+    static List<String> lines;
+    static List<String> title;
+    static String qickboardConf;
+    static int updateTime = 10;
+
+    public static boolean isEnabled() {
+        return enabled;
+    }
+
+    public static void setEnabled(boolean enabled) {
+        ScoreboardManager.enabled = enabled;
+    }
+
+    public static void init() {
+        enabled = Config.getBoolean("Scoreboard.Enabled", false);
 		/*private void respawnPlayer(final Player p) {
         new BukkitRunnable() {
             public void run() {
@@ -122,68 +126,69 @@ public class ScoreboardManager {
 
             }
         }, "InitScoreboardThread").start();
-	}
-	
-	public static void update(Player player) {
-		new BukkitRunnable() {
-			
-			@Override
-			public void run() {
-				PlayerData pd = PlayerManager.getPlayerData(player);
-                if (enabled && pd.isScoreboard()) {
-									try {
-										if(external) {
-											new BukkitRunnable() {
-												
-												@Override
-												public void run() {
-                                                    QuickBoardAPI.createBoard(player, qickboardConf.replace("%lang%",
-                                                            LangManager.getMessage(player, "Scoreboard.ConfigPath", "en")));
-												}
-											}.runTask(LobbyPlugin.getInstance());
-											
-										}else {
-											try {
-												List<String> ll = PlaceholderAPI.setPlaceholders(player, lines);
-												List<String> tt = PlaceholderAPI.setPlaceholders(player, title);
-												setBoard(player, ll, tt);
-											}catch (Exception e) {
-												System.out.println("PlaceHolderapi nicht Gefunden");
-												List<String> tt = title;
-												List<String> ll = lines;
-												setBoard(player, ll, tt);
-											}
-											
-										}
-									} catch (Exception e) {
-										System.out.println("Error: ADD Scoreboard");
-										e.printStackTrace();
-									}
-					}else if (enabled){
-						new BukkitRunnable() {
-							@Override
-							public void run() {
-								try {
-									QuickBoardAPI.removeBoard(player);
-								}catch (Exception e) {
-									System.out.println("Error: Remove Scoreboard");
-									e.printStackTrace();
-								}
-							}
-						}.runTask(LobbyPlugin.getInstance());
-				}
-			}
-		}.runTaskLaterAsynchronously(LobbyPlugin.getInstance(),3);
+    }
 
-	}
-private static void setBoard(Player player,List<String> lines,List<String> title) {
-	new BukkitRunnable() {
-		
-		@Override
-		public void run() {
-			QuickBoardAPI.createBoard(player,lines,title,updateTime,updateTime);
-		}
-	}.runTask(LobbyPlugin.getInstance());
-	
-}
+    public static void update(Player player) {
+        new BukkitRunnable() {
+
+            @Override
+            public void run() {
+                PlayerData pd = PlayerManager.getPlayerData(player);
+                if (enabled && pd.isScoreboard()) {
+                    try {
+                        if (external) {
+                            new BukkitRunnable() {
+
+                                @Override
+                                public void run() {
+                                    QuickBoardAPI.createBoard(player, qickboardConf.replace("%lang%",
+                                            LangManager.getMessage(player, "Scoreboard.ConfigPath", "en")));
+                                }
+                            }.runTask(LobbyPlugin.getInstance());
+
+                        } else {
+                            try {
+                                List<String> ll = PlaceholderAPI.setPlaceholders(player, lines);
+                                List<String> tt = PlaceholderAPI.setPlaceholders(player, title);
+                                setBoard(player, ll, tt);
+                            } catch (Exception e) {
+                                System.out.println("PlaceHolderapi nicht Gefunden");
+                                List<String> tt = title;
+                                List<String> ll = lines;
+                                setBoard(player, ll, tt);
+                            }
+
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Error: ADD Scoreboard");
+                        e.printStackTrace();
+                    }
+                } else if (enabled) {
+                    new BukkitRunnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                QuickBoardAPI.removeBoard(player);
+                            } catch (Exception e) {
+                                System.out.println("Error: Remove Scoreboard");
+                                e.printStackTrace();
+                            }
+                        }
+                    }.runTask(LobbyPlugin.getInstance());
+                }
+            }
+        }.runTaskLaterAsynchronously(LobbyPlugin.getInstance(), 1);
+        Bukkit.getScheduler().runTaskLaterAsynchronously(LobbyPlugin.getInstance(), () -> GroupManager.updateTablistIfEnabled(player), 3);
+    }
+
+    private static void setBoard(Player player, List<String> lines, List<String> title) {
+        new BukkitRunnable() {
+
+            @Override
+            public void run() {
+                QuickBoardAPI.createBoard(player, lines, title, updateTime, updateTime);
+            }
+        }.runTask(LobbyPlugin.getInstance());
+
+    }
 }

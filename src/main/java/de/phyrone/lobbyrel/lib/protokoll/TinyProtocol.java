@@ -216,17 +216,12 @@ public abstract class TinyProtocol {
             final ChannelPipeline pipeline = serverChannel.pipeline();
 
             // Remove channel handler
-            serverChannel.eventLoop().execute(new Runnable() {
-
-                @Override
-                public void run() {
-                    try {
-                        pipeline.remove(serverChannelHandler);
-                    } catch (NoSuchElementException e) {
-                        // That's fine
-                    }
+            serverChannel.eventLoop().execute(() -> {
+                try {
+                    pipeline.remove(serverChannelHandler);
+                } catch (NoSuchElementException e) {
+                    // That's fine
                 }
-
             });
         }
     }

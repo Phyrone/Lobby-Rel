@@ -54,8 +54,7 @@ public class PlayerManager {
         try {
             if (!dataCache.containsKey(uuid))
                 dataCache.put(uuid, newPlayerData(uuid));
-            else if (dataCache.get(uuid) == null)
-                dataCache.put(uuid, newPlayerData(uuid));
+            else dataCache.computeIfAbsent(uuid, PlayerManager::newPlayerData);
             return dataCache.getOrDefault(uuid, newPlayerData(uuid));
         } catch (Exception e) {
             System.err.println("Error Load PlayerDataAPI");
@@ -73,7 +72,7 @@ public class PlayerManager {
     /**
      * NOT Recomend to use!!!
      *
-     * @param uuid
+     * @param uuid of the player
      * @return the direct playerdata (difficult to change)
      */
     public static InternalOfflinePlayerData getInternalOfflinePlayerData(UUID uuid) {
