@@ -49,12 +49,10 @@
             <version>4.3.0</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>de.slikey</groupId>
             <artifactId>effectlib</artifactId>
             <version>5.5</version>
-            <type>jar</type>
             <scope>provided</scope>
         </dependency>
         <dependency>

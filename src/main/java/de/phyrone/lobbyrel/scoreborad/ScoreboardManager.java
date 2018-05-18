@@ -33,11 +33,17 @@ public class ScoreboardManager {
 class InternalPlayerScoreboard {
     Scoreboard scoreboard;
     HashMap<Integer, Team> lines = new HashMap<>();
+    Objective objective;
+    Player player;
+
+    public InternalPlayerScoreboard(Player player) {
+        this.player = player;
+    }
 
     public void registerLines(int amount) {
         for (int i = 0; i < amount; i++) {
             int score = 15 - i;
-
+            lines.put(i, scoreboard.registerNewTeam(""));
         }
     }
 }
