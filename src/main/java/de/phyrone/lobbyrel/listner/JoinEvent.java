@@ -15,19 +15,14 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public class JoinEvent implements Listener {
     @EventHandler(priority = EventPriority.NORMAL)
     public void onJoin(PlayerJoinEvent e) {
-        try {
-            e.setJoinMessage(null);
-        } catch (Exception e1) {
-            System.out.println("JoinEvent");
-            e1.printStackTrace();
-        }
+        e.setJoinMessage(null);
         try {
             PlayerManager.resetPlayerAndData(e.getPlayer());
         } catch (Exception e1) {
             e1.printStackTrace();
         }
         try {
-            Bukkit.getScheduler().runTaskLaterAsynchronously(LobbyPlugin.getInstance(), () -> Teleporter.toSpawn(e.getPlayer()), 3);
+            Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () -> Teleporter.toSpawn(e.getPlayer()));
         } catch (IllegalArgumentException e1) {
             e1.printStackTrace();
         }
