@@ -14,6 +14,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.net.URI;
@@ -198,5 +201,16 @@ public class Tools {
 
     static Class<?> getNmsClass(String nmsClassName) throws ClassNotFoundException {
         return Class.forName("net.minecraft.server." + Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3] + "." + nmsClassName);
+    }
+
+    public static void saveJson(String jsonConfig, File configFile) {
+        try {
+            FileWriter writer = new FileWriter(configFile);
+            writer.write(jsonConfig);
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

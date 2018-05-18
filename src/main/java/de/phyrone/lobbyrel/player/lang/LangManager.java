@@ -58,9 +58,9 @@ public class LangManager {
     private static void getDefaultFiles() {
         String path = langFolder.getPath();
         /* EN */
-        LobbyPlugin.copyResource("en_lang.yml", new File(path, "en_US"));
+        LobbyPlugin.copyResource("en_lang.yml", new File(path, "en_US.yml"));
         /* DE */
-        LobbyPlugin.copyResource("de_lang.yml", new File(path, "de_DE"));
+        LobbyPlugin.copyResource("de_lang.yml", new File(path, "de_DE.yml"));
     }
 
     public static void sendMessage(CommandSender sender, String messagePath, String defaultMessage) {

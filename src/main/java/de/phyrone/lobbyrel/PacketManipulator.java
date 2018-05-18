@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class PacketManipulator {
     TinyProtocol protocol;
     HashMap<String, PacketPlayerManipulator> handlers = new HashMap<>();
-
+    boolean soundPacket = Config.getBoolean("Settings.Sound.CancelPackets", true);
     public PacketManipulator(Plugin plugin) {
         if (protocol != null)
             protocol.close();
@@ -39,8 +39,8 @@ public class PacketManipulator {
             if (LobbyPlugin.getDebug()) {
                 System.out.println("SoundPacket -> " + player.getName());
             }
-            if (!PlayerManager.getPlayerData(player).getSound() &&
-                    Config.getBoolean("Settings.Sound.CancelPackets", true))
+            if (!PlayerManager.getPlayerData(player).getSound() && soundPacket
+                    )
                 return null;
             else return packet;
         });

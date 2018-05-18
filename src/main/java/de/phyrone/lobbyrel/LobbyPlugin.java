@@ -8,6 +8,7 @@ import de.phyrone.lobbyrel.cmd.LobbyCMD;
 import de.phyrone.lobbyrel.cmd.WarpCMD;
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.events.LobbyReloadEvent;
+import de.phyrone.lobbyrel.groups.GroupManager;
 import de.phyrone.lobbyrel.hotbar.api.HotbarManager;
 import de.phyrone.lobbyrel.hotbar.customitems.CustomItemsManager;
 import de.phyrone.lobbyrel.lib.Metrics;
@@ -211,11 +212,11 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
             e.printStackTrace();
         }
         logger = getLogger();
-        if (!System.getProperty("java.version").startsWith("1.8.")) {
+        /*if (!System.getProperty("java.version").startsWith("1.8.")) {
             System.err.println("[Lobby-Rel] Please use Java 1.8");
             Bukkit.getPluginManager().disablePlugin(this);
             return;
-        }
+        }*/
         Bukkit.getConsoleSender().sendMessage("§c\n" +
                 "  _          _     _             ____      _ \n" +
                 " | |    ___ | |__ | |__  _   _  |  _ \\ ___| |\n" +
@@ -262,6 +263,8 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         pm.registerEvents(new StayActionManager(), this);
         /* Hotbar */
         pm.registerEvents(new HotbarManager(), this);
+        /* GroupManager */
+        pm.registerEvents(new GroupManager(), this);
         /* Commands */
         PluginCommand lobbyCMD = Bukkit.getPluginCommand("lobby");
         lobbyCMD.setExecutor(new LobbyCMD());
@@ -272,7 +275,7 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         Bukkit.getPluginCommand("spawn").setExecutor(new WarpCMD());
         /* Metrics */
         Metrics m = new Metrics(instance);
-        m.addCustomChart(new Metrics.SimplePie("storage_type", () -> StorageManager.getStorage()));
+        m.addCustomChart(new Metrics.SimplePie("storage_type", StorageManager::getStorage));
         m.addCustomChart(new Metrics.AdvancedPie("players_use_navigator", () -> {
             HashMap<String, Integer> ret = new HashMap<>();
             for (Player p : Bukkit.getOnlinePlayers()) {

@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
 import de.phyrone.lobbyrel.lib.LobbyItem;
+import de.phyrone.lobbyrel.lib.Tools;
 import de.phyrone.lobbyrel.warps.Warp;
 import org.bukkit.Material;
 
@@ -63,14 +64,7 @@ public class WarpConf {
     public void toFile(File file) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String jsonConfig = gson.toJson(this);
-        try {
-            FileWriter writer = new FileWriter(file);
-            writer.write(jsonConfig);
-            writer.flush();
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Tools.saveJson(jsonConfig, file);
     }
 
     public String toString() {

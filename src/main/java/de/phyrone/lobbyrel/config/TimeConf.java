@@ -2,6 +2,7 @@ package de.phyrone.lobbyrel.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import de.phyrone.lobbyrel.lib.Tools;
 
 import java.io.*;
 import java.util.HashMap;
@@ -61,14 +62,7 @@ public class TimeConf {
     public void toFile(File file) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String jsonConfig = gson.toJson(this);
-        try {
-            FileWriter writer = new FileWriter(file);
-            writer.write(jsonConfig);
-            writer.flush();
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Tools.saveJson(jsonConfig, file);
     }
 
     public String toString() {

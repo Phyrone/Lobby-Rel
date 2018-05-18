@@ -188,7 +188,7 @@ public class PlayerList {
      */
     public static PlayerList getPlayerList(Player player) {
         if (!lookUpTable.containsKey(player.getUniqueId()))
-            return new PlayerList(player, SIZE_TWO);
+            return new PlayerList(player, Bukkit.getOnlinePlayers().size());
         return lookUpTable.get(player.getUniqueId());
     }
 
