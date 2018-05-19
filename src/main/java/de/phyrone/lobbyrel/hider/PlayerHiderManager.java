@@ -47,7 +47,6 @@ public class PlayerHiderManager {
                             player.hidePlayer(p);
                         }
                     }.runTask(LobbyPlugin.getInstance());
-
                 } else if (hider == 1) {
                     if (PlayerManager.getPlayerData(p).isVisible()) {
                         new BukkitRunnable() {

@@ -17,9 +17,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class ItemsConfig {
-
+    private static final File CONFIGFILE = new File("plugins/Lobby-Rel", "Items.json");
     // Hier schreibst du deine Attribute hin
-
     // DON'T TOUCH THE FOLLOWING CODE
     private static ItemsConfig instance;
     public ArrayList<CustomItem> CustomItems = new ArrayList<CustomItem>(Arrays.asList(
@@ -41,31 +40,33 @@ public class ItemsConfig {
         return instance;
     }
 
-    public static void load(File file) {
-        if (!file.exists())
-            LobbyPlugin.copyResource("items.json", file);
-        instance = fromFile(file);
+    public static void load() {
+        try {
+            CONFIGFILE.getParentFile().mkdirs();
+            if (!CONFIGFILE.exists())
+                LobbyPlugin.copyResource("items.json", CONFIGFILE);
+            instance = fromFile();
 
-        // no config file found
-        if (instance == null) {
-            instance = fromDefaults();
+            // no config file found
+            if (instance == null) {
+                instance = fromDefaults();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    public static void load(String file) {
-        load(new File(file));
-    }
 
     private static ItemsConfig fromDefaults() {
         ItemsConfig config = new ItemsConfig();
         return config;
     }
 
-    private static ItemsConfig fromFile(File configFile) {
+    private static ItemsConfig fromFile() {
         try {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             BufferedReader reader = new BufferedReader(new InputStreamReader(
-                    new FileInputStream(configFile)));
+                    new FileInputStream(CONFIGFILE)));
             return gson.fromJson(reader, ItemsConfig.class);
         } catch (FileNotFoundException e) {
             return null;
@@ -123,16 +124,14 @@ public class ItemsConfig {
         return getItem(name, new LobbyItem(noFound));
     }
 
-    public void toFile(String file) {
-        toFile(new File(file));
-    }
 
-    public void toFile(File file) {
+    public void toFile() {
         try {
+            CONFIGFILE.getParentFile().mkdirs();
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String jsonConfig = StringEscapeUtils.unescapeJava(gson.toJson(this));
             FileWriter writer;
-            write(file, jsonConfig);
+            write(CONFIGFILE, jsonConfig);
         } catch (Exception e) {
             e.printStackTrace();
         }

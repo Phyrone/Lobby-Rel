@@ -73,7 +73,7 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
 
     }
 
-    private static void loadConf() {
+    public static void loadConf() {
         try {
             Config.load();
             WarpManager.loadFromConf();
@@ -130,7 +130,6 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
     }
 
     public void reload() {
-        loadConf();
         Bukkit.getPluginManager().callEvent(new LobbyReloadEvent(instance));
         for (Player p : Bukkit.getOnlinePlayers()) {
             PlayerManager.resetPlayerAndData(p);
@@ -229,7 +228,9 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
                 "   §1Version: §5" + this.getDescription().getVersion() + (debug ? " §8[§4Debug Mode§8]" : "") + "\n" +
                 "   §1Author: §5Phyrone" + "\n" +
                 "   §1Minecraft: §5" + Bukkit.getBukkitVersion() + " " + (!mc18 && debug ? "§41.9 or Newer Detected!" : "") + "\n" +
-                "   §1Bukkit: §5" + Bukkit.getVersion() + "\n");
+                "   §1Bukkit: §5" + Bukkit.getVersion() + "\n" +
+                "   §1JavaVersion: §5" + System.getProperty("java.version")
+                + "\n");
 
 
         instance = this;

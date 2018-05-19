@@ -30,6 +30,7 @@ public class OwnEventsListner implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onReload(LobbyReloadEvent e) {
         new Thread(() -> LobbyPlugin.getInstance().getDataFolder().mkdirs()).start();
+        LobbyPlugin.loadConf();
         MainHotbar.setup();
         CommandManager.init();
         ScoreboardManager.init();

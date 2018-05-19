@@ -1,22 +1,21 @@
 package de.phyrone.lobbyrel.cosmetics.gatgets;
 
 import de.phyrone.lobbyrel.config.ItemsConfig;
+import de.phyrone.lobbyrel.cosmetics.Cosmetic;
 import de.phyrone.lobbyrel.lib.LobbyItem;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class Gatget {
-    int sort_id = 0;
-    String name = "Gadget";
+public class Gatget extends Cosmetic {
+
     String defaultDisplayname = "a Gadget";
     Action action = player -> 0;
-    ItemGetter getter = player ->
+    private ItemGetter getter = player ->
             ItemsConfig.getLobbyItem(
                     "Gadget." + name,
                     new LobbyItem(Material.BARRIER).setDisplayName("&6" + name)
             ).getAsItemStack(player);
-
     public ItemStack getItem(Player player) {
         return getter.onGet(player);
     }
@@ -30,6 +29,10 @@ public class Gatget {
     }
 
     interface ItemGetter {
+        /**
+         * @param player the viewer (Permitted)
+         * @return Dynamic GadgetItem
+         */
         ItemStack onGet(Player player);
     }
 }

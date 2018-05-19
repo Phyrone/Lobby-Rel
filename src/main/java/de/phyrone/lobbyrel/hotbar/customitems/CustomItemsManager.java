@@ -4,11 +4,10 @@ import de.phyrone.lobbyrel.config.ItemsConfig;
 import de.phyrone.lobbyrel.hotbar.MainHotbar;
 import de.phyrone.lobbyrel.hotbar.api.HotbarItem;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class CustomItemsManager {
-	public static final File file = new File("plugins/Lobby-Rel","Items.json");
+
 	public static void init() {
 		ArrayList<CustomItem> items = ItemsConfig.getInstance().CustomItems;
 		for(CustomItem customitem : items) {
@@ -32,13 +31,12 @@ public class CustomItemsManager {
 		
 	}
 	public static void loadConfig() {
-		file.getParentFile().mkdirs();
-		ItemsConfig.load(file);
-		ItemsConfig.getInstance().toFile(file);
+        ItemsConfig.load();
+        ItemsConfig.getInstance().toFile();
 		
 	}public static void save() {
-		file.getParentFile().mkdirs();
-		ItemsConfig.getInstance().toFile(file);
+
+        ItemsConfig.getInstance().toFile();
 		
 	}public static void addItemtoConf(CustomItem item,boolean save) {
 		ItemsConfig.getInstance().CustomItems.add(item);

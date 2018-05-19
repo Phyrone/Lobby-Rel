@@ -67,11 +67,11 @@
       "Skin": "%player%",
       "CustomTags": {}
     },
-    "settings.fillItem": {
-      "Material": "STAINED_GLASS_PANE",
-      "DisplayName": " ",
+    "settings.scoreboard.option:off": {
+      "Material": "WOOL",
+      "DisplayName": "&4Scoreboard OFF",
       "Amount": 1,
-      "Data": 15,
+      "Data": 14,
       "Lore": [],
       "Glow": false,
       "isPlayerHead": false,
@@ -89,11 +89,33 @@
       "Skin": "%player%",
       "CustomTags": {}
     },
+    "settings.fillItem": {
+      "Material": "STAINED_GLASS_PANE",
+      "DisplayName": " ",
+      "Amount": 1,
+      "Data": 15,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
     "settings.doublejump.option:on": {
       "Material": "WOOL",
       "DisplayName": "&aDoubleJump ON",
       "Amount": 1,
       "Data": 5,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.scoreboard.current:off": {
+      "Material": "WOOL",
+      "DisplayName": "&4Scoreboard OFF",
+      "Amount": 1,
+      "Data": 14,
       "Lore": [],
       "Glow": false,
       "isPlayerHead": false,
@@ -193,6 +215,17 @@
     "settings.jumppad.option:on": {
       "Material": "WOOL",
       "DisplayName": "&4JumpPad ON",
+      "Amount": 1,
+      "Data": 5,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
+    "settings.scoreboard.option:on": {
+      "Material": "WOOL",
+      "DisplayName": "&aScoreboard ON",
       "Amount": 1,
       "Data": 5,
       "Lore": [],
@@ -313,6 +346,17 @@
       "Skin": "ITEM:QUESTION",
       "CustomTags": {}
     },
+    "PlayerHider.Current.NONE": {
+      "Material": "SKULL",
+      "DisplayName": "&4NONE",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": true,
+      "Skin": "http://textures.minecraft.net/texture/b439a71957cc1dd4546f4132965effbe3429c889b1c6ba7212cb4b8c03540f8",
+      "CustomTags": {}
+    },
     "settings.jumppad.option:off": {
       "Material": "WOOL",
       "DisplayName": "&4JumpPad OFF",
@@ -357,6 +401,17 @@
       "Skin": "%player%",
       "CustomTags": {}
     },
+    "settings.scoreboard.current:on": {
+      "Material": "WOOL",
+      "DisplayName": "&aScoreboard ON",
+      "Amount": 1,
+      "Data": 5,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
+      "CustomTags": {}
+    },
     "lobbyswitcher:noServer": {
       "Material": "STAINED_GLASS_PANE",
       "DisplayName": " ",
@@ -388,6 +443,17 @@
       "Glow": false,
       "isPlayerHead": true,
       "Skin": "http://textures.minecraft.net/texture/22d145c93e5eac48a661c6f27fdaff5922cf433dd627bf23eec378b9956197",
+      "CustomTags": {}
+    },
+    "settings.scoreboard.icon": {
+      "Material": "NETHER_STAR",
+      "DisplayName": "&5Scoreboard",
+      "Amount": 1,
+      "Data": 0,
+      "Lore": [],
+      "Glow": false,
+      "isPlayerHead": false,
+      "Skin": "%player%",
       "CustomTags": {}
     }
   }

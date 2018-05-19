@@ -84,12 +84,14 @@ public class GroupManager implements Listener {
                 final List<Player> players = GroupManager.getPlayers();
                 for (Player player : players) {
                     //list.updateSlot(i,ChatColor.translateAlternateColorCodes('&', GroupManager.getGroup(player).TabLayout.replace("%player%", player.getDisplayName())),true);
-                    try {
-                        list.addExistingPlayer(i, ChatColor.translateAlternateColorCodes('&', GroupManager.getGroup(player).TabLayout.replace("%player%", player.getDisplayName())), player);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    i++;
+                    if (viewer.canSee(player))
+                        try {
+                            list.addExistingPlayer(i, ChatColor.translateAlternateColorCodes('&', GroupManager.getGroup(player).TabLayout.replace("%player%", player.getDisplayName())), player);
+                            i++;
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
                 }
             } catch (Exception e) {
                 e.printStackTrace();
