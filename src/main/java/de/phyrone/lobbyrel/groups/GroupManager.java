@@ -34,7 +34,6 @@ public class GroupManager implements Listener {
         tabEnabled = Config.getBoolean("GroupManager.TabList", true);
         customTab = Config.getBoolean("GroupManager.CustomTabList", true);
         chatEnabled = Config.getBoolean("GroupManager.Chat", true);
-
     }
 
     private static List<DisplayGroup> getGroups() {
