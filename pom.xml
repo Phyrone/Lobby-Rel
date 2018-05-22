@@ -19,6 +19,10 @@
             <url>https://maven.phyrone.de/nexus/content/repositories/spigot-plugins/</url>
         </repository>
         <repository>
+            <id>Spigot-Plugins2</id>
+            <url>http://maven.phyrone.de/artifactory/java/</url>
+        </repository>
+        <repository>
             <id>spigot</id>
             <url>https://maven.phyrone.de/nexus/content/repositories/spigot/</url>
         </repository>
@@ -62,10 +66,10 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>fr.minuskube.inv</groupId>
-            <artifactId>smart-invs</artifactId>
-            <version>1.1.3</version>
-            <scope>provided</scope>
+            <groupId>fr.minuskube</groupId>
+            <artifactId>SmartInvs</artifactId>
+            <version>1.1.4-NOPL</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>me.clip</groupId>

@@ -6,10 +6,7 @@ import de.phyrone.lobbyrel.lib.LobbyItem;
 import de.phyrone.lobbyrel.player.lang.LangManager;
 import de.phyrone.lobbyrel.player.settings.SettingsManager;
 import de.phyrone.lobbyrel.player.settings.SettingsModule;
-import fr.minuskube.inv.ClickableItem;
-import fr.minuskube.inv.InventoryListener;
-import fr.minuskube.inv.SmartInventory;
-import fr.minuskube.inv.SmartInvsPlugin;
+import fr.minuskube.inv.*;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
 import org.bukkit.Material;
@@ -42,7 +39,7 @@ public class SettingsGUI implements InventoryProvider {
                 .provider(new SettingsGUI(site))
                 .listener(new InventoryListener<>(InventoryClickEvent.class,
                         inventoryClickEvent ->
-                                SmartInvsPlugin.manager().getContents((Player) inventoryClickEvent
+                                InventoryManager.getInstance().getContents((Player) inventoryClickEvent
                                         .getWhoClicked()).get().setProperty("tick", 2)))
                 .size(SettingsManager.getModulesAsList().size() > ipp ? ipp + 1 : SettingsManager.getModulesAsList().size(), 9)
                 .build().open(player);

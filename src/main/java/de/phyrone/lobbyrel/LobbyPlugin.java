@@ -22,6 +22,7 @@ import de.phyrone.lobbyrel.scheduler.StayTitleManager;
 import de.phyrone.lobbyrel.storage.StorageManager;
 import de.phyrone.lobbyrel.update.LobbyDependency;
 import de.phyrone.lobbyrel.warps.WarpManager;
+import fr.minuskube.inv.InventoryManager;
 import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
@@ -239,7 +240,8 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
 
 
         try {
-            new LobbyDependency(42835, "SmartInvs").check();
+            //new LobbyDependency(42835, "SmartInvs").check();
+            InventoryManager.initPlugin(this).init();
             new LobbyDependency(0, "EffectLib").setCustomURL("https://media.forgecdn.net/files/2489/826/EffectLib-5.5.jar").check();
         } catch (Exception e1) {
             e1.printStackTrace();
