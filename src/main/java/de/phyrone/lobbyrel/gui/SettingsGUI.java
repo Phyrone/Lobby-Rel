@@ -6,7 +6,10 @@ import de.phyrone.lobbyrel.lib.LobbyItem;
 import de.phyrone.lobbyrel.player.lang.LangManager;
 import de.phyrone.lobbyrel.player.settings.SettingsManager;
 import de.phyrone.lobbyrel.player.settings.SettingsModule;
-import fr.minuskube.inv.*;
+import fr.minuskube.inv.ClickableItem;
+import fr.minuskube.inv.InventoryListener;
+import fr.minuskube.inv.InventoryManager;
+import fr.minuskube.inv.SmartInventory;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
 import org.bukkit.Material;
@@ -75,10 +78,12 @@ public class SettingsGUI implements InventoryProvider {
         }
 
         if (modules.size() > ipp) {
-            con.set(ipp, 4, ClickableItem.empty(ItemsConfig.getLobbyItem("settings.current",
-                    new LobbyItem(Material.DIAMOND).setDisplayName("&2Page %current%")).setAmount(site + 1)
-                    .getAsItemStack(player, (input, player1) -> LobbyItem.DEFAULT_PLACEHOLDER
-                            .replace(input, player1).replace("%current%", String.valueOf(site + 1)))));
+            con.set(ipp, 4, ClickableItem.empty(
+                    ItemsConfig.getLobbyItem("settings.current",
+                            new LobbyItem(Material.DIAMOND).setDisplayName("&2Page %current%")
+                    ).setAmount(site + 1)
+                            .getAsItemStack(player, (input, player1) -> LobbyItem.DEFAULT_PLACEHOLDER
+                                    .replace(input, player1).replace("%current%", String.valueOf(site + 1)))));
         }
     }
 

@@ -1,81 +1,32 @@
 package de.phyrone.lobbyrel.gui.api;
 
-import fr.minuskube.inv.ClickableItem;
-import fr.minuskube.inv.SmartInventory;
-import fr.minuskube.inv.content.InventoryContents;
-import fr.minuskube.inv.content.InventoryProvider;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
 
-public class TabbedGui {
-    List<TabWrapper> tabs = new ArrayList<>();
+public abstract class TabbedGui {
+    List<Tab> tabs = new ArrayList<>();
 
-    public interface TabWrapper extends InventoryProvider{
-        ItemStack getTabItem(Player player);
+    public TabbedGui(Tab... tabs) {
+        this.tabs.addAll(Arrays.asList(tabs));
     }
 
-    public class Tab implements TabWrapper {
-        ItemStack tabitem;
-        HashMap<Integer, ClickableItem> items = new HashMap<>();
+    public List<Tab> getTabs() {
+        return tabs;
+    }
 
-        public Tab(ItemStack tabitem) {
-            this.tabitem = tabitem;
-        }
+    public Tab[] getTabsAsArray() {
+        return (Tab[]) tabs.toArray();
+    }
 
-        @Override
-        public ItemStack getTabItem(Player player) {
-            return tabitem;
-        }
+    class Tab {
+        private ItemStack tabItem;
 
-        @Override
-        public void init(Player player, InventoryContents inventoryContents) {
-
-        }
-
-        @Override
-        public void update(Player player, InventoryContents inventoryContents) {
-
-        }
-    }public abstract class DynamicTab implements TabWrapper {
-
-        @Override
-        public ItemStack getTabItem(Player player) {
-            return null;
-        }
-
-        @Override
-        public void init(Player player, InventoryContents inventoryContents) {
-
+        public Tab(ItemStack tabItem) {
+            this.tabItem = tabItem;
         }
     }
 
-    public void getTab(int index){
-
-    }
-}
-
-class PlayerTabbedGui implements InventoryProvider {
-    private Player player;
-    TabbedGui gui;
-
-    public PlayerTabbedGui(Player player,TabbedGui gui)
-    {
-        this.gui = gui;
-        this.player = player;
-        SmartInventory.builder().id("TABBED-"+player.getUniqueId().toString()).size(6,9);
-    }
-
-    @Override
-    public void init(Player p, InventoryContents con) {
-        con.setProperty("TAB",0);
-    }
-
-    @Override
-    public void update(Player p, InventoryContents con) {
-
-    }
 }

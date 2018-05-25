@@ -306,7 +306,7 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
             return n.format(getTPS()) + "TPS";
         }));
         /* TPS */
-        Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, () -> {
+        Bukkit.getScheduler().runTaskTimerAsynchronously(this, () -> {
             tps = TpsMeter.getTPS(20 * 10);
             System.out.println();
         }, 20 * 60, 20 * 60);
