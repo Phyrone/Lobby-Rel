@@ -14,21 +14,14 @@
     </developers>
     <!-- Repo -->
     <repositories>
+
         <repository>
-            <id>Spigot-Plugins</id>
-            <url>https://maven.phyrone.de/nexus/content/repositories/spigot-plugins/</url>
+            <id>phy-plugins</id>
+            <url>https://maven.phyrone.de/artifactory/bukkit-plugins/</url>
         </repository>
         <repository>
-            <id>Spigot-Plugins2</id>
-            <url>http://maven.phyrone.de/artifactory/java/</url>
-        </repository>
-        <repository>
-            <id>spigot</id>
-            <url>https://maven.phyrone.de/nexus/content/repositories/spigot/</url>
-        </repository>
-        <repository>
-            <id>phy-java</id>
-            <url>https://maven.phyrone.de/artifactory/spigot-plugins/</url>
+            <id>phy-server</id>
+            <url>https://maven.phyrone.de/artifactory/bukkit-mirror/</url>
         </repository>
         <repository>
             <id>jitpack.io</id>
@@ -38,15 +31,17 @@
             <id>dmulloy2-repo</id>
             <url>http://repo.dmulloy2.net/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
+            <id>phy-Java</id>
+            <url>https://maven.phyrone.de/artifactory/java/</url>
+        </repository>
     </repositories>
     <!-- Dependencys -->
     <dependencies>
-        <dependency>
-            <groupId>be.isach</groupId>
-            <artifactId>ultracosmetics</artifactId>
-            <version>2.4.11</version>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>com.comphenix.protocol</groupId>
             <artifactId>ProtocolLib</artifactId>
@@ -60,15 +55,15 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>de.dytanic</groupId>
-            <artifactId>cloudnet-api</artifactId>
-            <version>2.1.Pv30F1</version>
+            <groupId>de.dytanic.cloudnet</groupId>
+            <artifactId>CloudNetAPI</artifactId>
+            <version>2.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>fr.minuskube</groupId>
+            <groupId>fr.minuscube</groupId>
             <artifactId>SmartInvs</artifactId>
-            <version>1.1.4-NOPL</version>
+            <version>1.1.4</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -97,15 +92,14 @@
         </dependency>
         <dependency>
             <groupId>de.domedd</groupId>
-            <artifactId>betternick</artifactId>
-            <version>6.7-20180414.204656-1</version>
+            <artifactId>BetterNick</artifactId>
+            <version>1.8.3-1.12.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api-advanced</artifactId>
-            <version>1.12.2</version>
-            <type>jar</type>
+            <artifactId>spigot</artifactId>
+            <version>1.12-R0.1</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
