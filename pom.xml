@@ -97,12 +97,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.Phyrone</groupId>
-            <artifactId>NPCFactory</artifactId>
-            <version>master-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.22</version>

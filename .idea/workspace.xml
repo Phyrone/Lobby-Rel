@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6485087-69ae-473d-afd1-aa6d856f3614" name="Default" comment="Repaired pom.xml">
+    <list default="true" id="b6485087-69ae-473d-afd1-aa6d856f3614" name="Default" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/WorldManger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/GameProfileBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/SupportPluginsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/SupportPluginsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/groups/GroupManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/groups/GroupManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Tools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/FancyMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/FancyMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/tablist/PlayerList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/tablist/PlayerList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/MongoDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/MongoDB.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,20 +15,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="101" column="46" lean-forward="true" selection-start-line="101" selection-start-column="46" selection-end-line="101" selection-end-column="46" />
+            <state relative-caret-position="527">
+              <caret line="97" column="21" selection-start-line="97" selection-start-column="21" selection-end-line="97" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LobbyPlugin.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LobbyPlugin.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="43" column="65" lean-forward="true" selection-start-line="43" selection-start-column="65" selection-end-line="43" selection-end-column="65" />
+            <state relative-caret-position="-4300">
+              <caret line="43" column="65" selection-start-line="43" selection-start-column="65" selection-end-line="43" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -75,8 +66,8 @@
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/GameProfileBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/tablist/PlayerList.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/groups/GroupManager.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -129,7 +120,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -173,6 +163,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -341,6 +332,7 @@
       <workItem from="1528004632970" duration="2014000" />
       <workItem from="1528009511551" duration="276000" />
       <workItem from="1528009797216" duration="341000" />
+      <workItem from="1528650043014" duration="1230000" />
     </task>
     <task id="LOCAL-00001" summary="Beginn Tabbed Gui for Main Menü">
       <created>1526946790038</created>
@@ -377,11 +369,18 @@
       <option name="project" value="LOCAL" />
       <updated>1527432884345</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Minor Changes">
+      <created>1528651265481</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1528651265481</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30312000" />
+    <option name="totallyTimeSpent" value="31542000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="49" width="1296" height="1000" extended-state="6" />
@@ -393,17 +392,17 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.32928804" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32946634" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32946634" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32946634" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34304208" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3487055" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39907193" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39907193" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -425,9 +424,9 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="Beginn Tabbed Gui for Main Menü" />
     <MESSAGE value="Smartinvs is now in Jar" />
-    <MESSAGE value="Minor Changes" />
     <MESSAGE value="Repaired pom.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Repaired pom.xml" />
+    <MESSAGE value="Minor Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Changes" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -736,17 +735,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="101" column="46" lean-forward="true" selection-start-line="101" selection-start-column="46" selection-end-line="101" selection-end-column="46" />
+        <state relative-caret-position="-4300">
+          <caret line="43" column="65" selection-start-line="43" selection-start-column="65" selection-end-line="43" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="43" column="65" lean-forward="true" selection-start-line="43" selection-start-column="65" selection-end-line="43" selection-end-column="65" />
+        <state relative-caret-position="527">
+          <caret line="97" column="21" selection-start-line="97" selection-start-column="21" selection-end-line="97" selection-end-column="21" />
         </state>
       </provider>
     </entry>
