@@ -3,14 +3,13 @@ package de.phyrone.lobbyrel.storage;
 import com.mongodb.MongoClient;
 import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.player.data.internal.InternalOfflinePlayerData;
 import org.bson.Document;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,9 +21,9 @@ public class MongoDB extends OfflinePlayerStorage {
     @Override
     public void init() {
         List<String> hosts = Config.getStringList("Storage.MongoDB.Hosts",
-                new ArrayList<>(Arrays.asList("localhost:27017")));
+                new ArrayList<>(Collections.singletonList("localhost:27017")));
         String dbName = Config.getString("Storage.MongoDB.Database", "lobbyrel");
-        String tableName = Config.getString("Storage.MongoDB.Table", "lobbyrel");
+        String tableName = Config.getString("Storage.MongoDB.Table", "playerdata");
         List<ServerAddress> dbServers = new ArrayList<>();
         for (String host : hosts) {
             try {
@@ -44,18 +43,35 @@ public class MongoDB extends OfflinePlayerStorage {
 
     }
 
+    private Document getPlayerDoc(UUID uuid) {
+        return new Document("_id", uuid.toString());
+    }
+
     @Override
     public void save(UUID uuid, InternalOfflinePlayerData data) {
+        /* Remove Old Format */
         if (table.find(new Document("user", uuid.toString())).iterator().hasNext())
             table.deleteMany(new Document("user", uuid.toString()));
-        table.insertOne(new Document("user", uuid.toString()).append("data", data.toPrettyJsonString()));
+
+        if (table.find(new Document("_id", uuid.toString())).iterator().hasNext()) {
+            table.replaceOne(getPlayerDoc(uuid), getPlayerDoc(uuid).append("data", data.toPrettyJsonString()));
+        } else {
+            table.insertOne(getPlayerDoc(uuid).append("data", data.toPrettyJsonString()));
+        }
     }
 
     @Override
     public InternalOfflinePlayerData load(UUID uuid) {
-        MongoCursor<Document> ret = table.find(new Document("user", uuid.toString())).iterator();
-        while (ret.hasNext()) {
-            return InternalOfflinePlayerData.fromJson(ret.next().getString("data"));
+        {
+            /* Load Old Format */
+            for (Document document : table.find(new Document("user", uuid.toString()))) {
+                return InternalOfflinePlayerData.fromJson(document.getString("user"));
+            }
+        }
+        {
+            for (Document document : table.find(getPlayerDoc(uuid))) {
+                return InternalOfflinePlayerData.fromJson(document.getString("data"));
+            }
         }
         return new InternalOfflinePlayerData();
     }

@@ -51,10 +51,10 @@ public class Tools {
         }
     }
 
-    public static void sendJsonChat(Player player, FancyMessage actionbarmessage) {
+    public static void sendJsonChat(Player player, FancyMessage msg) {
         try {
             Object packet = Reflection.getConstructor("{nms}.PacketPlayOutChat").invoke();
-            message.set(packet, getChatComponent(actionbarmessage.toJSONString()));
+            message.set(packet, getChatComponent(msg.toJSONString()));
             actionposition.set(packet, (byte) 0);
             LobbyPlugin.getProtocol().sendPacket(player, packet);
         } catch (Exception ex) {
@@ -164,7 +164,7 @@ public class Tools {
                 Object msgcomponent = getChatComponent(title.toJSONString());
 
                 /* Times */
-                Constructor timesConst = getNMSClass("PacketPlayOutTitle").getConstructor(new Class[]{getNMSClass("PacketPlayOutTitle").getDeclaredClasses()[0], getNMSClass("IChatBaseComponent")});
+                Constructor timesConst = getNMSClass("PacketPlayOutTitle").getConstructor(getNMSClass("PacketPlayOutTitle").getDeclaredClasses()[0], getNMSClass("IChatBaseComponent"));
                 Object timesPacket = timesConst.newInstance(getNMSClass2("PacketPlayOutTitle").getDeclaredClasses()[0].getField(
                         "TIMES").get(null), msgcomponent);
                 setPrivateField(timesPacket, "c", fadeInTime);
@@ -174,7 +174,7 @@ public class Tools {
 
                 /* Title */
                 Object type = getNMSClass2("PacketPlayOutTitle").getDeclaredClasses()[0].getField(subtitle ? "SUBTITLE" : "TITLE").get(null);
-                Constructor subtitleConstructor = getNMSClass("PacketPlayOutTitle").getConstructor(new Class[]{getNMSClass("PacketPlayOutTitle").getDeclaredClasses()[0], getNMSClass("IChatBaseComponent")});
+                Constructor subtitleConstructor = getNMSClass("PacketPlayOutTitle").getConstructor(getNMSClass("PacketPlayOutTitle").getDeclaredClasses()[0], getNMSClass("IChatBaseComponent"));
                 Object titlePacket = subtitleConstructor.newInstance(type, msgcomponent);
                 sendPacket(player, titlePacket);
 

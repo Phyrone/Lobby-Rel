@@ -1,7 +1,5 @@
 package de.phyrone.lobbyrel;
 
-import com.comphenix.protocol.ProtocolLibrary;
-import com.comphenix.protocol.ProtocolManager;
 import de.domedd.betternick.BetterNick;
 import de.domedd.betternick.api.betternickapi.BetterNickAPI;
 import de.phyrone.lobbyrel.config.Config;
@@ -35,7 +33,6 @@ public class SupportPluginsManager {
     public enum SupportedPlugin {
         ULTRACOSMETICS("UltraCosmetics", new UltraCosmeticsSupport()),
         BETTERNICK("BetterNick", new BetterNickSupport()),
-        PROTOCOL_LIB("ProtocolLib", null),
         VAULT("Vault", new VaultSupport());
         String pluginname;
         Runnable onDetect;
@@ -76,18 +73,6 @@ class UltraCosmeticsSupport implements Runnable {
     }
 }
 
-class ProtocolLibSupport implements Runnable {
-    ProtocolManager library;
-
-    public ProtocolManager getLibrary() {
-        return library;
-    }
-
-    @Override
-    public void run() {
-        library = ProtocolLibrary.getProtocolManager();
-    }
-}
 
 class BetterNickSupport implements Runnable {
     BetterNickAPI api;

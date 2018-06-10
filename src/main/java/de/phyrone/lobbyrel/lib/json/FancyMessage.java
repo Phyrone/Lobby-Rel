@@ -1,16 +1,11 @@
 package de.phyrone.lobbyrel.lib.json;
 
-import com.comphenix.protocol.PacketType;
-import com.comphenix.protocol.ProtocolLibrary;
-import com.comphenix.protocol.events.PacketContainer;
-import com.comphenix.protocol.wrappers.WrappedChatComponent;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonWriter;
 import de.phyrone.lobbyrel.LobbyPlugin;
-import de.phyrone.lobbyrel.SupportPluginsManager;
 import de.phyrone.lobbyrel.lib.Tools;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -32,15 +27,9 @@ enum SendJsonType {
         Bukkit.getScheduler().runTask(LobbyPlugin.getInstance(),
                 () -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tellraw " + player.getName() + " " + message.toJSONString()));
 
-    }), PROTOCOL((player, message) -> {
-        PacketContainer packet = new PacketContainer(PacketType.Play.Server.CHAT);
-        packet.getChatComponents().write(0, WrappedChatComponent.fromJson(message.toJSONString()));
-        ProtocolLibrary.getProtocolManager().sendServerPacket(player, packet);
     }), COMPATIBILITY((player, message) -> {
         player.sendMessage(message.toOldMessageFormat());
-    }), TINY_PROTOCOL((player, message) -> {
-        Tools.sendJsonChat(player, message);
-    });
+    }), TINY_PROTOCOL(Tools::sendJsonChat);
     SendHandler handler;
 
     SendJsonType(SendHandler handler) {
@@ -105,8 +94,7 @@ public class FancyMessage implements JsonRepresentedObject, Cloneable, Iterable<
     private static SendJsonType getType() {
         if (checkTellRawCMD()) {
             return SendJsonType.TELLRAW;
-        } else if (SupportPluginsManager.SupportedPlugin.PROTOCOL_LIB.isEnabled()) return SendJsonType.PROTOCOL;
-        else return SendJsonType.TINY_PROTOCOL;
+        } else return SendJsonType.TINY_PROTOCOL;
 
     }
 

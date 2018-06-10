@@ -23,6 +23,7 @@ import de.phyrone.lobbyrel.storage.StorageManager;
 import de.phyrone.lobbyrel.update.LobbyDependency;
 import de.phyrone.lobbyrel.warps.WarpManager;
 import fr.minuskube.inv.InventoryManager;
+import lombok.Getter;
 import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
@@ -42,11 +43,12 @@ import java.util.logging.Logger;
 
 public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
     static Logger logger;
+    @Getter
     private static LobbyPlugin instance;
     private static double tps = -1D;
     private static Boolean debug = true;
     boolean mc18 = Bukkit.getServer().getClass().getPackage().getName().contains("1_8");
-    PacketManipulator packetManipulator;
+    private PacketManipulator packetManipulator;
 
     public LobbyPlugin() {
         instance = this;

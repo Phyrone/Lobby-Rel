@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
@@ -19,11 +20,14 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class GroupManager implements Listener {
     private static boolean tabEnabled = false;
     private static boolean chatEnabled = false;
     private static boolean customTab = false;
+    private static BukkitTask updater;
+    private static HashMap<Player, BukkitTask> taskHashMap = new HashMap<>();
 
     public static void init() {
         RanksConf.load();
@@ -32,8 +36,15 @@ public class GroupManager implements Listener {
             for (Player player : Bukkit.getOnlinePlayers())
                 PlayerList.getPlayerList(player).resetTablist();
         tabEnabled = Config.getBoolean("GroupManager.TabList", true);
-        customTab = Config.getBoolean("GroupManager.CustomTabList", true);
+        customTab = Config.getBoolean("GroupManager.CustomTabList", false);
         chatEnabled = Config.getBoolean("GroupManager.Chat", true);
+        if (updater != null && Bukkit.getScheduler().isCurrentlyRunning(updater.getTaskId())) {
+            updater.cancel();
+        }
+        if (Config.getBoolean("GroupManager.UpdateScheduler.Enabled", false))
+            updater = Bukkit.getScheduler().runTaskTimerAsynchronously(LobbyPlugin.getInstance(), () ->
+                    Bukkit.getOnlinePlayers().iterator().forEachRemaining((Consumer<Player>)
+                            GroupManager::updateTablistIfEnabled), 0, Config.getInt("GroupManager.UpdateScheduler.Seconds", 30) * 20);
     }
 
     private static List<DisplayGroup> getGroups() {
@@ -49,6 +60,7 @@ public class GroupManager implements Listener {
     public static List<Player> getPlayers() {
         List<Player> ret = new ArrayList<>(Bukkit.getOnlinePlayers());
         ret.sort(Comparator.comparing(Player::getDisplayName));
+
         ret.sort((o1, o2) -> {
             for (DisplayGroup group : getGroups()) {
                 if (o1.hasPermission(group.Permission) && !o2.hasPermission(group.Permission))
@@ -62,11 +74,20 @@ public class GroupManager implements Listener {
         return ret;
     }
 
+    public static List<Player> getPlayers(Player viewer) {
+        List<Player> ret = getPlayers();
+        ret.iterator().forEachRemaining(player -> {
+            if (!viewer.canSee(player))
+                ret.remove(player);
+        });
+        return ret;
+    }
+
     private static String getChat(Player player, String message) {
         return ChatColor.translateAlternateColorCodes('&',
                 GroupManager.getGroup(player).ChatLayout
-                        .replace("%player%", player.getDisplayName()))
-                .replace("%message%", player.hasPermission("lobby.chat.colo") ?
+                        .replaceAll("(?i)%player%", player.getDisplayName()))
+                .replaceAll("(?i)%message%", player.hasPermission("lobby.chat.colo") ?
                         ChatColor.translateAlternateColorCodes('&', message) : message);
     }
 
@@ -77,21 +98,25 @@ public class GroupManager implements Listener {
     private static void setTablist(Player viewer) {
         if (customTab)
             try {
+                final List<Player> players = GroupManager.getPlayers();
                 PlayerList list = PlayerList.getPlayerList(viewer);
                 list.clearAll();
-                int i = 0;
-                final List<Player> players = GroupManager.getPlayers();
-                for (Player player : players) {
-                    //list.updateSlot(i,ChatColor.translateAlternateColorCodes('&', GroupManager.getGroup(player).TabLayout.replace("%player%", player.getDisplayName())),true);
-                    if (viewer.canSee(player))
-                        try {
-                            list.addExistingPlayer(i, ChatColor.translateAlternateColorCodes('&', GroupManager.getGroup(player).TabLayout.replace("%player%", player.getDisplayName())), player);
-                            i++;
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-
-                }
+                if (taskHashMap.containsKey(viewer)) taskHashMap.get(viewer).cancel();
+                boolean skin = Bukkit.getOnlineMode();
+                BukkitTask task = Bukkit.getScheduler().runTaskLaterAsynchronously(LobbyPlugin.getInstance(), () -> {
+                    final int[] i = {0};
+                    players.iterator().forEachRemaining(player -> {
+                        if (viewer.canSee(player))
+                            try {
+                                //list.addExistingPlayer(i[0], getTabString(player), player);
+                                list.updateSlot(i[0], getTabString(player), skin);
+                                i[0]++;
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                    });
+                }, 10);
+                taskHashMap.put(viewer, task);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -103,12 +128,12 @@ public class GroupManager implements Listener {
 
     }
 
+    private static String getTabString(Player player) {
+        return ChatColor.translateAlternateColorCodes('&', GroupManager.getGroup(player).TabLayout.replaceAll("(?i)%player%", player.getDisplayName()));
+    }
+
     private static boolean hasScoreboard(Player player) {
-        if (player.getScoreboard() != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return player.getScoreboard() != null;
     }
 
     private static void setScoreboard(Player viewer) {

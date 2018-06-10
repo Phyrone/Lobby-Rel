@@ -43,12 +43,6 @@
     <!-- Dependencys -->
     <dependencies>
         <dependency>
-            <groupId>com.comphenix.protocol</groupId>
-            <artifactId>ProtocolLib</artifactId>
-            <version>4.3.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>de.slikey</groupId>
             <artifactId>effectlib</artifactId>
             <version>5.5</version>
@@ -100,6 +94,18 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>1.12-R0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.Phyrone</groupId>
+            <artifactId>NPCFactory</artifactId>
+            <version>master-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.22</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

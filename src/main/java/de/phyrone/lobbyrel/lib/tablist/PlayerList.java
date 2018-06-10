@@ -189,7 +189,7 @@ public class PlayerList {
      */
     public static PlayerList getPlayerList(Player player) {
         if (!lookUpTable.containsKey(player.getUniqueId()))
-            return new PlayerList(player, Bukkit.getOnlinePlayers().size());
+            return new PlayerList(player, SIZE_FOUR);
         return lookUpTable.get(player.getUniqueId());
     }
 
@@ -505,7 +505,7 @@ public class PlayerList {
      * @param player
      */
     public void addExistingPlayer(int id, String name, OfflinePlayer player) {
-        addValue(id, name, player.getUniqueId(), true);
+        addValue(id, name, player.getUniqueId(), Bukkit.getOnlineMode());
     }
 
     /**
@@ -551,13 +551,17 @@ public class PlayerList {
                 .instantiate((Constructor<?>) ReflectionUtil.getConstructor(PACKET_PLAYER_INFO_CLASS).get());
         if (ReflectionUtil.getInstanceField(packet, "b") instanceof List) {
             List<Object> players = (List<Object>) ReflectionUtil.getInstanceField(packet, "b");
+
             Object gameProfile = Bukkit.getPlayer(uuid) != null
                     ? ReflectionUtil.invokeMethod(getHandle(Bukkit.getPlayer(uuid)), "getProfile", new Class[0])
                     : ReflectionUtil.instantiate(GAMEPROPHILECONSTRUCTOR, uuid, getNameFromID(id) + name);
+
             Object[] array = (Object[]) ReflectionUtil.invokeMethod(CRAFT_CHAT_MESSAGE_CLASS, null, "fromString",
                     new Class[]{String.class}, getNameFromID(id) + name);
+
             Object data = ReflectionUtil.instantiate(PACKET_PLAYER_INFO_DATA_CONSTRUCTOR, packet, gameProfile, 1,
                     WORLD_GAME_MODE_NOT_SET, array[0]);
+
             SkinCallBack call = (skin, successful, exception) -> {
                 Object profile = GAMEPROFILECLASS.cast(ReflectionUtil.invokeMethod(data, "a", new Class[0]));
                 if (successful) {
@@ -610,6 +614,13 @@ public class PlayerList {
         clearAll();
         for (int i = 0; i < size; i++)
             updateSlot(i, "", false);
+    }
+
+    /**
+     * @return the size of the Tablist
+     */
+    public int getSize() {
+        return size;
     }
 
     /**
@@ -791,7 +802,7 @@ class Skin implements ConfigurationSerializable {
         }
         // Map<UUID, Skin> asMap = SKIN_CACHE.asMap();
         try {
-            SKIN_CACHE.getClass().getDeclaredMethod("asMap", new Class[0]);
+            SKIN_CACHE.getClass().getDeclaredMethod("asMap");
         } catch (Exception e1) {
             callBack.callBack(Skin.EMPTY_SKIN, false, null);
             return;
