@@ -18,16 +18,18 @@ import org.bukkit.event.inventory.InventoryType;
 public class AdminCustomItemGUI implements InventoryProvider {
     private CustomItem item;
 
-    AdminCustomItemGUI(CustomItem item) {
+    private AdminCustomItemGUI(CustomItem item) {
         this.item = item;
     }
 
     public static void open(Player player, CustomItem item) {
-        final SmartInventory inv = SmartInventory.builder()
-                .provider(new AdminCustomItemGUI(item)).title("§5" + item.getItem().getDisplayName())
+        SmartInventory.builder()
+                .provider(new AdminCustomItemGUI(item))
+                .title("§5" + item.getItem().getDisplayName())
                 .id("ItemGUI-" + player.getUniqueId().toString())
-                .type(InventoryType.HOPPER).build();
-        inv.open(player);
+                .manager(LobbyPlugin.getInstance().getInventoryManager())
+                .type(InventoryType.HOPPER)
+                .build().open(player);
     }
 
     @SuppressWarnings("deprecation")

@@ -8,7 +8,6 @@ import de.phyrone.lobbyrel.player.settings.SettingsManager;
 import de.phyrone.lobbyrel.player.settings.SettingsModule;
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.InventoryListener;
-import fr.minuskube.inv.InventoryManager;
 import fr.minuskube.inv.SmartInventory;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
@@ -40,11 +39,9 @@ public class SettingsGUI implements InventoryProvider {
                 .id("settings-" + player.getUniqueId().toString() + "-" + String.valueOf(site))
                 .title(LangManager.getMessage(player, "GUI.Settings.Title", "&8Settings"))
                 .provider(new SettingsGUI(site))
-                .listener(new InventoryListener<>(InventoryClickEvent.class,
-                        inventoryClickEvent ->
-                                InventoryManager.getInstance().getContents((Player) inventoryClickEvent
-                                        .getWhoClicked()).get().setProperty("tick", 2)))
+                .listener(new InventoryListener<>(InventoryClickEvent.class, inventoryClickEvent -> LobbyPlugin.getInstance().getInventoryManager().getContents((Player) inventoryClickEvent.getWhoClicked()).get().setProperty("tick", 2)))
                 .size(SettingsManager.getModulesAsList().size() > ipp ? ipp + 1 : SettingsManager.getModulesAsList().size(), 9)
+                .manager(LobbyPlugin.getInstance().getInventoryManager())
                 .build().open(player);
 
     }

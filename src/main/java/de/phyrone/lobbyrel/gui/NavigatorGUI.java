@@ -1,5 +1,6 @@
 package de.phyrone.lobbyrel.gui;
 
+import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.config.ItemsConfig;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
@@ -36,8 +37,12 @@ public class NavigatorGUI implements InventoryProvider {
     }
 
     public static void open(Player p, int page) {
-        SmartInventory.builder().title(LangManager.getMessage(p, "GUI.Navigator.Title", "&6&lNavigator")).id("navigator-" + p.getUniqueId().toString())
-                .size(Config.getInt("Gui.Navigator.Size", 5), 9).provider(new NavigatorGUI()).build().open(p, page);
+        SmartInventory.builder()
+                .title(LangManager.getMessage(p, "GUI.Navigator.Title", "&6&lNavigator")).id("navigator-" + p.getUniqueId().toString())
+                .size(Config.getInt("Gui.Navigator.Size", 5), 9)
+                .provider(new NavigatorGUI())
+                .manager(LobbyPlugin.getInstance().getInventoryManager())
+                .build().open(p, page);
     }
 
     @Override

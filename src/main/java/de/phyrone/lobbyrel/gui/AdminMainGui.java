@@ -1,11 +1,6 @@
 package de.phyrone.lobbyrel.gui;
 
-import java.util.ArrayList;
-
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryType;
-
+import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.gui.customitems.AdminCustomItemsGUI;
 import de.phyrone.lobbyrel.gui.warp.AdminWarpsGUI;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
@@ -13,14 +8,23 @@ import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.SmartInventory;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
+
+import java.util.ArrayList;
 
 public class AdminMainGui implements InventoryProvider {
     static ArrayList<ClickableItem> items = new ArrayList<>();
 
     public static void open(Player player) {
         SmartInventory.builder().title("§cEinstallungen")
-                .id("settings_main-" + player.getUniqueId().toString()).closeable(true).provider(new AdminMainGui()).type(InventoryType.HOPPER).build()
-                .open(player);
+                .id("settings_main-" + player.getUniqueId().toString())
+                .closeable(true)
+                .provider(new AdminMainGui())
+                .type(InventoryType.HOPPER)
+                .manager(LobbyPlugin.getInstance().getInventoryManager())
+                .build().open(player);
     }
 
     @Override

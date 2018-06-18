@@ -18,7 +18,8 @@ public class ChatInput implements InputGUI.InputInterface, Listener {
     HashMap<Player, InputGUI.InputHandler> handlers = new HashMap<>();
 
     public ChatInput() {
-        System.out.println("INIT CHtlistner");
+        if (LobbyPlugin.getDebug())
+            System.out.println("INIT Chat-Listner");
         Bukkit.getPluginManager().registerEvents(this, LobbyPlugin.getInstance());
     }
 

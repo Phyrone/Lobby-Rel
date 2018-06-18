@@ -17,6 +17,10 @@ Items:
     Enabled: true
 Scoreboard:
   Enabled: false
+  External:
+    Enabled: true
+    Config: forcedboard
+    useQickBardConfig: true
 Language:
   Folder: plugins/Lobby-Rel/Lang/
   Default: en_US

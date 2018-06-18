@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.phyrone</groupId>
     <artifactId>Lobby-Rel</artifactId>
-    <version>0.3.08-ALPHA</version>
+    <version>0.3.09-ALPHA</version>
     <developers>
         <developer>
             <id>Phyrone</id>
@@ -39,6 +39,10 @@
             <id>phy-Java</id>
             <url>https://maven.phyrone.de/artifactory/java/</url>
         </repository>
+        <repository>
+            <id>scarab-repo</id>
+            <url>https://mymavenrepo.com/repo/DSmbMenBusi4gORiPrHo/</url>
+        </repository>
     </repositories>
     <!-- Dependencys -->
     <dependencies>
@@ -55,10 +59,13 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>fr.minuscube</groupId>
-            <artifactId>SmartInvs</artifactId>
-            <version>1.1.4</version>
+            <groupId>fr.minuskube.inv</groupId>
+            <artifactId>smart-invs</artifactId>
+            <version>1.2.0</version>
             <scope>compile</scope>
+            <exclusions>
+
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>me.clip</groupId>
@@ -102,6 +109,7 @@
             <version>1.16.22</version>
             <scope>provided</scope>
         </dependency>
+
     </dependencies>
     <!-- Einstallungen -->
     <properties>
@@ -121,7 +129,7 @@
         </resources>
         <plugins>
             <!-- AsambyPlugin -->
-            <plugin>
+            <!--<plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
@@ -135,18 +143,34 @@
                     </descriptorRefs>
                     <finalName>Lobby-Rel-${project.version}</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
-                    <!--<outputDirectory>E:\TestServer\plugins</outputDirectory>-->
                 </configuration>
                 <executions>
                     <execution>
-                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
-                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <id>make-assembly</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
                     </execution>
                 </executions>
+            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.4.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <minimizeJar>true</minimizeJar>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
+
             <!-- Compiler -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

@@ -1,5 +1,6 @@
 package de.phyrone.lobbyrel.gui;
 
+import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.ItemsConfig;
 import de.phyrone.lobbyrel.lib.ItemBuilder;
 import de.phyrone.lobbyrel.lib.LobbyItem;
@@ -41,8 +42,12 @@ public class LobbySwitcherGUI implements InventoryProvider {
     }
 
     public static void open(Player player, int site) {
-        SmartInventory.builder().provider(new LobbySwitcherGUI(player)).id("LS-" + player.getUniqueId().toString())
-                .size(3, 9).title(LangManager.getMessage(player, "GUI.LobbySwitcher.Title", "&8Lobbys"))
+        SmartInventory.builder()
+                .provider(new LobbySwitcherGUI(player))
+                .id("LS-" + player.getUniqueId().toString())
+                .size(3, 9)
+                .title(LangManager.getMessage(player, "GUI.LobbySwitcher.Title", "&8Lobbys"))
+                .manager(LobbyPlugin.getInstance().getInventoryManager())
                 .build().open(player, site);
     }
 

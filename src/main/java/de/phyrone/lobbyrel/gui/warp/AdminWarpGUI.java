@@ -28,9 +28,13 @@ public class AdminWarpGUI implements InventoryProvider {
             player.sendMessage(LobbyPlugin.getPrefix() + " §4Error: Warp dosn't exist!");
             return;
         }
-        final SmartInventory inv = SmartInventory.builder().type(InventoryType.HOPPER).provider(new AdminWarpGUI(warpname))
-                .title("§8Warp: §5" + warpname).id("warpgui_" + warpname).build();
-        inv.open(player);
+        SmartInventory.builder()
+                .type(InventoryType.HOPPER)
+                .provider(new AdminWarpGUI(warpname))
+                .title("§8Warp: §5" + warpname)
+                .id("warpgui_" + warpname)
+                .manager(LobbyPlugin.getInstance().getInventoryManager())
+                .build().open(player);
 
     }
 

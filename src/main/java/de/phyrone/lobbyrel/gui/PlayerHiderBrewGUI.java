@@ -1,5 +1,6 @@
 package de.phyrone.lobbyrel.gui;
 
+import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.ItemsConfig;
 import de.phyrone.lobbyrel.hider.PlayerHiderManager;
 import de.phyrone.lobbyrel.lib.LobbyItem;
@@ -16,7 +17,11 @@ import org.bukkit.material.Dye;
 public class PlayerHiderBrewGUI implements InventoryProvider {
     public static void open(Player p) {
         SmartInventory.builder().id("playerhider_Brew-" + p.getUniqueId().toString())
-                .title("§cHider").provider(new PlayerHiderBrewGUI()).type(InventoryType.BREWING).build()
+                .title("§cHider")
+                .provider(new PlayerHiderBrewGUI())
+                .type(InventoryType.BREWING)
+                .manager(LobbyPlugin.getInstance().getInventoryManager())
+                .build()
                 .open(p);
     }
 

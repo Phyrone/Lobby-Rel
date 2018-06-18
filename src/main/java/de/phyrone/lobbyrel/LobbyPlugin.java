@@ -48,6 +48,8 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
     private static double tps = -1D;
     private static Boolean debug = true;
     boolean mc18 = Bukkit.getServer().getClass().getPackage().getName().contains("1_8");
+    @Getter
+    private InventoryManager inventoryManager = new InventoryManager(this);
     private PacketManipulator packetManipulator;
 
     public LobbyPlugin() {
@@ -230,7 +232,7 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
                 "                         |___/               \n" +
                 "   §1Version: §5" + this.getDescription().getVersion() + (debug ? " §8[§4Debug Mode§8]" : "") + "\n" +
                 "   §1Author: §5Phyrone" + "\n" +
-                "   §1Minecraft: §5" + Bukkit.getBukkitVersion() + " " + (!mc18 && debug ? "§41.9 or Newer Detected!" : "") + "\n" +
+                "   §1NMS: §5" + Bukkit.getBukkitVersion() + " " + (!mc18 && debug ? "§41.9 or Newer Detected!" : "") + "\n" +
                 "   §1Bukkit: §5" + Bukkit.getVersion() + "\n" +
                 "   §1JavaVersion: §5" + System.getProperty("java.version")
                 + "\n");
@@ -240,10 +242,9 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         initProtokoll();
         Bukkit.getConsoleSender().sendMessage("[Lobby-Rel] §6Loading Library's if needed...");
 
-
+        inventoryManager.init();
         try {
             //new LobbyDependency(42835, "SmartInvs").check();
-            InventoryManager.initPlugin(this).init();
             new LobbyDependency(0, "EffectLib").setCustomURL("https://media.forgecdn.net/files/2489/826/EffectLib-5.5.jar").check();
         } catch (Exception e1) {
             e1.printStackTrace();
