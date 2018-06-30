@@ -1,17 +1,13 @@
 package de.phyrone.lobbyrel.lobbyswitcher;
 
 import de.dytanic.cloudnet.api.CloudAPI;
-import de.dytanic.cloudnet.lib.server.info.ServerInfo;
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class LobbySwitcher {
     public static final String groupsPath = "LobbySwitcher.Groups";
@@ -30,7 +26,7 @@ public class LobbySwitcher {
         if (Bukkit.getScheduler().isCurrentlyRunning(runID))
             Bukkit.getScheduler().cancelTask(runID);
         runID = Bukkit.getScheduler().scheduleSyncRepeatingTask(LobbyPlugin.getInstance(), () -> updateServers(), 0, Config.getInt("LobbySwitcher.UpdateTime", 5 * 20));
-        LobbyPlugin.getInstance().sendBungeeMessage(Arrays.asList("GetServer"));
+        LobbyPlugin.getInstance().sendBungeeMessage(Collections.singletonList("GetServer"));
         if (Config.getConf().contains(groupsPath)) {
             List<String> list = Config.getConf().getStringList(groupsPath);
             for (String group : list) {
@@ -42,8 +38,8 @@ public class LobbySwitcher {
                 }
             }
         } else {
-            Config.set(groupsPath, new ArrayList<String>(Arrays.asList(
-                    "SERVER;PremiumLobby", "STARSTWITH;Lobby", "CLOUDNET;aCloudnetGroup")));
+            Config.set(groupsPath, new ArrayList<>(Arrays.asList(
+                    "SERVER;PremiumLobby", "STARTSWITH;Lobby", "CLOUDNET;aCloudnetGroup")));
         }
     }
 
@@ -84,33 +80,46 @@ public class LobbySwitcher {
     }
 
     public List<String> getServersSorted(SwitchCategory category, String value) {
-        List<String> ret = new ArrayList<String>();
+        List<String> ret = new ArrayList<>();
         try {
             switch (category) {
-                case STARSTWITH:
-                    for (String s : bungeeServers)
-                        if (s.toLowerCase().startsWith(value.toLowerCase()))
-                            ret.add(s);
+                case STARTSWITH:
+                    bungeeServers.stream().filter(s -> s.toLowerCase().startsWith(value.toLowerCase())).forEach(ret::add);
                     break;
                 case SERVER:
-                    for (String s : bungeeServers)
-                        if (s.equalsIgnoreCase(value))
-                            ret.add(s);
+                    bungeeServers.stream().filter(value::equalsIgnoreCase).forEach(ret::add);
                     break;
                 case CLOUDNET:
                     if (cloudNet)
                         if (value == null) {
-                            for (ServerInfo s : CloudAPI.getInstance().getServers())
-                                if (s != null)
-                                    ret.add(s.getServiceId().getServerId());
+                            CloudAPI.getInstance().getServers().iterator().forEachRemaining(serverInfo -> ret.add(serverInfo.getServiceId().getServerId()));
                         } else {
-                            for (ServerInfo s : CloudAPI.getInstance().getServers(value))
-                                if (s != null)
-                                    ret.add(s.getServiceId().getServerId());
+                            CloudAPI.getInstance().getServers(value).iterator().forEachRemaining(serverInfo -> ret.add(serverInfo.getServiceId().getServerId()));
                         }
                     break;
             }
-            java.util.Collections.sort(ret);
+            ret.sort(String::compareTo);
+            ret.sort((s1, s2) -> {
+                Integer int1 = null;
+                Integer int2 = null;
+                try {
+                    int1 = Integer.parseInt(s1.replaceAll("^[0-9]*$", ""));
+                } catch (NumberFormatException ignored) {
+                }
+                try {
+                    int2 = Integer.parseInt(s2.replaceAll("^[0-9]*$", ""));
+                } catch (NumberFormatException ignored) {
+                }
+                if (int1 == null && int2 == null) {
+                    return 0;
+                } else if (int1 == null) {
+                    return -1;
+                } else if (int2 == null) {
+                    return 1;
+                } else {
+                    return Integer.compare(int1, int2);
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -118,7 +127,7 @@ public class LobbySwitcher {
     }
 
     public List<String> getServers() {
-        ArrayList<String> ret = new ArrayList<String>();
+        ArrayList<String> ret = new ArrayList<>();
         for (ConfGroup group : groups)
             ret.addAll(getServersSorted(group.getCategory(), group.getName()));
         return ret;
@@ -134,7 +143,7 @@ public class LobbySwitcher {
     }
 
     public enum SwitchCategory {
-        STARSTWITH, SERVER, CLOUDNET, NULL
+        STARTSWITH, SERVER, CLOUDNET, NULL
     }
 
     public class ConfGroup {

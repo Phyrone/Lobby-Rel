@@ -28,8 +28,17 @@ import org.bukkit.event.Listener;
 
 public class OwnEventsListner implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onReload(LobbyReloadEvent e) {
-        new Thread(() -> LobbyPlugin.getInstance().getDataFolder().mkdirs()).start();
+    public void onReload(LobbyReloadEvent event) {
+        try {
+            LobbyPlugin.getInstance().getDataFolder().mkdirs();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            event.getPlugin().getLobbyAddonManager().loadAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         LobbyPlugin.loadConf();
         MainHotbar.setup();
         CommandManager.init();
@@ -48,21 +57,24 @@ public class OwnEventsListner implements Listener {
         StorageManager.init();
         NavigatorManager.init();
         GroupManager.init();
-        StorageManager.addSorage("json", StorageManager.defaultStorage);
         SupportPluginsManager.check();
-        if (Config.getBoolean("Items.Swticher.Enabled", true)) {
+        if (Config.getBoolean("Items.Switcher.Enabled", true)) {
             new LobbySwitcher().updateServers();
         }
+    }
 
-
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onLateLoad(LobbyReloadEvent e) {
+        System.gc();
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onStorLoad(LobbyLoadStoragesEvent e) {
+        e.addStorage("json", StorageManager.DEFAULT_STORAGE);
         e.addStorage("none", new NoStorage());
         e.addStorage("mysql", new MySQLStorage());
-        e.addStorage("mongodb", new MongoDB());
         e.addStorage("cloudnet", new CloudNetDB());
+        e.addStorage("mongodb", new MongoDB());
         e.addStorage("cache", new CacheOnlyStorage());
     }
 

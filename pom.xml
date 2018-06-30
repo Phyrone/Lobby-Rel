@@ -63,9 +63,12 @@
             <artifactId>smart-invs</artifactId>
             <version>1.2.0</version>
             <scope>compile</scope>
-            <exclusions>
-
-            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>de.phyrone.addonloader</groupId>
+            <artifactId>Addonloader</artifactId>
+            <version>0.3-20180621.060230-2</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>me.clip</groupId>
@@ -79,12 +82,7 @@
             <version>3.9</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongo-java-driver</artifactId>
-            <version>3.6.2</version>
-            <scope>compile</scope>
-        </dependency>
+
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -109,7 +107,18 @@
             <version>1.16.22</version>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.msgpack</groupId>
+            <artifactId>msgpack</artifactId>
+            <version>0.6.12</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>3.6.2</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <!-- Einstallungen -->
     <properties>
@@ -128,32 +137,6 @@
             </resource>
         </resources>
         <plugins>
-            <!-- AsambyPlugin -->
-            <!--<plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.1.0</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>de.phyrone.lobbyrel.run.NoProgramm</mainClass>
-                        </manifest>
-                    </archive>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                    <finalName>Lobby-Rel-${project.version}</finalName>
-                    <appendAssemblyId>false</appendAssemblyId>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -170,7 +153,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <!-- Compiler -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -180,7 +162,7 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <!-- recurnce -->
+            <!-- Resource -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>

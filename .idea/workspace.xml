@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6485087-69ae-473d-afd1-aa6d856f3614" name="Default" comment="">
+    <list default="true" id="b6485087-69ae-473d-afd1-aa6d856f3614" name="Default" comment="First Addonmanager">
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyAddonManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/AdminMainGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/AdminMainGui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/LobbySwitcherGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/LobbySwitcherGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/NavigatorGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/NavigatorGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/PlayerHiderBrewGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/PlayerHiderBrewGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/SettingsGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/SettingsGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/api/ChatInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/api/ChatInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/customitems/AdminCustomItemGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/customitems/AdminCustomItemGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/customitems/AdminCustomItemsGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/customitems/AdminCustomItemsGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/warp/AdminWarpGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/warp/AdminWarpGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/warp/AdminWarpsGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/warp/AdminWarpsGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/events/LobbyLoadStoragesEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/events/LobbyLoadStoragesEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hider/PlayerHiderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hider/PlayerHiderManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/OwnEventsListner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/OwnEventsListner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lobbyswitcher/LobbySwitcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lobbyswitcher/LobbySwitcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/internal/InternalOfflinePlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/internal/InternalOfflinePlayerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/MongoDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/MongoDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/StorageManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/StorageManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,40 +22,39 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
+      <file leaf-file-name="LobbyGuard.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/LobbyGuard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+            <state relative-caret-position="-425">
+              <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+      <file leaf-file-name="LobbySwitcher.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lobbyswitcher/LobbySwitcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="171" column="21" selection-start-line="171" selection-start-column="21" selection-end-line="171" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IdeodPreventer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/IdeodPreventer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LobbyPlugin.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1122">
-              <caret line="234" column="22" selection-start-line="234" selection-start-column="22" selection-end-line="234" selection-end-column="22" />
+            <state relative-caret-position="78">
+              <caret line="114" column="51" lean-forward="true" selection-start-line="114" selection-start-column="51" selection-end-line="114" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -72,6 +68,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ondi</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -82,7 +83,6 @@
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/SupportPluginsManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Tools.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/FancyMessage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/MongoDB.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/GameProfileBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/tablist/PlayerList.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/groups/GroupManager.java" />
@@ -97,8 +97,17 @@
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/api/ChatInput.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/customitems/AdminCustomItemsGUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/warp/AdminWarpsGUI.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/internal/InternalOfflinePlayerData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/SmalFileStorage.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyAddonManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/events/LobbyLoadStoragesEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/StorageManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hider/PlayerHiderManager.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/OwnEventsListner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/MongoDB.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lobbyswitcher/LobbySwitcher.java" />
       </list>
     </option>
   </component>
@@ -122,16 +131,6 @@
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="Lobby-Rel" type="9519ce18:MavenProjectsStructure$ProjectNode" />
         </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="Lobby-Rel" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="Lobby-Rel" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
-        </path>
       </expand>
       <select />
     </treeState>
@@ -151,7 +150,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -191,6 +189,15 @@
               <item name="Lobby-Rel" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
+              <item name="lobbyswitcher" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lobby-Rel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -202,27 +209,17 @@
               <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
-            <path>
-              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: fr.minuskube.inv:smart-invs:1.2.0" type="70bed36:NamedLibraryElementNode" />
-            </path>
-            <path>
-              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Maven: fr.minuskube.inv:smart-invs:1.2.0" type="70bed36:NamedLibraryElementNode" />
-              <item name="smart-invs-1.2.0.jar" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last.edited.regexp" value="%playEr%" />
+    <property name="last.edited.regexp" value="" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -389,7 +386,27 @@
       <workItem from="1528659872455" duration="142000" />
       <workItem from="1528813557815" duration="883000" />
       <workItem from="1528823833572" duration="1669000" />
-      <workItem from="1529326568945" duration="2249000" />
+      <workItem from="1529326568945" duration="2493000" />
+      <workItem from="1529331921030" duration="28000" />
+      <workItem from="1529407006881" duration="2853000" />
+      <workItem from="1529410359803" duration="11000" />
+      <workItem from="1529410384519" duration="28000" />
+      <workItem from="1529410415706" duration="2000" />
+      <workItem from="1529410727948" duration="360000" />
+      <workItem from="1529411147935" duration="207000" />
+      <workItem from="1529496627891" duration="8000" />
+      <workItem from="1529560660148" duration="201000" />
+      <workItem from="1529561018702" duration="150000" />
+      <workItem from="1529583337770" duration="4510000" />
+      <workItem from="1529596194371" duration="29000" />
+      <workItem from="1529700515283" duration="2000" />
+      <workItem from="1529768932031" duration="1495000" />
+      <workItem from="1529770656809" duration="2533000" />
+      <workItem from="1530305046080" duration="196000" />
+      <workItem from="1530307204313" duration="1209000" />
+      <workItem from="1530308464140" duration="8000" />
+      <workItem from="1530308495775" duration="18000" />
+      <workItem from="1530308516607" duration="5588000" />
     </task>
     <task id="LOCAL-00001" summary="Beginn Tabbed Gui for Main Menü">
       <created>1526946790038</created>
@@ -440,11 +457,18 @@
       <option name="project" value="LOCAL" />
       <updated>1528651296061</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Update Smart-Invs">
+      <created>1529328863858</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1529328863859</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36675000" />
+    <option name="totallyTimeSpent" value="56355000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="49" width="1296" height="1000" extended-state="6" />
@@ -455,23 +479,23 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.32928804" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.35034803" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32946634" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32946634" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.37216827" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.39320388" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32928804" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32946634" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39907193" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -490,146 +514,13 @@
     <MESSAGE value="Repaired pom.xml" />
     <MESSAGE value="Minor Changes" />
     <MESSAGE value="Removed NPC Factory (it was a Test)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed NPC Factory (it was a Test)" />
+    <MESSAGE value="Update Smart-Invs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Smart-Invs" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3179">
-          <caret line="243" column="53" selection-start-line="243" selection-start-column="53" selection-end-line="243" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1207">
-          <caret line="71" column="26" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/fr/minuskube/smartinvs/1.1.4-NOPL/SmartInvs-1.1.4-NOPL.jar!/fr/minuskube/inv/InventoryManager.class" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4131">
-          <caret line="243" column="53" selection-start-line="243" selection-start-column="53" selection-end-line="243" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="72" column="21" selection-start-line="72" selection-start-column="21" selection-end-line="72" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3247">
-          <caret line="243" column="46" selection-start-line="243" selection-start-column="46" selection-end-line="243" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/api/TabbedGui.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="52" column="9" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/api/TabbedGui.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/fr/minuskube/smartinvs/1.1.4-NOPL/SmartInvs-1.1.4-NOPL.jar!/fr/minuskube/inv/InventoryManager.class" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/spigotmc/spigot-api-advanced/1.12.2/spigot-api-advanced-1.12.2.jar!/org/bukkit/boss/BarFlag.class" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/spigotmc/spigot-api-advanced/1.12.2/spigot-api-advanced-1.12.2.jar!/org/bukkit/Bukkit.class" />
-    <entry file="jar://$MAVEN_REPOSITORY$/fr/minuskube/smartinvs/1.1.4-NOPL/SmartInvs-1.1.4-NOPL.jar!/fr/minuskube/inv/SmartInventory.class" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/de_lang.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="4" lean-forward="true" selection-start-column="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/items.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-459" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Lobby-Rel.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Skull.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="80" column="55" selection-start-line="80" selection-start-column="55" selection-end-line="80" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/LobbyConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-648">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/Tools.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="56" column="52" selection-start-line="56" selection-start-column="52" selection-end-line="56" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/io/PrintStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="803" column="16" selection-start-line="803" selection-start-column="16" selection-end-line="803" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/json/FancyMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="96" column="49" selection-start-line="96" selection-start-column="49" selection-end-line="96" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/ItemsConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="131" column="81" selection-start-line="131" selection-start-column="81" selection-end-line="131" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/spigotmc/spigot-api/1.11-R0.1-SNAPSHOT/spigot-api-1.11-R0.1-20161219.121403-111.jar!/org/bukkit/scheduler/BukkitScheduler.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="89" column="15" selection-start-line="89" selection-start-column="15" selection-end-line="89" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/MongoDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="15" column="35" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/de/dytanic/cloudnet/CloudNetAPI/2.1/CloudNetAPI-2.1.jar!/com/google/gson/JsonDeserializer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/tablist/PlayerList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
@@ -665,20 +556,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/PacketManipulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/fr/minuskube/inv/smart-invs/1.2.0/smart-invs-1.2.0.jar!/fr/minuskube/inv/InventoryManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/scoreboard/ScoreboardManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -697,9 +574,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -780,6 +654,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/fr/minuskube/inv/smart-invs/1.2.0/smart-invs-1.2.0.jar!/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dependency-reduced-pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2102" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/PacketManipulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -787,16 +676,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/fr/minuskube/inv/smart-invs/1.2.0/smart-invs-1.2.0.jar!/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="jar://$MAVEN_REPOSITORY$/fr/minuskube/inv/smart-invs/1.2.0/smart-invs-1.2.0.jar!/fr/minuskube/inv/InventoryManager.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="171" column="21" selection-start-line="171" selection-start-column="21" selection-end-line="171" selection-end-column="21" />
+        <state relative-caret-position="238">
+          <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -807,10 +697,179 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/update/LobbyDependency.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="137" selection-start-line="137" selection-end-line="162" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/items.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/MySQLStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/OfflinePlayerStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/JsonStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/msgpack/msgpack/0.6.12/msgpack-0.6.12.jar!/org/msgpack/annotation/Message.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/internal/InternalOfflinePlayerData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/SmalFileStorage.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/lang/Runtime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="687" column="23" selection-start-line="687" selection-start-column="23" selection-end-line="687" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/lang/System.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="992" column="31" selection-start-line="992" selection-start-column="31" selection-end-line="992" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/spigotmc/spigot-api/1.11-R0.1-SNAPSHOT/spigot-api-1.11-R0.1-20161219.121403-111-sources.jar!/org/bukkit/plugin/java/JavaPlugin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="442" column="43" selection-start-line="442" selection-start-column="43" selection-end-line="442" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/de/phyrone/addonloader/Addonloader/0.3-SNAPSHOT/Addonloader-0.3-20180621.060230-2.jar!/de/phyrone/addonloader/AddonLoader.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1292">
+          <caret line="128" column="16" selection-start-line="128" selection-start-column="16" selection-end-line="128" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/events/LobbyLoadStoragesEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/PlayerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyPlugin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="234" column="22" selection-start-line="234" selection-start-column="22" selection-end-line="234" selection-end-column="22" />
+        <state relative-caret-position="17">
+          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/LobbyAddonManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="39" column="70" lean-forward="true" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/MongoDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="83" column="27" selection-start-line="83" selection-start-column="27" selection-end-line="83" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2977#2978#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hider/PlayerHiderManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="120" column="21" selection-start-line="120" selection-start-column="21" selection-end-line="120" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/OwnEventsListner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="77" column="39" selection-start-line="77" selection-start-column="39" selection-end-line="77" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2640#2641#0" expanded="true" />
+            <element signature="e#2667#2668#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/storage/StorageManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="671">
+          <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/MainHotbar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="32" column="63" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/LobbyGuard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-425">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lobbyswitcher/LobbySwitcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="114" column="51" lean-forward="true" selection-start-line="114" selection-start-column="51" selection-end-line="114" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -3,12 +3,14 @@ package de.phyrone.lobbyrel.player.data.internal;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import de.phyrone.lobbyrel.config.Config;
+import org.msgpack.annotation.Message;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
+@Message
 public class InternalOfflinePlayerData {
     private static final Gson GSON = new GsonBuilder().create();
     private static final Gson PRETTYGSON = new GsonBuilder().setPrettyPrinting().create();

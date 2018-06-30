@@ -49,7 +49,10 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
     private static Boolean debug = true;
     boolean mc18 = Bukkit.getServer().getClass().getPackage().getName().contains("1_8");
     @Getter
+    LobbyAddonManager lobbyAddonManager = new LobbyAddonManager(this);
+    @Getter
     private InventoryManager inventoryManager = new InventoryManager(this);
+    @Getter
     private PacketManipulator packetManipulator;
 
     public LobbyPlugin() {
@@ -128,9 +131,11 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         for (Player p : Bukkit.getOnlinePlayers()) {
             PlayerManager.getPlayerData(p).quickSave();
         }
+        StorageManager.disable();
         Bukkit.getConsoleSender().sendMessage("[Lobby-Rel] §cZzz...");
     }
 
@@ -241,14 +246,13 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
         instance = this;
         initProtokoll();
         Bukkit.getConsoleSender().sendMessage("[Lobby-Rel] §6Loading Library's if needed...");
-
         inventoryManager.init();
         try {
-            //new LobbyDependency(42835, "SmartInvs").check();
             new LobbyDependency(0, "EffectLib").setCustomURL("https://media.forgecdn.net/files/2489/826/EffectLib-5.5.jar").check();
         } catch (Exception e1) {
             e1.printStackTrace();
         }
+
         loadConf();
         PluginManager pm = Bukkit.getPluginManager();
         /* BungeeMode */
@@ -350,9 +354,5 @@ public class LobbyPlugin extends JavaPlugin implements PluginMessageListener {
     public void initProtokoll() {
         packetManipulator = new PacketManipulator(this);
 
-    }
-
-    public PacketManipulator getPacketManipulator() {
-        return packetManipulator;
     }
 }

@@ -1,4 +1,9 @@
 package de.phyrone.lobbyrel.storage;
+/*
+ *   Copyright © 2018 by Phyrone  *
+ *   Creation: 19.06.2018 by Phyrone
+ */
+
 
 import com.mongodb.MongoClient;
 import com.mongodb.ServerAddress;
@@ -14,9 +19,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class MongoDB extends OfflinePlayerStorage {
-    MongoClient client;
-    MongoDatabase db;
-    MongoCollection<Document> table;
+    private MongoClient client;
+    private MongoCollection<Document> table;
 
     @Override
     public void init() {
@@ -38,7 +42,7 @@ public class MongoDB extends OfflinePlayerStorage {
         }
         client = new MongoClient(dbServers);
 
-        db = client.getDatabase(dbName);
+        MongoDatabase db = client.getDatabase(dbName);
         table = db.getCollection(tableName);
 
     }
@@ -78,7 +82,7 @@ public class MongoDB extends OfflinePlayerStorage {
 
     @Override
     public void disable() {
-
         client.close();
     }
 }
+

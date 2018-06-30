@@ -1,6 +1,7 @@
 package de.phyrone.lobbyrel.hider;
 
 import de.phyrone.lobbyrel.LobbyPlugin;
+import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.player.PlayerManager;
 import de.phyrone.lobbyrel.player.data.PlayerData;
 import de.phyrone.lobbyrel.player.effect.EffectPlayer;
@@ -11,28 +12,35 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.HashMap;
 
 public class PlayerHiderManager {
-	static HashMap<Integer, HiderModule> modules = new HashMap<>();
-	public static void init() {
+    static HashMap<Integer, HiderModule> modules = new HashMap<>();
+    private static boolean enabled = false;
+
+    public static void init() {
+        enabled = Config.getBoolean("Items.PlayerHider.Enabled", true);
         modules.put(2, new HiderModule().setAction("lobby.hider.vip"));
-	}
+    }
 
     public static void setPlayerHider(Player player, int hider) {
-		PlayerData pd = PlayerManager.getPlayerData(player);
+        PlayerData pd = PlayerManager.getPlayerData(player);
         if (hider == pd.getPlayerHider()) {
-			new EffectPlayer(player).blocked();
-		}else {
+            new EffectPlayer(player).blocked();
+        } else {
             pd.setPlayerHider(hider);
-			new EffectPlayer(player).changeHider();
-			update(player);
-		}
+            new EffectPlayer(player).changeHider();
+            update(player);
+        }
     }
 
     public static int getPlayerHider(Player player) {
         return PlayerManager.getPlayerData(player).getPlayerHider();
-	}public static Boolean isSelected(Player player,int hider) {
+    }
+
+    public static Boolean isSelected(Player player, int hider) {
         return getPlayerHider(player) == hider;
-	}
-	public static void update(Player player) {
+    }
+
+    public static void update(Player player) {
+        if (!enabled) return;
         Runnable t = () -> {
             PlayerData pd = PlayerManager.getPlayerData(player);
             int hider = pd.getPlayerHider();
@@ -103,17 +111,21 @@ public class PlayerHiderManager {
                         }
                     });
 
-				}
-			}
-		};
-		Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), t);
+                }
+            }
+        };
+        Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), t);
 
-	}public static void updateAll() {
-		for(Player p:Bukkit.getOnlinePlayers()) {
-			update(p);
-		}
-	}
-	public static void updateForOthers(Player p) {
+    }
+
+    public static void updateAll() {
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            update(p);
+        }
+    }
+
+    public static void updateForOthers(Player p) {
+        if (!enabled) return;
         Runnable t = () -> {
 
             for (Player player : Bukkit.getOnlinePlayers()) {
@@ -159,11 +171,11 @@ public class PlayerHiderManager {
                         }
                     });
 
-				}
-			}
-		};
-		Bukkit.getScheduler().scheduleSyncDelayedTask(LobbyPlugin.getInstance(), t);
-	}
+                }
+            }
+        };
+        Bukkit.getScheduler().scheduleSyncDelayedTask(LobbyPlugin.getInstance(), t);
+    }
 
-	
+
 }

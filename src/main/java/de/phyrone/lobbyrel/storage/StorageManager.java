@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class StorageManager {
-    public final static JsonStorage defaultStorage = new JsonStorage();
-    public static HashMap<String, OfflinePlayerStorage> storageTeamplates = new HashMap<String, OfflinePlayerStorage>();
+    public final static JsonStorage DEFAULT_STORAGE = new JsonStorage();
+    private static HashMap<String, OfflinePlayerStorage> storageTeamplates = new HashMap<>();
     static boolean init = false;
     static String storage = "json";
 
@@ -27,7 +27,7 @@ public class StorageManager {
         storageTeamplates.put(tag.toLowerCase(), storage);
     }
 
-    public static void removeSorage(String tag) {
+    public static void removeStorage(String tag) {
         storageTeamplates.remove(tag.toLowerCase());
     }
 
@@ -36,20 +36,36 @@ public class StorageManager {
             disable();
         }
         init = true;
-        LobbyLoadStoragesEvent event = new LobbyLoadStoragesEvent(Config.getString("Storage.Type", "json").toLowerCase());
+        LobbyLoadStoragesEvent event = new LobbyLoadStoragesEvent(Config.getString("Storage.Type", "json").toLowerCase()) {
+            @Override
+            public void addStorage(String name, OfflinePlayerStorage storage) {
+                StorageManager.addSorage(name, storage);
+            }
+
+            @Override
+            public void removeStorage(String name) {
+                StorageManager.removeStorage(name);
+            }
+
+            @Override
+            public HashMap<String, OfflinePlayerStorage> getAlreadyLoadedStorages() {
+                return storageTeamplates;
+            }
+        };
         Bukkit.getPluginManager().callEvent(event);
         storage = event.getStorage();
         try {
-            storageTeamplates.getOrDefault(storage, defaultStorage).init();
+            storageTeamplates.getOrDefault(storage, DEFAULT_STORAGE).init();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+
     public static void disable() {
         init = false;
         try {
-            storageTeamplates.getOrDefault(storage, defaultStorage).disable();
+            storageTeamplates.getOrDefault(storage, DEFAULT_STORAGE).disable();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,7 +77,7 @@ public class StorageManager {
         try {
             if (LobbyPlugin.getDebug())
                 System.out.println("Load OFFLINEDATA - " + uuid.toString());
-            dt = storageTeamplates.getOrDefault(storage, defaultStorage).load(uuid);
+            dt = storageTeamplates.getOrDefault(storage, DEFAULT_STORAGE).load(uuid);
         } catch (Exception e) {
             if (LobbyPlugin.getDebug())
                 e.printStackTrace();
@@ -76,7 +92,7 @@ public class StorageManager {
         try {
             if (LobbyPlugin.getDebug())
                 System.out.println("Save OFFLINEDATA - " + uuid.toString());
-            storageTeamplates.getOrDefault(storage, defaultStorage).save(uuid, data);
+            storageTeamplates.getOrDefault(storage, DEFAULT_STORAGE).save(uuid, data);
         } catch (Exception e) {
             if (LobbyPlugin.getDebug())
                 e.printStackTrace();
