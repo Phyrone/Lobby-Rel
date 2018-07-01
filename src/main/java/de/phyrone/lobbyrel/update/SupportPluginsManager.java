@@ -1,7 +1,8 @@
-package de.phyrone.lobbyrel;
+package de.phyrone.lobbyrel.update;
 
 import de.domedd.betternick.BetterNick;
 import de.domedd.betternick.api.betternickapi.BetterNickAPI;
+import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.config.ItemsConfig;
 import de.phyrone.lobbyrel.hotbar.MainHotbar;

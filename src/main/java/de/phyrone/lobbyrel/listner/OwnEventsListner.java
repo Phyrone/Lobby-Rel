@@ -1,7 +1,6 @@
 package de.phyrone.lobbyrel.listner;
 
 import de.phyrone.lobbyrel.LobbyPlugin;
-import de.phyrone.lobbyrel.SupportPluginsManager;
 import de.phyrone.lobbyrel.cmd.CommandManager;
 import de.phyrone.lobbyrel.cmd.help.HelpManager;
 import de.phyrone.lobbyrel.config.Config;
@@ -21,6 +20,7 @@ import de.phyrone.lobbyrel.player.scoreboard.ScoreboardManager;
 import de.phyrone.lobbyrel.player.settings.SettingsManager;
 import de.phyrone.lobbyrel.playertime.TimeManager;
 import de.phyrone.lobbyrel.storage.*;
+import de.phyrone.lobbyrel.update.SupportPluginsManager;
 import de.phyrone.lobbyrel.update.UpdateManager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
