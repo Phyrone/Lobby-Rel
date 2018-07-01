@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6485087-69ae-473d-afd1-aa6d856f3614" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/placeholder/PlaceholderHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/placeholder/PlaceholderManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/groups/GroupManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/groups/GroupManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/MainHotbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/MainHotbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/HotbarItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/HotbarItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/LobbyItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/LobbyItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/tablist/PlayerList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/tablist/ReflectionUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/OwnEventsListner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/listner/OwnEventsListner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lobbyswitcher/LobbySwitcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lobbyswitcher/LobbySwitcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/internal/InternalOfflinePlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/internal/InternalOfflinePlayerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/lang/LangManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/lang/LangManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,103 +27,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="InternalOfflinePlayerData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/player/data/internal/InternalOfflinePlayerData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlaceholderManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/placeholder/PlaceholderManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ItemsConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/ItemsConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="636">
-              <caret line="122" column="16" lean-forward="true" selection-start-line="122" selection-start-column="16" selection-end-line="122" selection-end-column="16" />
-              <folding>
-                <element signature="e#4061#4062#0" expanded="true" />
-                <element signature="e#4121#4122#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LobbyItem.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/LobbyItem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1326">
-              <caret line="102" column="3" selection-start-line="102" selection-start-column="3" selection-end-line="102" selection-end-column="3" />
-              <folding>
-                <element signature="e#5109#5110#0" expanded="true" />
-                <element signature="e#5140#5141#0" expanded="true" />
-                <element signature="e#5188#5189#0" expanded="true" />
-                <element signature="e#5223#5224#0" expanded="true" />
-                <element signature="e#5884#5885#0" expanded="true" />
-                <element signature="e#5918#5919#0" expanded="true" />
-                <element signature="e#6076#6077#0" expanded="true" />
-                <element signature="e#6103#6104#0" expanded="true" />
-                <element signature="e#6391#6392#0" expanded="true" />
-                <element signature="e#6418#6419#0" expanded="true" />
-                <element signature="e#6549#6550#0" expanded="true" />
-                <element signature="e#6584#6585#0" expanded="true" />
-                <element signature="e#6745#6746#0" expanded="true" />
-                <element signature="e#6772#6773#0" expanded="true" />
-                <element signature="e#6905#6906#0" expanded="true" />
-                <element signature="e#6932#6933#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HotbarItem.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/hotbar/api/HotbarItem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
-              <folding>
-                <element signature="e#626#627#0" expanded="true" />
-                <element signature="e#661#662#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlaceholderHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/placeholder/PlaceholderHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="75" column="26" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -236,7 +127,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -284,6 +175,15 @@
               <item name="Lobby-Rel" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lobbyrel" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Lobby-Rel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Lobby-Rel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -299,7 +199,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -495,7 +395,8 @@
       <workItem from="1530308516607" duration="5588000" />
       <workItem from="1530383912136" duration="3545000" />
       <workItem from="1530393034115" duration="3467000" />
-      <workItem from="1530427174316" duration="4325000" />
+      <workItem from="1530427174316" duration="5169000" />
+      <workItem from="1530450169781" duration="599000" />
     </task>
     <task id="LOCAL-00001" summary="Beginn Tabbed Gui for Main Menü">
       <created>1526946790038</created>
@@ -560,15 +461,28 @@
       <option name="project" value="LOCAL" />
       <updated>1530384265991</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added Placeholdermanager">
+      <created>1530431554064</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1530431554064</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Reflectio Fix">
+      <created>1530432602938</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1530432602938</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67692000" />
+    <option name="totallyTimeSpent" value="69135000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="49" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -580,7 +494,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.35034803" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31229773" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3171521" />
       <window_info anchor="right" id="Database" order="3" weight="0.32928804" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -613,19 +527,14 @@
     <MESSAGE value="Removed NPC Factory (it was a Test)" />
     <MESSAGE value="Update Smart-Invs" />
     <MESSAGE value="Added AddonManager (not working)&#10;Server switcher sort now better&#10;PlayerHider is now full disableable" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added AddonManager (not working)&#10;Server switcher sort now better&#10;PlayerHider is now full disableable" />
+    <MESSAGE value="Added Placeholdermanager" />
+    <MESSAGE value="Reflectio Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reflectio Fix" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/gui/customitems/AdminCustomItemGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/fr/minuskube/inv/smart-invs/1.2.0/smart-invs-1.2.0.jar!/plugin.yml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -771,6 +680,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="816">
           <caret line="83" column="27" selection-start-line="83" selection-start-column="27" selection-end-line="83" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2977#2978#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -863,9 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -876,24 +786,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="75" column="26" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/me/clip/placeholderapi/2.8.7/placeholderapi-2.8.7.jar!/me/clip/placeholderapi/PlaceholderAPI.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/placeholder/PlaceholderHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -933,6 +829,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/LobbyItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-238">
+          <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+          <folding>
+            <element signature="e#5109#5110#0" expanded="true" />
+            <element signature="e#5140#5141#0" expanded="true" />
+            <element signature="e#5188#5189#0" expanded="true" />
+            <element signature="e#5223#5224#0" expanded="true" />
+            <element signature="e#5884#5885#0" expanded="true" />
+            <element signature="e#5918#5919#0" expanded="true" />
+            <element signature="e#6076#6077#0" expanded="true" />
+            <element signature="e#6103#6104#0" expanded="true" />
+            <element signature="e#6391#6392#0" expanded="true" />
+            <element signature="e#6418#6419#0" expanded="true" />
+            <element signature="e#6549#6550#0" expanded="true" />
+            <element signature="e#6584#6585#0" expanded="true" />
+            <element signature="e#6745#6746#0" expanded="true" />
+            <element signature="e#6772#6773#0" expanded="true" />
+            <element signature="e#6905#6906#0" expanded="true" />
+            <element signature="e#6932#6933#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/config/ItemsConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="636">
@@ -965,31 +886,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/LobbyItem.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/placeholder/PlaceholderHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="102" column="3" selection-start-line="102" selection-start-column="3" selection-end-line="102" selection-end-column="3" />
-          <folding>
-            <element signature="e#5109#5110#0" expanded="true" />
-            <element signature="e#5140#5141#0" expanded="true" />
-            <element signature="e#5188#5189#0" expanded="true" />
-            <element signature="e#5223#5224#0" expanded="true" />
-            <element signature="e#5884#5885#0" expanded="true" />
-            <element signature="e#5918#5919#0" expanded="true" />
-            <element signature="e#6076#6077#0" expanded="true" />
-            <element signature="e#6103#6104#0" expanded="true" />
-            <element signature="e#6391#6392#0" expanded="true" />
-            <element signature="e#6418#6419#0" expanded="true" />
-            <element signature="e#6549#6550#0" expanded="true" />
-            <element signature="e#6584#6585#0" expanded="true" />
-            <element signature="e#6745#6746#0" expanded="true" />
-            <element signature="e#6772#6773#0" expanded="true" />
-            <element signature="e#6905#6906#0" expanded="true" />
-            <element signature="e#6932#6933#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="75" column="26" selection-start-line="75" selection-start-column="26" selection-end-line="75" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/phyrone/lobbyrel/lib/ReflectionUtil.java" />
   </component>
   <component name="masterDetails">
     <states>
