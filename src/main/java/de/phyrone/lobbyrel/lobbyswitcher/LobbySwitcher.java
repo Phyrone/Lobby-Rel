@@ -6,12 +6,11 @@ import de.phyrone.lobbyrel.config.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import javax.annotation.Nonnull;
 import java.util.*;
 
 public class LobbySwitcher {
-    public static final String groupsPath = "LobbySwitcher.Groups";
-    static int runID = -1;
+    private static final String groupsPath = "LobbySwitcher.Groups";
+    private static int runID = -1;
     private static LobbySwitcher instance = null;
     public ArrayList<ConfGroup> groups = new ArrayList<>();
     private String serverName = "Lobby";
@@ -19,7 +18,7 @@ public class LobbySwitcher {
     private HashMap<String, ServerConData> serverCacheData = new HashMap<>();
     private ArrayList<String> bungeeServers = new ArrayList<>();
 
-    public LobbySwitcher() {
+    private LobbySwitcher() {
         instance = this;
         bungeeServers.clear();
         serverCacheData.clear();
@@ -58,7 +57,7 @@ public class LobbySwitcher {
     }
 
     public void updateServers() {
-        LobbyPlugin.getInstance().sendBungeeMessage(new ArrayList<>(Arrays.asList("GetServers")));
+        LobbyPlugin.getInstance().sendBungeeMessage(new ArrayList<>(Collections.singletonList("GetServers")));
     }
 
     public void updateBungeeServers(String[] servers) {
@@ -79,15 +78,15 @@ public class LobbySwitcher {
         LobbyPlugin.getInstance().sendBungeeMessage(player, new ArrayList<>(Arrays.asList("Connect", server)));
     }
 
-    public List<String> getServersSorted(SwitchCategory category, String value) {
+    private List<String> getServersSorted(SwitchCategory category, String value) {
         List<String> ret = new ArrayList<>();
         try {
             switch (category) {
                 case STARTSWITH:
-                    bungeeServers.stream().filter(s -> s.toLowerCase().startsWith(value.toLowerCase())).forEach(ret::add);
+                    getAllBungeeServers().stream().filter(s -> s.toLowerCase().startsWith(value.toLowerCase())).forEach(ret::add);
                     break;
                 case SERVER:
-                    bungeeServers.stream().filter(value::equalsIgnoreCase).forEach(ret::add);
+                    getAllBungeeServers().stream().filter(value::equalsIgnoreCase).forEach(ret::add);
                     break;
                 case CLOUDNET:
                     if (cloudNet)
@@ -150,7 +149,7 @@ public class LobbySwitcher {
         private String name;
         private SwitchCategory category;
 
-        public ConfGroup(@Nonnull String name, @Nonnull SwitchCategory category) {
+        public ConfGroup(String name, SwitchCategory category) {
             this.category = category;
             this.name = name;
         }

@@ -3,7 +3,8 @@ package de.phyrone.lobbyrel.player.lang;
 import de.phyrone.lobbyrel.LobbyPlugin;
 import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.lib.json.FancyMessage;
-import org.bukkit.Bukkit;
+import de.phyrone.lobbyrel.placeholder.PlaceholderManager;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -17,6 +18,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 
 public class LangManager {
+    final static Object syncer = new Object();
+    final static Object threadsyncer = new Object();
     static boolean init = false;
     static String defaultLang = null;
     static File langFolder = null;
@@ -59,10 +62,14 @@ public class LangManager {
     }
 
     public static void sendMessage(CommandSender sender, String messagePath, String defaultMessage) {
-        Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), () -> {
-            String m = getMessage(sender, messagePath, defaultMessage);
-            new FancyMessage(LobbyPlugin.getPrefix()).then(" ").then(m).send(sender);
-        });
+        synchronized (syncer) {
+            new Thread(() -> {
+                synchronized (threadsyncer) {
+                    String m = getMessage(sender, messagePath, defaultMessage);
+                    new FancyMessage(LobbyPlugin.getPrefix()).then(" ").then(m).send(sender);
+                }
+            }).start();
+        }
     }
 
     public static String getMessage(CommandSender sender, String messagePath, String defaultMessage) {
@@ -71,16 +78,20 @@ public class LangManager {
         }
         String lang = getLangOrDefault(sender);
         LangConf langconf = langs.getOrDefault(lang, langs.getOrDefault(defaultLang, new LangConf(defaultLang)));
-        String ret;
+        String text;
         if (langconf.conf.contains(messagePath)) {
-            ret = langconf.conf.getString(messagePath);
+            text = langconf.conf.getString(messagePath);
         } else {
-            ret = defaultMessage;
+            text = defaultMessage;
             langconf.conf.set(messagePath, defaultMessage);
             langconf.save();
             langs.put(langconf.lang, langconf);
         }
-        return ret.replace("&", "§");
+        if (sender instanceof Player) {
+            return PlaceholderManager.setPlaceholders((Player) sender, text);
+        } else {
+            return ChatColor.translateAlternateColorCodes('&', text);
+        }
     }
 
     public static Future<String> getMessageAsync(CommandSender sender, String messagePath, String defaultMessage) {
@@ -106,7 +117,7 @@ public class LangManager {
 
     }
 
-    public static String getLanguage(Player p) {
+    private static String getLanguage(Player p) {
         try {
             Object obj = getMethod("getHandle", p.getClass()).invoke(p, null);
             Field f = obj.getClass().getDeclaredField("locale");

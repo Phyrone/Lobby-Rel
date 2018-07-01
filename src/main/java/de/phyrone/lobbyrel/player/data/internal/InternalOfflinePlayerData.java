@@ -3,6 +3,8 @@ package de.phyrone.lobbyrel.player.data.internal;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import de.phyrone.lobbyrel.config.Config;
+import lombok.Getter;
+import lombok.Setter;
 import org.msgpack.annotation.Message;
 
 import java.io.*;
@@ -10,6 +12,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
+@Getter
+@Setter
 @Message
 public class InternalOfflinePlayerData {
     private static final Gson GSON = new GsonBuilder().create();

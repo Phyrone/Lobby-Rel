@@ -5,7 +5,6 @@ import de.phyrone.lobbyrel.config.Config;
 import de.phyrone.lobbyrel.config.RanksConf;
 import de.phyrone.lobbyrel.events.LobbyResetPlayerEvent;
 import de.phyrone.lobbyrel.lib.RandomString;
-import de.phyrone.lobbyrel.lib.tablist.PlayerList;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -27,14 +26,10 @@ public class GroupManager implements Listener {
     private static boolean chatEnabled = false;
     private static boolean customTab = false;
     private static BukkitTask updater;
-    private static HashMap<Player, BukkitTask> taskHashMap = new HashMap<>();
 
     public static void init() {
         RanksConf.load();
         RanksConf.getInstance().toFileAsync();
-        if (tabEnabled)
-            for (Player player : Bukkit.getOnlinePlayers())
-                PlayerList.getPlayerList(player).resetTablist();
         tabEnabled = Config.getBoolean("GroupManager.TabList", true);
         customTab = Config.getBoolean("GroupManager.CustomTabList", false);
         chatEnabled = Config.getBoolean("GroupManager.Chat", true);
@@ -96,30 +91,6 @@ public class GroupManager implements Listener {
     }
 
     private static void setTablist(Player viewer) {
-        if (customTab)
-            try {
-                final List<Player> players = GroupManager.getPlayers();
-                PlayerList list = PlayerList.getPlayerList(viewer);
-                list.clearAll();
-                if (taskHashMap.containsKey(viewer)) taskHashMap.get(viewer).cancel();
-                boolean skin = Bukkit.getOnlineMode();
-                BukkitTask task = Bukkit.getScheduler().runTaskLaterAsynchronously(LobbyPlugin.getInstance(), () -> {
-                    final int[] i = {0};
-                    players.iterator().forEachRemaining(player -> {
-                        if (viewer.canSee(player))
-                            try {
-                                //list.addExistingPlayer(i[0], getTabString(player), player);
-                                list.updateSlot(i[0], getTabString(player), skin);
-                                i[0]++;
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                    });
-                }, 10);
-                taskHashMap.put(viewer, task);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         try {
             setScoreboard(viewer);
         } catch (Exception e) {

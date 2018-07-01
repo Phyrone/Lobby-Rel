@@ -1,6 +1,7 @@
 package de.phyrone.lobbyrel.lib;
 
 import de.phyrone.lobbyrel.lib.item.ItemAPI;
+import de.phyrone.lobbyrel.placeholder.PlaceholderManager;
 import de.phyrone.lobbyrel.player.lang.LangManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -9,14 +10,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
 public class LobbyItem {
-    public static final StringReplacer DEFAULT_PLACEHOLDER = (input, player) -> input
-            .replace("%player%", player.getName())
-            .replace("%displayname%", player.getDisplayName())
-            .replace("%uuid%", player.getUniqueId().toString());
+    public static final StringReplacer DEFAULT_PLACEHOLDER = (input, player) -> input;
     public String Material;
     public String DisplayName = "";
     public byte Amount = 1;
@@ -84,6 +83,12 @@ public class LobbyItem {
         return this;
     }
 
+    public LobbyItem setAmount(int amount) {
+        Amount = (byte) amount;
+        return this;
+    }
+
+    @Deprecated
     public ItemStack getAsItemStack() {
         return getAsItemStack(null);
     }
@@ -92,8 +97,9 @@ public class LobbyItem {
         return getAsItemStack(player, DEFAULT_PLACEHOLDER);
     }
 
-    public ItemStack getAsItemStack(Player player, final StringReplacer replacer) {
+    public ItemStack getAsItemStack(Player player, final StringReplacer customreplacer) {
         try {
+            StringReplacer replacer = (input, player1) -> PlaceholderManager.setPlaceholders(player1, customreplacer.replace(input, player1));
             String dm = player != null ? getLangString(DisplayName, player) : DisplayName;
             List<String> lore = new ArrayList<>();
             if (player != null) {
@@ -120,12 +126,12 @@ public class LobbyItem {
     }
 
     private ItemStack getSkull(String skin) {
-        if (skin.toLowerCase().startsWith("http://") || skin.toLowerCase().startsWith("https://")) {
+        if (skin.toLowerCase().startsWith("https://textures.minecraft.net/")) {
             return Skull.getCustomSkull(skin);
         } else if (skin.toUpperCase().startsWith("ITEM:")) {
             try {
                 return Skull.valueOf(skin.toUpperCase().substring(5)).getSkull();
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         } else if (skin.length() > 16) {
             return Tools.getSkullFromBASE64(skin, new RandomString(16).nextString());
@@ -144,7 +150,9 @@ public class LobbyItem {
             }
             String name = content.substring(5);
             return LangManager.getMessage(player, "Items." + name, "aCustomString");
-        } else return ChatColor.translateAlternateColorCodes('&', content);
+        } else {
+            return ChatColor.translateAlternateColorCodes('&', content);
+        }
     }
 
     //GetterSetter
@@ -165,18 +173,13 @@ public class LobbyItem {
         String matter = getMaterial();
         try {
             return org.bukkit.Material.valueOf(matter.toUpperCase());
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         try {
             return org.bukkit.Material.getMaterial(Integer.parseInt(matter));
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         return org.bukkit.Material.BARRIER;
-    }
-
-    public LobbyItem setAmount(int amount) {
-        Amount = (byte) amount;
-        return this;
     }
 
     public String getDisplayName() {
@@ -199,8 +202,7 @@ public class LobbyItem {
 
     public LobbyItem setLore(String... lore) {
         Lore.clear();
-        for (String line : lore)
-            Lore.add(line);
+        Collections.addAll(Lore, lore);
         return this;
     }
 

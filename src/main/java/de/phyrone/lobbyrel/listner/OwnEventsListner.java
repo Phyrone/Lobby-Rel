@@ -59,7 +59,7 @@ public class OwnEventsListner implements Listener {
         GroupManager.init();
         SupportPluginsManager.check();
         if (Config.getBoolean("Items.Switcher.Enabled", true)) {
-            new LobbySwitcher().updateServers();
+            LobbySwitcher.getInstance().updateServers();
         }
     }
 
