@@ -4,6 +4,7 @@ package de.phyrone.lobbyrel.placeholder;
  *   Creation: 30.06.2018 by Phyrone
  */
 
+import de.phyrone.lobbyrel.player.PlayerManager;
 import lombok.AccessLevel;
 import lombok.Getter;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -28,6 +29,7 @@ public class PlaceholderManager {
         addPlaceholder("player", (player, args) -> player.getName());
         addPlaceholder("displayname", (player, args) -> player.getDisplayName());
         addPlaceholder("uuid", (player, args) -> player.getUniqueId().toString());
+        addPlaceholder("money", (player, args) -> String.valueOf(PlayerManager.getInternalOfflinePlayerData(player.getUniqueId()).getMoney()));
     }
 
     public static void addPlaceholder(String placeholder, PlaceholderHandler placeholderHandler) {

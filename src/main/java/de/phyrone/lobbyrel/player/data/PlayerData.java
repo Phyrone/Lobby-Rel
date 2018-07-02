@@ -2,6 +2,8 @@ package de.phyrone.lobbyrel.player.data;
 
 import de.phyrone.lobbyrel.hotbar.api.HotbarWrapper;
 import de.phyrone.lobbyrel.hotbar.api.PlayerHotbar;
+import de.phyrone.lobbyrel.player.data.internal.InternalOfflinePlayerData;
+import de.phyrone.lobbyrel.player.data.internal.InternalPlayerData;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -26,7 +28,6 @@ public interface PlayerData {
 
     Player getBukkitPlayer();
 
-    /* Offline */
     int getPlayerHider();
 
     void setPlayerHider(int hider);
@@ -55,6 +56,14 @@ public interface PlayerData {
 
     List<String> getTags();
 
+    int getMoney();
+
+    void setMoney(int money);
+
     void quickSave();
+
+    InternalOfflinePlayerData internalOfflineData();
+
+    InternalPlayerData internalData();
 
 }

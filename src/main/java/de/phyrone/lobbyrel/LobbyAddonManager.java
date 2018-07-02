@@ -9,7 +9,10 @@ import de.phyrone.addonloader.repository.web.JsonWebRepository;
 import de.phyrone.lobbyrel.config.Config;
 import lombok.Getter;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.InvalidDescriptionException;
+import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.UnknownDependencyException;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -38,8 +41,13 @@ public class LobbyAddonManager {
                 }
             });
             addonDownloader.setAddonInstanceLoader(downloadedAddon -> {
-                Plugin loadPlugin = Bukkit.getPluginManager().loadPlugin(downloadedAddon.getFile());
-                Bukkit.getPluginManager().enablePlugin(loadPlugin);
+                Plugin loadPlugin = null;
+                try {
+                    loadPlugin = Bukkit.getPluginManager().loadPlugin(downloadedAddon.getFile());
+                    Bukkit.getPluginManager().enablePlugin(loadPlugin);
+                } catch (InvalidPluginException | InvalidDescriptionException | UnknownDependencyException e) {
+                    e.printStackTrace();
+                }
                 return loadPlugin;
             });
 

@@ -24,7 +24,7 @@ public class LobbySwitcher {
         serverCacheData.clear();
         if (Bukkit.getScheduler().isCurrentlyRunning(runID))
             Bukkit.getScheduler().cancelTask(runID);
-        runID = Bukkit.getScheduler().scheduleSyncRepeatingTask(LobbyPlugin.getInstance(), () -> updateServers(), 0, Config.getInt("LobbySwitcher.UpdateTime", 5 * 20));
+        runID = Bukkit.getScheduler().scheduleSyncRepeatingTask(LobbyPlugin.getInstance(), this::updateServers, 0, Config.getInt("LobbySwitcher.UpdateTime", 5 * 20));
         LobbyPlugin.getInstance().sendBungeeMessage(Collections.singletonList("GetServer"));
         if (Config.getConf().contains(groupsPath)) {
             List<String> list = Config.getConf().getStringList(groupsPath);

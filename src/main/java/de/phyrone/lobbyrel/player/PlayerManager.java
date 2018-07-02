@@ -21,16 +21,14 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
 public class PlayerManager {
-    static File file = new File("plugins/Lobby-Rel/data/players.json");
-    static HashMap<UUID, InternalPlayerData> internalDatas = new HashMap<>();
-    static ArrayList<ResetHandler> handlers = new ArrayList<>();
+    private static HashMap<UUID, InternalPlayerData> internalDatas = new HashMap<>();
+    private static ArrayList<ResetHandler> handlers = new ArrayList<>();
     private static HashMap<UUID, InternalOfflinePlayerData> internalOfflineDatasCache = new HashMap<>();
     private static HashMap<UUID, PlayerData> dataCache = new HashMap<>();
 
@@ -292,11 +290,31 @@ public class PlayerManager {
             }
 
             @Override
+            public int getMoney() {
+                return getInternalOfflinePlayerData(uuid).Money;
+            }
+
+            @Override
+            public void setMoney(int money) {
+                getInternalOfflinePlayerData(uuid).Money = money;
+            }
+
+            @Override
             public void quickSave() {
                 Runnable run = () -> StorageManager.save(uuid, getInternalOfflinePlayerData(uuid));
                 if (Bukkit.getPluginManager().isPluginEnabled(LobbyPlugin.getInstance()))
                     Bukkit.getScheduler().runTaskAsynchronously(LobbyPlugin.getInstance(), run);
                 else run.run();
+            }
+
+            @Override
+            public InternalOfflinePlayerData internalOfflineData() {
+                return getInternalOfflinePlayerData(uuid);
+            }
+
+            @Override
+            public InternalPlayerData internalData() {
+                return getInternalPlayerData(uuid);
             }
 
             @Override
