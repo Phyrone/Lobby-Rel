@@ -2,5 +2,5 @@
 **My Jenkins:** [![Build Status](https://ci.phyrone.de/buildStatus/icon?job=Lobby-Rel/master)](https://ci.phyrone.de/job/Lobby-Rel/job/master/)  
 **Travis CI:**  [![Build Status](https://travis-ci.org/Phyrone/Lobby-Rel.svg?branch=master)](https://travis-ci.org/Phyrone/Lobby-Rel)  
 ### Links:
-- [Dev Builds](https://ci.phyrone.de/job/LobbyRelProject/job/Lobby-Rel/job/master/)
+- [Dev Builds](https://ci.phyrone.de/job/Lobby-Rel/job/master/)
 - [ToDo](https://trello.com/b/CMpvKvmk) (Trello)
